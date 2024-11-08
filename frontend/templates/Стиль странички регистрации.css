@@ -51,3 +51,15 @@ form label {
     font-weight: bold;
 
 }
+
+.enter-account {
+    font-size: 0.9em;
+    color: #B05CFF;
+    float: right;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.enter-account:hover {
+    text-decoration: underline;
+}
