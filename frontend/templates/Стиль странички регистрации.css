@@ -121,7 +121,7 @@ button:hover {
 }
 
 .liu {
-    display: block;
+    display:inline-table;
     margin-top: 20px;
     font-size: 0.9em;
     color: #B05CFF;
