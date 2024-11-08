@@ -92,3 +92,15 @@ button {
 button:hover {
     background-color: #c57eea;
 }
+
+.liu {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #B05CFF;
+    text-decoration: none;
+}
+
+.liu:hover {
+    text-decoration: underline;
+}
