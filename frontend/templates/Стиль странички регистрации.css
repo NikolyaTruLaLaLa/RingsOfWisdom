@@ -66,7 +66,7 @@ form label {
 
 input[type="email"],
 input[type="password"],
-input[tupe="Имя пользователя"] {
+input[type="name"] {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
@@ -76,3 +76,19 @@ input[tupe="Имя пользователя"] {
     font-size: 1em;
 }
 
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #B05CFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    
+}
+
+button:hover {
+    background-color: #c57eea;
+}
