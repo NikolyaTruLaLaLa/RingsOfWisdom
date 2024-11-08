@@ -1,9 +1,10 @@
 /* Основные настройки */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Fredoka, sans-serif;
 }
 
 .logo {
@@ -86,11 +87,13 @@ button {
     font-size: 1em;
     cursor: pointer;
     margin-top: 10px;
+    transition: transform 0.3s ease;
     
 }
 
 button:hover {
     background-color: #c57eea;
+    transform: scale(1.05);
 }
 
 .liu {
