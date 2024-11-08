@@ -66,7 +66,6 @@ form label {
 }
 
 input[type="email"],
-input[type="password"],
 input[type="name"] {
     width: 100%;
     padding: 10px;
@@ -76,6 +75,27 @@ input[type="name"] {
     border-radius: 4px;
     font-size: 1em;
 }
+input[type="password"]{
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+/*.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: eye.png 0 0 no-repeat;
+}
+.password-control.view {
+	background: hide.png 0 0 no-repeat;
+}*/
 
 button {
     width: 100%;
