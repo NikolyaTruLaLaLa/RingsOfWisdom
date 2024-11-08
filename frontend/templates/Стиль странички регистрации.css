@@ -68,6 +68,9 @@ form label {
     text-decoration:none;
     transform: scale(1.05);
 }
+.enter-account::before {
+    content: "Уже есть аккаунт? ";
+  }
 
 input[type="email"],
 input[type="name"] {
