@@ -1,0 +1,105 @@
+:root {
+    --background-color: #fdf4d1#; 
+    --header-bg-color: #ffffff; 
+    --header-text-color: #333333; 
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка сайта */
+.site-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: var(--header-bg-color);
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.site-header .logo img {
+    height: 40px;
+}
+
+.site-header .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.site-header .nav-links a {
+    text-decoration: none;
+    color: var(--header-text-color);
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.site-header .nav-links a:hover {
+    color: #ff9900; 
+}
+
+.site-header .profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.site-header .profile img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%; 
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 40px;
+    justify-items: center;
+    align-items: center;
+    margin-top: 80px; 
+}
+
+.item {
+    text-align: center;
+}
+
+.item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #B05CFF;
+    padding: 10px;
+}
+
+.item p {
+    margin: 10px 0 0;
+    font-size: 14px;
+}
+
+/* Расположение основных иконок */
+.container > :nth-child(1) {
+    grid-column: 2;
+    grid-row: 1;
+}
+.container > :nth-child(2) {
+    grid-column: 1;
+    grid-row: 2;
+}
+.container > :nth-child(3) {
+    grid-column: 3;
+    grid-row: 2;
+}
+.container > :nth-child(4) {
+    grid-column: 2;
+    grid-row: 3;
+}
