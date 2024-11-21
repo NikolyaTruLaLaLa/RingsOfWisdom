@@ -1,7 +1,7 @@
 :root {
-    --background-color: #fdf4d1#; 
-    --header-bg-color: #ffffff; 
-    --header-text-color: #333333; 
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #ffffff; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
 }
 
 body {
@@ -43,7 +43,7 @@ body {
 }
 
 .site-header .nav-links a:hover {
-    color: #ff9900; 
+    color: #ff9900; /* Цвет при наведении */
 }
 
 .site-header .profile {
@@ -55,10 +55,10 @@ body {
 .site-header .profile img {
     height: 40px;
     width: 40px;
-    border-radius: 50%; 
+    border-radius: 50%; /* Круглая иконка профиля */
 }
 
-
+/* Контент страницы */
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -66,7 +66,7 @@ body {
     gap: 40px;
     justify-items: center;
     align-items: center;
-    margin-top: 80px; 
+    margin-top: 80px; /* Отступ для шапки */
 }
 
 .item {
@@ -82,11 +82,11 @@ body {
 }
 
 .item p {
-    margin: 10px 0 0;
+    margin: auto  auto;
     font-size: 14px;
 }
 
-/* Расположение основных иконок */
+/* Ромбовидное расположение */
 .container > :nth-child(1) {
     grid-column: 2;
     grid-row: 1;
