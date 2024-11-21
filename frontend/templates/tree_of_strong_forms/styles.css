@@ -1,6 +1,6 @@
 :root {
     --background-color: #fdf4d1; /* Цвет фона страницы */
-    --header-bg-color: #ffffff; /* Цвет фона шапки */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
     --header-text-color: #333333; /* Цвет текста в шапке */
 }
 
@@ -25,7 +25,7 @@ body {
     right: 0;
     z-index: 1000;
     margin-bottom: 20px;
-    gap:10px;
+    
     
 }
 
@@ -34,7 +34,13 @@ body {
 }
 
 .site-header .nav-links {
-    display:contents;
+    display: flex;
+    justify-content:space-between;
+    justify-self:center;
+    align-self: center;
+    gap: 20px;
+    margin-right: 80px;
+ 
 }
 
 .site-header .nav-links a {
@@ -64,14 +70,76 @@ body {
 }
 
 /* Контент страницы */
-.container {
+.container_all{
+    
+    margin-top: 150px;
+    align-content:space-between;
+  justify-content: space-between;
+  
+}
+.container_all .container_first{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin: auto auto;
+    font-size: 14px;
+
+}
+.container_all .container_first img{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+.container_all .container_second{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    row-gap: 40%;
+    column-gap: 20%;
+    align-self:self-start;
+    margin-bottom: 20px;
+    margin: auto auto;
+    font-size: 14px;
+
+}
+.container_all .container_second img{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+
+.container_all .container_last{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    text-align: center;
+    margin-bottom: 20px;
+    margin: auto auto;
+    font-size: 14px;
+
+}
+.container_all .container_last img{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+
+/*.container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 2fr 1fr;
     gap: 20px;
     justify-items: center;
     align-items: center;
-    margin-top: 120px; /* Отступ для шапки */
+    margin-top: 120px; 
     margin-left: 30%;
     margin-right: 30%;
     
@@ -92,9 +160,9 @@ body {
 .item p {
     margin: auto auto;
     font-size: 14px;
-}
+}*/
 
-/*Ромбовидное расположение */
+/*Ромбовидное расположение 
 .container > :nth-child(1) {
     grid-column: 2;
     grid-row: 1;
@@ -110,5 +178,5 @@ body {
 .container > :nth-child(4) {
     grid-column: 2;
     grid-row: 3;
-}
+}*/
 
