@@ -60,18 +60,21 @@ body {
 .site-header .profile img {
     height: 40px;
     width: 40px;
-    border-radius: 80%; /* Круглая иконка профиля */
+    
 }
 
 /* Контент страницы */
 .container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
-    gap: 40px;
+    grid-template-rows: 1fr 2fr 1fr;
+    gap: 20px;
     justify-items: center;
     align-items: center;
-    margin-top: 80px; /* Отступ для шапки */
+    margin-top: 120px; /* Отступ для шапки */
+    margin-left: 30%;
+    margin-right: 30%;
+    
 }
 
 .item {
@@ -81,17 +84,17 @@ body {
 .item img {
     width: 80px;
     height: 80px;
-    border-radius: 50%;
+    border-radius: 99.9%;
     background: #B05CFF;
     padding: 10px;
 }
 
 .item p {
-    margin: auto  auto;
+    margin: auto auto;
     font-size: 14px;
 }
 
-/* Ромбовидное расположение */
+/*Ромбовидное расположение */
 .container > :nth-child(1) {
     grid-column: 2;
     grid-row: 1;
@@ -108,3 +111,4 @@ body {
     grid-column: 2;
     grid-row: 3;
 }
+
