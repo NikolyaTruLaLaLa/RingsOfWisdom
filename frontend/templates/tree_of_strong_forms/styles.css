@@ -14,48 +14,53 @@ body {
 /* Шапка сайта */
 .site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 1% 1%;
     background-color: var(--header-bg-color);
     border-bottom: 1px solid #ddd;
-    position: fixed;
+    position:absolute;
     top: 0;
     left: 0;
     right: 0;
     z-index: 1000;
+    margin-bottom: 20px;
+    gap:10px;
+    
 }
 
 .site-header .logo img {
-    height: 40px;
+    height: 50px;
 }
 
 .site-header .nav-links {
-    display: flex;
-    gap: 20px;
+    display:contents;
 }
 
 .site-header .nav-links a {
-    text-decoration: none;
+    text-decoration:none; 
     color: var(--header-text-color);
     font-size: 16px;
     font-weight: bold;
+    transition: transform 0.2s ease;
 }
 
 .site-header .nav-links a:hover {
     color: #ff9900; /* Цвет при наведении */
+    transform:scale(1.02);
 }
+
 
 .site-header .profile {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 20px;
 }
 
 .site-header .profile img {
     height: 40px;
     width: 40px;
-    border-radius: 50%; /* Круглая иконка профиля */
+    border-radius: 80%; /* Круглая иконка профиля */
 }
 
 /* Контент страницы */
