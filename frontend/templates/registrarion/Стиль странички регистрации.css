@@ -8,10 +8,11 @@
 }
 
 .logo {
-    width: 500px; 
+    width: 450px; 
     height: auto; 
-    max-width: 100%; 
-    margin-top: 20px;
+    max-width: 80%; 
+    margin-top: 20%;
+    margin-bottom: 2%;
 }
 
 body {
@@ -43,9 +44,11 @@ h2 {
     margin-top: 20px;
     background-color: #fff;
     padding: 30px;
-    width: 325px;
+    width: 80%;
+    max-height: 80%;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3%;
 }
 
 form label {
