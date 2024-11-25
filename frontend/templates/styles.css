@@ -1,0 +1,175 @@
+:root {
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
+}
+
+body {
+    margin: 0;
+    padding: 10%;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка сайта */
+.site-header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1% 1%;
+    background-color: var(--header-bg-color);
+    
+    position:absolute;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 0;
+    
+    
+}
+
+.site-header .logo img {
+    width: 200px; 
+    height: auto; 
+    max-width: 100%; 
+    
+}
+
+.site-header .nav-links {
+    display: flex;
+    justify-content:space-between;
+    justify-self:center;
+    align-self: center;
+    gap: 20px;
+    /*margin-right: 80px;*/
+ 
+}
+
+.site-header .nav-links a {
+    text-decoration:none; 
+    color: var(--header-text-color);
+    font-size: 16px;
+    font-weight: bold;
+    max-width: 100% ;
+    transition: transform 0.2s ease;
+}
+
+.site-header .nav-links a:hover {
+    color: #ff9900; /* Цвет при наведении */
+    transform:scale(1.02);
+}
+
+
+.site-header .profile {
+    display: flex;
+    align-items:center;
+    justify-self:center;
+    gap: 20px;
+}
+
+.site-header .profile img {
+    width: 40px; 
+    height: auto; 
+    max-width: 100%; 
+    
+}
+
+/* Общие стили для квиза */
+.quiz-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 90%;
+    max-width: 400px;
+    height: 500px; /* Растягиваем по вертикали */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Элементы равномерно распределяются */
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Заголовок с синим фоном */
+.quiz-header {
+    background-color: #00bcd4; /* Синий фон */
+    border-radius: 10px 10px 0 0; /* Закругленные края сверху */
+    text-align: center;
+    padding: 15px;
+    color: #fff; /* Белый текст */
+}
+
+.quiz-header h2 {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+/* Тело квиза */
+.quiz-body {
+    padding: 20px;
+    text-align: center;
+    flex: 1; /* Распределение свободного пространства */
+}
+
+.quiz-question-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.quiz-question {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.answer-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background-color: #00c853;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submit-button:hover {
+    background-color: #009624;
+}
+
+/* Подвал с кнопкой */
+.quiz-footer {
+    text-align: center;
+    padding: 10px;
+}
+
+.back-to-menu {
+    padding: 10px 15px;
+    background-color: #ff1744;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    width: 100%;
+}
+
+.back-to-menu:hover {
+    background-color: #d50000;
+}
