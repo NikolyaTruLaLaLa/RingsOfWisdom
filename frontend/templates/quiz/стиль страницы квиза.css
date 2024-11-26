@@ -41,7 +41,7 @@ body {
     justify-self:center;
     align-self: center;
     gap: 20px;
-    /*margin-right: 80px;*/
+    
  
 }
 
@@ -94,9 +94,9 @@ body {
     color: #333;
 }
 
-/* Заголовок с синим фоном */
+
 .quiz-header {
-    background-color: #B05CFF; /* Синий фон */
+    background-color: #B05CFF; 
     border-radius: 10px 10px 0 0; /* Закругленные края сверху */
     text-align: center;
     padding: 15px;
