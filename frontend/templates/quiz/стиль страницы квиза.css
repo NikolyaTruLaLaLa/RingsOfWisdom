@@ -96,7 +96,7 @@ body {
 
 /* Заголовок с синим фоном */
 .quiz-header {
-    background-color: #00bcd4; /* Синий фон */
+    background-color: #B05CFF; /* Синий фон */
     border-radius: 10px 10px 0 0; /* Закругленные края сверху */
     text-align: center;
     padding: 15px;
@@ -124,7 +124,7 @@ body {
 .quiz-question {
     font-size: 16px;
     font-weight: bold;
-    margin-bottom: 15px;
+    margin-bottom: 15%;
 }
 
 .answer-input {
@@ -139,20 +139,21 @@ body {
 
 .submit-button {
     padding: 10px 15px;
-    background-color: #00c853;
+    background-color: #B05CFF;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: transform 0.2s ease;
 }
 
 .submit-button:hover {
-    background-color: #009624;
+    background-color: #B05CFF;
+    transform:scale(1.02);
 }
 
-/* Подвал с кнопкой */
+
 .quiz-footer {
     text-align: center;
     padding: 10px;
@@ -160,16 +161,19 @@ body {
 
 .back-to-menu {
     padding: 10px 15px;
-    background-color: #ff1744;
+    background-color: #B05CFF;
     color: #fff;
     border: none;
     border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: transform 0.2s ease;
     width: 100%;
+    margin-bottom: 8%
+
 }
 
 .back-to-menu:hover {
-    background-color: #d50000;
+    background-color: #B05CFF;
+    transform:scale(1.02);
 }
