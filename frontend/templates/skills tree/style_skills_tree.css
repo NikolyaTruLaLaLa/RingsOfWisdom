@@ -1,0 +1,29 @@
+:root {
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
+}
+
+body {
+    margin: 0;
+    padding: 10%;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка сайта */
+.site-header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1% 1%;
+    background-color: var(--header-bg-color);
+    
+    position:absolute;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 0;
+    
+    
+}
