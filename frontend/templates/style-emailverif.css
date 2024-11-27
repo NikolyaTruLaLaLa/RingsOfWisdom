@@ -10,4 +10,24 @@ body {
     height: 100vh;
 }
 
+.container {
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+/* Логотип */
+.logo {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-image {
+    max-width: 150%;
+    height: auto; 
+}
 
