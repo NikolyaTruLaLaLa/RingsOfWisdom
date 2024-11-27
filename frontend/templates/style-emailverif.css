@@ -53,3 +53,16 @@ body {
     word-wrap: break-word;
 }
 
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #B05CFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+    
+}
