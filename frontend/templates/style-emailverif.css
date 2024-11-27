@@ -31,3 +31,25 @@ body {
     height: auto; 
 }
 
+/* Уведомление */
+.notification {
+    font-size: 1.2rem;
+    color: #333;
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/.notification p {
+    margin: 0 0 2rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
