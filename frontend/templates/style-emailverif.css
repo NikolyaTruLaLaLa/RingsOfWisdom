@@ -66,3 +66,17 @@ button {
     transition: transform 0.3s ease;
     
 }
+
+/* Ссылка на ЛИИ ЮФУ */
+.footer-link {
+    display: block; 
+    font-size: 1rem;
+    color: #6a0dad;
+    text-decoration: none;
+    font-weight: 700;
+    margin-top: 2rem;
+}
+
+.footer-link:hover {
+    text-decoration: underline;
+}
