@@ -39,6 +39,14 @@ body {
     
 }
 
+.heading-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 38px;
+}
+
 
 .main-content h1 {
     font-size: 60px;
