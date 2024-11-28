@@ -47,7 +47,7 @@ body {
     transform: translate(-50%, -50%);
 }
 
-/.notification p {
+.notification p {
     margin: 0 0 2rem;
     line-height: 1.5;
     word-wrap: break-word;
@@ -71,7 +71,7 @@ button {
 .footer-link {
     display: block; 
     font-size: 1rem;
-    color: #6a0dad;
+    color: #B05CFF;
     text-decoration: none;
     font-weight: 700;
     margin-top: 2rem;
