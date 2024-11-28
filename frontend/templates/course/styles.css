@@ -1,0 +1,21 @@
+/* Основные стили */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fdf4d1;
+}
+
+/* Шапка */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background-color: #fffbe9;
+}
+.logo img {
+    height: 60px;
+}
+.profile-icon img {
+    height: 40px;
+}
