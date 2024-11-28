@@ -1,33 +1,76 @@
-/* Основные стили */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #fdf4d1;
+:root {
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
 }
 
-/* Шапка */
-.header {
+body {
+    margin: 0;
+    padding: 10%;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка сайта */
+.site-header {
     display: flex;
-    justify-content: space-between;
+    justify-content:space-between;
     align-items: center;
-    padding: 20px 40px;
-    background-color: #fffbe9;
+    padding: 1% 1%;
+    background-color: var(--header-bg-color);
+    
+    position:absolute;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 0;
+    
+    
 }
-.logo img {
-    height: 60px;
+
+.site-header .logo img { 
+    height: 60px; 
+     
+    
 }
-.profile-icon img {
-    height: 40px;
+
+.site-header .nav-links {
+    display: flex;
+    justify-content:space-between;
+    justify-self:center;
+    align-self: center;
+    gap: 20px;
+    
+ 
 }
-nav a {
-    text-decoration: none;
-    color: black;
-    margin-right: 20px;
+
+.site-header .nav-links a {
+    text-decoration:none; 
+    color: var(--header-text-color);
     font-size: 16px;
-    font-weight: 700;
+    font-weight: bold;
+    max-width: 100% ;
+    transition: transform 0.2s ease;
 }
-nav a:last-child {
-    margin-right: 0;
+
+.site-header .nav-links a:hover {
+    color: #ff9900; /* Цвет при наведении */
+    transform:scale(1.02);
+}
+
+
+.site-header .profile {
+    display: flex;
+    align-items:center;
+    justify-self:center;
+    gap: 20px;
+}
+
+.site-header .profile img {
+    width: 40px; 
+    height: auto; 
+    max-width: 100%; 
+    
 }
 
 /* Заголовок раздела */
