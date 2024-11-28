@@ -28,10 +28,9 @@ body {
     
 }
 
-.site-header .logo img {
-    width: 200px; 
-    height: auto; 
-    max-width: 100%; 
+.site-header .logo img { 
+    height: 60px; 
+     
     
 }
 
@@ -41,7 +40,7 @@ body {
     justify-self:center;
     align-self: center;
     gap: 20px;
-    /*margin-right: 80px;*/
+    
  
 }
 
@@ -81,6 +80,16 @@ body {
     align-content:space-between;
   justify-content: space-between;
   
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+    .container_all{
+    
+        margin-top: 0.1%;
+        align-content:space-between;
+      justify-content: space-between;
+      
+    }
 }
 .container_all .head{
     display: flex;
