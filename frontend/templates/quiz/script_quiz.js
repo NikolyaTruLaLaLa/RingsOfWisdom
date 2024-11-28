@@ -52,12 +52,16 @@ const questions = [
     
     const normalizedAnswers = possibleAnswers.map(answer => answer.toLowerCase());
     
-    if (normalizedAnswers.includes(userAnswer.toLowerCase())) {
-        feedback.innerText = "Правильный ответ! " + questions[currentQuestionIndex].explanation;
-        submitButton.innerText = "Следующий вопрос";
-        submitButton.onclick = goToNextQuestion;
+    if (userAnswer !== '') {
+        if (normalizedAnswers.includes(userAnswer.toLowerCase())) {
+            feedback.innerText = "Правильный ответ! " + questions[currentQuestionIndex].explanation;
+            submitButton.innerText = "Следующий вопрос";
+            submitButton.onclick = goToNextQuestion;
+        } else {
+            feedback.innerText = "Неправильный ответ. Попробуйте еще раз.";
+        }
     } else {
-        feedback.innerText = "Неправильный ответ. Попробуйте еще раз.";
+        feedback.innerText = "Пожалуйста, введите ответ.";
     }
     }
     
