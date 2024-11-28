@@ -44,7 +44,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 38px;
+    font-size: 18px;
 }
 
 
@@ -124,7 +124,7 @@ body {
     justify-content: center;
     align-content: center;
     margin-bottom: 2%;
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
     transition: transform 0.2s ease;
     
