@@ -58,7 +58,7 @@ function checkAnswer() {
         submitButton.onclick = goToNextQuestion;
     } else {
         feedback.innerText = "Неправильный ответ. Попробуйте еще раз.";
-        submitButton.innerText = "Ответить";
+        submitButton.innerText = "Сдать бланк с ответом!";
         submitButton.onclick = checkAnswer;
     }
 
