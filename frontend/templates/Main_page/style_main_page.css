@@ -6,7 +6,12 @@
 
 body {
    
+    background: url(back\ s.jpg);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center;
    
+    height: 100vh;
     padding: 10%;
     background-color: var(--background-color);
     font-family: Arial, sans-serif;
