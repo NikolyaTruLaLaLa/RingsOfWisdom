@@ -29,19 +29,20 @@
     <!-- Окно квиза -->
     <div class="quiz-popup">
         <div class="quiz-header">
-            <h2>КВИЗ № 1</h2>
+            <p id="question-number"></p>
         </div>
         <div class="quiz-body">
-            <p class="quiz-question-text">
-                Вопрос:Бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла бла 
-            </p>
-            <p class="quiz-question">Форма вопроса: Как звали её?</p>
+            <p class="quiz-question-text"> </p>
+            <p class="quiz-question-form"></p>
             <input type="text" placeholder="Введите ваш ответ" class="answer-input">
             <button class="submit-button">Сдать бланк с ответом!</button>
         </div>
+        <p id="feedback"></p>
         <div class="quiz-footer">
-            <button class="back-to-menu">Вернуться на дерево</button>
+            <button onclick="document.location='#menu'" class="back-to-menu">Вернуться на дерево</button>
         </div>
+        
+        <script src="script_quiz.js"></script>
     </div>
     
     
