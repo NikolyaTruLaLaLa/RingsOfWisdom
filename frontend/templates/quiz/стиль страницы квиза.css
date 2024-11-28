@@ -28,10 +28,9 @@ body {
     
 }
 
-.site-header .logo img {
-    width: 200px; 
-    height: auto; 
-    max-width: 100%; 
+.site-header .logo img { 
+    height: 60px; 
+     
     
 }
 
@@ -92,6 +91,7 @@ body {
     justify-content: space-between; /* Элементы равномерно распределяются */
     font-family: Arial, sans-serif;
     color: #333;
+    margin-top:2%
 }
 
 
