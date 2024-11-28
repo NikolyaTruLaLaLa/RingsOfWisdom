@@ -30,25 +30,28 @@ nav a:last-child {
     margin-right: 0;
 }
 
+/* Заголовок раздела */
+.section-title {
+    text-align: center;
+    margin-top: 50px; 
+}
+.section-title h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #000000; 
+}
+
 /* Центр страницы */
 .main-content {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 300px); 
     text-align: center;
-}
-.section-title {
-    font-size: 20px;
-    font-weight: normal;
-    color: black; 
-    margin-bottom: 10px;
-    font-weight: 700;
 }
 .main-content h1 {
     font-size: 60px;
     font-weight: bold;
-    color: #000000;
+    color: #000000; 
 }
 
