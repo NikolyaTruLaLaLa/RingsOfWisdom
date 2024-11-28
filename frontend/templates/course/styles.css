@@ -19,3 +19,28 @@ body {
 .profile-icon img {
     height: 40px;
 }
+nav a {
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+    font-size: 16px;
+    font-weight: 700;
+}
+nav a:last-child {
+    margin-right: 0;
+}
+
+/* Центр страницы */
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    text-align: center;
+}
+.main-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000000;
+}
+
