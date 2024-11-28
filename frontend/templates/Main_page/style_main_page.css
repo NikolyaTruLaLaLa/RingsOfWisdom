@@ -1,0 +1,210 @@
+:root {
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
+}
+
+body {
+   
+    background: url(back\ s.jpg);
+    margin: 0;
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 10%;
+    height: 100vh;
+    background-color: var(--background-color);
+    font-family: Arial, sans-serif;
+}
+
+/* Шапка сайта */
+.site-header {
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    padding: 1% 1%;
+    background-color: var(--header-bg-color);
+    
+    position:absolute;
+    top: 0;
+    left:0;
+    right:0;
+    z-index: 0;
+    
+    
+}
+
+.site-header .logo img { 
+    height: 60px; 
+     
+    
+}
+
+.site-header .nav-links {
+    display: flex;
+    justify-content:space-between;
+    justify-self:center;
+    align-self: center;
+    gap: 20px;
+    
+ 
+}
+
+.site-header .nav-links a {
+    text-decoration:none; 
+    color: var(--header-text-color);
+    font-size: 16px;
+    font-weight: bold;
+    max-width: 100% ;
+    transition: transform 0.2s ease;
+}
+
+.site-header .nav-links a:hover {
+    color: #ff9900; /* Цвет при наведении */
+    transform:scale(1.02);
+}
+
+
+.site-header .profile {
+    display: flex;
+    align-items:center;
+    justify-self:center;
+    gap: 20px;
+}
+
+.site-header .profile img {
+    width: 40px; 
+    height: auto; 
+    max-width: 100%; 
+    
+}
+
+/* Контент страницы */
+.container_all{
+    
+    margin-top: 20%;
+    align-content:space-between;
+  justify-content: space-between;
+  
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+    .container_all{
+    
+        margin-top: 0.1%;
+        align-content:space-between;
+      justify-content: space-between;
+      
+    }
+}
+.container_all .head{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-bottom: 2%;
+    font-size: 18px;
+    font-weight: bold;
+    transition: transform 0.2s ease;
+    
+
+}
+.container_all .head:hover{
+    color: #333333;
+    transform:scale(1.02);
+}
+.container_all .container_first{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    margin:auto auto;
+
+
+}
+.container_all .container_first .item{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+.container_all .container_first img{
+    width: 80px;
+    height: 80px;
+}
+.container_all .container_second{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    gap:28%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+    font-size: 14px;
+
+}
+.container_all .container_second .item{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+.container_all .container_second img{
+    width: 80px;
+    height: 80px;
+}
+
+.container_all .container_last{
+    display: flex;
+    align-content:center;
+  justify-content: center;
+    text-align: center;
+    font-size: 14px;
+    margin:auto auto;
+
+}
+.container_all .container_last .item{
+    width: 80px;
+    height: 80px;
+    border-radius: 99.99%;
+    background: #B05CFF;
+    padding: 10px;
+}
+.container_all .container_last img{
+    width: 80px;
+    height: 80px;
+    
+}
+
+
+
+
+@media(min-width:576px){
+    body{
+    background-repeat: no-repeat;
+    background: url(back\ s.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+}
+
+@media (min-width: 768px){
+    body{
+    background: url(back\ m.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+}
+
+@media(min-width: 1200px){
+    body{
+      
+    background: url(back.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+    
+}
