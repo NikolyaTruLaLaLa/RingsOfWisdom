@@ -40,6 +40,12 @@ body {
 }
 
 
+.main-content h1 {
+    font-size: 60px;
+    font-weight: bold;
+    color: #000000;
+}
+
 .main-content {
     display: flex;
     justify-content: center;
