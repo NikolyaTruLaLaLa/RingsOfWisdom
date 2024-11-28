@@ -182,5 +182,15 @@ body {
     }
 }
 
+@media (min-width: 768px){
+    body{
+    background: url(back\ m.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+}
+
+
 
 
