@@ -191,6 +191,17 @@ body {
     }
 }
 
+@media(min-width: 1200px){
+    body{
+      
+    background: url(back.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+    
+}
+
 
 
 
