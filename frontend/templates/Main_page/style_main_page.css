@@ -39,6 +39,15 @@ body {
     
 }
 
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 80px);
+    text-align: center;
+}
+
 .site-header .nav-links {
     display: flex;
     justify-content:space-between;
