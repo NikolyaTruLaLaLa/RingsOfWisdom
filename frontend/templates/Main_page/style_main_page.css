@@ -6,12 +6,8 @@
 
 body {
    
-    background: url(back\ s.jpg);
-    margin: 0;
-    background-repeat: no-repeat;
-    background-position: center;
+   
     padding: 10%;
-    height: 100vh;
     background-color: var(--background-color);
     font-family: Arial, sans-serif;
 }
@@ -176,9 +172,6 @@ body {
     
 }
 
-
-
-
 @media(min-width:576px){
     body{
     background-repeat: no-repeat;
@@ -189,22 +182,5 @@ body {
     }
 }
 
-@media (min-width: 768px){
-    body{
-    background: url(back\ m.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
-}
 
-@media(min-width: 1200px){
-    body{
-      
-    background: url(back.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
-    
-}
+
