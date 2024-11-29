@@ -11,6 +11,8 @@ body {
     font-family: Arial, sans-serif;
 }
 
+/*место для фона*/
+
 /* Шапка сайта */
 .site-header {
     display: flex;
@@ -19,11 +21,12 @@ body {
     padding: 1% 1%;
     background-color: var(--header-bg-color);
     
-    position:absolute;
+    position:fixed;
     top: 0;
     left:0;
     right:0;
     z-index: 0;
+    margin-bottom: 2%;
     
     
 }
@@ -75,7 +78,7 @@ body {
 
 /* Общие стили для квиза */
 .quiz-popup {
-    position: fixed;
+    position:fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -91,7 +94,8 @@ body {
     justify-content: space-between; /* Элементы равномерно распределяются */
     font-family: Arial, sans-serif;
     color: #333;
-    margin-top:2%
+    margin-top:2%;
+    overflow: auto;
 }
 
 
@@ -114,17 +118,21 @@ body {
     padding: 20px;
     text-align: center;
     flex: 1; /* Распределение свободного пространства */
+    word-wrap: break-word;
+    
 }
 
 .quiz-question-text {
     font-size: 14px;
     margin-bottom: 10px;
+    word-wrap: break-word;
 }
 
 .quiz-question-form {
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 15%;
+    
 }
 
 .answer-input {
@@ -146,6 +154,7 @@ body {
     font-size: 14px;
     cursor: pointer;
     transition: transform 0.2s ease;
+    
 }
 
 .submit-button:hover {
