@@ -6,10 +6,13 @@
 
 body {
    
-    background: url(back\ s.jpg);
+    /*background: url(back\ s.jpg);*/
+    background: url(fon-s-2.jpg);
     margin: 0;
     background-repeat: no-repeat;
-    background-position: center;
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
     height: 100vh;
     padding: 10%;
     background-color: var(--background-color);
@@ -40,6 +43,7 @@ body {
 }
 
 .heading-container{
+    margin-top: 5%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -119,90 +123,14 @@ body {
       
     }
 }
-.container_all .head{
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    margin-bottom: 2%;
-    font-size: 14px;
-    font-weight: bold;
-    transition: transform 0.2s ease;
-    
-
-}
-.container_all .head:hover{
-    color: #333333;
-    transform:scale(1.02);
-}
-.container_all .container_first{
-    display: flex;
-    align-content:center;
-  justify-content: center;
-    text-align: center;
-    font-size: 14px;
-    margin:auto auto;
 
 
-}
-.container_all .container_first .item{
-    width: 80px;
-    height: 80px;
-    border-radius: 99.99%;
-    background: #B05CFF;
-    padding: 10px;
-}
-.container_all .container_first img{
-    width: 80px;
-    height: 80px;
-}
-.container_all .container_second{
-    display: flex;
-    align-content:center;
-  justify-content: center;
-    gap:28%;
-    margin-bottom: 5%;
-    margin-top: 5%;
-    font-size: 14px;
-
-}
-.container_all .container_second .item{
-    width: 80px;
-    height: 80px;
-    border-radius: 99.99%;
-    background: #B05CFF;
-    padding: 10px;
-}
-.container_all .container_second img{
-    width: 80px;
-    height: 80px;
-}
-
-.container_all .container_last{
-    display: flex;
-    align-content:center;
-  justify-content: center;
-    text-align: center;
-    font-size: 14px;
-    margin:auto auto;
-
-}
-.container_all .container_last .item{
-    width: 80px;
-    height: 80px;
-    border-radius: 99.99%;
-    background: #B05CFF;
-    padding: 10px;
-}
-.container_all .container_last img{
-    width: 80px;
-    height: 80px;
-    
-}
 
 @media(min-width:576px){
     body{
     background-repeat: no-repeat;
-    background: url(back\ s.jpg);
+    /*background: url(back\ s.jpg);*/
+    background: url(fon-s.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
@@ -211,7 +139,8 @@ body {
 
 @media (min-width: 768px){
     body{
-    background: url(back\ m.jpg);
+    /*background: url(back\ m.jpg);*/
+    background: url(fon-m.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
@@ -221,7 +150,8 @@ body {
 @media(min-width: 1200px){
     body{
       
-    background: url(back.jpg);
+    /*background: url(back.jpg);*/
+    background: url(fon-xl.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
