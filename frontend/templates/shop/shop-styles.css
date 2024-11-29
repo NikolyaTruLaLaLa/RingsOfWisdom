@@ -5,6 +5,12 @@
 }
 
 body {
+
+    background: url(fons.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
     margin: 0;
     padding: 10%;
     background-color: var(--background-color);
