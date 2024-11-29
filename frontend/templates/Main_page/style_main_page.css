@@ -6,13 +6,14 @@
 
 body {
    
-    /*background: url(back\ s.jpg);*/
-    background: url(fon-s-2.jpg);
-    margin: 0;
+   /*фон{ */
+    background: url(fons.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
+    /* фон}*/
+    margin: 0;
     height: 100vh;
     padding: 10%;
     background-color: var(--background-color);
@@ -125,12 +126,12 @@ body {
 }
 
 
-
+/*
 @media(min-width:576px){
     body{
     background-repeat: no-repeat;
-    /*background: url(back\ s.jpg);*/
-    background: url(fon-s.jpg);
+    
+    background: url(fons.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
@@ -139,8 +140,8 @@ body {
 
 @media (min-width: 768px){
     body{
-    /*background: url(back\ m.jpg);*/
-    background: url(fon-m.jpg);
+    
+    background: url(fons.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
@@ -150,14 +151,14 @@ body {
 @media(min-width: 1200px){
     body{
       
-    /*background: url(back.jpg);*/
-    background: url(fon-xl.jpg);
+    
+    background: url(fons.jpg);
     background-size: cover;
 	background-position: center center;
 	background-attachment: fixed;
     }
     
-}
+}*/
 
 
 
