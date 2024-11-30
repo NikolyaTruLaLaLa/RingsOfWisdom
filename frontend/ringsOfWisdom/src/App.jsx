@@ -6,6 +6,7 @@ import './App.css'
 import Head from './components/header/Head'
 import Wp from './pages/WP';
 import Skillstree from './pages/Skillstree';
+import Strongformstree from './pages/Strongformstree';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -16,7 +17,8 @@ function App() {
        <Head />
     
       {/*<Wp />*/}
-      <Skillstree />
+      {/*<Skillstree />*/}
+      <Strongformstree />
       
     </>
   )
