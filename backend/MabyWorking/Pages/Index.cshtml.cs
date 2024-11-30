@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MabyWorking.Pages
+namespace mabyWorking.Pages
 {
     public class IndexModel : PageModel
     {

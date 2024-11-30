@@ -12,8 +12,8 @@ using mabyWorking.Data;
 namespace mabyWorking.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241130173146_Add UserId")]
-    partial class AddUserId
+    [Migration("20241130202101_KASJDHkjshd")]
+    partial class KASJDHkjshd
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -170,8 +170,9 @@ namespace mabyWorking.Data.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
 
-                    b.Property<long>("ApplicationUserId")
-                        .HasColumnType("bigint");
+                    b.Property<string>("ApplicationUserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -214,7 +215,6 @@ namespace mabyWorking.Data.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("UserName")
-                        .IsRequired()
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 

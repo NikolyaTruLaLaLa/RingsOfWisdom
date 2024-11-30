@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj": {}
+    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj": {}
   },
   "projects": {
-    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj": {
+    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj",
-        "projectName": "MabyWorking",
-        "projectPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj",
+        "projectUniqueName": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj",
+        "projectName": "mabyWorking",
+        "projectPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj",
         "packagesPath": "C:\\Users\\water\\.nuget\\packages\\",
-        "outputPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\obj\\",
+        "outputPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -55,19 +55,29 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.11, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.EntityFrameworkCore.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.11, )"
             },
             "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.2, )"
+              "version": "[8.0.11, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[8.0.7, )"
             }
           },
           "imports": [
