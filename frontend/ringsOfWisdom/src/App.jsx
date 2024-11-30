@@ -4,8 +4,8 @@ import "./assets/style/style_main_page.css";
 import './App.css'
 
 import Head from './components/header/Head'
-import Headcontainer from './components/header-container/Headcontainer';
-import Maincontent from './components/main-content/Maincontent';
+import Wp from './pages/WP';
+import Skillstree from './pages/Skillstree';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,9 +15,9 @@ function App() {
 
        <Head />
     
-      <Headcontainer />
+      {/*<Wp />*/}
+      <Skillstree />
       
-      <Maincontent />
     </>
   )
 }

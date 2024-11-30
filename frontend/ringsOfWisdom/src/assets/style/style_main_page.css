@@ -8,10 +8,10 @@ body {
    
    /*фон{ */
     background-image: url('./assets/fons.jpg');
-    /*background-repeat: no-repeat;
+    background-repeat: no-repeat;
     background-size: cover;
 	background-position: center center;
-	background-attachment: fixed;*/
+	background-attachment: fixed;
     /* фон}*/
     margin: 0;
     height: 100vh;
