@@ -5,6 +5,13 @@
 }
 
 body {
+/*фон{ */
+    background: url(fons.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    /* фон}*/
     margin: 0;
     padding: 10%;
     background-color: var(--background-color);
@@ -120,7 +127,7 @@ body {
     width: 80px;
     height: 80px;
     border-radius: 99.99%;
-    background: #B05CFF;
+    background: #5a47b3;
     padding: 10px;
 }
 .container_all .container_first img{
