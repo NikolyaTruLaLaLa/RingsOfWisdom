@@ -11,12 +11,14 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("mabyWorking")]
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-MabyWorking-84aec0f5-7ee2-4468-bf6a-d3169982307b")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("MabyWorking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
-[assembly: System.Reflection.AssemblyProductAttribute("mabyWorking")]
-[assembly: System.Reflection.AssemblyTitleAttribute("mabyWorking")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d2dc306136186b6065d1b45cf52840d325a76500")]
+[assembly: System.Reflection.AssemblyProductAttribute("MabyWorking")]
+[assembly: System.Reflection.AssemblyTitleAttribute("MabyWorking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Создано классом WriteCodeFragment MSBuild.

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking\\mabyWorking.csproj": {}
+    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj": {}
   },
   "projects": {
-    "D:\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking\\mabyWorking.csproj": {
+    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking\\mabyWorking.csproj",
-        "projectName": "mabyWorking",
-        "projectPath": "D:\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking\\mabyWorking.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "D:\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking\\obj\\",
+        "projectUniqueName": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj",
+        "projectName": "MabyWorking",
+        "projectPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\MabyWorking.csproj",
+        "packagesPath": "C:\\Users\\water\\.nuget\\packages\\",
+        "outputPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\MabyWorking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\water\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -38,11 +38,38 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.AspNetCore.Identity.UI": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -62,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
