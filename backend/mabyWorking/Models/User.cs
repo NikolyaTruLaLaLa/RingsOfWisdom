@@ -1,6 +1,4 @@
-﻿
-
-namespace mabyWorking.Models
+﻿namespace mabyWorking.Models
 {
     public class User
     {
