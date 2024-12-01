@@ -7,6 +7,7 @@ import Head from './components/header/Head'
 import Wp from './pages/WP';
 import Skillstree from './pages/Skillstree';
 import Strongformstree from './pages/Strongformstree';
+import Emailverif from './pages/Emailverif';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,7 +19,8 @@ function App() {
     
       {/*<Wp />*/}
       {/*<Skillstree />*/}
-      <Strongformstree />
+      {/*<Strongformstree />*/}
+      <Emailverif/>
       
     </>
   )

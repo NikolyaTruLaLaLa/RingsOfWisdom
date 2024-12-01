@@ -6,7 +6,7 @@ import './../assets/style/style_skills_tree.css';
 
 const Strongformstree = () => {
     return ( <div className="container_all">
-        <div class ="head">
+        <div className="head">
             <p>Могучие Формы</p>
         </div>
         <div className="container_first">
