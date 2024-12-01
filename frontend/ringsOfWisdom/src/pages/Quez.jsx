@@ -1,6 +1,9 @@
 import './../assets/style/style_quez.css';
 {/*import script_quez from './../scripts/script_quez'*/}
 
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+
 const Quez = () => {
     return ( 
         <div className="quiz-popup">
@@ -15,7 +18,10 @@ const Quez = () => {
             </div>
             <p id="feedback"></p>
             <div className="quiz-footer">
-                <button onclick="document.location='/stngform'" className="back-to-menu">Вернуться на дерево</button>
+                <NavLink to="/stngform" className="back-to-menu">
+                <button >Вернуться на дерево</button>
+                </NavLink>
+                
             </div>
             
             {/*<script src={script_quez}></script>*/}

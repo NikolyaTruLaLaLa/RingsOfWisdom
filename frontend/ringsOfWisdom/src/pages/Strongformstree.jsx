@@ -4,18 +4,19 @@ import many_faces from"./../assets/images/many_faces.png";
 import reverse_x from"./../assets/images/reverse_x.png";
 import './../assets/style/style_skills_tree.css';
 
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+
 const Strongformstree = () => {
     return ( <div className="container_all">
         <div className="head">
             <p>Могучие Формы</p>
         </div>
         <div className="container_first">
-            <div className="item">
-                <a href = "/quiz">
-                    <img src={icon_gendr_forms} alt="ГЕНдерные Формы"/>
-                </a>
+            <NavLink  to="/quiz" className="item">
+                <img src={icon_gendr_forms} alt="ГЕНдерные Формы"/>
                 <p>ГЕНдерные<br/>Формы</p>
-            </div>
+            </NavLink>
         </div>
         <div className="container_second">
             <div className="item">
