@@ -12,6 +12,7 @@ import Strongformstree from './pages/Strongformstree';
 import Emailverif from './pages/Emailverif';
 import Registation from './pages/Registration';
 import Authorization from './pages/Authorization';
+import Quez from './pages/Quez';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -31,6 +32,7 @@ function App() {
       
       {/*<Skillstree />*/}
       {/*<Strongformstree />*/}
+      <Quez />
 
       
     </>
