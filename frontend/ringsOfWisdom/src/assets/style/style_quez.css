@@ -92,7 +92,7 @@
 
 .back-to-menu {
     padding: 10px 15px;
-    background-color: #5a47b3;
+    color: #5a47b3;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -105,6 +105,6 @@
 }
 
 .back-to-menu:hover {
-    background-color: #5a47b3;
+    color: #5a47b3;
     transform:scale(1.02);
 }
