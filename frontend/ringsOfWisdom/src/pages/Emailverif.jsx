@@ -16,7 +16,7 @@ const Emailverif = () => {
             </NavLink>
             
     
-            <a href="https://vk.com/lig_sfedu" className="footer-link">ЛИИ ЮФУ</a>
+            <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="footer-link">ЛИИ ЮФУ</a>
         </main>
     </div> 
 );

@@ -28,7 +28,7 @@ const Registation = () => {
                 
             </form>
             
-            <a href="https://vk.com/lig_sfedu" className="liu">ЛИИ ЮФУ</a>
+            <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="liu">ЛИИ ЮФУ</a>
         </div>
     </div> );
 }
