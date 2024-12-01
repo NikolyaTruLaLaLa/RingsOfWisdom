@@ -1,0 +1,80 @@
+:root {
+    --background-color: #fdf4d1; /* Цвет фона страницы */
+    --header-bg-color: #fffbe9; /* Цвет фона шапки */
+    --header-text-color: #333333; /* Цвет текста в шапке */
+}
+
+body {
+   
+   /*фон{ */
+    background-image: url('./assets/fons.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    /* фон}*/
+    margin: 0;
+    height: 100vh;
+    padding: 10%;
+    /*background-color: var(--background-color);*/
+    font-family: Arial, sans-serif;
+}
+
+
+/* Контент страницы */
+.container_all{
+    
+    margin-top: 20%;
+    align-content:space-between;
+  justify-content: space-between;
+  
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+    .container_all{
+    
+        margin-top: 0.1%;
+        align-content:space-between;
+      justify-content: space-between;
+      
+    }
+}
+
+
+/*
+@media(min-width:576px){
+    body{
+    background-repeat: no-repeat;
+    
+    background: url(fons.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+}
+
+@media (min-width: 768px){
+    body{
+    
+    background: url(fons.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+}
+
+@media(min-width: 1200px){
+    body{
+      
+    
+    background: url(fons.jpg);
+    background-size: cover;
+	background-position: center center;
+	background-attachment: fixed;
+    }
+    
+}*/
+
+
+
+
