@@ -6,7 +6,7 @@
   justify-content: space-between;
   
 }
-/* Экстрабольшие девайсы (большие десктопы, >= 1200px) 
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
 @media (min-width: 1024px) {
     .container_all{
     
@@ -15,7 +15,7 @@
       justify-content: space-between;
       
     }
-}*/
+}
 /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
 @media (max-width: 767px) {
     .container_all{
