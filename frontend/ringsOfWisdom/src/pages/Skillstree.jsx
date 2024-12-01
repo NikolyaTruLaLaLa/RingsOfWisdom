@@ -3,6 +3,9 @@ import people from"./../assets/images/people.png";
 import unlock from"./../assets/images/unlock.png";
 import './../assets/style/style_skills_tree.css';
 
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+
 const Skillstree = () => {
     return (
      <div className="container_all">
@@ -10,12 +13,10 @@ const Skillstree = () => {
             <p>Дерево Навыков</p>
         </div>
         <div className="container_first">
-            <div className="item">
-                <a href = "/stngform">
-                    <img src={group} alt="Могучие Формы"/>
-                </a>
+            <NavLink  to="/stngform" className="item">
+                <img src={group} alt="Могучие Формы"/>
                 <p>Могучие<br/>Формы</p>
-            </div>
+            </NavLink>
         </div>
         <div className="container_second">
             <div className="item">

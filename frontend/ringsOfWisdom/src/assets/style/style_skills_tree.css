@@ -24,8 +24,6 @@
     font-size: 18px;
     font-weight: bold;
     transition: transform 0.2s ease;
-    
-
 }
 .container_all .head:hover{
     color: #333333;
@@ -38,7 +36,9 @@
     text-align: center;
     font-size: 14px;
     margin:auto auto;
-
+    text-decoration:none;
+    color: #000000;
+    
 
 }
 .container_all .container_first .item{
@@ -48,10 +48,17 @@
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
+    text-decoration:none;
+    color: #000000;
+    
 }
 .container_all .container_first img{
+    margin-top: 3px;
     width: 80px;
     height: 80px;
+    text-decoration:none;
+    color: #000000;
+    
 }
 .container_all .container_second{
     display: flex;
@@ -61,6 +68,7 @@
     margin-bottom: 5%;
     margin-top: 5%;
     font-size: 14px;
+    text-decoration:none;
 
 }
 .container_all .container_second .item{
@@ -69,10 +77,13 @@
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
+    text-decoration:none;
 }
 .container_all .container_second img{
     width: 80px;
     height: 80px;
+    text-decoration:none;
+    margin-top: 3px;
 }
 
 .container_all .container_last{
@@ -82,6 +93,7 @@
     text-align: center;
     font-size: 14px;
     margin:auto auto;
+    text-decoration:none;
 
 }
 .container_all .container_last .item{
@@ -90,9 +102,12 @@
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
+    text-decoration:none;
 }
 .container_all .container_last img{
     width: 80px;
     height: 80px;
+    text-decoration:none;
+    margin-top: 3px;
     
 }
