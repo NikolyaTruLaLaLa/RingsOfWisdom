@@ -1,0 +1,167 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+    .container{
+    
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.1%;
+    
+    }
+}
+
+
+.logom {
+    width: 450px;
+    height: auto; 
+    max-width: 80%;
+    margin-bottom: 2%;
+    margin-top: 20%;
+    
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1024px) {
+    .logom {
+        width: 450px;
+        height: auto; 
+        max-width: 80%;
+        margin-bottom: 2%;
+        margin-top: 0.1%;
+        
+    }
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.login-box {
+    background-color: #fff;
+    padding: 30px;
+    width: 80%;
+    max-height: 80%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3%;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+
+}
+
+.create-account {
+    font-size: 0.9em;
+    color: #5a47b3;
+    float: right;
+    text-decoration: none;
+    margin-top: 10px;
+    transition: transform 0.3s ease;
+}
+
+.create-account:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.remember-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+#remember-me {
+    margin-right: 5px;
+    padding-bottom: 10;
+}
+
+.forgot-password {
+    color: #5a47b3;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.forgot-password:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+}
+/*.password-control {
+	position: absolute;
+	top: 11px;
+	right: 6px;
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	background: eye.png 0 0 no-repeat;
+}
+.password-control.view {
+	background: hide.png 0 0 no-repeat;
+}*/
+
+button {
+    width: 90%;
+    padding: 10px;
+    background-color: #5a47b3;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+    
+}
+button:hover {
+    background-color: #5a47b3;
+    transform: scale(1.05);
+}
+
+/* Ссылка на ЛИИ ЮФУ */
+.liu {
+    display: block;
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #5a47b3;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+}
+
+.liu:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+}
