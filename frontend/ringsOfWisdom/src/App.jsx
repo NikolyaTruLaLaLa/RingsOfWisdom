@@ -1,4 +1,7 @@
 import { useState } from 'react'
+
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 import "./assets/style/style_main_page.css";
 
 import './App.css'
@@ -20,19 +23,22 @@ function App() {
   return (
     <>
 
-       <Head />
+    <Router>
+        <Head />
+        <Routes>
+          <Route path="/main" element={<WPM />} />
+          <Route path="/course" element={<WPC />} />
+          <Route path="/shop" element={<WPS />} />
+          <Route path="/reg" element={<Registation />} />
+          <Route path="/auth" element={<Authorization />} />
+          <Route path="/emlverif" element={<Emailverif/>} />
+          <Route path="/skills" element={<Skillstree />} />
+          <Route path="/stngform" element={<Strongformstree />} />
+          <Route path="/quiz" element={<Quez />} />
+        </Routes>
+    </Router>
 
-      {/*<WPM />*/}
-      {/*<WPC />*/}
-      {/*<WPS />*/}
-      
-      {/*<Registation />*/}
-      {/*<Authorization />*/}
-      {/*<Emailverif/>*/}
-      
-      {/*<Skillstree />*/}
-      {/*<Strongformstree />*/}
-      <Quez />
+       
 
       
     </>

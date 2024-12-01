@@ -15,7 +15,7 @@ const Quez = () => {
             </div>
             <p id="feedback"></p>
             <div className="quiz-footer">
-                <button onclick="document.location='#menu'" className="back-to-menu">Вернуться на дерево</button>
+                <button onclick="document.location='/stngform'" className="back-to-menu">Вернуться на дерево</button>
             </div>
             
             {/*<script src={script_quez}></script>*/}

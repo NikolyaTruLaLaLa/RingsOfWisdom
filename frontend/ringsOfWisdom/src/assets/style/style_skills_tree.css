@@ -42,8 +42,9 @@
 
 }
 .container_all .container_first .item{
-    width: 80px;
-    height: 80px;
+    
+    width: 100px;
+    height: 100px;
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
@@ -63,8 +64,8 @@
 
 }
 .container_all .container_second .item{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
@@ -84,8 +85,8 @@
 
 }
 .container_all .container_last .item{
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;

@@ -11,7 +11,7 @@ const Skillstree = () => {
         </div>
         <div className="container_first">
             <div className="item">
-                <a href = "#group">
+                <a href = "/stngform">
                     <img src={group} alt="Могучие Формы"/>
                 </a>
                 <p>Могучие<br/>Формы</p>

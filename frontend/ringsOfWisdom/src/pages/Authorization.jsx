@@ -1,7 +1,12 @@
 import logom from"./../assets/images/logo.png";
 import './../assets/style/style_authorization.css';
 
+import { NavLink } from 'react-router-dom';
+import React from 'react';
+
+
 const Authorization = () => {
+
     return ( 
     <div className="container">
         <img src={logom} alt="Логотип Rings of Wisdom" className="logom"/>
@@ -9,7 +14,8 @@ const Authorization = () => {
         <div className="login-box">
             <form>
                 <label>Авторизация игрока</label>
-                <a href="#" className="create-account">Создать аккаунт</a>
+                <NavLink to="/reg"className="create-account" >Создать аккаунт</NavLink>
+                {/*<a href="/reg" className="create-account">Создать аккаунт</a>*/}
                 
                 <input type="email" placeholder="Email" required/>
                 <input type="password" placeholder="Пароль" required/>
@@ -17,13 +23,14 @@ const Authorization = () => {
                 <div className="remember-box">
                     <input type="checkbox" id="remember-me"/>
                     <label for="remember-me">Запомнить меня</label>
-                    <a href="#" className="forgot-password">Забыли пароль?</a>
+                    <a href="#" className="forgot-password">Забыли пароль?</a>{/*ссылки нет пока не переделываю*/}
                 </div>
-                
-                <button onclick="document.location='#menu'" type="submit">Войти</button>
+                <NavLink to="/main">
+                <button type="submit">Войти</button>
+                </NavLink>
             </form>
             
-            <a href="#" className="liu">ЛИИ ЮФУ</a>
+            <a href="https://vk.com/lig_sfedu" className="liu">ЛИИ ЮФУ</a>
         </div>
     </div>  
         );

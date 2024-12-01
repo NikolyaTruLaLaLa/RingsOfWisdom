@@ -11,7 +11,7 @@ const Strongformstree = () => {
         </div>
         <div className="container_first">
             <div className="item">
-                <a href = "#icon_gendr_forms">
+                <a href = "/quiz">
                     <img src={icon_gendr_forms} alt="ГЕНдерные Формы"/>
                 </a>
                 <p>ГЕНдерные<br/>Формы</p>

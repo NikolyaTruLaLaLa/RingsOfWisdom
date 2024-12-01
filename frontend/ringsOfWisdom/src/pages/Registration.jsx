@@ -8,7 +8,7 @@ const Registation = () => {
         <div className="registration-box">
             <form>
                 <label>Регистрация игрока</label>
-                <a href="#" className="enter-account">Войти</a>
+                <a href="/auth" className="enter-account">Войти</a>
                 
                 <input type="email" placeholder="Email" required/>
                 <input type="password" placeholder="Пароль" required/>
@@ -17,7 +17,7 @@ const Registation = () => {
                   
                 
                 
-                <button onClick="document.location='#menu'" type="submit">Создать аккаунт</button>
+                <button onClick="document.location='/emlverif'" type="submit">Создать аккаунт</button>
             </form>
             
             <a href="https://vk.com/lig_sfedu" className="liu">ЛИИ ЮФУ</a>
