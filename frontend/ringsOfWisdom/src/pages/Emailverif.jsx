@@ -11,7 +11,7 @@ const Emailverif = () => {
         <main className="notification">
             <p>Письмо с кодом подтверждения было выслано на ваш электронный адрес.<br/> Пожалуйста, проверьте почту.</p>
 
-            <NavLink to="/main">
+            <NavLink to="/">
                 <button type="submit">Войти</button>
             </NavLink>
             

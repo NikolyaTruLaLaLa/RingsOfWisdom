@@ -25,7 +25,7 @@ const Authorization = () => {
                     <label for="remember-me">Запомнить меня</label>
                     <a href="#" className="forgot-password">Забыли пароль?</a>{/*ссылки нет пока не переделываю*/}
                 </div>
-                <NavLink to="/main">
+                <NavLink to="/">
                 <button type="submit">Войти</button>
                 </NavLink>
             </form>

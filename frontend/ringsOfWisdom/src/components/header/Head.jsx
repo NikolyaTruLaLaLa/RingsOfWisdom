@@ -9,7 +9,7 @@ import "./stylehead.css"
 const Head = () => {
     return ( 
     <header className="site-header">
-        <NavLink to="/main" className="logo">
+        <NavLink to="/" className="logo">
             
             <img src={logo} alt="Логотип" />
             

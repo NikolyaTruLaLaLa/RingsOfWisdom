@@ -26,7 +26,7 @@ function App() {
     <Router>
         <Head />
         <Routes>
-          <Route path="/main" element={<WPM />} />
+          <Route path="/" element={<WPM />} />
           <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<WPS />} />
           <Route path="/reg" element={<Registation />} />
