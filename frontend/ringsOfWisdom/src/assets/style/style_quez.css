@@ -1,0 +1,110 @@
+/* Общие стили для квиза */
+.quiz-popup {
+    position:fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #ffffff; /* Белый фон */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    width: 90%;
+    max-width: 400px;
+    height: 500px; /* Растягиваем по вертикали */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Элементы равномерно распределяются */
+    font-family: Arial, sans-serif;
+    color: #333;
+    margin-top:2%;
+    overflow: auto;
+}
+
+
+.quiz-header {
+    background-color: #5a47b3; 
+    border-radius: 10px 10px 0 0; /* Закругленные края сверху */
+    text-align: center;
+    padding: 15px;
+    color: #fff; /* Белый текст */
+}
+
+.quiz-header h2 {
+    margin: 0;
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+/* Тело квиза */
+.quiz-body {
+    padding: 20px;
+    text-align: center;
+    flex: 1; /* Распределение свободного пространства */
+    word-wrap: break-word;
+    
+}
+
+.quiz-question-text {
+    font-size: 14px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.quiz-question-form {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15%;
+    
+}
+
+.answer-input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    padding: 10px 15px;
+    background-color: #5a47b3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    
+}
+
+.submit-button:hover {
+    background-color: #5a47b3;
+    transform:scale(1.02);
+}
+
+
+.quiz-footer {
+    text-align: center;
+    padding: 10px;
+}
+
+.back-to-menu {
+    padding: 10px 15px;
+    background-color: #5a47b3;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    width: 100%;
+    margin-bottom: 8%;
+    margin-top: 8%;
+}
+
+.back-to-menu:hover {
+    background-color: #5a47b3;
+    transform:scale(1.02);
+}
