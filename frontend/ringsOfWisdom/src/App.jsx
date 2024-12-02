@@ -18,8 +18,7 @@ import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <>
 
