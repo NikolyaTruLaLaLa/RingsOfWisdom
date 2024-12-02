@@ -79,6 +79,7 @@
     margin-top: 5%;
     font-size: 14px;
     text-decoration:none;
+    color: #000000;
 
 }
 .container_all .container_second .item{
@@ -88,6 +89,7 @@
     background: #5a47b3;
     padding: 10px;
     text-decoration:none;
+    color: #000000;
 }
 .container_all .container_second img{
     width: 80px;
@@ -104,6 +106,7 @@
     font-size: 14px;
     margin:auto auto;
     text-decoration:none;
+    color: #000000;
 
 }
 .container_all .container_last .item{
@@ -113,6 +116,7 @@
     background: #5a47b3;
     padding: 10px;
     text-decoration:none;
+    color: #000000;
 }
 .container_all .container_last img{
     width: 80px;
