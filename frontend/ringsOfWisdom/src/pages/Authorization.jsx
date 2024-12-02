@@ -17,7 +17,7 @@ const Authorization = () => {
                 <NavLink to="/reg"className="create-account" >Создать аккаунт</NavLink>
                 {/*<a href="/reg" className="create-account">Создать аккаунт</a>*/}
                 
-                <input type="email" placeholder="Email" required/>
+                <input type="name" placeholder="Имя пользователя" required/>
                 <input type="password" placeholder="Пароль" required/>
                 
                 <div className="remember-box">
