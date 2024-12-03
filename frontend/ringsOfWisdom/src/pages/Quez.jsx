@@ -62,35 +62,22 @@ const questions = [
     Вопрос {currentQuestionIndex + 1} из {questions.length}
     </p>
     </div>
-    <div className="quiz-body">
-    <div className="quiz-question">
-    <p className="quiz-question-text">{currentQuestion.question}</p>
-    </div>
-    <div className="quiz-answer">
-    <input
-    type="text"
-    className="answer-input"
-    value={userAnswer}
-    onChange={(e) => setUserAnswer(e.target.value)}
-    placeholder="Введите ваш ответ"
-    />
-    </div>
     
-    <button
-    className="submit-button"
-    onClick={
-    feedback.includes("Правильный ответ!")
-    ? handleNextQuestion
-    : handleAnswerSubmit
-    }
-    >
-    {feedback.includes("Правильный ответ!")
-    ? "Следующий вопрос"
-    : "Сдать бланк с ответом!"}
-    </button>
-    <div id="feedback" className="quiz-feedback">
-    {feedback}
-    </div>
+    <div className="quiz-body">
+        <div className='quiz-name'>Гендерные формы</div>
+        <div className="quiz-question">
+            <p className="quiz-question-text">{currentQuestion.question}</p>
+        </div>
+        <div className="quiz-answer">
+            <input type="text" className="answer-input" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} placeholder="Введите ваш ответ"/>
+         </div>
+    
+        <button className="submit-button" onClick={ feedback.includes("Правильный ответ!") ? handleNextQuestion : handleAnswerSubmit}>
+            {feedback.includes("Правильный ответ!") ? "Следующий вопрос" : "Сдать бланк с ответом!"}
+        </button>
+        <div id="feedback" className="quiz-feedback">
+            {feedback}
+        </div>
     </div>
     <div className="quiz-footer">
                 <NavLink to="/stngform" className="back-to-menu">
