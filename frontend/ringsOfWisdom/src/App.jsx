@@ -6,7 +6,8 @@ import "./assets/style/style_main_page.css";
 
 import './App.css'
 
-import Head from './components/header/Head'
+import Head from './components/header/Head';
+import Footer from './components/footer/Footer';
 import WPM from './pages/WPM';
 import WPC from './pages/WPC';
 import WPS from './pages/WPS';
@@ -37,6 +38,7 @@ function App() {
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
         </Routes>
+        
     </Router>
 
        
