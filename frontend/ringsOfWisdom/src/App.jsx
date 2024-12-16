@@ -38,7 +38,7 @@ function App() {
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
         </Routes>
-        
+        <Footer/>
     </Router>
 
        
