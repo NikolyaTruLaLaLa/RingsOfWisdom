@@ -1,3 +1,5 @@
+
+
 /* Общие стили для квиза */
 .quiz-popup {
     position:absolute;
@@ -114,4 +116,49 @@
 .back-to-menu:hover {
     color: #5a47b3;
     transform:scale(1.02);
+}
+
+/* Footer */
+
+.footer_quez{
+    position:static; /* Подвал  приклен, надо пофиксить!  так как в последущих страничках будет возможна прокрутка */
+    bottom: 0; 
+    left: 0; 
+    right: 0; 
+    height: 5%; 
+    margin-bottom: 1%;
+    margin-top: 80%;
+
+}
+
+.footer__wrapper_quez {
+	display: flex;
+	flex-direction:column;
+	align-items: center;
+	row-gap: 27px;
+}
+
+.social_quez{
+	display: flex;
+	column-gap: 30px;
+	align-items: center; 
+}
+
+.social_quez img{
+    width: 40px; 
+    height: auto; 
+    max-width: 100%; 
+    transition: transform 0.3s ease;
+}
+
+.social_quez img :hover{
+    transform:scale(1.1);
+}
+
+.copyright_quez {
+	font-size: 16px;
+}
+
+.copyright_quez p + p {
+	margin-top: 0.5em;
 }

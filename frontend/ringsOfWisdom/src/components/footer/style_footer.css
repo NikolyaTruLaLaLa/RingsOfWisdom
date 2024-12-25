@@ -1,13 +1,13 @@
 /* Footer */
 
 .footer{
-    position:fixed; /* Подвал  приклен, надо пофиксить! */
+    position:static; /* Подвал  приклен, надо пофиксить!  так как в последущих страничках будет возможна прокрутка */
     bottom: 0; 
     left: 0; 
     right: 0; 
     height: 5%; 
     margin-bottom: 1%;
-
+    margin-top: 15%;
 }
 
 .footer__wrapper {
