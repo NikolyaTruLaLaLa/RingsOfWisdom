@@ -19,27 +19,24 @@ const Strongformstree = () => {
             </NavLink>
         </div>
         <div className="container_second">
-            <div className="item">
-                <a href = "#reverse_x">
-                    <img src={reverse_x} alt="Замена НЕизвестного"/>
-                </a>
+            
+           <NavLink  to="/skillwp" className="item">
+                <img src={reverse_x} alt="Замена НЕизвестного"/>
                 <p>Замена<br/>НЕизвестного</p>
-            </div>
+            </NavLink>
+            
         
-            <div className="item">
-                <a href = "#many_faces">
-                    <img src={many_faces} alt="Много Лицые"/>
-                </a>
+            <NavLink  to="/skillwp" className="item">
+                <img src={many_faces} alt="Много Лицые"/>
                 <p>МногоЛикие</p>
-            </div>
+            </NavLink>
+            
         </div>
         <div className="container_last">
-            <div className="item">
-                <a href = "#dish">
-                    <img src={dish} alt="Первые и вторые блюда"/>
-                </a>
+            <NavLink  to="/skillwp" className="item">
+                <img src={dish} alt="Первые и вторые блюда"/>
                 <p>Первые и Вторые<br/>блюда</p>
-            </div>
+            </NavLink>
         </div>
     </div> 
     );

@@ -6,7 +6,8 @@ import "./assets/style/style_main_page.css";
 
 import './App.css'
 
-import Head from './components/header/Head'
+import Head from './components/header/Head';
+/*import Footer from './components/footer/Footer';*/
 import WPM from './pages/WPM';
 import WPC from './pages/WPC';
 import WPS from './pages/WPS';
@@ -16,10 +17,10 @@ import Emailverif from './pages/Emailverif';
 import Registation from './pages/Registration';
 import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
+import WPSK from './pages/WPSK';
 
 function App() {
-  const [count, setCount] = useState(0)
-
+ 
   return (
     <>
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/main" element={<WPM />} />
           <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<WPS />} />
+          <Route path="/skillwp" element={<WPSK />} />
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
           <Route path="/emlverif" element={<Emailverif/>} />
@@ -36,6 +38,7 @@ function App() {
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
         </Routes>
+        {/*<Footer/>*/}
     </Router>
 
        

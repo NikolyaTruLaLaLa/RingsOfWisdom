@@ -62,6 +62,22 @@
     margin-bottom: 3%;
 }
 
+@media (max-width: 900px) {
+    .notification {
+        
+        color: #333;
+        font-style: italic;
+        background-color: #fff;
+        padding: 30px;
+        width:120%;
+        max-height: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 3%;
+    }
+
+}
+
 .notification p {
     margin: 0 0 2rem;
     line-height: 1.5;
