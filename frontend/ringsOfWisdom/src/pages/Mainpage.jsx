@@ -8,6 +8,7 @@ import logom from "./../assets/images/logo.png";
 
 const Mainpage = () => {
     return (
+        <>
         <div className="container">
             <img src={logom} alt="Логотип Rings of Wisdom" className="logom" />
             
@@ -24,6 +25,8 @@ const Mainpage = () => {
                 </div>
             </div>
         </div>
+        <Footer/>
+        </>
     );
 };
 
