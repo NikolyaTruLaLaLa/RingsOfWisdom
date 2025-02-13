@@ -1,29 +1,12 @@
-<<<<<<< HEAD
+
 import logom from"./../assets/images/logo.png";
 import Footer from './../components/footer/Footer';
 
-=======
->>>>>>> ecb6bb7d3f2986624d312b0b4b1583d5c9a7daa1
+
 import React from 'react';
 import logom from "./../assets/images/logo.png";
 
 const Mainpage = () => {
-<<<<<<< HEAD
-    
-    return ( 
-    <>
-    <div className="container">
-        <img src={logom} alt="Логотип Rings of Wisdom" className="logom"/>
-        
-        
-        
-    </div>  
-    <Footer/>
-    </>
-     );
-}
- 
-=======
     return (
         <div className="container">
             <img src={logom} alt="Логотип Rings of Wisdom" className="logom" />
@@ -44,5 +27,5 @@ const Mainpage = () => {
     );
 };
 
->>>>>>> ecb6bb7d3f2986624d312b0b4b1583d5c9a7daa1
+
 export default Mainpage;
