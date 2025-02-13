@@ -1,1 +1,56 @@
-/*здесь стили*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1200px) {
+    .container{
+    
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 0.1%;
+    
+    }
+}
+
+
+.logom {
+    width: 450px;
+    height: auto; 
+    max-width: 80%;
+    margin-bottom: 2%;
+    margin-top: 20%;
+    
+}
+/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+@media (min-width: 1024px) {
+    .logom {
+        width: 450px;
+        height: auto; 
+        max-width: 80%;
+        margin-bottom: 2%;
+        margin-top: 0.1%;
+        
+    }
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+
