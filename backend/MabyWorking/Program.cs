@@ -2,6 +2,9 @@ using mabyWorking.Data;
 using mabyWorking.Data.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 using System;
 
 namespace mabyWorking
@@ -15,12 +18,24 @@ namespace mabyWorking
             // Add services to the container.
             var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString));
+                options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
+
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
+
             builder.Services.AddDefaultIdentity<ApplicationIdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            builder.Services.AddRazorPages();
+
+            builder.Services.AddControllersWithViews();
+
+            // Enable CORS for React frontend
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("ReactApp", policy =>
+                    policy.WithOrigins("http://localhost:3000")
+                          .AllowAnyHeader()
+                          .AllowAnyMethod()
+                          .AllowCredentials());
+            });
 
             var app = builder.Build();
 
@@ -32,7 +47,6 @@ namespace mabyWorking
             else
             {
                 app.UseExceptionHandler("/Error");
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
@@ -41,9 +55,12 @@ namespace mabyWorking
 
             app.UseRouting();
 
+            app.UseCors("ReactApp");
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
-            app.MapRazorPages();
+            app.MapControllers();
 
             app.Run();
         }
