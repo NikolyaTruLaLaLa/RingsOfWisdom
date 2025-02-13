@@ -1,4 +1,5 @@
 import logom from"./../assets/images/logo.png";
+import Footer from './../components/footer/Footer';
 
 import React from 'react';
 
@@ -12,6 +13,7 @@ const Mainpage = () => {
         
         
     </div>  
+    <Footer/>
     </>
      );
 }
