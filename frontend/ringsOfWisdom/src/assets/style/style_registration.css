@@ -101,7 +101,7 @@ form label {
   }
 
 input[type="email"],
-input[type="name"] {
+input[type="text"] {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
