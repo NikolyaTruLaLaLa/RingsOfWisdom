@@ -165,3 +165,13 @@ button:hover {
     text-decoration: none;
     transform: scale(1.05);
 }
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 5px;
+}
+
+.error-field {
+    border: 1px solid red;
+}
