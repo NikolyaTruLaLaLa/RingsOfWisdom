@@ -25,7 +25,7 @@ function  Registation() {
       setMessage("");
   
       try {
-        const response = await axios.post("http://localhost:5000/api/register", formData);
+        const response = await axios.post("http://localhost:5173/api/register", formData);
         setMessage(response.data.message);
       } catch (error) {
         setMessage("Ошибка: " + (error.response?.data?.[0]?.description || "Неизвестная ошибка"));
