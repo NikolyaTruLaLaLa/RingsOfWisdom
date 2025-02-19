@@ -1,10 +1,8 @@
 import logom from "./../assets/images/logo.png";
 import './../assets/style/style_authorization.css';
 
-import { NavLink, useNavigate } from 'react-router-dom'; // Добавили useNavigate
-import React from 'react';
-
-import { useState } from "react";
+import { NavLink, useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -14,7 +12,7 @@ const Login = () => {
   const [userNameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  const navigate = useNavigate(); // Хук для навигации
+  const navigate = useNavigate(); 
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -24,25 +22,20 @@ const Login = () => {
 
     let isValid = true;
 
-    // Проверка имени пользователя
     if (!userName.trim()) {
       setUserNameError("Имя пользователя не может быть пустым.");
       isValid = false;
     }
 
-    // Проверка пароля
     if (!password.trim()) {
       setPasswordError("Пароль не может быть пустым.");
       isValid = false;
     }
 
-    // Если есть ошибки, останавливаем отправку формы
-    if (!isValid) {
-      return;
-    }
+    if (!isValid) return;
 
     try {
-      const response = await fetch("/api/Login/login", {
+      const response = await fetch("http://localhost:5269/api/Login/login", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, password, rememberMe }),
@@ -52,13 +45,18 @@ const Login = () => {
 
       if (response.ok) {
         setMessage("Авторизация успешна!");
-        // Переходим на страницу /main при успешной авторизации
-        navigate("/main");
+        navigate("/main"); 
       } else {
-        setMessage(data.message || "Ошибка авторизации");
+        if (data.message === "User account is locked out.") {
+          setMessage("Аккаунт заблокирован.");
+        } else if (data.message === "Two-factor authentication required.") {
+          setMessage("Требуется двухфакторная аутентификация.");
+        } else {
+          setMessage("Неверное имя пользователя или пароль.");
+        }
       }
     } catch (error) {
-      setMessage("Ошибка подключения к серверу");
+      setMessage("Ошибка подключения к серверу.");
     }
   };
 
@@ -103,7 +101,6 @@ const Login = () => {
             <a href="#" className="forgot-password">Забыли пароль?</a>
           </div>
 
-          {/* Кнопка отправки формы */}
           <button type="submit">Войти</button>
         </form>
 
