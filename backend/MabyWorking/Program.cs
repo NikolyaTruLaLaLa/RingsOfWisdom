@@ -30,11 +30,12 @@ namespace mabyWorking
             // Enable CORS for React frontend
             builder.Services.AddCors(options =>
             {
-                options.AddPolicy("ReactApp", policy =>
-                    policy.WithOrigins("http://localhost:5173")
-                          .AllowAnyHeader()
-                          .AllowAnyMethod()
-                          .AllowCredentials());
+                options.AddPolicy("AllowReactApp",policy =>
+                    {
+                        policy.WithOrigins("http://localhost:5173") // Разрешить фронтенд
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                    });
             });
 
             var app = builder.Build();
@@ -57,7 +58,7 @@ namespace mabyWorking
 
             app.UseCors("ReactApp");
 
-            app.UseAuthentication();
+            app.UseCors("AllowReactApp");
             app.UseAuthorization();
 
             app.MapControllers();

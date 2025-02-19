@@ -59,7 +59,7 @@ function Registration() {
         }
 
         try {
-            const response = await axios.post("http://localhost:5173/api/register", formData);
+            const response = await axios.post("http://localhost:5269/api/register", formData);
             setMessage(response.data.message);
 
             // Если данные верны, переходим на страницу /emlverif
