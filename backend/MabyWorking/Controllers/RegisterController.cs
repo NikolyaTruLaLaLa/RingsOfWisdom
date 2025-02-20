@@ -9,6 +9,7 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using mabyWorking.Services;
 
 namespace mabyWorking.Controllers
 {
@@ -21,14 +22,14 @@ namespace mabyWorking.Controllers
         private readonly IUserEmailStore<ApplicationIdentityUser> _emailStore;
         private readonly SignInManager<ApplicationIdentityUser> _signInManager;
         private readonly ILogger<RegisterController> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly EmailService _emailSender;
 
         public RegisterController(
             UserManager<ApplicationIdentityUser> userManager,
             IUserStore<ApplicationIdentityUser> userStore,
             SignInManager<ApplicationIdentityUser> signInManager,
             ILogger<RegisterController> logger,
-            IEmailSender emailSender)
+            EmailService emailSender)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -80,8 +81,8 @@ namespace mabyWorking.Controllers
 
                 var callbackUrl = $"{Request.Scheme}://{Request.Host}/confirm-email?userId={userId}&code={code}";
 
-                await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                await _emailSender.SendEmailAsync(model.Email, "Подтвердите почту",
+                    $"Пожалуйста подтвердите аккаунт по ссылке <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Нажать сюда</a>.");
 
                 return Ok(new { message = "User registered successfully. Please confirm your email." });
             }
