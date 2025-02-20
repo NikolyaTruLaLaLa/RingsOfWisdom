@@ -17,7 +17,7 @@ import Emailverif from './pages/Emailverif';
 import Registation from './pages/Registration';
 import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
-import WPSK from './pages/WPSK';
+import Type_and_Types from './pages/Type_and_Types';
 
 function App() {
  
@@ -30,7 +30,7 @@ function App() {
           <Route path="/main" element={<WPM />} />
           <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<WPS />} />
-          <Route path="/skillwp" element={<WPSK />} />
+          <Route path="/types" element={<Type_and_Types />} />
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
           <Route path="/emlverif" element={<Emailverif/>} />

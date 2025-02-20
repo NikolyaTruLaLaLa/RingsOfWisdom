@@ -2,7 +2,7 @@
 import Headskillwpcontainer from "../components/header-container/Headskillwpcontainer";
 import Maincontent from "../components/main-content/Maincontent";
 
-const WPSK = () => {
+const Type_and_Types = () => {
     
     return ( 
     <>
@@ -14,4 +14,4 @@ const WPSK = () => {
      );
 }
  
-export default WPSK;
+export default Type_and_Types;
