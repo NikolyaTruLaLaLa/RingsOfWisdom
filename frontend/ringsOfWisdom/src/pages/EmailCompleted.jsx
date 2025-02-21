@@ -47,7 +47,7 @@ export default function EmailCompleted() {
                 <main className="notification">
                     <h2>{status === "success" ? "✅ Почта подтверждена!" : "❌ Ошибка"}</h2>
                     <p>{message}</p>
-                    <NavLink to="/main">
+                    <NavLink to="/auth">
                         <button type="submit">Войти</button>
                     </NavLink>
                     <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="footer-link">ЛИИ ЮФУ</a>
