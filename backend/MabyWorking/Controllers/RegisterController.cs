@@ -104,24 +104,24 @@ namespace mabyWorking.Controllers
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(code))
             {
-                return BadRequest("Некорректная ссылка.");
+                return BadRequest(new { success = false, message = "Некорректная ссылка." });
             }
 
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound("Пользователь не найден.");
+                return NotFound(new { success = false, message = "Пользователь не найден." });
             }
 
             var decodedCode = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
-
             var result = await _userManager.ConfirmEmailAsync(user, decodedCode);
+
             if (result.Succeeded)
             {
-                return Ok("Email успешно подтверждён.");
+                return Ok(new { success = true, message = "Email успешно подтверждён!" });
             }
 
-            return BadRequest("Ошибка подтверждения email.");
+            return BadRequest(new { success = false, message = "Ошибка подтверждения." });
         }
 
 
