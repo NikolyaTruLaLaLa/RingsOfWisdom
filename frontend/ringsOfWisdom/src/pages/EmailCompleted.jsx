@@ -1,6 +1,6 @@
 
-import './../assets/style/style_email_verif.css';
-
+import './../assets/style/style_email_completed.css';
+import logom from"./../assets/images/logo.png";
 import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { useEffect, useState } from "react";
@@ -42,13 +42,16 @@ export default function EmailCompleted() {
     }, [userId, code]);
 
     return (
-        <div style={{ textAlign: "center", padding: "50px" }}>
-            <h2>{status === "success" ? "✅ Почта подтверждена!" : "❌ Ошибка"}</h2>
-            <p>{message}</p>
-            <NavLink to="/main">
-                <button type="submit">Войти</button>
-            </NavLink>
-            <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="footer-link">ЛИИ ЮФУ</a>
+        <div className="container">
+            <img src={logom} alt="Логотип Rings of Wisdom" className="logom"/>
+                <main className="notification">
+                    <h2>{status === "success" ? "✅ Почта подтверждена!" : "❌ Ошибка"}</h2>
+                    <p>{message}</p>
+                    <NavLink to="/main">
+                        <button type="submit">Войти</button>
+                    </NavLink>
+                    <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="footer-link">ЛИИ ЮФУ</a>
+            </main>
         </div>
     );
 
