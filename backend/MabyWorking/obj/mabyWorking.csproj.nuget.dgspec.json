@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Виталий\\OneDrive\\Documents\\GitHub\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {}
+    "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Виталий\\OneDrive\\Documents\\GitHub\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {
+    "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Виталий\\OneDrive\\Documents\\GitHub\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
+        "projectUniqueName": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
         "projectName": "mabyWorking",
-        "projectPath": "C:\\Users\\Виталий\\OneDrive\\Documents\\GitHub\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
-        "packagesPath": "C:\\Users\\Виталий\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Виталий\\OneDrive\\Documents\\GitHub\\RingsOfWisdom\\backend\\MabyWorking\\obj\\",
+        "projectPath": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
+        "packagesPath": "C:\\Users\\water\\.nuget\\packages\\",
+        "outputPath": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Виталий\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\water\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -42,9 +42,8 @@
         "restoreAuditProperties": {
           "enableAudit": "true",
           "auditLevel": "low",
-          "auditMode": "all"
-        },
-        "SdkAnalysisLevel": "9.0.100"
+          "auditMode": "direct"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -83,6 +82,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
             }
           },
           "imports": [
@@ -104,7 +107,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
