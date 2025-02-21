@@ -35,7 +35,7 @@ function App() {
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
           <Route path="/emlverif" element={<Emailverif/>} />
-          <Route path="/emlcompleted" element={<EmailCompleted/>} />
+          <Route path="/confirm-email" element={<EmailCompleted/>} />
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
