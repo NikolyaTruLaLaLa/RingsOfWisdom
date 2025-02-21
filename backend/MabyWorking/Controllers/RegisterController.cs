@@ -9,6 +9,10 @@ using System.Text.Encodings.Web;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using mabyWorking.Services;
+using mabyWorking.Interfaces;
+using mabyWorking.Configurations;
+using Microsoft.Extensions.Options;
 
 namespace mabyWorking.Controllers
 {
@@ -21,14 +25,15 @@ namespace mabyWorking.Controllers
         private readonly IUserEmailStore<ApplicationIdentityUser> _emailStore;
         private readonly SignInManager<ApplicationIdentityUser> _signInManager;
         private readonly ILogger<RegisterController> _logger;
-        private readonly IEmailSender _emailSender;
+        private readonly Interfaces.IEmailSender _emailSender;
+        private readonly AppSetittings _config;
 
         public RegisterController(
             UserManager<ApplicationIdentityUser> userManager,
             IUserStore<ApplicationIdentityUser> userStore,
             SignInManager<ApplicationIdentityUser> signInManager,
             ILogger<RegisterController> logger,
-            IEmailSender emailSender)
+            Interfaces.IEmailSender emailSender, IOptions<AppSetittings> appSettings)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -36,6 +41,7 @@ namespace mabyWorking.Controllers
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _config = appSettings.Value;
         }
 
         public class RegisterRequest
@@ -56,7 +62,7 @@ namespace mabyWorking.Controllers
             public string ConfirmPassword { get; set; }
         }
 
-        [HttpPost]
+        [HttpPost("registration")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest model)
         {
             if (!ModelState.IsValid)
@@ -78,16 +84,46 @@ namespace mabyWorking.Controllers
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
-                var callbackUrl = $"{Request.Scheme}://{Request.Host}/confirm-email?userId={userId}&code={code}";
-
-                await _emailSender.SendEmailAsync(model.Email, "Confirm your email",
-                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                var frontendUrl = _config.FrontendUrl;
+                var callbackUrl = $"{frontendUrl}/confirm-email?userId={userId}&code={code}";
+                if (string.IsNullOrWhiteSpace(model.Email))
+                {
+                    return BadRequest("Email is required.");
+                }
+                await _emailSender.SendEmailAsync(model.Email, "Подтвердите почту",
+                    $"Пожалуйста подтвердите аккаунт по ссылке <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>Нажать сюда</a>.");
 
                 return Ok(new { message = "User registered successfully. Please confirm your email." });
             }
 
             return BadRequest(result.Errors);
         }
+
+        [HttpGet("confirm-email")]
+        public async Task<IActionResult> ConfirmEmail(string userId, string code)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(code))
+            {
+                return BadRequest(new { success = false, message = "Некорректная ссылка." });
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                return NotFound(new { success = false, message = "Пользователь не найден." });
+            }
+
+            var decodedCode = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+            var result = await _userManager.ConfirmEmailAsync(user, decodedCode);
+
+            if (result.Succeeded)
+            {
+                return Ok(new { success = true, message = "Email успешно подтверждён!" });
+            }
+
+            return BadRequest(new { success = false, message = "Ошибка подтверждения." });
+        }
+
 
         private IUserEmailStore<ApplicationIdentityUser> GetEmailStore()
         {

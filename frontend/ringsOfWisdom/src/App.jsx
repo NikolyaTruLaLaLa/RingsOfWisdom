@@ -14,6 +14,7 @@ import WPS from './pages/WPS';
 import Skillstree from './pages/Skillstree';
 import Strongformstree from './pages/Strongformstree';
 import Emailverif from './pages/Emailverif';
+import EmailCompleted from './pages/EmailCompleted';
 import Registation from './pages/Registration';
 import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
@@ -34,6 +35,7 @@ function App() {
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
           <Route path="/emlverif" element={<Emailverif/>} />
+          <Route path="/confirm-email" element={<EmailCompleted/>} />
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
