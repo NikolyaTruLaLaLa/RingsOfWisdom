@@ -2,60 +2,98 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    font-family: Arial, sans-serif;
-  }
-  
-  .profile-header {
+    font-family: 'Arial', sans-serif;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin-top: -50px;
+}
+
+.profile-header {
     text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-content {
-    background: #f9f9f9;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .profile-section {
     margin-bottom: 30px;
-  }
-  
-  .edit-name {
+}
+
+.profile-header h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+}
+
+.profile-content {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    margin-bottom: 30px;
+}
+
+.profile-section h2 {
+    font-size: 1.5rem;
+    color: #444;
+    margin-bottom: 15px;
+}
+
+.edit-name {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  .edit-name input {
-    padding: 5px;
+}
+
+.edit-name input {
+    padding: 8px;
     font-size: 16px;
-  }
-  
-  .display-name {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+}
+
+.edit-name button {
+    padding: 8px 12px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.edit-name button:hover {
+    background-color: #45a049;
+}
+
+.display-name {
     display: flex;
     align-items: center;
     gap: 10px;
-  }
-  
-  .display-name button {
+}
+
+.display-name button {
     background: none;
     border: none;
     cursor: pointer;
     font-size: 16px;
-  }
-  
-  .skills-progress {
+    color: #666;
+}
+
+.display-name button:hover {
+    color: #333;
+}
+
+.skills-progress {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
-  }
-  
-  .skill-circle {
+}
+
+.skill-circle {
     text-align: center;
-  }
-  
-  .circle {
+}
+
+.circle {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -64,21 +102,34 @@
     justify-content: center;
     font-size: 18px;
     font-weight: bold;
-  }
-  
-  .rating-table {
+    background: #e0e0e0;
+}
+
+.rating-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 10px;
-  }
-  
-  .rating-table th,
-  .rating-table td {
-    padding: 10px;
+}
+
+.rating-table th,
+.rating-table td {
+    padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
-  }
-  
-  .rating-table th {
+}
+
+.rating-table th {
     background-color: #f2f2f2;
-  }
+    font-weight: bold;
+    color: #555;
+}
+
+.rating-table tr:hover {
+    background-color: #f9f9f9;
+}
+
+.profile-section p {
+    font-size: 1.1rem;
+    color: #666;
+    margin: 5px 0;
+}
