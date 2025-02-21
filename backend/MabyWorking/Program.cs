@@ -6,6 +6,11 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using mabyWorking.Services;
+using NETCore.MailKit.Core;
+using mabyWorking.Interfaces;
+using mabyWorking.Configurations;
 
 namespace mabyWorking
 {
@@ -26,7 +31,10 @@ namespace mabyWorking
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             builder.Services.AddControllersWithViews();
-
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.Configure<AppSetittings>(builder.Configuration.GetSection("AppSettings"));
+            builder.Services.AddTransient<Interfaces.IEmailSender, Services.EmailService>();
+            
             // Enable CORS for React frontend
             builder.Services.AddCors(options =>
             {
