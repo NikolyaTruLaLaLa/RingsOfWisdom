@@ -1,36 +1,99 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 import money from "./../assets/images/monetka.png";
-import './../assets/style/style_profile.css'; // Стили для страницы профиля
+import "./../assets/style/style_profile.css";
+
+const API_BASE_URL = "http://localhost:5000/api/profile"; //URL бэкенда
 
 const Profile = () => {
-  const [userName, setUserName] = useState("Иван Иванов");
+  const [userName, setUserName] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [email, setEmail] = useState("user@example.com");
-  const [coins, setCoins] = useState(150);
+  const [email, setEmail] = useState("");
+  const [coins, setCoins] = useState(0);
+  const [status, setStatus] = useState("");
   const [skills, setSkills] = useState([
     { name: "Навык 1", progress: 0 },
-    { name: "Навык 2", progress: 10 },
-    { name: "Навык 3", progress: 30 },
-    { name: "Навык 4", progress: 60 }, // Добавлен четвертый навык
+    { name: "Навык 2", progress: 0 },
+    { name: "Навык 3", progress: 0 },
+    { name: "Навык 4", progress: 0 },
   ]);
-  const [rating, setRating] = useState([
-    { name: "Иван Иванов", score: 1000 },
-    { name: "Петр Петров", score: 950 },
-    { name: "Сидор Сидоров", score: 900 },
-  ]);
-  const [status, setStatus] = useState("Эксперт");
+  const [rating, setRating] = useState([]);
+  const [userRank, setUserRank] = useState(null);
 
-  const handleNameChange = (e) => {
-    setUserName(e.target.value);
+  // Получение профиля пользователя
+  const fetchProfile = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/get-profile`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await response.json();
+      setUserName(data.userName);
+      setEmail(data.email);
+      setCoins(data.coins);
+      setStatus(data.status);
+      setSkills([
+        { name: "Навык 1", progress: data.skills.Skill1 },
+        { name: "Навык 2", progress: data.skills.Skill2 },
+        { name: "Навык 3", progress: data.skills.Skill3 },
+        { name: "Навык 4", progress: data.skills.Skill4 },
+      ]);
+    } catch (error) {
+      console.error("Ошибка загрузки профиля:", error);
+    }
   };
 
-  const handleEditClick = () => {
-    setIsEditing(!isEditing);
+  // Получение топ-5 игроков
+  const fetchTopPlayers = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/top-players`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await response.json();
+      setRating(data);
+    } catch (error) {
+      console.error("Ошибка загрузки топ-5 игроков:", error);
+    }
   };
 
-  const handleSaveClick = () => {
-    setIsEditing(false);
-    // Здесь можно добавить логику сохранения имени на сервере
+  // Получение места игрока в топе
+  const fetchUserRank = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/leaderboard-position`, {
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      });
+      const data = await response.json();
+      setUserRank(data.Position);
+    } catch (error) {
+      console.error("Ошибка загрузки ранга:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProfile();
+    fetchTopPlayers();
+    fetchUserRank();
+  }, []);
+
+  // Смена имени пользователя
+  const handleSaveClick = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/change-username`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+        body: JSON.stringify(userName),
+      });
+
+      if (!response.ok) {
+        throw new Error("Ошибка при изменении имени");
+      }
+
+      setIsEditing(false);
+      fetchProfile(); // Обновляем данные
+    } catch (error) {
+      console.error("Ошибка сохранения имени:", error);
+    }
   };
 
   return (
@@ -40,7 +103,7 @@ const Profile = () => {
       </div>
 
       <div className="profile-content">
-        {/* Имя пользователя с возможностью переименования и монетки */}
+        {/* Имя пользователя с возможностью редактирования */}
         <div className="profile-section user-info">
           <div className="user-name-section">
             <h2>Имя пользователя</h2>
@@ -49,14 +112,16 @@ const Profile = () => {
                 <input
                   type="text"
                   value={userName}
-                  onChange={handleNameChange}
+                  onChange={(e) => setUserName(e.target.value)}
                 />
                 <button onClick={handleSaveClick}>Сохранить</button>
               </div>
             ) : (
               <div className="display-name">
-                <span>{userName} ({status})</span>
-                <button onClick={handleEditClick}>✏️</button>
+                <span>
+                  {userName} ({status}) {userRank && `#${userRank}`}
+                </span>
+                <button onClick={() => setIsEditing(true)}>✏️</button>
               </div>
             )}
           </div>
@@ -72,7 +137,7 @@ const Profile = () => {
           <p>{email}</p>
         </div>
 
-        {/* Статистика кружками */}
+        {/* Прогресс по навыкам */}
         <div className="profile-section">
           <h2>Прогресс по навыкам</h2>
           <div className="skills-progress">
@@ -92,7 +157,7 @@ const Profile = () => {
           </div>
         </div>
 
-        {/* Рейтинговая статистика всех пользователей */}
+        {/* Рейтинг пользователей */}
         <div className="profile-section">
           <h2>Рейтинг пользователей</h2>
           <table className="rating-table">
