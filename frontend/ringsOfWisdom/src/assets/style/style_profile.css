@@ -54,7 +54,7 @@
 
 .edit-name button {
     padding: 8px 12px;
-    background-color: #4caf50;
+    background-color: #5a47b3;
     color: white;
     border: none;
     border-radius: 5px;
@@ -63,7 +63,7 @@
 }
 
 .edit-name button:hover {
-    background-color: #45a049;
+    background-color: #5a47b3;
 }
 
 .display-name {

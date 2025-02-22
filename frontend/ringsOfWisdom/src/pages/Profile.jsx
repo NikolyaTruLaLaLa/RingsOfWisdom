@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import money from"./../assets/images/monetka.png";
 import './../assets/style/style_profile.css'; // Стили для страницы профиля
 
 const Profile = () => {
@@ -7,9 +8,9 @@ const Profile = () => {
   const [email, setEmail] = useState("user@example.com");
   const [coins, setCoins] = useState(150);
   const [skills, setSkills] = useState([
-    { name: "Навык 1", progress: 75 },
-    { name: "Навык 2", progress: 50 },
-    { name: "Навык 3", progress: 90 },
+    { name: "Навык 1", progress: 0 },
+    { name: "Навык 2", progress: 10 },
+    { name: "Навык 3", progress: 30},
   ]);
   const [rating, setRating] = useState([
     { name: "Иван Иванов", score: 1000 },
@@ -73,7 +74,7 @@ const Profile = () => {
                 <div
                   className="circle"
                   style={{
-                    background: `conic-gradient(#4caf50 ${skill.progress}%, #e0e0e0 ${skill.progress}% 100%)`,
+                    background: `conic-gradient(#5a47b3 ${skill.progress}%,rgb(250, 223, 202) ${skill.progress}% 100%)`,
                   }}
                 >
                   <span>{skill.progress}%</span>
@@ -110,7 +111,10 @@ const Profile = () => {
           <h2>Статус</h2>
           <p>{status}</p>
           <h2>Монетки</h2>
-          <p>🪙 {coins}</p>
+          <p>
+            <img src={money} alt="Логотип Rings of Wisdom" className="money" /> 
+            {coins}
+            </p>
         </div>
       </div>
     </div>
