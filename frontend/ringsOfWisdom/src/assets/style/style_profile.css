@@ -38,6 +38,34 @@
     margin-bottom: 15px;
 }
 
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.user-name-section {
+    flex: 1;
+}
+
+.coins-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.coins-section img {
+    width: 24px;
+    height: 24px;
+}
+
+.coins-section span {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #5a47b3;
+}
+
 .edit-name {
     display: flex;
     align-items: center;
@@ -70,6 +98,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+}
+
+.display-name span {
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .display-name button {

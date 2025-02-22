@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import money from"./../assets/images/monetka.png";
+import money from "./../assets/images/monetka.png";
 import './../assets/style/style_profile.css'; // Стили для страницы профиля
 
 const Profile = () => {
@@ -10,7 +10,7 @@ const Profile = () => {
   const [skills, setSkills] = useState([
     { name: "Навык 1", progress: 0 },
     { name: "Навык 2", progress: 10 },
-    { name: "Навык 3", progress: 30},
+    { name: "Навык 3", progress: 30 },
   ]);
   const [rating, setRating] = useState([
     { name: "Иван Иванов", score: 1000 },
@@ -39,24 +39,30 @@ const Profile = () => {
       </div>
 
       <div className="profile-content">
-        {/* Имя пользователя с возможностью переименования */}
-        <div className="profile-section">
-          <h2>Имя пользователя</h2>
-          {isEditing ? (
-            <div className="edit-name">
-              <input
-                type="text"
-                value={userName}
-                onChange={handleNameChange}
-              />
-              <button onClick={handleSaveClick}>Сохранить</button>
-            </div>
-          ) : (
-            <div className="display-name">
-              <span>{userName}</span>
-              <button onClick={handleEditClick}>✏️</button>
-            </div>
-          )}
+        {/* Имя пользователя с возможностью переименования и монетки */}
+        <div className="profile-section user-info">
+          <div className="user-name-section">
+            <h2>Имя пользователя</h2>
+            {isEditing ? (
+              <div className="edit-name">
+                <input
+                  type="text"
+                  value={userName}
+                  onChange={handleNameChange}
+                />
+                <button onClick={handleSaveClick}>Сохранить</button>
+              </div>
+            ) : (
+              <div className="display-name">
+                <span>{userName} ({status})</span>
+                <button onClick={handleEditClick}>✏️</button>
+              </div>
+            )}
+          </div>
+          <div className="coins-section">
+            <img src={money} alt="Монетки" className="money" />
+            <span>{coins}</span>
+          </div>
         </div>
 
         {/* Привязанная почта */}
@@ -104,17 +110,6 @@ const Profile = () => {
               ))}
             </tbody>
           </table>
-        </div>
-
-        {/* Статус и монетки */}
-        <div className="profile-section">
-          <h2>Статус</h2>
-          <p>{status}</p>
-          <h2>Монетки</h2>
-          <p>
-            <img src={money} alt="Логотип Rings of Wisdom" className="money" /> 
-            {coins}
-            </p>
         </div>
       </div>
     </div>
