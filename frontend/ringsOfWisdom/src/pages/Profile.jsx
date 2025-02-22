@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import money from "./../assets/images/monetka.png";
 import "./../assets/style/style_profile.css";
-import ProtectedRoute from "../components/ProtectedRoute";
+import ProtectedRoute from "../hooks/ProtectedRoute";
 
 const API_BASE_URL = "http://localhost:5269/api/profile"; 
 
@@ -93,6 +93,7 @@ const Profile = () => {
   };
 
   return (
+    <>
     <ProtectedRoute>
     <div className="profile-container">
       <div className="profile-header">
@@ -180,8 +181,10 @@ const Profile = () => {
         </div>
       </div>
     </div>
-<ProtectedRoute>
-  );
-};
+</ProtectedRoute>
+</>
+);
+}
+
 
 export default Profile;
