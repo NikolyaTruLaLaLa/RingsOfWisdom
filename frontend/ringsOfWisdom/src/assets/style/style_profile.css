@@ -41,7 +41,7 @@
 .user-info {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start; 
     margin-bottom: 30px;
 }
 
@@ -53,6 +53,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    margin-top: -5;
 }
 
 .coins-section img {

@@ -11,6 +11,7 @@ const Profile = () => {
     { name: "Навык 1", progress: 0 },
     { name: "Навык 2", progress: 10 },
     { name: "Навык 3", progress: 30 },
+    { name: "Навык 4", progress: 60 }, // Добавлен четвертый навык
   ]);
   const [rating, setRating] = useState([
     { name: "Иван Иванов", score: 1000 },
