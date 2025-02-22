@@ -41,7 +41,7 @@
 .user-info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; 
+    align-items: flex-start; /* Выравниваем по верхнему краю */
     margin-bottom: 30px;
 }
 
@@ -53,7 +53,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: -5;
+    margin-top: 0; /* Убираем отступ сверху */
 }
 
 .coins-section img {
@@ -65,6 +65,19 @@
     font-size: 1.2rem;
     font-weight: bold;
     color: #5a47b3;
+}
+
+.edit-pencil {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    color: #666;
+    margin-left: 10px; /* Отступ между монетками и кнопкой */
+}
+
+.edit-pencil:hover {
+    color: #333;
 }
 
 .edit-name {
@@ -99,11 +112,11 @@
     display: flex;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
-.display-name span {
-    font-size: 1.2rem;
-    font-weight: bold;
+.user-name-text {
+    flex-grow: 1; 
 }
 
 .display-name button {
@@ -112,6 +125,7 @@
     cursor: pointer;
     font-size: 16px;
     color: #666;
+    margin-left: auto; 
 }
 
 .display-name button:hover {

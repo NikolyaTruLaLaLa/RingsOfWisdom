@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import money from "./../assets/images/monetka.png";
 import "./../assets/style/style_profile.css";
+import ProtectedRoute from "../components/ProtectedRoute";
 
-const API_BASE_URL = "http://localhost:5000/api/profile"; //URL бэкенда
+const API_BASE_URL = "http://localhost:5269/api/profile"; 
 
 const Profile = () => {
   const [userName, setUserName] = useState("");
@@ -10,19 +11,20 @@ const Profile = () => {
   const [email, setEmail] = useState("");
   const [coins, setCoins] = useState(0);
   const [status, setStatus] = useState("");
-  const [skills, setSkills] = useState([
-    { name: "Навык 1", progress: 0 },
-    { name: "Навык 2", progress: 0 },
-    { name: "Навык 3", progress: 0 },
-    { name: "Навык 4", progress: 0 },
-  ]);
+  const [skills, setSkills] = useState([]);
   const [rating, setRating] = useState([]);
   const [userRank, setUserRank] = useState(null);
 
-  // Получение профиля пользователя
+  useEffect(() => {
+    fetchProfile();
+    fetchTopPlayers();
+    fetchUserRank();
+  }, []);
+
+
   const fetchProfile = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/get-profile`, {
+      const response = await fetch(`${API_BASE_URL}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await response.json();
@@ -41,7 +43,7 @@ const Profile = () => {
     }
   };
 
-  // Получение топ-5 игроков
+
   const fetchTopPlayers = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/top-players`, {
@@ -54,56 +56,51 @@ const Profile = () => {
     }
   };
 
-  // Получение места игрока в топе
+
   const fetchUserRank = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/leaderboard-position`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
       const data = await response.json();
-      setUserRank(data.Position);
+      setUserRank(data.Rank);
     } catch (error) {
       console.error("Ошибка загрузки ранга:", error);
     }
   };
 
-  useEffect(() => {
-    fetchProfile();
-    fetchTopPlayers();
-    fetchUserRank();
-  }, []);
 
-  // Смена имени пользователя
-  const handleSaveClick = async () => {
+  const handleSaveName = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/change-username`, {
+      const response = await fetch(`${API_BASE_URL}/update-username`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify(userName),
+        body: JSON.stringify({ newUserName: userName }),
       });
 
-      if (!response.ok) {
-        throw new Error("Ошибка при изменении имени");
+      if (response.ok) {
+        setIsEditing(false);
+        fetchProfile(); 
+      } else {
+        console.error("Ошибка при смене имени.");
       }
-
-      setIsEditing(false);
-      fetchProfile(); // Обновляем данные
     } catch (error) {
-      console.error("Ошибка сохранения имени:", error);
+      console.error("Ошибка запроса:", error);
     }
   };
 
   return (
+    <ProtectedRoute>
     <div className="profile-container">
       <div className="profile-header">
         <h1>Профиль</h1>
       </div>
 
       <div className="profile-content">
-        {/* Имя пользователя с возможностью редактирования */}
+        {/* Имя пользователя + Статус */}
         <div className="profile-section user-info">
           <div className="user-name-section">
             <h2>Имя пользователя</h2>
@@ -114,7 +111,7 @@ const Profile = () => {
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                 />
-                <button onClick={handleSaveClick}>Сохранить</button>
+                <button onClick={handleSaveName}>Сохранить</button>
               </div>
             ) : (
               <div className="display-name">
@@ -163,15 +160,19 @@ const Profile = () => {
           <table className="rating-table">
             <thead>
               <tr>
+                <th>Место</th>
                 <th>Имя</th>
                 <th>Очки</th>
+                <th>Статус</th>
               </tr>
             </thead>
             <tbody>
               {rating.map((user, index) => (
                 <tr key={index}>
-                  <td>{user.name}</td>
-                  <td>{user.score}</td>
+                  <td>#{user.Rank}</td>
+                  <td>{user.UserName}</td>
+                  <td>{user.Score}</td>
+                  <td>{user.Status}</td>
                 </tr>
               ))}
             </tbody>
@@ -179,6 +180,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+<ProtectedRoute>
   );
 };
 
