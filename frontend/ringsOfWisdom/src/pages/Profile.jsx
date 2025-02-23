@@ -3,7 +3,7 @@ import money from "./../assets/images/monetka.png";
 import "./../assets/style/style_profile.css";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 
-const API_BASE_URL = "http://localhost:5269/api/profile"; 
+const API_BASE_URL = "https://localhost:5269/api/profile"; 
 
 const Profile = () => {
   const [userName, setUserName] = useState("");

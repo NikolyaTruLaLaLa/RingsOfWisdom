@@ -20,7 +20,7 @@ import Profile from './pages/Profile';
 
 function App() {
   return (
-    <AuthProvider> {/* Оборачиваем всё приложение в AuthProvider */}
+    <AuthProvider>
       <Router>
         <Head />
         <Routes>

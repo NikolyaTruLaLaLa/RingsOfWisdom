@@ -7,14 +7,14 @@ const AuthContext = createContext();
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(null); // По умолчанию неизвестно
+    const [isAuthenticated, setIsAuthenticated] = useState(null);
 
     // Функция для проверки авторизации
     const checkAuthStatus = async () => {
         try {
-            const response = await fetch("http://localhost:5269/api/Login/check-auth", {
+            const response = await fetch("https://localhost:5269/api/Login/check-auth", {
                 method: "GET",
-                credentials: "include", // Важно для передачи куков сессии
+                credentials: "include",
             });
             const data = await response.json();
             setIsAuthenticated(data.isAuthenticated);

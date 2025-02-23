@@ -6,7 +6,7 @@ export const useAuth = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch("http://localhost:5269/api/Login/check-auth", { credentials: "include" });
+        const response = await fetch("https://localhost:5269/api/Login/check-auth", { credentials: "include" });
         const data = await response.json();
         setIsAuthenticated(data.isAuthenticated);
       } catch (error) {
