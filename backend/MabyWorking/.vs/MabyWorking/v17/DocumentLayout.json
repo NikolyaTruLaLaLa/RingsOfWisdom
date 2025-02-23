@@ -3,31 +3,12 @@
   "WorkspaceRootPath": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\configurations\\appsetittings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:configurations\\appsetittings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_mabyWorking/True/SqlTable/dbo.AspNetUsers.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:controllers\\registercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\configurations\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:configurations\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,94 +18,32 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AppSetittings.cs",
-              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Configurations\\AppSetittings.cs",
-              "RelativeDocumentMoniker": "Configurations\\AppSetittings.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Configurations\\AppSetittings.cs",
-              "RelativeToolTip": "Configurations\\AppSetittings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAA/AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-21T06:50:28.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "EmailSettings.cs",
-              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Configurations\\EmailSettings.cs",
-              "RelativeDocumentMoniker": "Configurations\\EmailSettings.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Configurations\\EmailSettings.cs",
-              "RelativeToolTip": "Configurations\\EmailSettings.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T18:54:55.034Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\appsettings.json*",
-              "RelativeToolTip": "appsettings.json*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-20T13:35:56Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "dbo.AspNetUsers [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/aspnet_mabyWorking/True/SqlTable/dbo.AspNetUsers.sql",
-              "ToolTip": "dbo.AspNetUsers [\u0414\u0430\u043D\u043D\u044B\u0435]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-02-20T12:45:12.914Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "Services\\EmailService.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Services\\EmailService.cs",
-              "RelativeToolTip": "Services\\EmailService.cs",
-              "ViewState": "AQIAAAwAAAAAAAAAAAAAABgAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:02:58.988Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RegisterController.cs",
-              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\RegisterController.cs",
-              "RelativeDocumentMoniker": "Controllers\\RegisterController.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\RegisterController.cs",
-              "RelativeToolTip": "Controllers\\RegisterController.cs",
-              "ViewState": "AQIAAH0AAAAAAAAAAAAAwEAAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T12:10:05.666Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABwAAAAAAAAAAAAgwCIAAABjAAAA",
+              "ViewState": "AQIAACUAAAAAAAAAAAAgwDYAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T11:59:35.162Z",
+              "WhenOpened": "2025-02-23T08:22:24.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginController.cs",
+              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\LoginController.cs",
+              "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
+              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\LoginController.cs*",
+              "RelativeToolTip": "Controllers\\LoginController.cs*",
+              "ViewState": "AQIAAD4AAAAAAAAAAAA8wEwAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-23T08:13:15.797Z",
               "EditorCaption": ""
             }
           ]
