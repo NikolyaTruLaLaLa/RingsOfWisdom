@@ -66,5 +66,17 @@ namespace mabyWorking.Controllers
             _logger.LogInformation("User logged out.");
             return Ok(new { message = "Logout successful" });
         }
+
+        [HttpGet("check-auth")]
+        public IActionResult CheckAuth()
+        {
+            if (User.Identity?.IsAuthenticated == true)
+            {
+                _logger.LogInformation("User check successful");
+                return Ok(new { isAuthenticated = true });
+            }
+            _logger.LogInformation("User check unsuccessful");
+            return Ok(new { isAuthenticated = false });
+        }
     }
 }

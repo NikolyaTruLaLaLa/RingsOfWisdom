@@ -42,8 +42,9 @@ namespace mabyWorking
                     {
                         policy.WithOrigins("http://localhost:5173") // Разрешить фронтенд
                         .AllowAnyHeader()
-                        .AllowAnyMethod();
-                    });
+                        .AllowAnyMethod()
+                        .AllowCredentials();
+            });
             });
 
             var app = builder.Build();
