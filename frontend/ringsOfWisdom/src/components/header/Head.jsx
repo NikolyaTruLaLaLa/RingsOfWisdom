@@ -1,12 +1,11 @@
 import logo from "./../../assets/images/Logo Black.png";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import { useAuth } from "../../hooks/useAuth"; // Импортируем хук авторизации
+import ProfileButton from "./ProfileButton"; // Импортируем новый компонент
+
 import "./stylehead.css";
-import {ProfileButton} from "../../hooks/ProfileButton";
 
 const Head = () => {
-
   return (
     <header className="site-header">
       <NavLink to="/main" className="logo">
@@ -17,8 +16,9 @@ const Head = () => {
         <NavLink to="/skills">Дерево навыков</NavLink>
         <NavLink to="/shop">Магазин</NavLink>
       </nav>
-      {/* Проверка авторизации */}
-      <ProfileButton/>
+      
+      {/* Используем готовый компонент ProfileButton */}
+      <ProfileButton />
     </header>
   );
 };
