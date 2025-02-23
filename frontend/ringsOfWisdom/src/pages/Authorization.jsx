@@ -45,6 +45,9 @@ const Login = () => {
 
       if (response.ok) {
         setMessage("Авторизация успешна!");
+        if (response.ok) {
+          checkAuthStatus(); // Обновляем статус после логина
+      }
         navigate("/main"); 
       } else {
         if (data.message === "User account is locked out.") {

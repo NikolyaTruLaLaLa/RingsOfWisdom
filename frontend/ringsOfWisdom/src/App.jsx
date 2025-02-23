@@ -1,10 +1,8 @@
-import { useState } from 'react'
-
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import AuthProvider from './context/AuthProvider'; // Импортируем AuthProvider
 
 import "./assets/style/style_main_page.css";
-
-import './App.css'
+import './App.css';
 
 import Head from './components/header/Head';
 import WPM from './pages/WPM';
@@ -21,11 +19,9 @@ import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
 
 function App() {
- 
   return (
-    <>
-
-    <Router>
+    <AuthProvider> {/* Оборачиваем всё приложение в AuthProvider */}
+      <Router>
         <Head />
         <Routes>
           <Route path="/main" element={<WPM />} />
@@ -35,19 +31,15 @@ function App() {
           <Route path="/types" element={<Type_and_Types />} />
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
-          <Route path="/emlverif" element={<Emailverif/>} />
-          <Route path="/confirm-email" element={<EmailCompleted/>} />
+          <Route path="/emlverif" element={<Emailverif />} />
+          <Route path="/confirm-email" element={<EmailCompleted />} />
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz" element={<Quez />} />
         </Routes>
-    </Router>
-
-       
-
-      
-    </>
-  )
+      </Router>
+    </AuthProvider>
+  );
 }
 
-export default App
+export default App;
