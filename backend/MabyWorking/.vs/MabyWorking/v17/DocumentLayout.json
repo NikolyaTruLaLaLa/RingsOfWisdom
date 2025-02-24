@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -34,31 +34,30 @@
               "RelativeToolTip": "Properties\\launchSettings.json",
               "ViewState": "AQIAAA8AAAAAAAAAAAAAABoAAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-02-23T14:26:16.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-02-23T14:26:16.275Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs*",
-              "RelativeToolTip": "Program.cs*",
-              "ViewState": "AQIAADEAAAAAAAAAAAAuwD8AAABLAAAA",
+              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T08:22:24.407Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LoginController.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
               "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\LoginController.cs",
               "RelativeToolTip": "Controllers\\LoginController.cs",
-              "ViewState": "AQIAACcAAAAAAAAAAAAcwDAAAAAAAAAA",
+              "ViewState": "AQIAADYAAAAAAAAAAAAmwEUAAAArAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-23T08:13:15.797Z",
               "EditorCaption": ""
