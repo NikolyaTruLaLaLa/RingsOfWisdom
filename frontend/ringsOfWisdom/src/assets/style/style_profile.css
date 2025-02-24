@@ -183,7 +183,7 @@
     margin: 5px 0;
 }
 
-.logout{
+.profile-section .logout{
     width: 90%;
     padding: 10px;
     background-color: #5a47b3;
@@ -196,7 +196,7 @@
     margin-bottom: 10px;
     transition: transform 0.3s ease;
 }
-.logout:hover {
+.profile-section .logout:hover {
     background-color: #5a47b3;
     transform: scale(1.05);
 }

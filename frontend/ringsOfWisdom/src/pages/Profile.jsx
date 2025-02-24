@@ -179,8 +179,9 @@ const Profile = () => {
             </tbody>
           </table>
         </div>
-        <button type="logout" disabled={Logout}>Выйти из аккаунта</button>
-
+        <div className="profile-section">
+          <button type="logout" disabled={Logout}>Выйти из аккаунта</button>
+        </div>
       </div>
     </div>
 </ProtectedRoute>
