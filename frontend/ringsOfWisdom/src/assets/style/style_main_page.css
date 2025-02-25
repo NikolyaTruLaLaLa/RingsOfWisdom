@@ -54,3 +54,25 @@ body {
     margin-bottom: 20px;
 }
 
+/* медиа-запросы для мобилок (wd < 768px) */
+@media (max-width: 767px) {
+    body {
+        padding: 5%; /* уменьшаем отступы */
+    }
+
+    .container {
+        padding: 15px; /* уменьшаем отступы внутри контейнера */
+    }
+
+    .description {
+        font-size: 1rem; /* уменьшаем размер шрифта */
+    }
+
+    .goal-text {
+        font-size: 0.9rem;
+    }
+
+    .logom {
+        max-width: 80%; /* уменьшаем размер лого */
+    }
+}
