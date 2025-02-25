@@ -76,3 +76,26 @@ body {
         max-width: 80%; /* уменьшаем размер лого */
     }
 }
+
+/* медиа-запросы для ноутбуков (wd от 768px до 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding: 8%; /* увеличиваем отступы */
+    }
+
+    .container {
+        max-width: 90%; /* увеличиваем ширину контейнера */
+    }
+
+    .description {
+        font-size: 1.1rem; /* средний размер шрифта */
+    }
+
+    .goal-text {
+        font-size: 1rem;
+    }
+
+    .logom {
+        max-width: 70%; /* уменьшаем размер лого */
+    }
+}
