@@ -99,3 +99,18 @@ body {
         max-width: 70%; /* уменьшаем размер лого */
     }
 }
+
+/* медиа-запросы для ПК (wd больше 1024px) */
+@media (min-width: 1025px) {
+    .container {
+        padding: 40px; /* увеличиваем отступы */
+    }
+
+    .description {
+        font-size: 1.3rem; /* увеличиваем размер шрифта */
+    }
+
+    .goal-text {
+        font-size: 1.2rem;
+    }
+}
