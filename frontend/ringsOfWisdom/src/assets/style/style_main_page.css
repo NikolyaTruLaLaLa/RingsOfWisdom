@@ -14,10 +14,6 @@ body {
     height: 100vh;
     padding: 10%; /* опускаем ниже */
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
 }
 
 /* контейнер для мейн контента */
