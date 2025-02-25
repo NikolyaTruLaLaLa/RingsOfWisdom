@@ -1,80 +1,56 @@
 :root {
-    --background-color: #fdf4d1; /* Цвет фона страницы */
-    --header-bg-color: #fffbe9; /* Цвет фона шапки */
-    --header-text-color: #333333; /* Цвет текста в шапке */
+    --background-color: #fdf4d1; /* цвет фона страницы */
+    --header-bg-color: #fffbe9; /* цвет фона шапки */
+    --header-text-color: #333333; /* цвет текста в шапке */
 }
 
 body {
-   
-   /*фон{ */
     background-image: url('./assets/fons.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    /* фон}*/
+    background-position: center center;
+    background-attachment: fixed;
     margin: 0;
     height: 100vh;
-    padding: 10%;
-    /*background-color: var(--background-color);*/
+    padding: 30%; /* опускаем ниже */
     font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-
-/* Контент страницы */
-.container_all{
-    
-    margin-top: 50%;
-    align-content:space-between;
-  justify-content: space-between;
-  
-}
-/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
-@media (min-width: 1200px) {
-    .container_all{
-    
-        margin-top: 0.1%;
-        align-content:space-between;
-      justify-content: space-between;
-      
-    }
+/* контейнер для мейн контента */
+.container {
+    max-width: 800px; /* огран ширины контента */
+    width: 100%;
+    margin: 0 auto; /* отцентровка */
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8); /* фончик */
+    border-radius: 10px; /* уголки */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* тень */
 }
 
-
-/*
-@media(min-width:576px){
-    body{
-    background-repeat: no-repeat;
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
+/* стили для текста */
+.description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
 }
 
-@media (min-width: 768px){
-    body{
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
+.goal-container {
+    margin-top: 20px;
 }
 
-@media(min-width: 1200px){
-    body{
-      
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
-    
-}*/
+.goal-text {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
 
-
-
+/* лого */
+.logom {
+    max-width: 100%; /* лого адаптируется под мейн контейнер */
+    height: auto;
+    margin-bottom: 20px;
+}
 
