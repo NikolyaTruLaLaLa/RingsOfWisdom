@@ -12,16 +12,16 @@ body {
     background-attachment: fixed;
     margin: 0;
     height: 100vh;
-    padding: 30%; /* опускаем ниже */
+    padding: 10%; /* опускаем ниже */
     font-family: Arial, sans-serif;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     text-align: center;
 }
 
 /* контейнер для мейн контента */
-.container {
+.container_main {
     max-width: 800px; /* огран ширины контента */
     width: 100%;
     margin: 0 auto; /* отцентровка */
@@ -32,17 +32,17 @@ body {
 }
 
 /* стили для текста */
-.description {
+.description_main {
     font-size: 1.2rem;
     line-height: 1.6;
     margin-bottom: 20px;
 }
 
-.goal-container {
+.goal-container_main {
     margin-top: 20px;
 }
 
-.goal-text {
+.goal-text_main {
     font-size: 1.1rem;
     line-height: 1.5;
 }
@@ -50,8 +50,8 @@ body {
 /* лого */
 .logom {
     max-width: 100%; /* лого адаптируется под мейн контейнер */
-    height: auto;
-    margin-bottom: 20px;
+    margin-top: 10%;
+    margin-bottom: 10px;
 }
 
 /* медиа-запросы для мобилок (wd < 768px) */
@@ -60,20 +60,23 @@ body {
         padding: 5%; /* уменьшаем отступы */
     }
 
-    .container {
+    .container_main {
         padding: 15px; /* уменьшаем отступы внутри контейнера */
     }
 
-    .description {
+    .description_main {
         font-size: 1rem; /* уменьшаем размер шрифта */
     }
 
-    .goal-text {
+    .goal-text_main {
         font-size: 0.9rem;
     }
 
     .logom {
         max-width: 80%; /* уменьшаем размер лого */
+        margin-top: 0; /* Убираем отступ сверху для логотипа */
+        margin-bottom: 10px; /* Уменьшаем отступ снизу */
+
     }
 }
 
@@ -83,15 +86,15 @@ body {
         padding: 8%; /* увеличиваем отступы */
     }
 
-    .container {
+    .container_main {
         max-width: 90%; /* увеличиваем ширину контейнера */
     }
 
-    .description {
+    .description_main {
         font-size: 1.1rem; /* средний размер шрифта */
     }
 
-    .goal-text {
+    .goal-text_main {
         font-size: 1rem;
     }
 
@@ -102,15 +105,15 @@ body {
 
 /* медиа-запросы для ПК (wd больше 1024px) */
 @media (min-width: 1025px) {
-    .container {
+    .container_main {
         padding: 40px; /* увеличиваем отступы */
     }
 
-    .description {
+    .description_main {
         font-size: 1.3rem; /* увеличиваем размер шрифта */
     }
 
-    .goal-text {
+    .goal-text_main {
         font-size: 1.2rem;
     }
 }
