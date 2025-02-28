@@ -21,10 +21,18 @@ body {
     max-width: 800px; /* огран ширины контента */
     width: 100%;
     margin: 0 auto; /* отцентровка */
-    padding: 20px;
+    margin-bottom: 0px;
+    padding: 10px;
     background-color: rgba(255, 255, 255, 0.8); /* фончик */
     border-radius: 10px; /* уголки */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* тень */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* центрируем по горизонтали */
+    justify-content: center; /* центрируем по вертикали */
+    text-align: center; /* центрируем текст */
+    overflow: auto; /* добавляем прокрутку, если контент не помещается */
+    min-height: auto; /* минимальная высота по содержимому */
 }
 
 /* стили для текста */
@@ -46,7 +54,7 @@ body {
 /* лого */
 .logom {
     max-width: 100%; /* лого адаптируется под мейн контейнер */
-    margin-top: 10%;
+    margin-top: 0;
     margin-bottom: 10px;
 }
 
@@ -58,6 +66,8 @@ body {
 
     .container_main {
         padding: 15px; /* уменьшаем отступы внутри контейнера */
+        margin-top: 80px;
+        
     }
 
     .description_main {
@@ -69,10 +79,10 @@ body {
     }
 
     .logom {
-        max-width: 80%; /* уменьшаем размер лого */
-        margin-top: 0; /* Убираем отступ сверху для логотипа */
-        margin-bottom: 10px; /* Уменьшаем отступ снизу */
-
+        max-width: 100%; /* уменьшаем размер лого */
+        margin-top: 1%; /* Убираем отступ сверху для логотипа */
+        margin-bottom: 5px; /* Уменьшаем отступ снизу */
+        
     }
 }
 
@@ -84,6 +94,7 @@ body {
 
     .container_main {
         max-width: 90%; /* увеличиваем ширину контейнера */
+        margin-top: 60px;
     }
 
     .description_main {
@@ -96,6 +107,7 @@ body {
 
     .logom {
         max-width: 70%; /* уменьшаем размер лого */
+        margin-top: 1%;
     }
 }
 
