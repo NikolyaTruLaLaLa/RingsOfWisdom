@@ -27,7 +27,7 @@ const Footer = () => {
 						</li>
 					</ul>
 					<div className="copyright">
-						<p>© 2022 frontend-dev.com</p>
+						<p>© 2025 ROW</p>
 					</div>
 				</div>
 			</div>
