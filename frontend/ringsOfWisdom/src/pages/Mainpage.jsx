@@ -1,13 +1,13 @@
 
 import Footer from './../components/footer/Footer';
 import React from 'react';
-import logom from "./../assets/images/logo.png";
+import logoms from "./../assets/images/logo.png";
 
 const Mainpage = () => {
     return (
         <>
         <div className="container_main">
-            <img src={logom} alt="Логотип Rings of Wisdom" className="logom" />
+            <img src={logoms} alt="Логотип Rings of Wisdom" className="logoms" />
             
             <div className="text-container_main">
                 <p className="description_main">

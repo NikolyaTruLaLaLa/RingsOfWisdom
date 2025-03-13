@@ -18,10 +18,11 @@ body {
 
 /* контейнер для мейн контента */
 .container_main {
-    max-width: 800px; /* огран ширины контента */
+    max-width: 80%; /* огран ширины контента */
     width: 100%;
     margin: 0 auto; /* отцентровка */
-    margin-bottom: 0px;
+    margin-top: 1%;
+    margin-bottom: 2%;
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.8); /* фончик */
     border-radius: 10px; /* уголки */
@@ -52,9 +53,8 @@ body {
 }
 
 /* лого */
-.logom {
-    max-width: 100%; /* лого адаптируется под мейн контейнер */
-    margin-top: 0;
+.logoms {
+    max-width: 70%; /* лого адаптируется под мейн контейнер */
     margin-bottom: 10px;
 }
 
@@ -66,7 +66,7 @@ body {
 
     .container_main {
         padding: 15px; /* уменьшаем отступы внутри контейнера */
-        margin-top: 80px;
+        margin-top: 40%;
         
     }
 
@@ -78,11 +78,9 @@ body {
         font-size: 0.9rem;
     }
 
-    .logom {
-        max-width: 100%; /* уменьшаем размер лого */
-        margin-top: 1%; /* Убираем отступ сверху для логотипа */
+    .logoms {
+        max-width: 90%; /* уменьшаем размер лого */ /* Убираем отступ сверху для логотипа */
         margin-bottom: 5px; /* Уменьшаем отступ снизу */
-        
     }
 }
 
@@ -94,7 +92,7 @@ body {
 
     .container_main {
         max-width: 90%; /* увеличиваем ширину контейнера */
-        margin-top: 60px;
+        margin-top: 30%;
     }
 
     .description_main {
@@ -105,15 +103,15 @@ body {
         font-size: 1rem;
     }
 
-    .logom {
-        max-width: 70%; /* уменьшаем размер лого */
-        margin-top: 1%;
+    .logoms {
+        max-width: 75%; /* уменьшаем размер лого */
     }
 }
 
 /* медиа-запросы для ПК (wd больше 1024px) */
 @media (min-width: 1025px) {
     .container_main {
+        margin-top: 3%;
         padding: 40px; /* увеличиваем отступы */
     }
 

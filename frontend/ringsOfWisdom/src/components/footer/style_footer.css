@@ -6,8 +6,8 @@
     left: 0; 
     right: 0; 
     height: 5%; 
-    margin-bottom: 1%;
-    margin-top: 15%;
+    margin-bottom: 2%;
+    margin-top: 13%;
 }
 
 .footer__wrapper {
@@ -40,4 +40,20 @@
 
 .copyright p + p {
 	margin-top: 0.5em;
+}
+
+/* медиа-запросы для ноутбуков (wd от 768px до 1024px) */
+@media (max-width: 768px) {
+    .footer{
+        margin-bottom: 2%;
+        margin-top: 70%;
+    }
+}
+
+/* медиа-запросы для ноутбуков (wd от 768px до 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    .footer{
+        margin-bottom: 2%;
+        margin-top: 50%;
+    }
 }
