@@ -27,7 +27,7 @@ function App() {
     <Router>
         <Head />
         <Routes>
-          <Route path="/main" element={<Mainpage />} />
+          <Route path="" element={<Mainpage />} />
           <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<WPS />} />
           <Route path="/skillwp" element={<WPSK />} />
