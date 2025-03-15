@@ -45,7 +45,7 @@ namespace mabyWorking.Migrations
                         .IsUnique()
                         .HasDatabaseName("RoleNameIndex");
 
-                    b.ToTable("AspNetRoles", (string)null);
+                    b.ToTable("aspnetroles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -70,7 +70,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetRoleClaims", (string)null);
+                    b.ToTable("aspnetroleclaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -95,7 +95,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserClaims", (string)null);
+                    b.ToTable("aspnetuserclaims", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
@@ -119,7 +119,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("AspNetUserLogins", (string)null);
+                    b.ToTable("aspnetuserlogins", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<string>", b =>
@@ -134,7 +134,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
+                    b.ToTable("aspnetuserroles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -155,7 +155,7 @@ namespace mabyWorking.Migrations
 
                     b.HasKey("UserId", "LoginProvider", "Name");
 
-                    b.ToTable("AspNetUserTokens", (string)null);
+                    b.ToTable("aspnetusertokens", (string)null);
                 });
 
             modelBuilder.Entity("mabyWorking.Data.Identity.ApplicationIdentityUser", b =>
@@ -219,7 +219,7 @@ namespace mabyWorking.Migrations
                         .IsUnique()
                         .HasDatabaseName("UserNameIndex");
 
-                    b.ToTable("AspNetUsers", (string)null);
+                    b.ToTable("aspnetusers", (string)null);
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Answer", b =>
@@ -241,7 +241,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("QuestionId");
 
-                    b.ToTable("Answers");
+                    b.ToTable("answers");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Course", b =>
@@ -265,7 +265,7 @@ namespace mabyWorking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Courses");
+                    b.ToTable("courses");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Question", b =>
@@ -296,7 +296,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("QuizId");
 
-                    b.ToTable("Questions");
+                    b.ToTable("questions");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Quiz", b =>
@@ -319,7 +319,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("Quizzes");
+                    b.ToTable("quizzes");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Skill", b =>
@@ -340,7 +340,7 @@ namespace mabyWorking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Skills");
+                    b.ToTable("skills");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.SkillStats", b =>
@@ -366,7 +366,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("StatsId");
 
-                    b.ToTable("SkillStats");
+                    b.ToTable("skillstats");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Stats", b =>
@@ -402,7 +402,7 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Stats");
+                    b.ToTable("stats");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Status", b =>
@@ -413,6 +413,9 @@ namespace mabyWorking.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
+                    b.Property<bool>("IsDefault")
+                        .HasColumnType("boolean");
+
                     b.Property<int>("MinXp")
                         .HasColumnType("integer");
 
@@ -422,7 +425,7 @@ namespace mabyWorking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Statuses");
+                    b.ToTable("statuses");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

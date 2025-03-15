@@ -25,7 +25,7 @@ namespace mabyWorking
                 ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseSqlServer(connectionString).EnableSensitiveDataLogging());
+                options.UseNpgsql(connectionString).EnableSensitiveDataLogging());
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 

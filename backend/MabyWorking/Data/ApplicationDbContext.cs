@@ -20,5 +20,14 @@ namespace mabyWorking.Data
         public DbSet<SkillStats> SkillStats { get; set; }
         public DbSet<Course> Courses { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            foreach (var entity in modelBuilder.Model.GetEntityTypes())
+            {
+                entity.SetTableName(entity.GetTableName().ToLower());
+            }
+        }
     }
 }
