@@ -27,20 +27,29 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}`, {
+      const response = await fetch(`${API_BASE_URL}/info`, {
+        method: "GET",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        credentials: "include",
       });
       const data = await response.json();
-      setUserName(data.userName);
+      setUserName(data.username);
       setEmail(data.email);
-      setCoins(data.coins);
+      setCoins(data.balance);
       setStatus(data.status);
-      setSkills([
-        { name: "Навык 1", progress: data.skills.Skill1 },
-        { name: "Навык 2", progress: data.skills.Skill2 },
-        { name: "Навык 3", progress: data.skills.Skill3 },
-        { name: "Навык 4", progress: data.skills.Skill4 },
-      ]);
+      if (data.progress && typeof data.progress === "object") {
+        const formattedSkills = Object.entries(data.progress).map(([key, value]) => {
+          return {
+            name: key.trim(),
+            progress: Number(value) || 0,
+          };
+        });
+  
+        setSkills(formattedSkills);
+      } else {
+        console.log("Прогресс отсутствует или неверный формат");
+        setSkills([]);
+      }
     } catch (error) {
       console.error("Ошибка загрузки профиля:", error);
     }
@@ -48,23 +57,46 @@ const Profile = () => {
 
   const fetchTopPlayers = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/top-players`, {
+      const response = await fetch(`${API_BASE_URL}/top5`, {
+        method: "GET",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        credentials: "include",
       });
+
+      if (!response.ok) throw new Error("Ошибка загрузки топ-5 игроков");
+
       const data = await response.json();
-      setRating(data);
+
+      if (Array.isArray(data)) {
+        setRating(
+          data.map((player, index) => ({
+            Rank: index + 1,
+            UserName: player.username || "Неизвестный",
+            Score: player.xp || 0,
+            Status: player.status || "Без статуса",
+          }))
+        );
+      } else {
+        console.warn("Данные топ-5 игроков пришли в неожиданном формате", data);
+        setRating([]);
+      }
     } catch (error) {
       console.error("Ошибка загрузки топ-5 игроков:", error);
     }
-  };
+};
+
+
+  
+  
 
   const fetchUserRank = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/leaderboard-position`, {
+      const response = await fetch(`${API_BASE_URL}/rank`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        credentials: "include",
       });
       const data = await response.json();
-      setUserRank(data.Rank);
+      setUserRank(data.rank);
     } catch (error) {
       console.error("Ошибка загрузки ранга:", error);
     }
@@ -72,7 +104,7 @@ const Profile = () => {
 
   const handleSaveName = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/update-username`, {
+      const response = await fetch(`${API_BASE_URL}/change-username`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -135,7 +167,7 @@ const Profile = () => {
                 ) : (
                   <div className="display-name">
                     <span>
-                      {userName} ({status}) {userRank && `#${userRank}`}
+                      {userName} <br/>  Статус: {status} <br/> Место в глобальном рейтинге: {userRank ? `#${userRank}` : "не определено"}
                     </span>
                     <button onClick={() => setIsEditing(true)}>✏️</button>
                   </div>
@@ -156,20 +188,24 @@ const Profile = () => {
             {/* Прогресс по навыкам */}
             <div className="profile-section">
               <h2>Прогресс по навыкам</h2>
-              <div className="skills-progress">
-                {skills.map((skill, index) => (
-                  <div key={index} className="skill-circle">
-                    <div
-                      className="circle"
-                      style={{
-                        background: `conic-gradient(#5a47b3 ${skill.progress}%,rgb(250, 223, 202) ${skill.progress}% 100%)`,
-                      }}
-                    >
-                      <span>{skill.progress}%</span>
+                <div className="skills-progress">
+                  {skills.length > 0 ? (
+                    skills.map((skill, index) => (
+                    <div key={index} className="skill-circle">
+                      <div
+                          className="circle"
+                          style={{
+                            background: `conic-gradient(#5a47b3 ${skill.progress}%, rgb(250, 223, 202) ${skill.progress}% 100%)`,
+                            }}
+                      >
+                        <span>{skill.progress}%</span>
+                      </div>
+                      <p>{skill.name}</p>
                     </div>
-                    <p>{skill.name}</p>
-                  </div>
-                ))}
+                      ))
+                    ) : (
+                      <p>Нет данных по навыкам</p>
+                     )}
               </div>
             </div>
 
