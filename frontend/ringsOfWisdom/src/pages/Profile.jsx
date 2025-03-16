@@ -106,18 +106,19 @@ const Profile = () => {
     try {
       const response = await fetch(`${API_BASE_URL}/change-username`, {
         method: "PUT",
+        credentials: "include",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify({ newUserName: userName }),
+        body: JSON.stringify({ NewUserName: userName }),
       });
 
       if (response.ok) {
         setIsEditing(false);
         fetchProfile(); 
       } else {
-        console.error("Ошибка при смене имени.");
+        console.error("Ошибка при смене имени.", error);
       }
     } catch (error) {
       console.error("Ошибка запроса:", error);

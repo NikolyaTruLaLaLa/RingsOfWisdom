@@ -10,6 +10,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using mabyWorking.Controllers;
+using mabyWorking.DTO;
 
 [Route("api/profile")]
 [ApiController]
@@ -65,30 +66,34 @@ public class ProfileController : ControllerBase
     }
 
     [HttpPut("change-username")]
-    public async Task<IActionResult> ChangeUsername([FromBody] string newUsername)
+    public async Task<IActionResult> ChangeUsername([FromBody] ChangeUsernameDto request)
     {
-        if (string.IsNullOrWhiteSpace(newUsername)) return BadRequest("Никнейм не может быть пустым");
+        if (string.IsNullOrWhiteSpace(request.NewUserName))
+            return BadRequest("Никнейм не может быть пустым");
 
-        var existingUser = await _userManager.FindByNameAsync(newUsername);
-        if (existingUser != null) return BadRequest("Никнейм уже используется");
+        var existingUser = await _userManager.FindByNameAsync(request.NewUserName);
+        if (existingUser != null)
+            return BadRequest("Никнейм уже используется");
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _userManager.FindByIdAsync(userId);
-        if (user == null) return NotFound("Пользователь не найден");
+        if (user == null)
+            return NotFound("Пользователь не найден");
 
-        user.UserName = newUsername;
-        user.NormalizedUserName = newUsername.ToUpper();
+        user.UserName = request.NewUserName;
+        user.NormalizedUserName = request.NewUserName.ToUpper();
 
         var result = await _userManager.UpdateAsync(user);
-        if (!result.Succeeded) return BadRequest("Ошибка при изменении никнейма");
+        if (!result.Succeeded)
+            return BadRequest("Ошибка при изменении никнейма");
 
         return Ok("Никнейм успешно изменён");
     }
 
+
     [HttpGet("top5")]
     public async Task<IActionResult> GetTopPlayers()
     {
-        _logger.LogInformation("get top5");
         var topPlayers = await _context.Stats
             .OrderByDescending(s => s.Xp)
             .Take(5)
@@ -111,7 +116,6 @@ public class ProfileController : ControllerBase
 
         var urank = await _context.Stats.CountAsync(s => s.Xp > stats.Xp) + 1;
 
-        _logger.LogInformation($"Get user rank {urank}");
         return Ok(new { rank = urank });
     }
 

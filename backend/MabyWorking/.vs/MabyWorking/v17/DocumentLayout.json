@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:controllers\\profilecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\dto\\changeusernamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:dto\\changeusernamedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\study\\\u043F\u043424\\git\\ringsofwisdom\\backend\\mabyworking\\models\\skillstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:models\\skillstats.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -54,11 +58,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "ChangeUsernameDto.cs",
+              "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\DTO\\ChangeUsernameDto.cs",
+              "RelativeDocumentMoniker": "DTO\\ChangeUsernameDto.cs",
+              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\DTO\\ChangeUsernameDto.cs",
+              "RelativeToolTip": "DTO\\ChangeUsernameDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAvAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-16T17:45:50.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "Skill.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Models\\Skill.cs",
               "RelativeDocumentMoniker": "Models\\Skill.cs",
@@ -74,16 +91,16 @@
               "Title": "ProfileController.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\ProfileController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProfileController.cs",
-              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\ProfileController.cs*",
-              "RelativeToolTip": "Controllers\\ProfileController.cs*",
-              "ViewState": "AQIAAGQAAAAAAAAAAAAAAHIAAAAZAAAA",
+              "ToolTip": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\ProfileController.cs",
+              "RelativeToolTip": "Controllers\\ProfileController.cs",
+              "ViewState": "AQIAAEEAAAAAAAAAAAAswFwAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-15T09:21:24.914Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "RegisterController.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\RegisterController.cs",
               "RelativeDocumentMoniker": "Controllers\\RegisterController.cs",
@@ -95,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Stats.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Models\\Stats.cs",
               "RelativeDocumentMoniker": "Models\\Stats.cs",
@@ -107,7 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Status.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Models\\Status.cs",
               "RelativeDocumentMoniker": "Models\\Status.cs",
@@ -119,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
@@ -131,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "mabyWorking.csproj",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
               "RelativeDocumentMoniker": "mabyWorking.csproj",
@@ -143,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "appsettings.json",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -155,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "SkillStats.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Models\\SkillStats.cs",
               "RelativeDocumentMoniker": "Models\\SkillStats.cs",
@@ -167,7 +184,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "Program.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -179,7 +196,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "LoginController.cs",
               "DocumentMoniker": "E:\\Study\\\u041F\u041424\\git\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\LoginController.cs",
               "RelativeDocumentMoniker": "Controllers\\LoginController.cs",
