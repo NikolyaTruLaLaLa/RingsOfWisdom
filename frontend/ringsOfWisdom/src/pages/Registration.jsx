@@ -3,7 +3,7 @@ import './../assets/style/style_registration.css';
 import { useState } from "react";
 import axios from "axios";
 
-import { NavLink, useNavigate } from 'react-router-dom'; // Добавили useNavigate
+import { NavLink, useNavigate } from 'react-router-dom';
 import React from 'react';
 
 function Registration() {
@@ -18,14 +18,14 @@ function Registration() {
     const [emailError, setEmailError] = useState("");
     const [passwordError, setPasswordError] = useState("");
 
-    const navigate = useNavigate(); // Хук для навигации
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const validateEmail = (email) => {
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Простая проверка email
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return regex.test(email);
     };
 
@@ -41,28 +41,28 @@ function Registration() {
 
         let isValid = true;
 
-        // Проверка email
+        
         if (!validateEmail(formData.email)) {
             setEmailError("Некорректный формат email.");
             isValid = false;
         }
 
-        // Проверка паролей
+        
         if (!validatePassword(formData.password, formData.confirmPassword)) {
             setPasswordError("Пароли не совпадают.");
             isValid = false;
         }
 
-        // Если есть ошибки, останавливаем отправку формы
+        
         if (!isValid) {
             return;
         }
 
         try {
-            const response = await axios.post("http://localhost:5269/api/register/registration", formData);
+            const response = await axios.post("https://localhost:5269/api/register/registration", formData);
             setMessage(response.data.message);
 
-            // Если данные верны, переходим на страницу /emlverif
+            
             navigate("/emlverif");
         } catch (error) {
             setMessage("Ошибка: " + (error.response?.data?.[0]?.description || "Неизвестная ошибка"));

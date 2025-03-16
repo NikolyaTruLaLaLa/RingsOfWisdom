@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("mabyWorking")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+77ced8115e11fabfaf5184275edfb8e133418eb3")]
 [assembly: System.Reflection.AssemblyProductAttribute("mabyWorking")]
 [assembly: System.Reflection.AssemblyTitleAttribute("mabyWorking")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

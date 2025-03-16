@@ -1,17 +1,26 @@
-﻿namespace mabyWorking.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+
+namespace mabyWorking.Models
 {
     public class Question
     {
-        public int id { get; set; }
-        public string description { get; set; }
-        public string answer { get; set; }
-        public string comment { get; set; }
-        public string area { get; set; }
-        public int level { get; set; }
-        public int skillID { get; set; }
+        [Key]
+        public long Id { get; set; }
 
-        public Skill Skill { get; set; }
-        public ICollection<Solved_question> Solved_Questions { get; set; }
+        [ForeignKey("Quiz")]
+        public long QuizId { get; set; }
+        public Quiz Quiz { get; set; } = null!;
+
+        public string? Explanation { get; set; }
+
+        [Required]
+        public string Description { get; set; } = string.Empty;
+
+        public int RewardRings { get; set; } = 0;
+        public int RewardXp { get; set; } = 0;
+
+        public ICollection<Answer> Answers { get; set; } = new List<Answer>();
 
     }
 }

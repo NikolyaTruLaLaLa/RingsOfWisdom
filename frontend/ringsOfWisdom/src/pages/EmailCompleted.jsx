@@ -21,7 +21,7 @@ export default function EmailCompleted() {
             return;
         }
 
-        fetch(`http://localhost:5269/api/register/confirm-email?userId=${userId}&code=${encodeURIComponent(code)}`, {
+        fetch(`https://localhost:5269/api/register/confirm-email?userId=${userId}&code=${encodeURIComponent(code)}`, {
             method: "GET"
         })
         .then(response => response.json())

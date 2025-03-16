@@ -1,20 +1,20 @@
-﻿namespace mabyWorking.Models
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+namespace mabyWorking.Models
 {
     public class Skill
     {
-        public int Id { get; set; }
-        //public string Description { get; set; }
-        public string Name { get; set; }
-        public int Max_level { get; set; }
-        public int DirectionID { get; set; }
-        public string Image { get; set; }
+        [Key]
+        [Column("id")]
+        public long Id { get; set; }
 
-        public Direction Direction { get; set; }
+        [Required, StringLength(256)]
+        [Column("name")]
+        public string Name { get; set; } = string.Empty;
+        [Column("description")]
+        public string? Description { get; set; }
 
-        public ICollection<Progress_in_skills> Progresses_in_skils { get; set; }
-        public ICollection<Question> Questions
-        {
-            get; set;
-        }
+        public ICollection<Quiz> Quizzes { get; set; } = new List<Quiz>();
     }
 }

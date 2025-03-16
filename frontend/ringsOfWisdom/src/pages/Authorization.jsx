@@ -1,8 +1,8 @@
 import logom from "./../assets/images/logo.png";
 import './../assets/style/style_authorization.css';
-
+import { useAuth } from './../hooks/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -11,14 +11,26 @@ const Login = () => {
   const [message, setMessage] = useState("");
   const [userNameError, setUserNameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
+  const { isAuthenticated, checkAuthStatus } = useAuth();
   const navigate = useNavigate(); 
+
+
+  useEffect(() => {
+    if (!isAuthenticated) {
+      checkAuthStatus();
+    }
+  }, [isAuthenticated, checkAuthStatus]);
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setMessage("");
     setUserNameError("");
     setPasswordError("");
+
+    if (isSubmitting || isAuthenticated) return;
+    setIsSubmitting(true);
 
     let isValid = true;
 
@@ -32,21 +44,27 @@ const Login = () => {
       isValid = false;
     }
 
-    if (!isValid) return;
+    if (!isValid) {
+      setIsSubmitting(false);
+      return;
+    }
 
     try {
-      const response = await fetch("http://localhost:5269/api/Login/login", { 
+      const response = await fetch("https://localhost:5269/api/Login/login", { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, password, rememberMe }),
+        credentials: "include",
       });
 
       const data = await response.json();
 
       if (response.ok) {
         setMessage("Авторизация успешна!");
+        checkAuthStatus(); 
         navigate("/main"); 
-      } else {
+      }
+      else {
         if (data.message === "User account is locked out.") {
           setMessage("Аккаунт заблокирован.");
         } else if (data.message === "Two-factor authentication required.") {
@@ -57,6 +75,8 @@ const Login = () => {
       }
     } catch (error) {
       setMessage("Ошибка подключения к серверу.");
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -101,7 +121,7 @@ const Login = () => {
             <a href="#" className="forgot-password">Забыли пароль?</a>
           </div>
 
-          <button type="submit">Войти</button>
+          <button type="submit" disabled={isSubmitting || isAuthenticated}>Войти</button>
         </form>
 
         {message && <p>{message}</p>}

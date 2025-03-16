@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 using mabyWorking.Data.Identity;
+using Microsoft.AspNetCore.Authentication;
+using System.Security.Claims;
 
 namespace mabyWorking.Controllers
 {
@@ -44,6 +46,7 @@ namespace mabyWorking.Controllers
             if (result.Succeeded)
             {
                 _logger.LogInformation("User logged in.");
+
                 return Ok(new { message = "Login successful" });
             }
             if (result.RequiresTwoFactor)
@@ -65,6 +68,16 @@ namespace mabyWorking.Controllers
             await _signInManager.SignOutAsync();
             _logger.LogInformation("User logged out.");
             return Ok(new { message = "Logout successful" });
+        }
+
+        [HttpGet("check-auth")]
+        public IActionResult CheckAuth()
+        {
+            if (User?.Identity?.IsAuthenticated == true)
+            {
+                return Ok(new { isAuthenticated = true });
+            }
+            return Ok(new { isAuthenticated = false });
         }
     }
 }

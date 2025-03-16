@@ -13,6 +13,9 @@ using mabyWorking.Services;
 using mabyWorking.Interfaces;
 using mabyWorking.Configurations;
 using Microsoft.Extensions.Options;
+using mabyWorking.Data;
+using mabyWorking.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace mabyWorking.Controllers
 {
@@ -27,13 +30,15 @@ namespace mabyWorking.Controllers
         private readonly ILogger<RegisterController> _logger;
         private readonly Interfaces.IEmailSender _emailSender;
         private readonly AppSetittings _config;
+        private readonly ApplicationDbContext _context;
 
         public RegisterController(
             UserManager<ApplicationIdentityUser> userManager,
             IUserStore<ApplicationIdentityUser> userStore,
             SignInManager<ApplicationIdentityUser> signInManager,
             ILogger<RegisterController> logger,
-            Interfaces.IEmailSender emailSender, IOptions<AppSetittings> appSettings)
+            Interfaces.IEmailSender emailSender, IOptions<AppSetittings> appSettings,
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -42,6 +47,7 @@ namespace mabyWorking.Controllers
             _logger = logger;
             _emailSender = emailSender;
             _config = appSettings.Value;
+            _context = context;
         }
 
         public class RegisterRequest
@@ -81,6 +87,27 @@ namespace mabyWorking.Controllers
                 _logger.LogInformation("User created a new account with password.");
 
                 var userId = await _userManager.GetUserIdAsync(user);
+                var initialStatusId = await _context.Statuses
+                .Where(s => s.IsDefault)
+                .Select(s => s.Id)
+                .FirstOrDefaultAsync();
+
+                if (initialStatusId == 0)
+                {
+                    return StatusCode(500, "Ошибка: начальный статус не найден.");
+                }
+                var userStats = new Stats
+                {
+                    UserId = userId,
+                    Balance = 0,
+                    QuizLimit = 3,
+                    QuizPassed = 0,
+                    Xp = 0,
+                    StatusId = initialStatusId
+                };
+
+                _context.Stats.Add(userStats);
+                await _context.SaveChangesAsync();
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
