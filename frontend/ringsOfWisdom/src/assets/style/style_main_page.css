@@ -1,80 +1,125 @@
 :root {
-    --background-color: #fdf4d1; /* Цвет фона страницы */
-    --header-bg-color: #fffbe9; /* Цвет фона шапки */
-    --header-text-color: #333333; /* Цвет текста в шапке */
+    --background-color: #fdf4d1; /* цвет фона страницы */
+    --header-bg-color: #fffbe9; /* цвет фона шапки */
+    --header-text-color: #333333; /* цвет текста в шапке */
 }
 
 body {
-   
-   /*фон{ */
     background-image: url('./assets/fons.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    /* фон}*/
+    background-position: center center;
+    background-attachment: fixed;
     margin: 0;
     height: 100vh;
-    padding: 10%;
-    /*background-color: var(--background-color);*/
+    padding: 10%; /* опускаем ниже */
     font-family: Arial, sans-serif;
 }
 
-
-/* Контент страницы */
-.container_all{
-    
-    margin-top: 50%;
-    align-content:space-between;
-  justify-content: space-between;
-  
+/* контейнер для мейн контента */
+.container_main {
+    max-width: 80%; /* огран ширины контента */
+    width: 100%;
+    margin: 0 auto; /* отцентровка */
+    margin-top: 1%;
+    margin-bottom: 2%;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* фончик */
+    border-radius: 10px; /* уголки */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* тень */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* центрируем по горизонтали */
+    justify-content: center; /* центрируем по вертикали */
+    text-align: center; /* центрируем текст */
+    overflow: auto; /* добавляем прокрутку, если контент не помещается */
+    min-height: auto; /* минимальная высота по содержимому */
 }
-/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
-@media (min-width: 1200px) {
-    .container_all{
-    
-        margin-top: 0.1%;
-        align-content:space-between;
-      justify-content: space-between;
-      
+
+/* стили для текста */
+.description_main {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.goal-container_main {
+    margin-top: 20px;
+}
+
+.goal-text_main {
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+/* лого */
+.logoms {
+    max-width: 70%; /* лого адаптируется под мейн контейнер */
+    margin-bottom: 10px;
+}
+
+/* медиа-запросы для мобилок (wd < 768px) */
+@media (max-width: 767px) {
+    body {
+        padding: 5%; /* уменьшаем отступы */
+    }
+
+    .container_main {
+        padding: 15px; /* уменьшаем отступы внутри контейнера */
+        margin-top: 40%;
+        
+    }
+
+    .description_main {
+        font-size: 1rem; /* уменьшаем размер шрифта */
+    }
+
+    .goal-text_main {
+        font-size: 0.9rem;
+    }
+
+    .logoms {
+        max-width: 90%; /* уменьшаем размер лого */ /* Убираем отступ сверху для логотипа */
+        margin-bottom: 5px; /* Уменьшаем отступ снизу */
     }
 }
 
+/* медиа-запросы для ноутбуков (wd от 768px до 1024px) */
+@media (min-width: 768px) and (max-width: 1024px) {
+    body {
+        padding: 8%; /* увеличиваем отступы */
+    }
 
-/*
-@media(min-width:576px){
-    body{
-    background-repeat: no-repeat;
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
+    .container_main {
+        max-width: 90%; /* увеличиваем ширину контейнера */
+        margin-top: 30%;
+    }
+
+    .description_main {
+        font-size: 1.1rem; /* средний размер шрифта */
+    }
+
+    .goal-text_main {
+        font-size: 1rem;
+    }
+
+    .logoms {
+        max-width: 75%; /* уменьшаем размер лого */
     }
 }
 
-@media (min-width: 768px){
-    body{
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
+/* медиа-запросы для ПК (wd больше 1024px) */
+@media (min-width: 1025px) {
+    .container_main {
+        margin-top: 3%;
+        padding: 40px; /* увеличиваем отступы */
+    }
+
+    .description_main {
+        font-size: 1.3rem; /* увеличиваем размер шрифта */
+    }
+
+    .goal-text_main {
+        font-size: 1.2rem;
     }
 }
-
-@media(min-width: 1200px){
-    body{
-      
-    
-    background: url(fons.jpg);
-    background-size: cover;
-	background-position: center center;
-	background-attachment: fixed;
-    }
-    
-}*/
-
-
-
-

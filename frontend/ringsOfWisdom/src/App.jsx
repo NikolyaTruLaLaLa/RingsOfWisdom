@@ -5,7 +5,8 @@ import "./assets/style/style_main_page.css";
 import './App.css';
 
 import Head from './components/header/Head';
-import WPM from './pages/WPM';
+/*import Footer from './components/footer/Footer';*/
+import Mainpage from './pages/Mainpage';
 import WPC from './pages/WPC';
 import WPS from './pages/WPS';
 import Skillstree from './pages/Skillstree';
@@ -24,7 +25,7 @@ function App() {
       <Router>
         <Head />
         <Routes>
-          <Route path="/main" element={<WPM />} />
+          <Route path="" element={<Mainpage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<WPS />} />
