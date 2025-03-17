@@ -1,7 +1,7 @@
 import logo from "./../../assets/images/Logo Black.png";
 import { NavLink } from "react-router-dom";
 import React from "react";
-import ProfileButton from "./ProfileButton"; // Импортируем новый компонент
+import ProfileButton from "./ProfileButton";
 
 import "./stylehead.css";
 
