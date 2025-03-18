@@ -4,10 +4,7 @@ const Shop = () => {
     
     return ( 
     <>
-    <Headshopcontainer />
-
-        <Maincontent /> 
-   
+    
     </>
      );
 }
