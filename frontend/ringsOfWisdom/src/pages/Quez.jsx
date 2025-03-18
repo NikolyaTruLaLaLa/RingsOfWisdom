@@ -1,95 +1,86 @@
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 import './../assets/style/style_quez.css';
-{/*import script_quez from './../scripts/script_quez'*/}
 
-import React, { useState, useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
-
-
-const questions = [
-    {
-    question: "В сербском языке первую порцию ЕГО за день могут назвать «раздрему́ша». Назовите ЕГО несклоняемым словом.",
-    answers: ["Кофе", "coffee", "кафе"],
-    explanation: " \nЗачёт:Кофе,coffee,кафе. \nКомментарий: Слово «раздремуша» родственно слову «дремать», а кофе как будто пробуждает человека.",
-    },
-    {
-    question: "Герои романа То́ни Мо́ррисон, действие которого происходит в начале двадцатого века, едут на север, в Нью-Йорк. В описании поездки говорится, что после Де́лавэра в НЁМ убрали занавеску, которая разделяла ЕГО на две части. Назовите ЕГО, использовав дефис.",
-    answers: ["Вагон-ресторан"],
-    explanation: " \nЗачёт:точный ответ. \nКомментарий: Герои ехали на поезде, часть вагонов которого была для белых, а часть для афроамериканцев. Вагон-ресторан по требованиям сегрегации был разделён занавеской, которую убрали только после пересечения линии Мэ́йсона-Ди́ксона, разделяющей бывшие рабовладельческие штаты и свободные от рабства штаты севера США.",
-    },
-    {
-    question: "При исследовании яиц вшей с древних мумий была получена неповрежденной уникальная информация о прошлом. Антропóлог сравнивает яйца вшей с НЕЙ. Назовите ЕЁ двумя словами.",
-    answers: ["капсула времени", "капсула памяти", "письмо в будущее"],
-    explanation: " \nЗачёт:капсула времени, капсула памяти, письмо в будущее. \nКомментарий: Капсула времени – это послание, предназначенное для потомков. При исследовании яиц вшей на древних мумиях, археологи обнаружили, что скрепляющий их цемент сохраняет ДНК человека лучше, чем зубы или кости мумий. Само яйцо – это тоже своего рода капсула.",
-    },
-    ];
-    
-    const Quez = () => {
+const QuizPage = () => {
+    const { quizName } = useParams();
+    const navigate = useNavigate();
+    const [questions, setQuestions] = useState([]);
     const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
     const [userAnswer, setUserAnswer] = useState("");
     const [feedback, setFeedback] = useState("");
-    
-    const currentQuestion = questions[currentQuestionIndex];
-    
-    const handleAnswerSubmit = () => {
-    const normalizedAnswers = currentQuestion.answers.map((answer) =>
-    answer.toLowerCase()
-    );
-    const normalizedUserAnswer = userAnswer.trim().toLowerCase();
-    
-    if (normalizedUserAnswer === "") {
-    setFeedback("Пожалуйста, введите ответ.");
-    } else if (normalizedAnswers.includes(normalizedUserAnswer)) {
-    setFeedback(`Правильный ответ! ${currentQuestion.explanation}`);
-    } else {
-    setFeedback("Неправильный ответ. Попробуйте еще раз.");
-    }
-    };
-    
-    const handleNextQuestion = () => {
-    if (currentQuestionIndex < questions.length - 1) {
-    setCurrentQuestionIndex(currentQuestionIndex + 1);
-    setUserAnswer("");
-    setFeedback("");
-    } else {
-    setFeedback("Это был последний вопрос!");
-    }
-    };
-    
-    return (
-        <>
-    <div className="quiz-popup">
-    <div className="quiz-header">
-    <p id="question-number">
-    Вопрос {currentQuestionIndex + 1} из {questions.length}
-    </p>
-    </div>
-    
-    <div className="quiz-body">
-        <div className='quiz-name'>Гендерные формы</div>
-        <div className="quiz-question">
-            <p className="quiz-question-text">{currentQuestion.question}</p>
-        </div>
-        <div className="quiz-answer">
-            <input type="text" className="answer-input" value={userAnswer} onChange={(e) => setUserAnswer(e.target.value)} placeholder="Введите ваш ответ"/>
-         </div>
-    
-        <button className="submit-button" onClick={ feedback.includes("Правильный ответ!") ? handleNextQuestion : handleAnswerSubmit}>
-            {feedback.includes("Правильный ответ!") ? "Следующий вопрос" : "Сдать бланк с ответом!"}
-        </button>
-        <div id="feedback" className="quiz-feedback">
-            {feedback}
-        </div>
-    </div>
-    <div className="quiz-footer">
-                <NavLink to="/stngform" className="back-to-menu">
-                    <button>Вернуться на дерево</button>
-                </NavLink>
-            </div>
-    </div>
+    const [attemptsLeft, setAttemptsLeft] = useState(3);
+    const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
 
-    <footer className="footer_quez"/>
-    </>
-    );
+    useEffect(() => {
+        fetch(`/api/quizzes/${encodeURIComponent(quizName)}`)
+            .then(response => response.json())
+            .then(data => setQuestions(data))
+            .catch(error => console.error("Ошибка загрузки квиза:", error));
+    }, [quizName]);
+
+    if (!questions.length) return <p>Загрузка вопросов...</p>;
+
+    const currentQuestion = questions[currentQuestionIndex];
+    const normalizedAnswers = currentQuestion.Answers.map(answer => answer.toLowerCase());
+    const normalizedUserAnswer = userAnswer.trim().toLowerCase();
+
+    const handleAnswerSubmit = () => {
+        if (!normalizedUserAnswer) {
+            setFeedback("Пожалуйста, введите ответ.");
+            return;
+        }
+
+        if (normalizedAnswers.includes(normalizedUserAnswer)) {
+            setFeedback(`Правильный ответ! ${currentQuestion.Explanation}`);
+            setCorrectAnswersCount(prev => prev + 1);
+        } else {
+            if (attemptsLeft > 1) {
+                setFeedback(`Неправильный ответ. Осталось попыток: ${attemptsLeft - 1}`);
+                setAttemptsLeft(prev => prev - 1);
+            } else {
+                setFeedback("Попытки кончились. Верный ответ: " + currentQuestion.Answers[0]);
+            }
+        }
     };
-    
-    export default Quez;
+
+    const handleNextQuestion = () => {
+        if (currentQuestionIndex < questions.length - 1) {
+            setCurrentQuestionIndex(prev => prev + 1);
+            setUserAnswer("");
+            setFeedback("");
+            setAttemptsLeft(3);
+        } else {
+            fetch("/api/quizzes/complete-quiz", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ quizName, correctAnswersCount })
+            }).then(() => navigate("/stngform"));
+        }
+    };
+
+    return (
+        <div className="quiz-popup">
+            <div className="quiz-header">
+                <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
+            </div>
+            <div className="quiz-body">
+                <div className='quiz-name'>{quizName}</div>
+                <p className="quiz-question-text">{currentQuestion.Description}</p>
+                <input
+                    type="text"
+                    className="answer-input"
+                    value={userAnswer}
+                    onChange={(e) => setUserAnswer(e.target.value)}
+                    placeholder="Введите ваш ответ"
+                />
+                <button onClick={feedback.includes("Правильный") || attemptsLeft === 0 ? handleNextQuestion : handleAnswerSubmit}>
+                    {feedback.includes("Правильный") || attemptsLeft === 0 ? "Следующий вопрос" : "Сдать ответ"}
+                </button>
+                <p className="quiz-feedback">{feedback}</p>
+            </div>
+        </div>
+    );
+};
+
+export default QuizPage;
