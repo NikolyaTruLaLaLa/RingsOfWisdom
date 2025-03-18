@@ -1,16 +1,15 @@
-
-import Headskillwpcontainer from "../components/header-container/Headskillwpcontainer";
-import Maincontent from "../components/main-content/Maincontent";
+import React from 'react';
+import './../assets/style/type_and_types.css';
 
 const Type_and_Types = () => {
     
     return ( 
-    <>
-    <Headskillwpcontainer />
-
-        <Maincontent /> 
-   
-    </>
+        <div className="type-and-types">
+            <div className="head1">
+                <h1>Типы Типочки</h1>
+                <p>Тестовый текст</p>
+            </div>
+        </div>
      );
 }
  
