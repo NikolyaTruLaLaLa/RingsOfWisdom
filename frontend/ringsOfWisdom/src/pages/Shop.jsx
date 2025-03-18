@@ -8,7 +8,7 @@ const Shop = () => {
     return (
         <div className="shop-container">
             <div className="header-info">
-                <h1>Go Magic Store</h1>
+                <h1>ROW Store</h1>
                 <div className="balance-info">
                     <span className="coin-icon">🪙</span>
                     <span>{balance}</span>
