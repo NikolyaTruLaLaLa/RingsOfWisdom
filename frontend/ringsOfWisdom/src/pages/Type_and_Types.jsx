@@ -15,6 +15,8 @@ const Type_and_Types = () => {
     
     return ( 
         <div className="skill-tree">
+            <p className="page-title">Типы типочки</p>
+            
             {/* Первый ряд (1 кружок) */}
             <div className="skill-row">
                 <div className="circle-container">
@@ -47,7 +49,7 @@ const Type_and_Types = () => {
                     <div className="circle">
                         <img src={blatie_nomera} alt="Блатные номера" />
                     </div>
-                    <p>Блатные номера</p>
+                    <p>Блатные<br/>номера</p>
                 </div>
                 <div className="circle-container">
                     <div className="circle">

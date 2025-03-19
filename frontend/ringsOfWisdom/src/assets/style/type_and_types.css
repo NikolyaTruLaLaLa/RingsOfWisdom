@@ -2,17 +2,23 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px; 
-    padding: 20px;
+    gap: 60px; /* Большое расстояние между рядами */
+}
+
+.page-title {
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    color: #333; /* Цвет текста */
 }
 
 .skill-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); 
-    gap: 60px; 
-    width: 100%;
-    max-width: 800px; 
+    display: flex;
     justify-content: center;
+    gap: 180px; /* Большое расстояние между кружками */
+    width: 100%;
+    max-width: 800px; /* Ограничиваем ширину для больших экранов */
+    flex-wrap: wrap; /* Перенос на новую строку, если не помещается */
 }
 
 .circle-container {
@@ -23,24 +29,63 @@
 }
 
 .circle {
-    width: 120px; 
-    height: 120px;
+    width: 100px; /* Увеличено для больших экранов */
+    height: 100px;
     border-radius: 50%;
     background-color: #5a47b3;
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; 
+    overflow: hidden; /* Чтобы изображение не выходило за границы кружка */
 }
 
 .circle img {
-    width: 72%;
-    height: 72%;
-    object-fit: cover; 
+    width: 70%; /* Уменьшен размер изображения */
+    height: 70%;
+    object-fit: cover; /* Чтобы изображение заполняло кружок */
 }
 
 .circle-container p {
     margin-top: 10px;
     font-size: 16px;
     color: #333;
+}
+
+@media (max-width: 768px) {
+    .skill-tree {
+        gap: 40px; /* Уменьшено расстояние для планшетов */
+    }
+
+    .skill-row {
+        gap: 40px; /* Уменьшено расстояние для планшетов */
+    }
+
+    .circle {
+        width: 100px;
+        height: 100px;
+    }
+
+    .circle-container p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-tree {
+        gap: 20px; /* Уменьшено расстояние для мобильных */
+        padding: 60px;
+    }
+
+    .skill-row {
+        gap: 35px; /* Уменьшено расстояние для мобильных */
+    }
+
+    .circle {
+        width: 70px; /* Уменьшен размер кружков для мобильных */
+        height: 70px;
+    }
+
+    .circle-container p {
+        font-size: 12px;
+    }
 }
