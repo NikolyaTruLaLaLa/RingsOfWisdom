@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import useQuizzes from "./../hooks/UseQuizzes";
 import dish from "./../assets/images/dish.png";
@@ -15,10 +16,36 @@ const quizData = [
 
 const Strongformstree = () => {
 
+  {/*
+    const [availableQuizzes, setAvailableQuizzes] = useState(0);
+    const [totalQuizzes, setTotalQuizzes] = useState(3);
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/profile/info`); //переделать: нужен контроллер на бэке для получения данных о балансе и доступных квизах
+                if (!response.ok) throw new Error("Ошибка загрузки данных");
+                
+                const data = await response.json();
+                setAvailableQuizzes(data.quizLimit);
+            } catch (error) {
+                console.error("Ошибка получения данных пользователя:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []); 
+    */}
+  const [isPopupVisible, setPopupVisible] = useState(true);
+
+  const handleClosePopup = () => {
+    setPopupVisible(false);
+  };
+
   return (
     <div className="container_all">
       <div className="head">
         <p>Могучие Формы</p>
+        {/*<span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Осталось квизов</span>*/}
       </div>
       <div className="container_first">
         <NavLink to={quizData[0].path} className="item">
@@ -42,6 +69,19 @@ const Strongformstree = () => {
           <p>{quizData[3].name}</p>
         </NavLink>
       </div>
+
+      {isPopupVisible && (
+        <div className="popupwin">
+          <div className="popupwin-content">
+            <span className="close-btn" onClick={handleClosePopup}>
+              &times;
+            </span>
+            <p>
+              При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия первых 2-ух вопросов.
+            </p>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
