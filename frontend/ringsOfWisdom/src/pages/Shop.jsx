@@ -2,8 +2,8 @@ import './../assets/style/style_shop.css';
 
 const Shop = () => {
     const balance = 0; 
-    const availableQuizzes = 5; 
-    const totalQuizzes = 10; 
+    const availableQuizzes = 3; 
+    const totalQuizzes = 3; 
 
     return (
         <div className="shop-container">
@@ -12,7 +12,7 @@ const Shop = () => {
                 <div className="balance-info">
                     <span className="coin-icon">🪙</span>
                     <span>{balance}</span>
-                    <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Осталось квизов</span>
+                    <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                 </div>
             </div>
 
