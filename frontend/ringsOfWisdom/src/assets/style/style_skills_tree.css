@@ -129,8 +129,7 @@
 /* Стили для всплывающего окошка */
 .popupwinn {
   position:fixed;
-  margin-bottom: 1%;
-  margin-top:80%;
+  margin:auto;
   margin-left: 80%;
   
   animation: fadeIn 0.5s ease-in-out;
@@ -196,7 +195,7 @@
     }
   }
 
-  @media (min-width: 767px) {
+  @media (min-width: 768px) and (max-width: 1025px) {
     .popupwin {
         margin-bottom: 5%;
         margin-top:20%;
@@ -218,11 +217,11 @@
   }
 
   /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
-  @media (min-width: 1025px) {
+  @media (min-width: 1026px) {
     .popupwin {
-        margin-bottom: 6%;
-        margin-top:1%;
-        margin-left: 80%;
+      margin-bottom: 1%;
+      margin-top: 1%;
+      margin-left: 70%;
     }
   
     .popupwin-content {
