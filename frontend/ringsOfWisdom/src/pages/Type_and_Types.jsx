@@ -23,8 +23,8 @@ const Type_and_Types = () => {
 
         {/* Первый ряд (1 кружок) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={baza} alt="БАЗА" />
                 </div>
                 <p>БАЗА</p>
@@ -33,14 +33,14 @@ const Type_and_Types = () => {
 
         {/* Второй ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={razdatka} alt="Раздатка" />
                 </div>
                 <p>Раздатка</p>
             </NavLink>
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={zamena} alt="Замена" />
                 </div>
                 <p>Замена</p>
@@ -49,14 +49,14 @@ const Type_and_Types = () => {
 
         {/* Третий ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={blatie_nomera} alt="Блатные номера" />
                 </div>
                 <p>Блатные<br/>номера</p>
             </NavLink>
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={razdatOCHKA} alt="РаздатОЧКА" />
                 </div>
                 <p>РаздатОЧКА</p>
@@ -65,14 +65,14 @@ const Type_and_Types = () => {
 
         {/* Четвертый ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={zamena_zamen} alt="Замена замен замены замен" />
                 </div>
                 <p>Замена замен<br/>замены замен</p>
             </NavLink>
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={svyazannye} alt="Связанные одной цепью" />
                 </div>
                 <p>Связанные<br/>одной цепью</p>
@@ -81,14 +81,14 @@ const Type_and_Types = () => {
 
         {/* Пятый ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={kot} alt="Кот в Чёрном Ящике" />
                 </div>
                 <p>Кот в Чёрном<br/>Ящике</p>
             </NavLink>
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={frazochki} alt="Странные фразочки" />
                 </div>
                 <p>Странные<br/>фразочки</p>
@@ -97,8 +97,8 @@ const Type_and_Types = () => {
 
         {/* Шестой ряд (1 кружок) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-container"> {/* Кликабельный кружок */}
-                <div className="circle">
+            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
+                <div className="circle-typ">
                     <img src={blitz} alt="БЛИЦ БЛИЦ БЛИЦ" />
                 </div>
                 <p>БЛИЦ<br/>БЛИЦ БЛИЦ</p>

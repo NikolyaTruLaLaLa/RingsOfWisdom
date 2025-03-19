@@ -21,7 +21,7 @@
     flex-wrap: wrap; /* Перенос на новую строку, если не помещается */
 }
 
-.circle-container {
+.circle-typ-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,24 +29,24 @@
     text-decoration: none;
 }
 
-.circle {
+.circle-typ {
     width: 100px; /* Увеличено для больших экранов */
     height: 100px;
     border-radius: 50%;
-    background-color: #5a47b3;
+    background: #5a47b3;
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden; /* Чтобы изображение не выходило за границы кружка */
 }
 
-.circle img {
+.circle-typ img {
     width: 70%; /* Уменьшен размер изображения */
     height: 70%;
     object-fit: cover; /* Чтобы изображение заполняло кружок */
 }
 
-.circle-container p {
+.circle-typ-container p {
     margin-top: 10px;
     font-size: 16px;
     color: #333;
@@ -61,12 +61,12 @@
         gap: 40px; /* Уменьшено расстояние для планшетов */
     }
 
-    .circle {
+    .circle-typ {
         width: 100px;
         height: 100px;
     }
 
-    .circle-container p {
+    .circle-typ-container p {
         font-size: 14px;
     }
 }
@@ -81,12 +81,12 @@
         gap: 35px; /* Уменьшено расстояние для мобильных */
     }
 
-    .circle {
+    .circle-typ {
         width: 70px; /* Уменьшен размер кружков для мобильных */
         height: 70px;
     }
 
-    .circle-container p {
+    .circle-typ-container p {
         font-size: 12px;
     }
 }
