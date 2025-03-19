@@ -19,6 +19,7 @@ import Quez from './pages/Quez';
 import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
 
+
 function App() {
   return (
     <AuthProvider>
