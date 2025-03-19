@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-const API_BASE_URL = "https://localhost:5269/api/profile"; 
+const API_BASE_URL = "https://localhost:5269/api";
 
-const useQuizzes = (skillName) => {
-  const [quizzes, setQuizzes] = useState([]);
+const useQuizzes = (quizName) => {
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
-    const fetchQuizzes = async () => {
+    const fetchQuestions = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/quizzes/${skillName}`);
-        if (!response.ok) throw new Error("Ошибка загрузки квизов");
+        const response = await fetch(`${API_BASE_URL}/quizzes/${encodeURIComponent(quizName)}`);
+        if (!response.ok) throw new Error("Ошибка загрузки вопросов");
         const data = await response.json();
-        setQuizzes(data);
+        setQuestions(data);
       } catch (error) {
-        console.error("Ошибка загрузки квизов:", error);
+        console.error("Ошибка загрузки вопросов:", error);
       }
     };
 
-    fetchQuizzes();
-  }, [skillName]);
+    fetchQuestions();
+  }, [quizName]);
 
-  return quizzes;
+  return questions;
 };
 
 export default useQuizzes;

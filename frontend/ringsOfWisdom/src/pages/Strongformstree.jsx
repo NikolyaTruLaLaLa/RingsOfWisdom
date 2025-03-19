@@ -14,7 +14,6 @@ const quizData = [
 ];
 
 const Strongformstree = () => {
-  const quizzes = useQuizzes("Могучие Формы");
 
   return (
     <div className="container_all">

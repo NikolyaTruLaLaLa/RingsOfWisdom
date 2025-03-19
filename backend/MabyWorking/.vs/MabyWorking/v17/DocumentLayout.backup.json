@@ -1,38 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\",
+  "WorkspaceRootPath": "C:\\Users\\123\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\RingsOfWisdomFrontend\\RingsOfWisdom\\backend\\MabyWorking\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\pages\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:pages\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\data\\identity\\applicationidentityuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:data\\identity\\applicationidentityuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|e:\\\u0443\u0447\u0451\u0431\u0430\\\u043F\u0434 24\\git\\ringsofwisdom\\backend\\mabyworking\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|c:\\users\\123\\onedrive\\\u0440\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\ringsofwisdomfrontend\\ringsofwisdom\\backend\\mabyworking\\controllers\\quizcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F2B19405-7EA2-427C-9C66-C8E0ADAF62A0}|mabyWorking.csproj|solutionrelative:controllers\\quizcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,105 +14,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Register.cshtml.cs",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAMwJoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T19:18:16.317Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Register.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAqAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T19:11:54.492Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ScaffoldingReadMe.txt",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\ScaffoldingReadMe.txt",
-              "RelativeDocumentMoniker": "ScaffoldingReadMe.txt",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\ScaffoldingReadMe.txt",
-              "RelativeToolTip": "ScaffoldingReadMe.txt",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
-              "WhenOpened": "2024-11-30T19:11:46.186Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\appsettings.json",
-              "RelativeDocumentMoniker": "appsettings.json",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\appsettings.json*",
-              "RelativeToolTip": "appsettings.json*",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAABWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-30T19:09:01.437Z",
+              "Title": "QuizController.cs",
+              "DocumentMoniker": "C:\\Users\\123\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\RingsOfWisdomFrontend\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\QuizController.cs",
+              "RelativeDocumentMoniker": "Controllers\\QuizController.cs",
+              "ToolTip": "C:\\Users\\123\\OneDrive\\\u0420\u0430\u0431\u043E\u0447\u0438\u0439 \u0441\u0442\u043E\u043B\\RingsOfWisdomFrontend\\RingsOfWisdom\\backend\\MabyWorking\\Controllers\\QuizController.cs",
+              "RelativeToolTip": "Controllers\\QuizController.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAzwCgAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-19T10:49:40.239Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAFAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:22:56.153Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABMAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:21:07.499Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "_LoginPartial.cshtml",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Pages\\Shared\\_LoginPartial.cshtml",
-              "RelativeDocumentMoniker": "Pages\\Shared\\_LoginPartial.cshtml",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Pages\\Shared\\_LoginPartial.cshtml",
-              "RelativeToolTip": "Pages\\Shared\\_LoginPartial.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAEAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-30T18:20:48.031Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ApplicationIdentityUser.cs",
-              "DocumentMoniker": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Data\\Identity\\ApplicationIdentityUser.cs",
-              "RelativeDocumentMoniker": "Data\\Identity\\ApplicationIdentityUser.cs",
-              "ToolTip": "E:\\\u0423\u0447\u0451\u0431\u0430\\\u041F\u0414 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\Data\\Identity\\ApplicationIdentityUser.cs",
-              "RelativeToolTip": "Data\\Identity\\ApplicationIdentityUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAoAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-30T18:20:29.517Z"
             }
           ]
         }

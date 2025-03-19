@@ -33,7 +33,7 @@ namespace mabyWorking.Controllers
         [HttpGet("{quizName}")]
         public async Task<IActionResult> GetQuizQuestions(string quizName)
         {
-            _logger.LogInformation("Get quiz qst");
+            _logger.LogInformation($"Get quiz qst by quiz name {quizName}");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
             if (userStats == null) return NotFound("Статистика пользователя не найдена");
@@ -54,7 +54,7 @@ namespace mabyWorking.Controllers
                     q.Explanation,
                     Answers = _context.Answers
                         .Where(a => a.QuestionId == q.Id)
-                        .Select(a => a.Text.Split(new[] { ' ', '\t', '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries))
+                        .Select(a => a.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.ToLower()))
                         .SelectMany(arr => arr)
                         .ToList()
                 })
