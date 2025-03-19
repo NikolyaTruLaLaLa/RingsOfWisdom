@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace mabyWorking.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialMigration : Migration
+    public partial class IntialiseMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -70,29 +70,29 @@ namespace mabyWorking.Migrations
                 name: "skills",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    Description = table.Column<string>(type: "text", nullable: true)
+                    name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    description = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_skills", x => x.Id);
+                    table.PrimaryKey("PK_skills", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
                 name: "statuses",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "text", nullable: false),
-                    MinXp = table.Column<int>(type: "integer", nullable: false),
-                    IsDefault = table.Column<bool>(type: "boolean", nullable: false)
+                    name = table.Column<string>(type: "text", nullable: false),
+                    min_xp = table.Column<int>(type: "integer", nullable: false),
+                    isdefault = table.Column<bool>(type: "boolean", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_statuses", x => x.Id);
+                    table.PrimaryKey("PK_statuses", x => x.id);
                 });
 
             migrationBuilder.CreateTable(
@@ -202,22 +202,22 @@ namespace mabyWorking.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "quizzes",
+                name: "quizes",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
-                    SkillId = table.Column<long>(type: "bigint", nullable: false)
+                    name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: false),
+                    skill_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_quizzes", x => x.Id);
+                    table.PrimaryKey("PK_quizes", x => x.id);
                     table.ForeignKey(
-                        name: "FK_quizzes_skills_SkillId",
-                        column: x => x.SkillId,
+                        name: "FK_quizes_skills_skill_id",
+                        column: x => x.skill_id,
                         principalTable: "skills",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -225,78 +225,104 @@ namespace mabyWorking.Migrations
                 name: "stats",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    UserId = table.Column<string>(type: "text", nullable: false),
-                    Balance = table.Column<int>(type: "integer", nullable: false),
-                    QuizLimit = table.Column<int>(type: "integer", nullable: false),
-                    QuizPassed = table.Column<int>(type: "integer", nullable: false),
-                    Xp = table.Column<int>(type: "integer", nullable: false),
-                    StatusId = table.Column<long>(type: "bigint", nullable: true)
+                    user_id = table.Column<string>(type: "text", nullable: false),
+                    balance = table.Column<int>(type: "integer", nullable: false),
+                    quiz_limit = table.Column<int>(type: "integer", nullable: false),
+                    quiz_passed = table.Column<int>(type: "integer", nullable: false),
+                    xp = table.Column<int>(type: "integer", nullable: false),
+                    status_id = table.Column<long>(type: "bigint", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_stats", x => x.Id);
+                    table.PrimaryKey("PK_stats", x => x.id);
                     table.ForeignKey(
-                        name: "FK_stats_aspnetusers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_stats_aspnetusers_user_id",
+                        column: x => x.user_id,
                         principalTable: "aspnetusers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_stats_statuses_StatusId",
-                        column: x => x.StatusId,
+                        name: "FK_stats_statuses_status_id",
+                        column: x => x.status_id,
                         principalTable: "statuses",
-                        principalColumn: "Id");
+                        principalColumn: "id");
                 });
 
             migrationBuilder.CreateTable(
                 name: "questions",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    QuizId = table.Column<long>(type: "bigint", nullable: false),
-                    Explanation = table.Column<string>(type: "text", nullable: true),
-                    Description = table.Column<string>(type: "text", nullable: false),
-                    RewardRings = table.Column<int>(type: "integer", nullable: false),
-                    RewardXp = table.Column<int>(type: "integer", nullable: false)
+                    quiz_id = table.Column<long>(type: "bigint", nullable: false),
+                    explanation = table.Column<string>(type: "text", nullable: true),
+                    description = table.Column<string>(type: "text", nullable: false),
+                    reward_rings = table.Column<int>(type: "integer", nullable: false),
+                    reward_xp = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_questions", x => x.Id);
+                    table.PrimaryKey("PK_questions", x => x.id);
                     table.ForeignKey(
-                        name: "FK_questions_quizzes_QuizId",
-                        column: x => x.QuizId,
-                        principalTable: "quizzes",
-                        principalColumn: "Id",
+                        name: "FK_questions_quizes_quiz_id",
+                        column: x => x.quiz_id,
+                        principalTable: "quizes",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "skillstats",
+                name: "quiz_stats",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    StatsId = table.Column<long>(type: "bigint", nullable: false),
-                    SkillId = table.Column<long>(type: "bigint", nullable: false),
-                    QuestionsPassed = table.Column<int>(type: "integer", nullable: false)
+                    stats_id = table.Column<long>(type: "bigint", nullable: false),
+                    quiz_id = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_skillstats", x => x.Id);
+                    table.PrimaryKey("PK_quiz_stats", x => x.id);
                     table.ForeignKey(
-                        name: "FK_skillstats_skills_SkillId",
-                        column: x => x.SkillId,
-                        principalTable: "skills",
-                        principalColumn: "Id",
+                        name: "FK_quiz_stats_quizes_quiz_id",
+                        column: x => x.quiz_id,
+                        principalTable: "quizes",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_skillstats_stats_StatsId",
-                        column: x => x.StatsId,
+                        name: "FK_quiz_stats_stats_stats_id",
+                        column: x => x.stats_id,
                         principalTable: "stats",
-                        principalColumn: "Id",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "skill_stats",
+                columns: table => new
+                {
+                    id = table.Column<long>(type: "bigint", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    stats_id = table.Column<long>(type: "bigint", nullable: false),
+                    skill_id = table.Column<long>(type: "bigint", nullable: false),
+                    quiz_passed = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_skill_stats", x => x.id);
+                    table.ForeignKey(
+                        name: "FK_skill_stats_skills_skill_id",
+                        column: x => x.skill_id,
+                        principalTable: "skills",
+                        principalColumn: "id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_skill_stats_stats_stats_id",
+                        column: x => x.stats_id,
+                        principalTable: "stats",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -304,26 +330,26 @@ namespace mabyWorking.Migrations
                 name: "answers",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    QuestionId = table.Column<long>(type: "bigint", nullable: false),
-                    Text = table.Column<string>(type: "text", nullable: false)
+                    question_id = table.Column<long>(type: "bigint", nullable: false),
+                    text = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_answers", x => x.Id);
+                    table.PrimaryKey("PK_answers", x => x.id);
                     table.ForeignKey(
-                        name: "FK_answers_questions_QuestionId",
-                        column: x => x.QuestionId,
+                        name: "FK_answers_questions_question_id",
+                        column: x => x.question_id,
                         principalTable: "questions",
-                        principalColumn: "Id",
+                        principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_answers_QuestionId",
+                name: "IX_answers_question_id",
                 table: "answers",
-                column: "QuestionId");
+                column: "question_id");
 
             migrationBuilder.CreateIndex(
                 name: "IX_aspnetroleclaims_RoleId",
@@ -363,34 +389,44 @@ namespace mabyWorking.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_questions_QuizId",
+                name: "IX_questions_quiz_id",
                 table: "questions",
-                column: "QuizId");
+                column: "quiz_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_quizzes_SkillId",
-                table: "quizzes",
-                column: "SkillId");
+                name: "IX_quiz_stats_quiz_id",
+                table: "quiz_stats",
+                column: "quiz_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_skillstats_SkillId",
-                table: "skillstats",
-                column: "SkillId");
+                name: "IX_quiz_stats_stats_id",
+                table: "quiz_stats",
+                column: "stats_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_skillstats_StatsId",
-                table: "skillstats",
-                column: "StatsId");
+                name: "IX_quizes_skill_id",
+                table: "quizes",
+                column: "skill_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_stats_StatusId",
+                name: "IX_skill_stats_skill_id",
+                table: "skill_stats",
+                column: "skill_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_skill_stats_stats_id",
+                table: "skill_stats",
+                column: "stats_id");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_stats_status_id",
                 table: "stats",
-                column: "StatusId");
+                column: "status_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_stats_UserId",
+                name: "IX_stats_user_id",
                 table: "stats",
-                column: "UserId");
+                column: "user_id");
         }
 
         /// <inheritdoc />
@@ -418,7 +454,10 @@ namespace mabyWorking.Migrations
                 name: "courses");
 
             migrationBuilder.DropTable(
-                name: "skillstats");
+                name: "quiz_stats");
+
+            migrationBuilder.DropTable(
+                name: "skill_stats");
 
             migrationBuilder.DropTable(
                 name: "questions");
@@ -430,7 +469,7 @@ namespace mabyWorking.Migrations
                 name: "stats");
 
             migrationBuilder.DropTable(
-                name: "quizzes");
+                name: "quizes");
 
             migrationBuilder.DropTable(
                 name: "aspnetusers");

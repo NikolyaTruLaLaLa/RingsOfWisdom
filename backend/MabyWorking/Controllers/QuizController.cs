@@ -102,7 +102,7 @@ namespace mabyWorking.Controllers
             userStats.Balance += totalRings;
             userStats.QuizPassed += 1;
 
-            skillStats.QuestionsPassed += completionDto.CorrectAnswersCount;
+            skillStats.QuizPassed += completionDto.CorrectAnswersCount >= 2 ? 1 : 0;
 
             await _context.SaveChangesAsync();
 

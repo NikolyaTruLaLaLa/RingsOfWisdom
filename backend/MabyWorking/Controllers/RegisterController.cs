@@ -108,6 +108,29 @@ namespace mabyWorking.Controllers
 
                 _context.Stats.Add(userStats);
                 await _context.SaveChangesAsync();
+
+                var quizzes = await _context.Quizzes.ToListAsync();
+                var quizStatsList = quizzes.Select(q => new QuizStats
+                {
+                    QuizId = q.Id,
+                    StatsId = userStats.Id,
+                    IsPassed = false
+                }).ToList();
+
+                _context.QuizStats.AddRange(quizStatsList);
+
+                var skills = await _context.Skills.ToListAsync();
+                var skillStatsList = skills.Select(s => new SkillStats
+                {
+                    StatsId = userStats.Id,
+                    SkillId = s.Id,
+                    QuizPassed = 0
+                }).ToList();
+
+                _context.SkillStats.AddRange(skillStatsList);
+
+                await _context.SaveChangesAsync();
+
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
 
