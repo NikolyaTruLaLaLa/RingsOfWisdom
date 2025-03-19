@@ -19,7 +19,7 @@ namespace mabyWorking.Models
         [Column("skill_id")]
         public long SkillId { get; set; }
         public Skill Skill { get; set; } = null!;
-        [Column("questions_passed")]
-        public int QuestionsPassed { get; set; } = 0;
+        [Column("quiz_passed")]
+        public int QuizPassed { get; set; } = 0;
     }
 }

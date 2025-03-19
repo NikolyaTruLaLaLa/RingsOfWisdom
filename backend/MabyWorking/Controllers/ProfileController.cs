@@ -48,11 +48,15 @@ public class ProfileController : ControllerBase
 
         var progress = skills.ToDictionary(
             skill => skill.Name,
-            skill => skillProgress
-                .Where(sp => sp.SkillId == skill.Id)
-                .Select(sp => (sp.QuestionsPassed * 100) / _context.Questions.Count(q => q.Quiz.SkillId == skill.Id))
-                .FirstOrDefault()
+            skill => {
+               var totalQuizzes = _context.Quizzes.Count(q => q.SkillId == skill.Id);
+               return totalQuizzes == 0 ? 0 : skillProgress
+                    .Where(sp => sp.SkillId == skill.Id)
+                    .Select(sp => (sp.QuizPassed * 100) / totalQuizzes)
+                    .FirstOrDefault();
+            }   
         );
+
 
         return Ok(new
         {
