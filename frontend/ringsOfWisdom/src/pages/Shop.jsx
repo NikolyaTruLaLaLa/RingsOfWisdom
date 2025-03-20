@@ -1,14 +1,13 @@
 import './../assets/style/style_shop.css';
 import React, { useState, useEffect } from 'react';
 import QuizDayStats from "./../hooks/QuizDayStats";
+import coinImage from './../assets/images/monetka.png'; 
 const API_BASE_URL = "https://localhost:5269/api"; 
+
 const Shop = () => {
     const [balance, setBalance] = useState(0);
     const {availableQuizzes, totalQuizzes} = QuizDayStats();
-
-
     const quizPrice = 150;
-
 
     useEffect(() => {
         const fetchUserBalance = async () => {
@@ -35,7 +34,7 @@ const Shop = () => {
         }
 
         try {
-            const response = await fetch('${API_BASE_URL}/buy-quiz-limit', {
+            const response = await fetch(`${API_BASE_URL}/buy-quiz-limit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +65,7 @@ const Shop = () => {
             <div className="header-info">
                 <h1>ROW Store</h1>
                 <div className="balance-info">
-                    <span className="coin-icon">🪙</span>
+                    <img src={coinImage} alt="Coin" className="coin-icon" /> {/* Заменяем эмодзи на изображение */}
                     <span>{balance}</span>
                     <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                 </div>
