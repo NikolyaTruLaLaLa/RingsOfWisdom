@@ -1,0 +1,92 @@
+.skill-tree {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 60px; /* Большое расстояние между рядами */
+}
+
+.page-title {
+    font-size: 19px;
+    font-weight: bold;
+    text-align: center;
+    color: #333; /* Цвет текста */
+}
+
+.skill-row {
+    display: flex;
+    justify-content: center;
+    gap: 180px; /* Большое расстояние между кружками */
+    width: 100%;
+    max-width: 800px; /* Ограничиваем ширину для больших экранов */
+    flex-wrap: wrap; /* Перенос на новую строку, если не помещается */
+}
+
+.circle-typ-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+}
+
+.circle-typ {
+    width: 100px; /* Увеличено для больших экранов */
+    height: 100px;
+    border-radius: 50%;
+    background: #5a47b3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* Чтобы изображение не выходило за границы кружка */
+}
+
+.circle-typ img {
+    width: 70%; /* Уменьшен размер изображения */
+    height: 70%;
+    object-fit: cover; /* Чтобы изображение заполняло кружок */
+}
+
+.circle-typ-container p {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .skill-tree {
+        gap: 40px; /* Уменьшено расстояние для планшетов */
+    }
+
+    .skill-row {
+        gap: 40px; /* Уменьшено расстояние для планшетов */
+    }
+
+    .circle-typ {
+        width: 100px;
+        height: 100px;
+    }
+
+    .circle-typ-container p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .skill-tree {
+        gap: 20px; /* Уменьшено расстояние для мобильных */
+        padding: 60px;
+    }
+
+    .skill-row {
+        gap: 35px; /* Уменьшено расстояние для мобильных */
+    }
+
+    .circle-typ {
+        width: 70px; /* Уменьшен размер кружков для мобильных */
+        height: 70px;
+    }
+
+    .circle-typ-container p {
+        font-size: 12px;
+    }
+}

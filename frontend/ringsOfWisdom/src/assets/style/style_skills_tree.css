@@ -7,7 +7,7 @@
   
 }
 /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
     .container_all{
     
         margin-top: 0.1%;
@@ -16,7 +16,7 @@
       
     }
 }
-/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+
 @media (max-width: 767px) {
     .container_all{
     
@@ -29,7 +29,7 @@
 .container_all .head{
     display: flex;
     justify-content: center;
-    align-content: center;
+    text-align: center;
     margin-bottom: 2%;
     font-size: 18px;
     font-weight: bold;
@@ -125,3 +125,115 @@
     margin-top: 3px;
     
 }
+
+/* Стили для всплывающего окошка */
+.popupwinn {
+  position:fixed;
+  margin:auto;
+  margin-left: 80%;
+  
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.popupwin-content {
+  background-color: #5a47b3; /* Фиолетовый фон */
+  color: #fff; /* Белый текст */
+  border-radius: 10px;
+  padding: 15px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+}
+
+.popupwin-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 767px) {
+    .popupwin {
+        margin-bottom: 5%;
+        margin-top:30%;
+        margin-left: 50%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1025px) {
+    .popupwin {
+        margin-bottom: 5%;
+        margin-top:20%;
+        margin-left: 70%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }
+
+  /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+  @media (min-width: 1026px) {
+    .popupwin {
+      margin-bottom: 1%;
+      margin-top: 1%;
+      margin-left: 70%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }

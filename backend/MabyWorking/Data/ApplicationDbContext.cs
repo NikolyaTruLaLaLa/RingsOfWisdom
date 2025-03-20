@@ -19,7 +19,7 @@ namespace mabyWorking.Data
         public DbSet<Stats> Stats { get; set; }
         public DbSet<SkillStats> SkillStats { get; set; }
         public DbSet<Course> Courses { get; set; }
-
+        public DbSet<QuizStats> QuizStats { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
