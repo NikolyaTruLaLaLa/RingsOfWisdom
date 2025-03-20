@@ -24,7 +24,7 @@
 
 .balance-info {
     display: flex;
-    align-items: center;
+    align-items: center; 
     justify-content: center;
     font-size: 1.2em; 
     margin-top: 10px;
@@ -32,6 +32,8 @@
 }
 
 .coin-icon {
+    width: 1em; 
+    height: 1em; 
     margin-right: 10px;
 }
 

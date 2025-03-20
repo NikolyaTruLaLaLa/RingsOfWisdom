@@ -1,6 +1,9 @@
 import './../assets/style/style_shop.css';
 import React, { useState, useEffect } from 'react';
+import coinImage from './../assets/images/monetka.png'; 
+
 const API_BASE_URL = "https://localhost:5269/api"; 
+
 const Shop = () => {
     const [balance, setBalance] = useState(0);
     const [availableQuizzes, setAvailableQuizzes] = useState(0);
@@ -10,7 +13,7 @@ const Shop = () => {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await fetch(`${API_BASE_URL}/profile/info`); //переделать: нужен контроллер на бэке для получения данных о балансе и доступных квизах
+                const response = await fetch(`${API_BASE_URL}/profile/info`);
                 if (!response.ok) throw new Error("Ошибка загрузки данных");
                 
                 const data = await response.json();
@@ -31,7 +34,7 @@ const Shop = () => {
         }
 
         try {
-            const response = await fetch('${API_BASE_URL}/buy-quiz-limit', {
+            const response = await fetch(`${API_BASE_URL}/buy-quiz-limit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -62,7 +65,7 @@ const Shop = () => {
             <div className="header-info">
                 <h1>ROW Store</h1>
                 <div className="balance-info">
-                    <span className="coin-icon">🪙</span>
+                    <img src={coinImage} alt="Coin" className="coin-icon" /> {/* Заменяем эмодзи на изображение */}
                     <span>{balance}</span>
                     <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                 </div>
