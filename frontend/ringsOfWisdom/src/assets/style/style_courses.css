@@ -1,0 +1,73 @@
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+.course-card {
+    background-color: #6a1b9a;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+
+.course-card:hover {
+    transform: scale(1.05);
+}
+
+.course-name {
+    font-size: 1.2em;
+    margin-top: 10px;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 50%;
+    max-width: 600px;
+}
+
+.modal-content h2 {
+    color: #333;
+}
+
+.modal-content p {
+    color: #666;
+    margin: 20px 0;
+}
+
+.modal-content a {
+    color: #1a73e8;
+    text-decoration: none;
+}
+
+.modal-content button {
+    background-color: #6a1b9a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+}
+
+.modal-content button:hover {
+    background-color: #7c4dff;
+}
