@@ -1,9 +1,11 @@
+
 .courses-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 20px;
 }
+
 
 .course-card {
     background-color: #6a1b9a;
@@ -24,6 +26,7 @@
     margin-top: 10px;
 }
 
+
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -34,29 +37,53 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
+    z-index: 1000; 
+    overflow: auto; 
 }
 
+
 .modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
     width: 50%;
-    max-width: 600px;
+    max-width: 600px; 
+    max-height: 90vh; 
+    overflow-y: auto; 
 }
 
-.modal-content h2 {
+
+.modal-content .curses-head {
     color: #333;
+    margin-bottom: 20px;
+    position: sticky;
+    top: -1; 
+    background-color: white; 
+    padding:2%;
+    
 }
 
-.modal-content p {
-    color: #666;
+
+.modal-content .curses-text {
+    color: #080808;
     margin: 20px 0;
+    font-size: 16px;
+    word-wrap: break-word;
+    text-align: center;
+    white-space: pre-line;
+    line-height: 1.6;
 }
+
 
 .modal-content a {
-    color: #1a73e8;
+    color: #7c4dff;
     text-decoration: none;
+    margin-bottom: 20px;
 }
+
 
 .modal-content button {
     background-color: #6a1b9a;
@@ -65,9 +92,31 @@
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    float: right;
+    align-self: center; 
+    margin-top: 20px; 
 }
 
 .modal-content button:hover {
     background-color: #7c4dff;
+}
+
+
+@media (max-width: 768px) {
+    .courses-container {
+        grid-template-columns: repeat(2, 1fr); 
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 90%;
+        padding: 15px; 
+    }
+
+    .modal-content .curses-head {
+        font-size: 1.5em; 
+    }
+
+    .modal-content .curses-text {
+        font-size: 13px;
+    }
 }
