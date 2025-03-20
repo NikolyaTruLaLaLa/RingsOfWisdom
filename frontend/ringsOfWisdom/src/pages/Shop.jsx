@@ -1,9 +1,61 @@
 import './../assets/style/style_shop.css';
-
+import React, { useState, useEffect } from 'react';
+const API_BASE_URL = "https://localhost:5269/api"; 
 const Shop = () => {
-    const balance = 0; 
-    const availableQuizzes = 3; 
-    const totalQuizzes = 3; 
+    const [balance, setBalance] = useState(0);
+    const [availableQuizzes, setAvailableQuizzes] = useState(0);
+    const [totalQuizzes, setTotalQuizzes] = useState(3);
+    const quizPrice = 150;
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`${API_BASE_URL}/profile/info`); //переделать: нужен контроллер на бэке для получения данных о балансе и доступных квизах
+                if (!response.ok) throw new Error("Ошибка загрузки данных");
+                
+                const data = await response.json();
+                setBalance(data.balance);
+                setAvailableQuizzes(data.quizLimit);
+            } catch (error) {
+                console.error("Ошибка получения данных пользователя:", error);
+            }
+        };
+
+        fetchUserData();
+    }, []);
+
+    const handlePurchase = async () => {
+        if (balance < quizPrice) {
+            alert("Недостаточно монет!");
+            return;
+        }
+
+        try {
+            const response = await fetch('${API_BASE_URL}/buy-quiz-limit', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ price: quizPrice }),
+                credentials: "include",
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                alert(errorData.message || "Ошибка при покупке");
+                return;
+            }
+
+            const result = await response.json();
+            setBalance(result.RemainingBalance);
+            setAvailableQuizzes(result.NewQuizLimit);
+            alert("Покупка успешна!");
+
+        } catch (error) {
+            console.error("Ошибка покупки:", error);
+            alert("Не удалось совершить покупку");
+        }
+    };
 
     return (
         <div className="shop-container">
@@ -22,7 +74,7 @@ const Shop = () => {
                         <span>📈</span> 
                     </div>
                     <p className="item-description">Увеличить дневной лимит квизов</p>
-                    <button className="purchase-button">200</button>
+                    <button className="purchase-button" onClick={handlePurchase}>{quizPrice}</button>
                 </div>
             </div>
         </div>
