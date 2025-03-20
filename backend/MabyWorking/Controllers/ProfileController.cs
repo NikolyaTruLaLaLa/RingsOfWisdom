@@ -148,12 +148,16 @@ public class ProfileController : ControllerBase
     [HttpGet("quiz-stats")]
     public async Task<IActionResult> GetQuizStats()
     {
+        
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         if (userId == null) return Unauthorized();
 
         var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
         if (stats == null) return NotFound("Статистика не найдена");
+        
+        var quizLimit = stats.QuizLimit;
+        var quizPassed = quizLimit - stats.QuizPassed;
 
-        return Ok(new { stats.QuizPassed, stats.QuizLimit });
+        return Ok(new { quizPassed, quizLimit });
     }
 }

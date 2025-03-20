@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import useQuizzes from "./../hooks/UseQuizzes";
 import dish from "./../assets/images/dish.png";
@@ -6,7 +6,8 @@ import icon_gendr_forms from "./../assets/images/icon_gendr_forms.png";
 import many_faces from "./../assets/images/many_faces.png";
 import reverse_x from "./../assets/images/reverse_x.png";
 import "./../assets/style/style_skills_tree.css";
-
+import QuizDayStats from "./../hooks/QuizDayStats";
+const API_BASE_URL = "https://localhost:5269/api";
 const quizData = [
   { name: "ГЕНдерные Формы", image: icon_gendr_forms, path: "/quiz/ГЕНдерные Формы" },
   { name: "Замена НЕизвестного", image: reverse_x, path: "/quiz/Замена НЕизвестного" },
@@ -16,25 +17,10 @@ const quizData = [
 
 const Strongformstree = () => {
 
-  {/*
-    const [availableQuizzes, setAvailableQuizzes] = useState(0);
-    const [totalQuizzes, setTotalQuizzes] = useState(3);
+    const {availableQuizzes, totalQuizzes} = QuizDayStats();
     useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/profile/info`); //переделать: нужен контроллер на бэке для получения данных о балансе и доступных квизах
-                if (!response.ok) throw new Error("Ошибка загрузки данных");
-                
-                const data = await response.json();
-                setAvailableQuizzes(data.quizLimit);
-            } catch (error) {
-                console.error("Ошибка получения данных пользователя:", error);
-            }
-        };
-
-        fetchUserData();
     }, []); 
-    */}
+    
   const [isPopupVisible, setPopupVisible] = useState(true);
 
   const handleClosePopup = () => {
@@ -44,8 +30,10 @@ const Strongformstree = () => {
   return (
     <div className="container_all">
   <div className="head">
-    <p>Могучие Формы</p>
-    {/*<span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Осталось квизов</span>*/}
+    <p>Могучие Формы
+      <br/>
+    {<span className="quiz-counter">Осталось квизов: {availableQuizzes}/{totalQuizzes}</span>}
+    </p>
   </div>
 
   {/* Для больших экранов (>= 1025px) */}

@@ -29,7 +29,7 @@
 .container_all .head{
     display: flex;
     justify-content: center;
-    align-content: center;
+    text-align: center;
     margin-bottom: 2%;
     font-size: 18px;
     font-weight: bold;
