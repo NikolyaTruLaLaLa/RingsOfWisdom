@@ -1,27 +1,31 @@
 import './../assets/style/style_shop.css';
 import React, { useState, useEffect } from 'react';
+import QuizDayStats from "./../hooks/QuizDayStats";
 const API_BASE_URL = "https://localhost:5269/api"; 
 const Shop = () => {
     const [balance, setBalance] = useState(0);
-    const [availableQuizzes, setAvailableQuizzes] = useState(0);
-    const [totalQuizzes, setTotalQuizzes] = useState(3);
+    const {availableQuizzes, totalQuizzes} = QuizDayStats();
+
+
     const quizPrice = 150;
 
-    useEffect(() => {
-        const fetchUserData = async () => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/profile/info`); //переделать: нужен контроллер на бэке для получения данных о балансе и доступных квизах
-                if (!response.ok) throw new Error("Ошибка загрузки данных");
-                
-                const data = await response.json();
-                setBalance(data.balance);
-                setAvailableQuizzes(data.quizLimit);
-            } catch (error) {
-                console.error("Ошибка получения данных пользователя:", error);
-            }
-        };
 
-        fetchUserData();
+    useEffect(() => {
+        const fetchUserBalance = async () => {
+            try {
+              const response = await fetch(`${API_BASE_URL}/profile/balance`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                credentials: "include",
+              });
+              const data = await response.json();
+              setBalance(data.balance);
+            } catch (error) {
+              console.error("Ошибка загрузки Баланса:", error);
+            }
+          };
+
+        fetchUserBalance();
     }, []);
 
     const handlePurchase = async () => {
