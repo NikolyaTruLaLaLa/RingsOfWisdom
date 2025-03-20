@@ -4,25 +4,31 @@
     align-items: center;
     padding: 20px;
     font-family: Arial, sans-serif;
+    min-height: 100vh; 
+    box-sizing: border-box; 
+    padding-top: 80px; 
 }
 
 .header-info {
     text-align: center;
     margin-bottom: 20px;
+    width: 100%; 
 }
 
 .header-info h1 {
-    font-size: 2.5em;
-    font-weight: bold;
+    font-size: 2em; 
+    font-weight: bold; 
     margin: 0;
+    color: #333; 
 }
 
 .balance-info {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5em;
+    font-size: 1.2em; 
     margin-top: 10px;
+    flex-wrap: wrap; 
 }
 
 .coin-icon {
@@ -39,6 +45,7 @@
     display: flex;
     justify-content: center;
     width: 100%;
+    flex-wrap: wrap; 
 }
 
 .purchase-item {
@@ -48,8 +55,10 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 10px;
-    width: 200px;
+    width: 90%; 
+    max-width: 200px; 
     text-align: center;
+    margin: 10px; 
 }
 
 .icon-circle {
@@ -71,6 +80,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 0.9em; 
 }
 
 .purchase-button {
@@ -82,8 +92,34 @@
     cursor: pointer;
     margin-top: 10px;
     width: 100%;
+    font-size: 1em; 
+    font-weight: bold; 
 }
 
 .purchase-button:hover {
     background-color: #7b1fa2; 
+}
+
+
+@media (max-width: 768px) {
+    .shop-container {
+        padding-top: 100px; 
+    }
+
+    .header-info h1 {
+        font-size: 1.5em; 
+    }
+
+    .balance-info {
+        font-size: 1em; 
+    }
+
+    .purchase-item {
+        width: 100%; 
+        max-width: none; 
+    }
+
+    .item-description {
+        font-size: 0.8em; 
+    }
 }
