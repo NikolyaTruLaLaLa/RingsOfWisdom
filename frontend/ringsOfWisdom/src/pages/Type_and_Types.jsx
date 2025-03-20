@@ -1,6 +1,6 @@
-
-import React from 'react';
+import React, { useState, useEffect } from "react"
 import { NavLink } from 'react-router-dom';
+import QuizDayStats from "./../hooks/QuizDayStats";
 
 import './../assets/style/type_and_types.css';
 import baza from './../assets/images/baza.png';
@@ -16,10 +16,21 @@ import blitz from './../assets/images/blitz.png';
 
 const Type_and_Types = () => {
     
-    return ( 
+    const {availableQuizzes, totalQuizzes} = QuizDayStats();
+        useEffect(() => {
+        }, []); 
+
+    return (
         <div className="skill-tree">
-        {/* Заголовок страницы */}
-        <p className="page-title">Типы типочки</p>
+    <div className="page-title">
+        <p>Типы типочки
+            <br/>
+        <span className="quiz-counter">
+        {availableQuizzes === 0 
+        ? "Ваш лимит квизов в день закончился :( Они обновляются в 00:00 по Мск, либо можете купить попытки в нашем магазине!" 
+        : `Осталось квизов: ${availableQuizzes}/${totalQuizzes}`}</span>
+        </p>
+    </div>
 
         {/* Первый ряд (1 кружок) */}
         <div className="skill-row">
