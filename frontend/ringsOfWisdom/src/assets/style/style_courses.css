@@ -39,15 +39,20 @@
     align-items: center;
     text-align: center;
     z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.open {
     opacity: 1;
-    transition: opacity 0.3s ease;
+    visibility: visible;
 }
 
 .modal-overlay.closing {
     opacity: 0;
+    visibility: hidden;
 }
-
-
 
 .modal-content {
     display: flex;
@@ -56,11 +61,23 @@
     padding: 20px;
     border-radius: 8px;
     width: 50%;
-    max-width: 600px; 
-    max-height: 90vh; 
-    overflow-y: auto; 
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    transform: scale(0.9);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
+.modal-overlay.open .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-overlay.closing .modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+}
 
 .modal-content .curses-head {
     color: #333;
@@ -72,21 +89,21 @@
     
 }
 
-/* Стили для заголовков */
+
 .modal-content .curses-text .text-heading {
-    text-align: center; /* Центрируем заголовки */
-    font-size: 18px; /* Увеличиваем размер заголовков */
-    margin: 20px 0; /* Отступы вокруг заголовков */
-    color: #090909; /* Цвет заголовков */
+    text-align: center; 
+    font-size: 18px; 
+    margin: 20px 0; 
+    color: #090909; 
 }
 
-/* Стили для обычных строк */
+
 .modal-content .curses-text .text-paragraph {
-    text-align: left; /* Выравниваем текст по левому краю */
-    font-size: 16px; /* Размер текста */
-    margin: 10px 0; /* Отступы между абзацами */
-    color: #090909; /* Цвет текста */
-    line-height: 1.8; /* Отступ между строками */
+    text-align: left; 
+    font-size: 16px; 
+    margin: 10px 0; 
+    color: #090909; 
+    line-height: 1.8; 
     white-space: pre-line;
 }
 
