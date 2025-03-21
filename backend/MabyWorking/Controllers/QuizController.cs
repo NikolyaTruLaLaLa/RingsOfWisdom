@@ -33,61 +33,63 @@ namespace mabyWorking.Controllers
         [HttpGet("{quizName}")]
         public async Task<IActionResult> GetQuizQuestions(string quizName)
         {
-            _logger.LogInformation($"Get quiz qst by quiz name {quizName}");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (userId == null) return Unauthorized("Пользователь не найден");
+            var userStats = await _context.Stats.Include(s => s.Status)
+            .FirstOrDefaultAsync(s => s.UserId == userId);
             if (userStats == null) return NotFound("Статистика пользователя не найдена");
-
             if (userStats.QuizLimit <= 0)
                 return BadRequest("Недостаточно попыток для прохождения квиза");
-
             var quiz = await _context.Quizzes.FirstOrDefaultAsync(q => q.Name == quizName);
             if (quiz == null) return NotFound("Квиз не найден");
 
-            var questions = await _context.Questions
+            var rawQuestions = await _context.Questions
                 .Where(q => q.QuizId == quiz.Id)
-                .OrderBy(r => Guid.NewGuid())
+                .OrderBy(r => EF.Functions.Random())
                 .Take(3)
-                .Select(q => new
-                {
-                    q.Description,
-                    q.Explanation,
-                    Answers = _context.Answers
-                        .Where(a => a.QuestionId == q.Id)
-                        .Select(a => a.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries).Select(s => s.ToLower()))
-                        .SelectMany(arr => arr)
-                        .ToList()
-                })
+                .ToListAsync(); 
+
+            var questionIds = rawQuestions.Select(q => q.Id).ToList();
+
+            var answers = await _context.Answers
+                .Where(a => questionIds.Contains(a.QuestionId))
                 .ToListAsync();
+
+            var questions = rawQuestions.Select(q => new
+            {
+                q.Description,
+                q.Explanation,
+                Answers = answers
+                    .Where(a => a.QuestionId == q.Id)
+                    .SelectMany(a => a.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries)
+                        .Select(s => s.ToLower()))
+                    .ToList()
+            }).ToList();
+
 
             if (!questions.Any()) return NotFound("Вопросы для данного квиза не найдены");
 
-            userStats.QuizLimit--;
+            userStats.QuizPassed++;
             await _context.SaveChangesAsync();
-
             return Ok(questions);
         }
 
-
+        [Authorize]
         [HttpPost("complete-quiz")]
         public async Task<IActionResult> CompleteQuiz([FromBody] QuizCompletionDto completionDto)
         {
-            _logger.LogInformation("complite quiz reward");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized("Пользователь не найден");
-
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
             if (userStats == null) return NotFound("Статистика пользователя не найдена");
-
             var quiz = await _context.Quizzes.FirstOrDefaultAsync(q => q.Name == completionDto.QuizName);
             if (quiz == null) return NotFound("Квиз не найден");
-
             var skill = await _context.Skills.FirstOrDefaultAsync(s => s.Id == quiz.SkillId);
             if (skill == null) return NotFound("Скилл не найден");
-
             var skillStats = await _context.SkillStats.FirstOrDefaultAsync(s => s.StatsId == userStats.Id && s.SkillId == skill.Id);
             if (skillStats == null) return NotFound("Статистика скилла не найдена");
-
+            var quizStats = await _context.QuizStats.FirstOrDefaultAsync(s => s.StatsId == userStats.Id && s.QuizId == quiz.Id);
+            if (skillStats == null) return NotFound("Статистика квиза не найдена");
             var lastQuestion = await _context.Questions
                 .Where(q => q.QuizId == quiz.Id)
                 .OrderByDescending(q => q.Id)
@@ -100,9 +102,19 @@ namespace mabyWorking.Controllers
 
             userStats.Xp += totalXP;
             userStats.Balance += totalRings;
-            userStats.QuizPassed += 1;
+            if (completionDto.CorrectAnswersCount >= 2 && !quizStats.IsPassed)
+            {
+                skillStats.QuizPassed++;
+                quizStats.IsPassed = true;
+            }
 
-            skillStats.QuizPassed += completionDto.CorrectAnswersCount >= 2 ? 1 : 0;
+            var newStatus = await _context.Statuses
+                .Where(s => s.MinXp <= userStats.Xp)
+                .OrderByDescending(s => s.MinXp)
+                .FirstOrDefaultAsync();
+
+            if (newStatus != null && userStats.StatusId != newStatus.Id)
+                userStats.StatusId = newStatus.Id;
 
             await _context.SaveChangesAsync();
 
@@ -112,7 +124,6 @@ namespace mabyWorking.Controllers
         [HttpGet("can-start/{quizName}")]
         public async Task<IActionResult> CanStartQuiz(string quizName)
         {
-            _logger.LogInformation("can start check");
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
 
