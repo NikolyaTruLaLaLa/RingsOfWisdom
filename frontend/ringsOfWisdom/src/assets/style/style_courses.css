@@ -38,9 +38,15 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    z-index: 1000; 
-    overflow: auto; 
+    z-index: 1000;
+    opacity: 1;
+    transition: opacity 0.3s ease;
 }
+
+.modal-overlay.closing {
+    opacity: 0;
+}
+
 
 
 .modal-content {
@@ -58,7 +64,7 @@
 
 .modal-content .curses-head {
     color: #333;
-    margin-bottom: 20px;
+    margin-bottom: 1%;
     position: sticky;
     top: -1; 
     background-color: white; 
@@ -66,9 +72,27 @@
     
 }
 
+/* Стили для заголовков */
+.modal-content .curses-text .text-heading {
+    text-align: center; /* Центрируем заголовки */
+    font-size: 18px; /* Увеличиваем размер заголовков */
+    margin: 20px 0; /* Отступы вокруг заголовков */
+    color: #090909; /* Цвет заголовков */
+}
+
+/* Стили для обычных строк */
+.modal-content .curses-text .text-paragraph {
+    text-align: left; /* Выравниваем текст по левому краю */
+    font-size: 16px; /* Размер текста */
+    margin: 10px 0; /* Отступы между абзацами */
+    color: #090909; /* Цвет текста */
+    line-height: 1.8; /* Отступ между строками */
+    white-space: pre-line;
+}
+
 
 .modal-content .curses-text {
-    color: #080808;
+    color: #090909;
     margin: 20px 0;
     font-size: 16px;
     word-wrap: break-word;
@@ -104,14 +128,34 @@
 @media (max-width: 768px) {
     .courses-container {
         grid-template-columns: repeat(2, 1fr); 
+        margin-top: 50%;
+        padding: 5px;
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .course-card {
+        background-color: #6a1b9a;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 1%;
+        
     }
 
     .modal-content {
         width: 90%;
-        max-width: 90%;
+        max-width: 85%;
         padding: 15px; 
+        margin-right: 2%;
     }
-
     .modal-content .curses-head {
         font-size: 1.5em; 
     }
@@ -119,4 +163,38 @@
     .modal-content .curses-text {
         font-size: 13px;
     }
+}
+
+@media (min-width: 769px)and (max-width: 1024px) {
+    .courses-container {
+        grid-template-columns: repeat(3, 1fr); 
+        margin-top: 50%;
+        padding: 5px;
+        gap:10px;
+        justify-content: center;
+        align-items: center;
+        margin-left: 1%;
+        margin-right: 1%;
+    }
+    .course-card {
+        background-color: #6a1b9a;
+        color: white;
+        padding: 20px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 8px;
+        transition: transform 0.3s ease;
+        width: 80%;
+        margin-left: 10%;
+        margin-right: 1%;
+        
+    }
+
+    .modal-content {
+        width: 90%;
+        max-width: 85%;
+        padding: 15px; 
+        margin-right: 2%;
+    }
+    
 }
