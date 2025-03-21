@@ -45,7 +45,7 @@ namespace mabyWorking.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok("Лимит квизов увеличен!");
+            return Ok(new {Message = "Лимит квизов увеличен!"});
         }
     }
 

@@ -6,24 +6,25 @@ const API_BASE_URL = "https://localhost:5269/api";
 
 const Shop = () => {
     const [balance, setBalance] = useState(0);
-    const {availableQuizzes, totalQuizzes} = QuizDayStats();
+    const {availableQuizzes, totalQuizzes, refreshStats} = QuizDayStats();
     const quizPrice = 150;
 
-    useEffect(() => {
-        const fetchUserBalance = async () => {
-            try {
-              const response = await fetch(`${API_BASE_URL}/profile/balance`, {
-                method: "GET",
-                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-                credentials: "include",
-              });
-              const data = await response.json();
-              setBalance(data.balance);
-            } catch (error) {
-              console.error("Ошибка загрузки Баланса:", error);
-            }
-          };
 
+    const fetchUserBalance = async () => {
+        try {
+          const response = await fetch(`${API_BASE_URL}/profile/balance`, {
+            method: "GET",
+            headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+            credentials: "include",
+          });
+          const data = await response.json();
+          setBalance(data.balance);
+        } catch (error) {
+          console.error("Ошибка загрузки Баланса:", error);
+        }
+      };
+
+    useEffect(() => {
         fetchUserBalance();
     }, []);
 
@@ -34,7 +35,7 @@ const Shop = () => {
         }
 
         try {
-            const response = await fetch(`${API_BASE_URL}/buy-quiz-limit`, {
+            const response = await fetch(`${API_BASE_URL}/shop/buy-quiz-limit`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -50,8 +51,10 @@ const Shop = () => {
             }
 
             const result = await response.json();
-            setBalance(result.RemainingBalance);
-            setAvailableQuizzes(result.NewQuizLimit);
+
+            await fetchUserBalance();
+            await refreshStats();
+            
             alert("Покупка успешна!");
 
         } catch (error) {
@@ -65,7 +68,7 @@ const Shop = () => {
             <div className="header-info">
                 <h1>ROW Store</h1>
                 <div className="balance-info">
-                    <img src={coinImage} alt="Coin" className="coin-icon" /> {/* Заменяем эмодзи на изображение */}
+                    <img src={coinImage} alt="Coin" className="coin-icon" />
                     <span>{balance}</span>
                     <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                 </div>
