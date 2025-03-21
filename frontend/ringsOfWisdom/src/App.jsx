@@ -7,7 +7,7 @@ import './App.css';
 import Head from './components/header/Head';
 /*import Footer from './components/footer/Footer';*/
 import Mainpage from './pages/Mainpage';
-import WPC from './pages/WPC';
+import Courses from './pages/Courses';
 import WPS from './pages/WPS';
 import Skillstree from './pages/Skillstree';
 import Strongformstree from './pages/Strongformstree';
@@ -27,7 +27,7 @@ function App() {
         <Routes>
           <Route path="" element={<Mainpage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/course" element={<WPC />} />
+          <Route path="/course" element={<Courses />} />
           <Route path="/shop" element={<WPS />} />
           <Route path="/types" element={<Type_and_Types />} />
           <Route path="/reg" element={<Registation />} />
