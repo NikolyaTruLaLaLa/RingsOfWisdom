@@ -9,6 +9,13 @@
     margin-top: -50px;
 }
 
+@media (max-width: 1023px){
+    .profile-container {
+        margin-top: 15%;
+    }
+}
+
+
 .profile-header {
     text-align: center;
     margin-bottom: 30px;
@@ -26,6 +33,11 @@
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+@media (max-width: 765px){
+    .profile-content {
+        padding: 20px;
+    }
 }
 
 .profile-section {
@@ -155,9 +167,9 @@
 }
 
 .rating-table {
-    width: 100%;
+    width: 80%;
     border-collapse: collapse;
-    margin-top: 10px;
+    margin: 20px 0;
 }
 
 .rating-table th,
@@ -165,6 +177,13 @@
     padding: 12px;
     border: 1px solid #ddd;
     text-align: left;
+}
+
+@media (max-width: 767px){
+.rating-table th,
+.rating-table td {
+    padding: 8px;
+}
 }
 
 .rating-table th {
@@ -181,10 +200,13 @@
     font-size: 1.1rem;
     color: #666;
     margin: 5px 0;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
 }
 
 .profile-section .logout{
-    width: 90%;
+    width: 100%;
     padding: 10px;
     background-color: #5a47b3;
     color: #fff;

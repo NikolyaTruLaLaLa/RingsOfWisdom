@@ -7,8 +7,8 @@ import './App.css';
 import Head from './components/header/Head';
 /*import Footer from './components/footer/Footer';*/
 import Mainpage from './pages/Mainpage';
+import Shop from './pages/Shop';
 import Courses from './pages/Courses';
-import WPS from './pages/WPS';
 import Skillstree from './pages/Skillstree';
 import Strongformstree from './pages/Strongformstree';
 import Emailverif from './pages/Emailverif';
@@ -19,6 +19,7 @@ import Quez from './pages/Quez';
 import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
 
+
 function App() {
   return (
     <AuthProvider>
@@ -27,8 +28,8 @@ function App() {
         <Routes>
           <Route path="" element={<Mainpage />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/shop" element={<Shop />} />
           <Route path="/course" element={<Courses />} />
-          <Route path="/shop" element={<WPS />} />
           <Route path="/types" element={<Type_and_Types />} />
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
@@ -36,7 +37,7 @@ function App() {
           <Route path="/confirm-email" element={<EmailCompleted />} />
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
-          <Route path="/quiz" element={<Quez />} />
+          <Route path="/quiz/:quizName" element={<Quez />} />
         </Routes>
       </Router>
     </AuthProvider>

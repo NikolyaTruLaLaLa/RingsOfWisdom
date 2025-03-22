@@ -17,6 +17,7 @@ const Profile = () => {
   const [rating, setRating] = useState([]);
   const [userRank, setUserRank] = useState(null);
   const navigate = useNavigate();
+  const [message, setMessage] = useState("");
   const { setIsAuthenticated, checkAuthStatus } = useAuth();
 
   useEffect(() => {
@@ -118,10 +119,10 @@ const Profile = () => {
         setIsEditing(false);
         fetchProfile(); 
       } else {
-        console.error("Ошибка при смене имени.", error);
+        setMessage("Ошибка при смене имени.");
       }
     } catch (error) {
-      console.error("Ошибка запроса:", error);
+      setMessage("Ошибка при смене имени.");
     }
   };
 
@@ -178,6 +179,7 @@ const Profile = () => {
                 <img src={money} alt="Монетки" className="money" />
                 <span>{coins}</span>
               </div>
+              {message && <p>{message}</p>}
             </div>
 
             {/* Привязанная почта */}

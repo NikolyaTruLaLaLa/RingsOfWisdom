@@ -226,16 +226,19 @@ namespace mabyWorking.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<long>("QuestionId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("question_id");
 
                     b.Property<string>("Text")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("text");
 
                     b.HasKey("Id");
 
@@ -272,25 +275,31 @@ namespace mabyWorking.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<string>("Explanation")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("explanation");
 
                     b.Property<long>("QuizId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("quiz_id");
 
                     b.Property<int>("RewardRings")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("reward_rings");
 
                     b.Property<int>("RewardXp")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("reward_xp");
 
                     b.HasKey("Id");
 
@@ -303,40 +312,72 @@ namespace mabyWorking.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("name");
 
                     b.Property<long>("SkillId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("skill_id");
 
                     b.HasKey("Id");
 
                     b.HasIndex("SkillId");
 
-                    b.ToTable("quizzes");
+                    b.ToTable("quizes");
+                });
+
+            modelBuilder.Entity("mabyWorking.Models.QuizStats", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
+
+                    b.Property<long>("QuizId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("quiz_id");
+
+                    b.Property<long>("StatsId")
+                        .HasColumnType("bigint")
+                        .HasColumnName("stats_id");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("QuizId");
+
+                    b.HasIndex("StatsId");
+
+                    b.ToTable("quiz_stats");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Skill", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Description")
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("description");
 
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
+                        .HasColumnType("character varying(256)")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
@@ -347,18 +388,22 @@ namespace mabyWorking.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
-                    b.Property<int>("QuestionsPassed")
-                        .HasColumnType("integer");
+                    b.Property<int>("QuizPassed")
+                        .HasColumnType("integer")
+                        .HasColumnName("quiz_passed");
 
                     b.Property<long>("SkillId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("skill_id");
 
                     b.Property<long>("StatsId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("stats_id");
 
                     b.HasKey("Id");
 
@@ -366,35 +411,42 @@ namespace mabyWorking.Migrations
 
                     b.HasIndex("StatsId");
 
-                    b.ToTable("skillstats");
+                    b.ToTable("skill_stats");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.Stats", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<int>("Balance")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("balance");
 
                     b.Property<int>("QuizLimit")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("quiz_limit");
 
                     b.Property<int>("QuizPassed")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("quiz_passed");
 
                     b.Property<long?>("StatusId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("status_id");
 
                     b.Property<string>("UserId")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("user_id");
 
                     b.Property<int>("Xp")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("xp");
 
                     b.HasKey("Id");
 
@@ -409,19 +461,23 @@ namespace mabyWorking.Migrations
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<bool>("IsDefault")
-                        .HasColumnType("boolean");
+                        .HasColumnType("boolean")
+                        .HasColumnName("isdefault");
 
                     b.Property<int>("MinXp")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("min_xp");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.HasKey("Id");
 
@@ -510,6 +566,25 @@ namespace mabyWorking.Migrations
                         .IsRequired();
 
                     b.Navigation("Skill");
+                });
+
+            modelBuilder.Entity("mabyWorking.Models.QuizStats", b =>
+                {
+                    b.HasOne("mabyWorking.Models.Quiz", "Quiz")
+                        .WithMany()
+                        .HasForeignKey("QuizId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("mabyWorking.Models.Stats", "Stats")
+                        .WithMany()
+                        .HasForeignKey("StatsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Quiz");
+
+                    b.Navigation("Stats");
                 });
 
             modelBuilder.Entity("mabyWorking.Models.SkillStats", b =>

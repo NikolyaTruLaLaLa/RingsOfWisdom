@@ -48,11 +48,16 @@ public class ProfileController : ControllerBase
 
         var progress = skills.ToDictionary(
             skill => skill.Name,
-            skill => skillProgress
-                .Where(sp => sp.SkillId == skill.Id)
-                .Select(sp => (sp.QuestionsPassed * 100) / _context.Questions.Count(q => q.Quiz.SkillId == skill.Id))
-                .FirstOrDefault()
+            skill =>
+            {
+                var totalQuizzes = _context.Quizzes.Count(q => q.SkillId == skill.Id);
+                return totalQuizzes == 0 ? 0 : skillProgress
+                     .Where(sp => sp.SkillId == skill.Id)
+                     .Select(sp => (sp.QuizPassed * 100) / totalQuizzes)
+                     .FirstOrDefault();
+            }
         );
+
 
         return Ok(new
         {
@@ -127,5 +132,32 @@ public class ProfileController : ControllerBase
         if (user == null) return NotFound("Пользователь не найден");
 
         return Ok(new { Email = user.Email });
+    }
+
+    [HttpGet("balance")]
+    public async Task<IActionResult> GetBalance()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+
+        if (stats == null) return NotFound("Статистика не найдена");
+
+        return Ok(new { balance = stats.Balance });
+    }
+
+    [HttpGet("quiz-stats")]
+    public async Task<IActionResult> GetQuizStats()
+    {
+        
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId == null) return Unauthorized();
+
+        var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+        if (stats == null) return NotFound("Статистика не найдена");
+        
+        var quizLimit = stats.QuizLimit;
+        var quizPassed = quizLimit - stats.QuizPassed;
+
+        return Ok(new { quizPassed, quizLimit });
     }
 }
