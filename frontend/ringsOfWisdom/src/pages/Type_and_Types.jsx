@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { NavLink } from 'react-router-dom';
 import QuizDayStats from "./../hooks/QuizDayStats";
+import ProtectedRoute from "../hooks/ProtectedRoute";
 
 import './../assets/style/type_and_types.css';
 import baza from './../assets/images/baza.png';
@@ -13,6 +14,12 @@ import svyazannye from './../assets/images/svyazannye.png';
 import kot from './../assets/images/kot.png'; 
 import frazochki from './../assets/images/frazochki.png';
 import blitz from './../assets/images/blitz.png';
+
+
+const quizData = [
+  { name: "БАЗА", image: baza, path: "/quiz/БАЗА" }
+];
+
 
 const Type_and_Types = () => {
     
