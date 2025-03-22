@@ -9,7 +9,7 @@
     font-size: 19px;
     font-weight: bold;
     text-align: center;
-    color: #333; /* Цвет текста */
+    color: #000000; /* Цвет текста */
 }
 @media (min-width: 768px) and (max-width: 1025px) {
     .page-title {
@@ -42,7 +42,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    overflow: hidden; /* Чтобы изображение не выходило за границы кружка */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Чтобы изображение не выходило за границы кружка */
 }
 
 .circle-typ img {

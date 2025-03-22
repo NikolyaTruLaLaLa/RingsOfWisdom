@@ -1,6 +1,5 @@
 /* Контент страницы */
 .container_all{
-    
     margin-top: 20%;
     align-content:space-between;
   justify-content: space-between;
@@ -36,15 +35,21 @@
     transition: transform 0.2s ease;
 }
 .container_all .head:hover{
-    color: #333333;
+    color: #0b0b0b;
     transform:scale(1.02);
 }
+
+.container_all .head .quez-counter{
+  color: #000000;
+}
+
 .container_all .container_first{
     display: flex;
     align-content:center;
-  justify-content: center;
+    justify-content: center;
     text-align: center;
     font-size: 14px;
+    padding: 15px;
     margin:auto auto;
     text-decoration:none;
     color: #000000;
@@ -60,23 +65,34 @@
     padding: 10px;
     text-decoration:none;
     color: #000000;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container_all .container_first img{
     margin-top: 3px;
-    width: 80px;
-    height: 80px;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
     text-decoration:none;
     color: #000000;
     
 }
+.container_all .container_first p{
+  margin-top: 10%;
+  
+  text-decoration:none;
+  color: #000000;
+}
+
+
 .container_all .container_second{
     display: flex;
     align-content:center;
-  justify-content: center;
+    justify-content: center;
+    text-align: center;
     gap:28%;
     margin-bottom: 5%;
     margin-top: 5%;
+    padding: 15px;
     font-size: 14px;
     text-decoration:none;
     color: #000000;
@@ -90,12 +106,18 @@
     padding: 10px;
     text-decoration:none;
     color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container_all .container_second img{
     width: 80px;
-    height: 80px;
+    height: 78px;
     text-decoration:none;
     margin-top: 3px;
+}
+.container_all .container_second p{
+  margin-top: 5%;
+  text-decoration:none;
+  color: #000000;
 }
 
 .container_all .container_last{
@@ -105,6 +127,7 @@
     text-align: center;
     font-size: 14px;
     margin:auto auto;
+    padding: 15px;
     text-decoration:none;
     color: #000000;
 
@@ -115,15 +138,21 @@
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
+    text-align: center;
     text-decoration:none;
     color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 .container_all .container_last img{
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 78px;
     text-decoration:none;
     margin-top: 3px;
-    
+}
+.container_all .container_last p{
+  margin-top: 5%;
+  text-decoration:none;
+  color: #000000;
 }
 
 /* Стили для всплывающего окошка */
@@ -177,7 +206,7 @@
 @media (max-width: 767px) {
     .popupwin {
         margin-bottom: 5%;
-        margin-top:30%;
+        margin-top:10%;
         margin-left: 50%;
     }
   

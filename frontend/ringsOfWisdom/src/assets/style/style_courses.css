@@ -1,3 +1,18 @@
+.courses-head{
+display: flex;
+justify-content: center;
+text-align: center;
+margin-bottom: 2%;
+font-size: 18px;
+font-weight: bold;
+transition: transform 0.2s ease;
+}
+.courses-head .head:hover{
+color: #0b0b0b;
+transform:scale(1.02);
+}
+
+
 
 .courses-container {
     display: grid;
@@ -15,6 +30,7 @@
     cursor: pointer;
     border-radius: 8px;
     transition: transform 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .course-card:hover {
@@ -143,9 +159,14 @@
 
 
 @media (max-width: 768px) {
+
+    .courses-head{
+        margin-top: 45%;
+    }
+    
     .courses-container {
         grid-template-columns: repeat(2, 1fr); 
-        margin-top: 50%;
+        margin-top: 5%;
         padding: 5px;
         gap:10px;
         justify-content: center;
@@ -183,9 +204,14 @@
 }
 
 @media (min-width: 769px)and (max-width: 1024px) {
+
+    .courses-head{
+        margin-top: 45%;
+    }
+
     .courses-container {
         grid-template-columns: repeat(3, 1fr); 
-        margin-top: 50%;
+        margin-top: 5%;
         padding: 5px;
         gap:10px;
         justify-content: center;

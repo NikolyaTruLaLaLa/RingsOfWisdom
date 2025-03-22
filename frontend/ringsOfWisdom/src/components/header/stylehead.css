@@ -71,6 +71,47 @@
     transform:scale(1.02);
 }
 
+@media (max-width: 768px) {
+    .site-header .nav-links{
+    
+         display: flex;
+         flex-direction: column;
+         justify-content: space-evenly;
+         text-align: end;
+         position: absolute;
+         margin-top: 1%;
+         top: 8vh;
+         right: 0;
+         height: 30vh;
+         width:50%;
+         background-color: #5a47b3;
+         opacity: 0.95;
+      
+    }
+
+    .site-header .nav-links a {
+        text-decoration:none; 
+        color: #fefefe;
+        font-size: 16px;
+        padding-right: 5%;
+        font-weight: bold;
+        max-width: 100% ;
+        transition: transform 0.2s ease;
+    }
+    
+    .site-header .nav-links a:hover {
+        color: #ff9900; /* Цвет при наведении */
+        transform:scale(1.02);
+    }
+}
+
+
+.HamburgerMenu{
+    position: absolute;
+    right: 5%;
+    
+    cursor: pointer;
+}
 
 .site-header .profile {
     display: flex;

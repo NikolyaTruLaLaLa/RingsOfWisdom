@@ -197,9 +197,7 @@ const Profile = () => {
                     <div key={index} className="skill-circle">
                       <div
                           className="circle"
-                          style={{
-                            background: `conic-gradient(#5a47b3 ${skill.progress}%, rgb(250, 223, 202) ${skill.progress}% 100%)`,
-                            }}
+                          style={{background: `conic-gradient(#5a47b3 ${skill.progress}%, rgb(250, 223, 202) ${skill.progress}% 100%)`,}}
                       >
                         <span>{skill.progress}%</span>
                       </div>
@@ -239,7 +237,7 @@ const Profile = () => {
 
             
             <div className="profile-section">
-              <button onClick={handleLogout}>Выйти из аккаунта</button>
+              <button className="logout" onClick={handleLogout}>Выйти из аккаунта</button>
             </div>
           </div>
         </div>
