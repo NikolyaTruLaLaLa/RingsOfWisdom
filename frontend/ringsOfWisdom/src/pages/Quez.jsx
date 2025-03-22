@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProtectedRoute from "../hooks/ProtectedRoute";
+import { NavLink } from "react-router-dom";
 import './../assets/style/style_quez.css';
 
 const API_BASE_URL = "https://localhost:5269/api";
@@ -65,7 +66,7 @@ const Quez = () => {
         return newAttempts;
       });
       if (attemptsLeft === 1) {
-        setFeedback("Попытки кончились. Верный ответ: " + currentQuestion.answers[0]);
+        setFeedback("Попытки кончились.");
         
       } else {
         setFeedback(`Неправильный ответ. Осталось попыток: ${attemptsLeft - 1}`);
@@ -143,6 +144,11 @@ const Quez = () => {
 
           <p className="quiz-feedback">{feedback}</p>
         </div>
+        <div className="quiz-footer">
+                <NavLink to="/skills" className="back-to-menu">
+                    <button>Вернуться на дерево</button>
+                </NavLink>
+          </div>
       </div>
     </ProtectedRoute>
   );

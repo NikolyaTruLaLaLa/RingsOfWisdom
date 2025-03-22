@@ -25,9 +25,35 @@ const Type_and_Types = () => {
     
     const {availableQuizzes, totalQuizzes} = QuizDayStats();
         useEffect(() => {
-        }, []); 
+        }, []);
+        
+      const handleClosePopup = () => {
+        setPopupVisible(false);
+    
+      };
+    
+      const renderNavLink = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="item disabled">
+              <img src={quiz.image} alt={quiz.name} />
+              <p>{quiz.name}</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+              <p>{quiz.name}</p>
+            </NavLink>
+          );
+        }
+      }; 
 
     return (
+        <ProtectedRoute>
         <div className="skill-tree">
     <div className="page-title">
         <p>Типы типочки
@@ -38,15 +64,20 @@ const Type_and_Types = () => {
         : `Осталось квизов: ${availableQuizzes}/${totalQuizzes}`}</span>
         </p>
     </div>
+    <div className="popupwintyp">
+      <div className="popupwintyp-content">
+        <span className="close-btn" onClick={handleClosePopup}>
+          &times;
+        </span>
+        <p>
+          При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
+        </p>
+      </div>
+    </div>
 
         {/* Первый ряд (1 кружок) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={baza} alt="БАЗА" />
-                </div>
-                <p>БАЗА</p>
-            </NavLink>
+        {renderNavLink(quizData[0])}
         </div>
 
         {/* Второй ряд (2 кружка) */}
@@ -123,6 +154,7 @@ const Type_and_Types = () => {
             </NavLink>
         </div>
     </div>
+    </ProtectedRoute>
     );
 };
  
