@@ -61,7 +61,7 @@ namespace mabyWorking.Controllers
                 q.Explanation,
                 Answers = answers
                     .Where(a => a.QuestionId == q.Id)
-                    .SelectMany(a => a.Text.Split(new[] { ", " }, StringSplitOptions.RemoveEmptyEntries)
+                    .SelectMany(a => a.Text.Split(new[] { ";" }, StringSplitOptions.RemoveEmptyEntries)
                         .Select(s => s.ToLower()))
                     .ToList()
             }).ToList();
