@@ -26,7 +26,7 @@ function App() {
       <Router>
         <Head />
         <Routes>
-          <Route path="" element={<Mainpage />} />
+          <Route path="/" element={<Mainpage />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/course" element={<Courses />} />
@@ -38,6 +38,7 @@ function App() {
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz/:quizName" element={<Quez />} />
+          <Route path="/quiz" element={<Quez />} />
         </Routes>
       </Router>
     </AuthProvider>

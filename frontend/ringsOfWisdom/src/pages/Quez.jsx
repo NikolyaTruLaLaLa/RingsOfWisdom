@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProtectedRoute from "../hooks/ProtectedRoute";
+import { useAuth } from "../hooks/AuthContext";
 import { NavLink } from "react-router-dom";
 import './../assets/style/style_quez.css';
 
@@ -17,6 +18,9 @@ const Quez = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const isFetched = useRef(false);
   const isComplited = useRef(false);
+  const { isAuthenticated } = useAuth();
+
+
 
 
   const fetchQuestions = async () => {
@@ -36,12 +40,21 @@ const Quez = () => {
       console.error("Ошибка загрузки квиза:", error);
     }
   };
+
   useEffect(() => {
-    if (!isFetched.current) {
-      fetchQuestions();
-      isFetched.current = true;
+    if (isAuthenticated === false) {
+        navigate("/auth");
     }
-  }, [quizName]);
+    else if (!quizName)
+    {
+        navigate("/skills");
+    }
+    else{
+        if (!isFetched.current) {
+            fetchQuestions();
+            isFetched.current = true;
+    }}
+  }, [quizName, navigate, isAuthenticated]);
 
   if (!questions.length) return <p>Загрузка вопросов или квиз не найден...</p>;
 

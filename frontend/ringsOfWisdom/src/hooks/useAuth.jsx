@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 export const useAuth = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(localStorage.getItem("token") ? true : null);
 
   useEffect(() => {
     const checkAuth = async () => {
