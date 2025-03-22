@@ -65,6 +65,8 @@ namespace mabyWorking
             builder.Services.Configure<AppSetittings>(builder.Configuration.GetSection("AppSettings"));
             builder.Services.AddTransient<Interfaces.IEmailSender, Services.EmailService>();
 
+            builder.Services.AddHostedService<QuizResetService>();
+
             builder.Services.AddAuthorization();
 
             var app = builder.Build();

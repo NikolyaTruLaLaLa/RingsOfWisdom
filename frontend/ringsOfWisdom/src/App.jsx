@@ -37,7 +37,7 @@ function App() {
           <Route path="/confirm-email" element={<EmailCompleted />} />
           <Route path="/skills" element={<Skillstree />} />
           <Route path="/stngform" element={<Strongformstree />} />
-          <Route path="/quiz" element={<Quez />} />
+          <Route path="/quiz/:quizName" element={<Quez />} />
         </Routes>
       </Router>
     </AuthProvider>

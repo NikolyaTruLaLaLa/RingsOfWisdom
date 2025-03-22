@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace mabyWorking.Models
 {
+    [Table("question")]
     public class Question
     {
         [Key]

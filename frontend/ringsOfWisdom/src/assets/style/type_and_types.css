@@ -11,6 +11,11 @@
     text-align: center;
     color: #333; /* Цвет текста */
 }
+@media (min-width: 768px) and (max-width: 1025px) {
+    .page-title {
+        margin-top: 2%;
+    } 
+}
 
 .skill-row {
     display: flex;
@@ -90,3 +95,115 @@
         font-size: 12px;
     }
 }
+
+/* Стили для всплывающего окошка */
+.popupwintyptyp {
+    position:fixed;
+    margin:auto;
+    margin-left: 80%;
+    
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .popupwintyp-content {
+    background-color: #5a47b3; /* Фиолетовый фон */
+    color: #fff; /* Белый текст */
+    border-radius: 10px;
+    padding: 15px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: fixed;
+  }
+  
+  .popupwintyp-content p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #fff;
+  }
+  
+  .close-btn:hover {
+    color: #ccc;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @media (max-width: 767px) {
+      .popupwintyp {
+          margin-bottom: 5%;
+          margin-top:0%;
+          margin-left: 45%;
+      }
+    
+      .popupwintyp-content {
+        width: auto;
+        padding: 10px;
+      }
+    
+      .popupwintyp-content p {
+        font-size: 12px;
+      }
+    
+      .close-btn {
+        font-size: 18px;
+      }
+    }
+  
+    @media (min-width: 768px) and (max-width: 1025px) {
+        .popupwintyp {
+            margin-bottom: 0%;
+            margin-top:0%;
+            margin-left: 55%;
+        }
+      
+        .popupwintyp-content {
+          
+          padding: 10px;
+        }
+      
+        .popupwintyp-content p {
+          font-size: 12px;
+        }
+      
+        .close-btn {
+          font-size: 18px;
+        }
+    }
+  
+    /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+    @media (min-width: 1026px) {
+        .popupwintyp {
+            margin-bottom: 0%;
+            margin-top:0%;
+            margin-left: 55%;
+        }
+      
+        .popupwintyp-content {
+          
+          padding: 10px;
+        }
+      
+        .popupwintyp-content p {
+          font-size: 12px;
+        }
+      
+        .close-btn {
+          font-size: 18px;
+        }
+    }

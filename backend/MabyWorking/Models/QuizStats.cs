@@ -20,6 +20,6 @@ namespace mabyWorking.Models
         public long QuizId { get; set; }
         public Quiz Quiz { get; set; } = null!;
         [Column("is_passed")]
-        public bool IsPassed = false;
+        public bool IsPassed { get; set; } = false;
     }
 }
