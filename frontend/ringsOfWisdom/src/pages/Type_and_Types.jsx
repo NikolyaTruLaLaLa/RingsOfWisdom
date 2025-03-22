@@ -17,7 +17,16 @@ import blitz from './../assets/images/blitz.png';
 
 
 const quizData = [
-  { name: "БАЗА", image: baza, path: "/quiz/БАЗА" }
+  { name: "БАЗА", image: baza, path: "/quiz/БАЗА" },
+  { name: "Раздатка", image: razdatka, path: "/quiz/Раздатка" },
+  { name: "Замена", image: zamena, path: "/quiz/Замена" },
+  { name: "Блатные номера", image: blatie_nomera, path: "/quiz/Блатные номера" },
+  { name: "РаздатоЧКА", image: razdatOCHKA, path: "/quiz/РаздатоЧКА" },
+  { name: "Замена замен замены замен", image: zamena_zamen, path: "/quiz/Замена замен замены замен" },
+  { name: "Связанные одной цепью", image: svyazannye, path: "/quiz/Связанные одной цепью" },
+  { name: "Кот в Чёрном Ящике", image: kot, path: "/quiz/Кот в Чёрном Ящике" },
+  { name: "Странные фразочки", image: frazochki, path: "/quiz/Странные фразочки" },
+  { name: "БЛИЦ БЛИЦ БЛИЦ", image: blitz, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
 ];
 
 
@@ -31,6 +40,89 @@ const Type_and_Types = () => {
         setPopupVisible(false);
     
       };
+
+
+      const renderNavLink_kot = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="item disabled">
+              <img src={quiz.image} alt={quiz.name} />
+              <p>Кот в Чёрном<br/>Ящике</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Кот в Чёрном<br/>Ящике</p>
+            </NavLink>
+          );
+        }
+      };
+
+      const renderNavLink_frazochki = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="item disabled">
+              <img src={quiz.image} alt={quiz.name} />
+              <p>Странные<br/>фразочки</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Странные<br/>фразочки</p>
+            </NavLink>
+          );
+        }
+      };
+
+
+      const renderNavLink_zamena_zamen = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="item disabled">
+              <img src={quiz.image} alt={quiz.name} />
+              <p>Замена замен<br/>замены замен</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Замена замен<br/>замены замен</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_svyazannye = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="item disabled">
+              <img src={quiz.image} alt={quiz.name} />
+              <p>Замена замен<br/>замены замен</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Связанные<br/>одной цепью</p>
+            </NavLink>
+          );
+        }
+      }; 
+
     
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
@@ -82,76 +174,31 @@ const Type_and_Types = () => {
 
         {/* Второй ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={razdatka} alt="Раздатка" />
-                </div>
-                <p>Раздатка</p>
-            </NavLink>
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={zamena} alt="Замена" />
-                </div>
-                <p>Замена</p>
-            </NavLink>
+        {renderNavLink(quizData[1])}
+        {renderNavLink(quizData[2])}
         </div>
 
         {/* Третий ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={blatie_nomera} alt="Блатные номера" />
-                </div>
-                <p>Блатные<br/>номера</p>
-            </NavLink>
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={razdatOCHKA} alt="РаздатОЧКА" />
-                </div>
-                <p>РаздатОЧКА</p>
-            </NavLink>
+        {renderNavLink(quizData[3])}
+        {renderNavLink(quizData[4])}
         </div>
 
         {/* Четвертый ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={zamena_zamen} alt="Замена замен замены замен" />
-                </div>
-                <p>Замена замен<br/>замены замен</p>
-            </NavLink>
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={svyazannye} alt="Связанные одной цепью" />
-                </div>
-                <p>Связанные<br/>одной цепью</p>
-            </NavLink>
+        {renderNavLink_zamena_zamen(quizData[5])}
+        {renderNavLink_svyazannye(quizData[6])}
         </div>
 
         {/* Пятый ряд (2 кружка) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={kot} alt="Кот в Чёрном Ящике" />
-                </div>
-                <p>Кот в Чёрном<br/>Ящике</p>
-            </NavLink>
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={frazochki} alt="Странные фразочки" />
-                </div>
-                <p>Странные<br/>фразочки</p>
-            </NavLink>
+        {renderNavLink_kot(quizData[7])}
+        {renderNavLink_frazochki(quizData[8])}
         </div>
 
         {/* Шестой ряд (1 кружок) */}
         <div className="skill-row">
-            <NavLink to="/skillwp" className="circle-typ-container"> {/* Кликабельный кружок */}
-                <div className="circle-typ">
-                    <img src={blitz} alt="БЛИЦ БЛИЦ БЛИЦ" />
-                </div>
-                <p>БЛИЦ<br/>БЛИЦ БЛИЦ</p>
-            </NavLink>
+        {renderNavLink(quizData[9])}
         </div>
     </div>
     </ProtectedRoute>
