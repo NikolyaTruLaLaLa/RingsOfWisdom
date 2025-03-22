@@ -7,8 +7,8 @@ import './App.css';
 import Head from './components/header/Head';
 /*import Footer from './components/footer/Footer';*/
 import Mainpage from './pages/Mainpage';
-import WPC from './pages/WPC';
 import Shop from './pages/Shop';
+import Courses from './pages/Courses';
 import Skillstree from './pages/Skillstree';
 import Strongformstree from './pages/Strongformstree';
 import Emailverif from './pages/Emailverif';
@@ -28,8 +28,8 @@ function App() {
         <Routes>
           <Route path="" element={<Mainpage />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/course" element={<WPC />} />
           <Route path="/shop" element={<Shop />} />
+          <Route path="/course" element={<Courses />} />
           <Route path="/types" element={<Type_and_Types />} />
           <Route path="/reg" element={<Registation />} />
           <Route path="/auth" element={<Authorization />} />
