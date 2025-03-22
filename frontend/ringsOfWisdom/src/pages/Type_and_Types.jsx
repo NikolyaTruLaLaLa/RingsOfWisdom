@@ -45,14 +45,17 @@ const Type_and_Types = () => {
       const renderNavLink_kot = (quiz) => {
         if (availableQuizzes === 0) {
           return (
-            <div className="item disabled">
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
               <img src={quiz.image} alt={quiz.name} />
-              <p>Кот в Чёрном<br/>Ящике</p>
+              
+            </div>
+            <p>Кот в Чёрном<br/>Ящике</p>
             </div>
           );
         } else {
           return (
-            <NavLink to={quiz.path} className="circle-typ-container">
+            <NavLink to={quiz.path} className="circle-typ-container" >
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
@@ -65,9 +68,12 @@ const Type_and_Types = () => {
       const renderNavLink_frazochki = (quiz) => {
         if (availableQuizzes === 0) {
           return (
-            <div className="item disabled">
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
               <img src={quiz.image} alt={quiz.name} />
-              <p>Странные<br/>фразочки</p>
+              
+            </div>
+            <p>Странные<br/>фразочки</p>
             </div>
           );
         } else {
@@ -86,9 +92,12 @@ const Type_and_Types = () => {
       const renderNavLink_zamena_zamen = (quiz) => {
         if (availableQuizzes === 0) {
           return (
-            <div className="item disabled">
-              <img src={quiz.image} alt={quiz.name} />
-              <p>Замена замен<br/>замены замен</p>
+            <div className="circle-typ-container" >
+                <div className="circle-typ" >
+                  <img src={quiz.image} alt={quiz.name} />
+                 
+                </div>
+                <p>Замена замен<br/>замены замен</p>
             </div>
           );
         } else {
@@ -106,9 +115,12 @@ const Type_and_Types = () => {
       const renderNavLink_svyazannye = (quiz) => {
         if (availableQuizzes === 0) {
           return (
-            <div className="item disabled">
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
               <img src={quiz.image} alt={quiz.name} />
-              <p>Замена замен<br/>замены замен</p>
+              
+            </div>
+            <p>Замена замен<br/>замены замен</p>
             </div>
           );
         } else {
@@ -127,9 +139,11 @@ const Type_and_Types = () => {
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
           return (
-            <div className="item disabled">
+            <div className="circle-typ-container">
+            <div className="circle-typ">
               <img src={quiz.image} alt={quiz.name} />
-              <p>{quiz.name}</p>
+            </div>
+            <p>{quiz.name}</p>
             </div>
           );
         } else {
