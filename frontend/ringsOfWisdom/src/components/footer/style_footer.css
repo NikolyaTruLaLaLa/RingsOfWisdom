@@ -9,7 +9,9 @@
     margin-bottom: 2%;
     margin-top: 13%;
 }
-
+li{
+    list-style-type: none;
+}
 .footer__wrapper {
 	display: flex;
 	flex-direction:column;
