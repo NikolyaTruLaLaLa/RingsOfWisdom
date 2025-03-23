@@ -73,7 +73,6 @@
 
 @media (max-width: 768px) {
     .site-header .nav-links{
-    
          display: flex;
          flex-direction: column;
          justify-content: space-evenly;
@@ -86,8 +85,11 @@
          width:50%;
          background-color: #5a47b3;
          opacity: 0.95;
-      
+         border-radius: 5px;
+         transform: scale(0.9);
+         transition: transform 1s ease;
     }
+
 
     .site-header .nav-links a {
         text-decoration:none; 

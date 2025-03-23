@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 import { NavLink } from "react-router-dom";
-import './../assets/style/style_quez.css';
+import "./../assets/style/style_quez.css";
 
 const API_BASE_URL = "https://localhost:5269/api";
 
@@ -18,24 +18,24 @@ const Quez = () => {
   const isFetched = useRef(false);
   const isComplited = useRef(false);
 
-
   const fetchQuestions = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/quizzes/${quizName}`,{
+      const response = await fetch(`${API_BASE_URL}/quizzes/${quizName}`, {
         method: "GET",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
       });
       if (!response.ok) {
-          console.error("Ошибка ответа сервера:", response.status, response.statusText);
-          throw new Error(`Квиз "${quizName}" не найден`);
+        console.error("Ошибка ответа сервера:", response.status, response.statusText);
+        throw new Error(`Квиз "${quizName}" не найден`);
       }
       const data = await response.json();
       setQuestions(data);
-  } catch (error) {
+    } catch (error) {
       console.error("Ошибка загрузки квиза:", error);
     }
   };
+
   useEffect(() => {
     if (!isFetched.current) {
       fetchQuestions();
@@ -45,18 +45,94 @@ const Quez = () => {
 
   if (!questions.length) return <p>Загрузка вопросов или квиз не найден...</p>;
 
-  const currentQuestion = questions[currentQuestionIndex];
-  const normalizedAnswers = currentQuestion?.answers?.map(answer => answer.toLowerCase()) || [];
-  const normalizedUserAnswer = userAnswer.trim().toLowerCase();
+  const normalizeString = (str) => {
+    if (!str || typeof str !== "string") {
+      console.log("Нормализация: входная строка пустая или не является строкой");
+      return "";
+    }
+
+    const normalized = str
+      .toLowerCase() // Приводим к нижнему регистру
+      .replace(/[^a-zа-яё\s-]/gi, "") // Удаляем всё, кроме букв (латиница и кириллица), пробелов и дефисов
+      .replace(/\s+/g, " ") // Удаляем лишние пробелы
+      .trim(); // Убираем пробелы в начале и конце
+
+    console.log("Нормализация: входная строка:", str);
+    console.log("Нормализация: результат:", normalized);
+
+    return normalized;
+  };
+
+  const createAnswerRegex = (answers) => {
+    if (!answers || !Array.isArray(answers)) {
+      console.error("Ответы из базы данных отсутствуют или имеют неверный формат.");
+      return null;
+    }
+
+    // Фильтруем пустые ответы
+    const validAnswers = answers.filter((answer) => answer && answer.trim());
+
+    if (validAnswers.length === 0) {
+      console.error("Нет валидных ответов из базы данных.");
+      return null;
+    }
+
+    // Создаём шаблон для каждого ответа
+    const regexPattern = validAnswers
+      .map((answer) => {
+        const words = answer.split(" "); // Разделяем ответ на слова
+        return words
+          .map((word) => {
+            // Разделяем слово на части по дефисам
+            const parts = word.split("-");
+            return parts.map((part) => `${part}[а-яё]*`).join("-"); // Учитываем окончания слов и дефисы
+          })
+          .join("\\s+"); // Учитываем пробелы между словами
+      })
+      .join("|"); // Объединяем все варианты через "или" (|)
+
+    console.log("Создано регулярное выражение:", regexPattern);
+    return new RegExp(regexPattern, "i"); // Создаём регулярное выражение
+  };
+
+  const checkUserAnswer = (userAnswer, correctAnswers) => {
+    const normalizedUserAnswer = normalizeString(userAnswer); // Нормализуем ответ пользователя
+    console.log("Нормализованный ответ пользователя:", normalizedUserAnswer);
+
+    if (!normalizedUserAnswer) {
+      console.log("Ответ пользователя пустой после нормализации.");
+      return false;
+    }
+
+    const regex = createAnswerRegex(correctAnswers); // Создаём регулярное выражение для всех вариантов
+    console.log("Регулярное выражение:", regex);
+
+    if (!regex) {
+      console.log("Регулярное выражение не создано.");
+      return false;
+    }
+
+    const isMatch = regex.test(normalizedUserAnswer);
+    console.log("Результат проверки:", isMatch);
+
+    return isMatch; // Ответ пользователя соответствует хотя бы одному варианту
+  };
 
   const handleAnswerSubmit = () => {
     if (attemptsLeft === 0) return;
-    if (!normalizedUserAnswer) {
+    if (!userAnswer.trim()) {
       setFeedback("Пожалуйста, введите ответ.");
       return;
     }
 
-    if (normalizedAnswers.includes(normalizedUserAnswer)) {
+    if (!currentQuestion.answers || !Array.isArray(currentQuestion.answers)) {
+      console.error("Ответы из базы данных отсутствуют или имеют неверный формат.");
+      setFeedback("Ошибка: ответы из базы данных отсутствуют.");
+      return;
+    }
+
+    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers); // Проверяем ответ пользователя
+    if (isCorrect) {
       setFeedback(`Правильный ответ! ${currentQuestion.explanation}`);
       setCorrectAnswersCount(prev => prev + 1);
       setAttemptsLeft(0);
@@ -67,7 +143,6 @@ const Quez = () => {
       });
       if (attemptsLeft === 1) {
         setFeedback("Попытки кончились.");
-        
       } else {
         setFeedback(`Неправильный ответ. Осталось попыток: ${attemptsLeft - 1}`);
       }
@@ -82,7 +157,7 @@ const Quez = () => {
       setAttemptsLeft(3);
     } else {
       setCorrectAnswersCount(prevCorrectAnswers => {
-        const newCount = prevCorrectAnswers; 
+        const newCount = prevCorrectAnswers;
         if (!isComplited.current) {
           completeQuiz(newCount);
           isComplited.current = true;
@@ -91,29 +166,29 @@ const Quez = () => {
       });
     }
   };
+
   const completeQuiz = async (finalCorrectAnswersCount) => {
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/complete-quiz`, {
         method: "POST",
-        headers: { 
-          "Content-Type": "application/json", 
-          Authorization: `Bearer ${localStorage.getItem("token")}` 
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         credentials: "include",
         body: JSON.stringify({ quizName, correctAnswersCount: finalCorrectAnswersCount }),
       });
-  
+
       if (!response.ok) throw new Error("Ошибка завершения квиза");
-  
+
       navigate("/skills");
     } catch (error) {
       console.error("Ошибка при завершении квиза:", error);
       setFeedback("Ошибка при завершении квиза.");
     }
   };
-  
-  
-  
+
+  const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <ProtectedRoute>
@@ -122,7 +197,7 @@ const Quez = () => {
           <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
         </div>
         <div className="quiz-body">
-          <div className='quiz-name'>{quizName}</div>
+          <div className="quiz-name">{quizName}</div>
           <p className="quiz-question-text">{currentQuestion.description}</p>
           <input
             type="text"
@@ -130,25 +205,28 @@ const Quez = () => {
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
             placeholder="Введите ваш ответ"
-            disabled={attemptsLeft === 0} 
+            disabled={attemptsLeft === 0}
           />
-          <button 
-            onClick={feedback.includes("Правильный") || attemptsLeft === 0 ? handleNextQuestion : handleAnswerSubmit}
+          <button
+            onClick={
+              feedback.includes("Правильный") || attemptsLeft === 0
+                ? handleNextQuestion
+                : handleAnswerSubmit
+            }
           >
             {feedback.includes("Правильный") || attemptsLeft === 0
-              ? (currentQuestionIndex < questions.length - 1 ? "Следующий вопрос" : "Завершить квиз")
-                : "Сдать ответ"
-            }
+              ? currentQuestionIndex < questions.length - 1
+                ? "Следующий вопрос"
+                : "Завершить квиз"
+              : "Сдать ответ"}
           </button>
-
-
           <p className="quiz-feedback">{feedback}</p>
         </div>
         <div className="quiz-footer">
-                <NavLink to="/skills" className="back-to-menu">
-                    <button>Вернуться на дерево</button>
-                </NavLink>
-          </div>
+          <NavLink to="/skills" className="back-to-menu">
+            <button>Вернуться на дерево</button>
+          </NavLink>
+        </div>
       </div>
     </ProtectedRoute>
   );
