@@ -52,6 +52,11 @@ const Courses = () => {
     };
 
     return (
+        <>
+
+        <div className="courses-head">
+            <p>Могучие Формы</p>
+        </div>
         <div className="courses-container">
             {courses.map((course, index) => (
                 <div key={index} className="course-card" onClick={() => handleCourseClick(course)}>
@@ -77,6 +82,7 @@ const Courses = () => {
                 </div>
             )}
         </div>
+        </>
     );
 };
 

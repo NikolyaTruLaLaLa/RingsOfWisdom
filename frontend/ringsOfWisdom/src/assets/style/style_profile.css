@@ -9,9 +9,9 @@
     margin-top: -50px;
 }
 
-@media (max-width: 1023px){
+@media (max-width: 1024px){
     .profile-container {
-        margin-top: 15%;
+        margin-top: 20%;
     }
 }
 
@@ -146,11 +146,16 @@
 
 .skills-progress {
     display: flex;
+    justify-content: center;
+    
     gap: 20px;
     flex-wrap: wrap;
+    
 }
 
 .skill-circle {
+
+    justify-items: center;
     text-align: center;
 }
 
@@ -164,10 +169,11 @@
     font-size: 18px;
     font-weight: bold;
     background: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .rating-table {
-    width: 80%;
+    width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
 }
@@ -198,7 +204,7 @@
 
 .profile-section p {
     font-size: 1.1rem;
-    color: #666;
+    color: #030303;
     margin: 5px 0;
     width: 100%;
     max-width: 100%;
@@ -216,6 +222,7 @@
     cursor: pointer;
     margin-top: 10px;
     margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
 }
 .profile-section .logout:hover {

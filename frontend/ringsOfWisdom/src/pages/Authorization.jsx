@@ -118,7 +118,6 @@ const Login = () => {
               />
               Запомнить меня
             </label>
-            <a href="#" className="forgot-password">Забыли пароль?</a>
           </div>
 
           <button type="submit" disabled={isSubmitting || isAuthenticated}>Войти</button>

@@ -13,13 +13,16 @@
     text-align: center;
     margin-bottom: 20px;
     width: 100%; 
+
 }
+
+
 
 .header-info h1 {
     font-size: 2em; 
     font-weight: bold; 
     margin: 0;
-    color: #333; 
+    color: #000000; 
 }
 
 .balance-info {
@@ -35,12 +38,13 @@
     width: 1em; 
     height: 1em; 
     margin-right: 10px;
+    
 }
 
 .quiz-counter {
     margin-left: 20px;
     font-size: 0.8em;
-    color: #555;
+    color: #000000;
 }
 
 .purchase-options {
@@ -48,6 +52,7 @@
     justify-content: center;
     width: 100%;
     flex-wrap: wrap; 
+    
 }
 
 .purchase-item {
@@ -55,12 +60,14 @@
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #cccccc;
     border-radius: 10px;
     width: 90%; 
     max-width: 200px; 
     text-align: center;
     margin: 10px; 
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .icon-circle {
@@ -74,6 +81,7 @@
     justify-content: center;
     color: white;
     font-size: 24px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .item-description {
@@ -106,6 +114,31 @@
 @media (max-width: 768px) {
     .shop-container {
         padding-top: 100px; 
+    }
+
+    .header-info h1 {
+        font-size: 1.5em; 
+    }
+
+    .balance-info {
+        font-size: 1em; 
+    }
+
+    .purchase-item {
+        width: 100%; 
+        max-width: none; 
+    }
+
+    .item-description {
+        font-size: 0.8em; 
+    }
+}
+
+@media (min-width: 769px)and (max-width: 1024px) {
+    
+    
+    .shop-container {
+        margin-top: 30%;; 
     }
 
     .header-info h1 {
