@@ -165,7 +165,7 @@ const Type_and_Types = () => {
         <p>Типы типочки
             <br/>
         <span className="quiz-counter">
-        {availableQuizzes === 0 
+        {availableQuizzes <= 0 
         ? "Ваш лимит квизов в день закончился :( Они обновляются в 00:00 по Мск, либо можете купить попытки в нашем магазине!" 
         : `Осталось квизов: ${availableQuizzes}/${totalQuizzes}`}</span>
         </p>

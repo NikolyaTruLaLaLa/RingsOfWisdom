@@ -120,17 +120,17 @@ namespace mabyWorking.Controllers
 
             return Ok("Награда начислена");
         }
-
-        [HttpGet("can-start/{quizName}")]
-        public async Task<IActionResult> CanStartQuiz(string quizName)
+        [Authorize]
+        [HttpGet("can-start")]
+        public async Task<IActionResult> CanStartQuiz()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
 
-            if (userStats == null) return NotFound("Статистика пользователя не найдена");
-            if (userStats.QuizLimit <= 0) return Ok(new { CanStart = false, Message = "Недостаточно попыток" });
+            if (userStats == null) return Ok(new { CanStart = false, Message = "Пользователь не найден" });
+            if (userStats.QuizLimit <= userStats.QuizPassed) return Ok(new { CanStart = false, Message = "Недостаточно попыток для начала квиза" });
 
-            return Ok(new { CanStart = true });
+            return Ok(new { CanStart = true, Message = "Квиз можно начать" });
         }
 
 

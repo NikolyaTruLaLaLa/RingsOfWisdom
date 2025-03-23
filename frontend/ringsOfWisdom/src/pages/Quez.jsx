@@ -16,10 +16,30 @@ const Quez = () => {
   const [feedback, setFeedback] = useState("");
   const [attemptsLeft, setAttemptsLeft] = useState(3);
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
+  const [canStartQuiz, setCanStartQuiz] = useState(null);
   const isFetched = useRef(false);
   const isComplited = useRef(false);
+  const isChecked = useRef(false);
   const { isAuthenticated } = useAuth();
 
+  const checkCanStartQuiz = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/quizzes/can-start`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        credentials: "include",
+      });
+      const data = await response.json();
+      if (data.canStart) {
+        setCanStartQuiz(true);
+      } else {
+        alert(data.message);
+        navigate("/skills");
+      }
+    } catch (error) {
+      console.error("Ошибка при проверке возможности начала квиза:", error);
+    }
+  };
 
 
   const fetchQuestions = async () => {
@@ -40,20 +60,33 @@ const Quez = () => {
     }
   };
 
+
+  
   useEffect(() => {
+
     if (isAuthenticated === false) {
         navigate("/auth");
+        return;
     }
-    else if (!quizName)
-    {
-        navigate("/skills");
-    }
-    else{
-        if (!isFetched.current) {
-            fetchQuestions();
-            isFetched.current = true;
-    }}
-  }, [quizName, navigate, isAuthenticated]);
+    if (!quizName) {
+      navigate("/skills");
+      return;
+    } 
+    if(!isChecked.current){
+      checkCanStartQuiz();
+      isChecked.current = true;
+    } 
+    
+}, [quizName, navigate, isAuthenticated]); 
+
+useEffect(() => {
+  if (canStartQuiz && !isFetched.current) {
+    fetchQuestions();
+    isFetched.current = true;
+  }
+}, [canStartQuiz]);
+
+if (canStartQuiz === null) return <p>Проверка возможности начала квиза...</p>;
 
   if (!questions.length) return <p>Загрузка вопросов или квиз не найден...</p>;
 
