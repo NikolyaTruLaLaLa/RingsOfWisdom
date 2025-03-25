@@ -92,7 +92,7 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
 
   const normalizeString = (str) => {
     if (!str || typeof str !== "string") {
-      console.log("Нормализация: входная строка пустая или не является строкой");
+      
       return "";
     }
 
@@ -102,63 +102,66 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
       .replace(/\s+/g, " ") // Удаляем лишние пробелы
       .trim(); // Убираем пробелы в начале и конце
 
-    console.log("Нормализация: входная строка:", str);
-    console.log("Нормализация: результат:", normalized);
+    
 
     return normalized;
   };
 
   const createAnswerRegex = (answers) => {
     if (!answers || !Array.isArray(answers)) {
-      console.error("Ответы из базы данных отсутствуют или имеют неверный формат.");
+      console.error("Invalid answers format");
       return null;
     }
-
-    // Фильтруем пустые ответы
-    const validAnswers = answers.filter((answer) => answer && answer.trim());
-
-    if (validAnswers.length === 0) {
-      console.error("Нет валидных ответов из базы данных.");
-      return null;
-    }
-
-    // Создаём шаблон для каждого ответа
-    const regexPattern = validAnswers
-      .map((answer) => {
-        const words = answer.split(" "); // Разделяем ответ на слова
-        return words
-          .map((word) => {
-            // Разделяем слово на части по дефисам
-            const parts = word.split("-");
-            return parts.map((part) => `${part}[а-яё]*`).join("-"); // Учитываем окончания слов и дефисы
-          })
-          .join("\\s+"); // Учитываем пробелы между словами
-      })
-      .join("|"); // Объединяем все варианты через "или" (|)
-
-    console.log("Создано регулярное выражение:", regexPattern);
-    return new RegExp(regexPattern, "i"); // Создаём регулярное выражение
+  
+    const processWord = (word) => {
+      // Пропускаем предлоги и короткие слова
+      if (word.length <= 2) return word;
+      
+      // Для русских слов
+      if (/[а-яё]/i.test(word)) {
+        const stem = word
+          .replace(/([аяыиоёуюэе])([а-яё]*)$/, '') // Удаляем окончание
+          .replace(/ь$/, ''); // Удаляем мягкий знак
+        return stem ? `${stem}[а-яё]*` : word;
+      }
+      
+      // Для английских слов
+      return `${word}\\w*`;
+    };
+  
+    const regexPattern = answers
+      .filter(answer => answer && answer.trim())
+      .map(answer => 
+        answer.split(' ')
+          .map(word => 
+            word.split('-')
+              .map(part => processWord(part))
+                .join('-'))
+          .join('\\s+'))
+      .join('|');
+  
+    return new RegExp(regexPattern, 'i');
   };
 
   const checkUserAnswer = (userAnswer, correctAnswers) => {
     const normalizedUserAnswer = normalizeString(userAnswer); // Нормализуем ответ пользователя
-    console.log("Нормализованный ответ пользователя:", normalizedUserAnswer);
+    
 
     if (!normalizedUserAnswer) {
-      console.log("Ответ пользователя пустой после нормализации.");
+      
       return false;
     }
 
     const regex = createAnswerRegex(correctAnswers); // Создаём регулярное выражение для всех вариантов
-    console.log("Регулярное выражение:", regex);
+    
 
     if (!regex) {
-      console.log("Регулярное выражение не создано.");
+     
       return false;
     }
 
     const isMatch = regex.test(normalizedUserAnswer);
-    console.log("Результат проверки:", isMatch);
+    
 
     return isMatch; // Ответ пользователя соответствует хотя бы одному варианту
   };
