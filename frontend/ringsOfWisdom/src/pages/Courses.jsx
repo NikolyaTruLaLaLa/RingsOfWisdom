@@ -55,7 +55,7 @@ const Courses = () => {
         <>
 
         <div className="courses-head">
-            <p>Могучие Формы</p>
+            <p>Курсы</p>
         </div>
         <div className="courses-container">
             {courses.map((course, index) => (
