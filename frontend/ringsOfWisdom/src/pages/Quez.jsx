@@ -97,74 +97,55 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
     }
 
     const normalized = str
-      .toLowerCase() // Приводим к нижнему регистру
-      .replace(/[^a-zа-яё\s-]/gi, "") // Удаляем всё, кроме букв (латиница и кириллица), пробелов и дефисов
-      .replace(/\s+/g, " ") // Удаляем лишние пробелы
-      .trim(); // Убираем пробелы в начале и конце
+      .toLowerCase()
+      .replace(/[^a-zа-яё\s-]/gi, "")
+      .replace(/\s+/g, " ") 
+      .trim();
 
     
 
     return normalized;
   };
 
-  const createAnswerRegex = (answers) => {
-    if (!answers || !Array.isArray(answers)) {
-      console.error("Invalid answers format");
-      return null;
-    }
-  
-    const processWord = (word) => {
-      // Пропускаем предлоги и короткие слова
-      if (word.length <= 2) return word;
-      
-      // Для русских слов
-      if (/[а-яё]/i.test(word)) {
-        const stem = word
-          .replace(/([аяыиоёуюэе])([а-яё]*)$/, '') // Удаляем окончание
-          .replace(/ь$/, ''); // Удаляем мягкий знак
-        return stem ? `${stem}[а-яё]*` : word;
-      }
-      
-      // Для английских слов
-      return `${word}\\w*`;
-    };
-  
-    const regexPattern = answers
-      .filter(answer => answer && answer.trim())
-      .map(answer => 
-        answer.split(' ')
-          .map(word => 
-            word.split('-')
-              .map(part => processWord(part))
-                .join('-'))
-          .join('\\s+'))
-      .join('|');
-  
-    return new RegExp(regexPattern, 'i');
-  };
 
   const checkUserAnswer = (userAnswer, correctAnswers) => {
-    const normalizedUserAnswer = normalizeString(userAnswer); // Нормализуем ответ пользователя
-    
-
-    if (!normalizedUserAnswer) {
-      
-      return false;
+    const normalizeString = (str) => {
+      return str
+        .toLowerCase()
+        .replace(/[^a-zа-яё\s-]/gi, "") 
+        .trim(); 
+    };
+  
+    const removeWordEnding = (word) => {
+      if (/[а-яё]/i.test(word)) {
+        return word.replace(/(а|я|ы|и|о|е|ё|у|ю|й|ь|ъ)$/, "");
+      }
+      return word.replace(/(ing|ed|s|es|er|ly|ion|ment)$/, "");
+    };
+  
+    const normalizeAndStem = (str) => {
+      return normalizeString(str)
+        .split(/\s+/)
+        .map(removeWordEnding); 
+    };
+  
+    const userWords = normalizeAndStem(userAnswer);
+  
+    for (let correctAnswer of correctAnswers) {
+      const correctWords = normalizeAndStem(correctAnswer);
+  
+      if (
+        userWords.length === correctWords.length &&
+        userWords.every((word, index) => word === correctWords[index])
+      ) {
+        return true;
+      }
     }
-
-    const regex = createAnswerRegex(correctAnswers); // Создаём регулярное выражение для всех вариантов
-    
-
-    if (!regex) {
-     
-      return false;
-    }
-
-    const isMatch = regex.test(normalizedUserAnswer);
-    
-
-    return isMatch; // Ответ пользователя соответствует хотя бы одному варианту
+  
+    return false;
   };
+  
+  
 
   const handleAnswerSubmit = () => {
     if (attemptsLeft === 0) return;
@@ -179,7 +160,7 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
       return;
     }
 
-    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers); // Проверяем ответ пользователя
+    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers); 
     if (isCorrect) {
       setFeedback(`Правильный ответ! ${currentQuestion.explanation}`);
       setCorrectAnswersCount(prev => prev + 1);
