@@ -5,7 +5,7 @@ import "./../assets/style/style_profile.css";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 import { useAuth } from './../hooks/AuthContext';
 
-const API_BASE_URL = "https://localhost:5269/api/profile"; 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Profile = () => {
   const [userName, setUserName] = useState("");
@@ -28,7 +28,7 @@ const Profile = () => {
 
   const fetchProfile = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/info`, {
+      const response = await fetch(`${API_BASE_URL}/profile/info`, {
         method: "GET",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
@@ -58,7 +58,7 @@ const Profile = () => {
 
   const fetchTopPlayers = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/top5`, {
+      const response = await fetch(`${API_BASE_URL}/profile/top5`, {
         method: "GET",
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
@@ -92,7 +92,7 @@ const Profile = () => {
 
   const fetchUserRank = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/rank`, {
+      const response = await fetch(`${API_BASE_URL}/profile/rank`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         credentials: "include",
       });
@@ -105,7 +105,7 @@ const Profile = () => {
 
   const handleSaveName = async () => {
     try {
-      const response = await fetch(`${API_BASE_URL}/change-username`, {
+      const response = await fetch(`${API_BASE_URL}/profile/change-username`, {
         method: "PUT",
         credentials: "include",
         headers: {
@@ -128,7 +128,7 @@ const Profile = () => {
 
   const handleLogout = async () => {
     try {
-        const response = await fetch("https://localhost:5269/api/Login/logout", {
+        const response = await fetch(`${API_BASE_URL}/Login/logout`, {
             method: "POST",
             credentials: "include",
         });
@@ -153,7 +153,6 @@ const Profile = () => {
           </div>
 
           <div className="profile-content">
-            {/* Имя пользователя + Статус */}
             <div className="profile-section user-info">
               <div className="user-name-section">
                 <h2>Данные Игрока</h2>
@@ -184,7 +183,6 @@ const Profile = () => {
               {message && <p>{message}</p>}
             </div>
 
-            {/* Привязанная почта */}
             <div className="profile-section">
               <h2>Привязанная почта</h2>
               <div className="profile_email">
@@ -195,7 +193,6 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* Прогресс по навыкам */}
             <div className="profile-section">
               <h2>Прогресс по навыкам</h2>
                 <div className="skills-progress">
@@ -217,7 +214,6 @@ const Profile = () => {
               </div>
             </div>
 
-            {/* Рейтинг пользователей */}
             <div className="profile-section">
               <h2>Рейтинг пользователей</h2>
               <table className="rating-table">

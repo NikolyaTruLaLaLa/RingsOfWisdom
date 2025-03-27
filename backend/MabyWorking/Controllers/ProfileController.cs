@@ -31,7 +31,6 @@ public class ProfileController : ControllerBase
     [HttpGet("info")]
     public async Task<IActionResult> GetUserInfo()
     {
-        _logger.LogInformation("info check");
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null) return NotFound("Пользователь не найден");

@@ -7,7 +7,6 @@ import reverse_x from "./../assets/images/reverse_x.png";
 import "./../assets/style/style_skills_tree.css";
 import QuizDayStats from "./../hooks/QuizDayStats";
 import ProtectedRoute from "../hooks/ProtectedRoute";
-const API_BASE_URL = "https://localhost:5269/api";
 const quizData = [
   { name: "ГЕНдерные Формы", image: icon_gendr_forms, path: "/quiz/ГЕНдерные Формы" },
   { name: "Замена НЕизвестного", image: reverse_x, path: "/quiz/Замена НЕизвестного" },

@@ -24,8 +24,6 @@ namespace mabyWorking.Controllers
         [HttpGet("getCourses")]
         public async Task<IActionResult>GetCourses()
         {
-            
-            _logger.LogInformation("Get courses check");
             List<CourseDTO> courses = await _context.Courses.Select(c => new CourseDTO() { Link = c.Link, Name = c.Name, Text = c.Text }).ToListAsync();
             return Ok(courses);
         }

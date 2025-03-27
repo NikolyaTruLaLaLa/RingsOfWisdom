@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import QuizDayStats from "./../hooks/QuizDayStats";
 import coinImage from './../assets/images/monetka.png'; 
 import ProtectedRoute from "../hooks/ProtectedRoute";
-const API_BASE_URL = "https://localhost:5269/api"; 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Shop = () => {
     const [balance, setBalance] = useState(0);

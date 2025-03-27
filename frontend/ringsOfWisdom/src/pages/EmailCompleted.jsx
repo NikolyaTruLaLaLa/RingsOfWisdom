@@ -5,6 +5,7 @@ import { NavLink } from 'react-router-dom';
 import React from 'react';
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export default function EmailCompleted() {
     const [searchParams] = useSearchParams();
@@ -21,7 +22,7 @@ export default function EmailCompleted() {
             return;
         }
 
-        fetch(`https://localhost:5269/api/register/confirm-email?userId=${userId}&code=${encodeURIComponent(code)}`, {
+        fetch(`${API_BASE_URL}/register/confirm-email?userId=${userId}&code=${encodeURIComponent(code)}`, {
             method: "GET"
         })
         .then(response => response.json())

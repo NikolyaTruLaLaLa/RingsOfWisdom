@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 
-const API_BASE_URL = "https://localhost:5269/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const QuizDayStats = () => {
     const [availableQuizzes, setAvailableQuizzes] = useState(0);

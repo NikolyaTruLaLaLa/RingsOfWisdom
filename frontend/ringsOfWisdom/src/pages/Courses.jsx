@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import "./../assets/style/style_courses.css";
 
-const API_BASE_URL = "https://localhost:5269/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Courses = () => {
     const [courses, setCourses] = useState([]);

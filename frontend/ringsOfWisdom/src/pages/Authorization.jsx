@@ -3,6 +3,7 @@ import './../assets/style/style_authorization.css';
 import { useAuth } from './../hooks/AuthContext';
 import { NavLink, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Login = () => {
   const [userName, setUserName] = useState("");
@@ -50,7 +51,7 @@ const Login = () => {
     }
 
     try {
-      const response = await fetch("https://localhost:5269/api/Login/login", { 
+      const response = await fetch(`${API_BASE_URL}/Login/login`, { 
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userName, password, rememberMe }),

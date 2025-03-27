@@ -6,6 +6,8 @@ import axios from "axios";
 import { NavLink, useNavigate } from 'react-router-dom';
 import React from 'react';
 
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 function Registration() {
     const [formData, setFormData] = useState({
         userName: "",
@@ -59,7 +61,7 @@ function Registration() {
         }
 
         try {
-            const response = await axios.post("https://localhost:5269/api/register/registration", formData);
+            const response = await axios.post(`${API_BASE_URL}/register/registration`, formData);
             setMessage(response.data.message);
 
             

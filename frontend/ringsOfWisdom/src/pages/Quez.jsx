@@ -5,7 +5,7 @@ import { useAuth } from "../hooks/AuthContext";
 import { NavLink } from "react-router-dom";
 import "./../assets/style/style_quez.css";
 
-const API_BASE_URL = "https://localhost:5269/api";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 const Quez = () => {
   const { quizName } = useParams();
