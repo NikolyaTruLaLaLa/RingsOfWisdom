@@ -57,17 +57,17 @@ const Strongformstree = () => {
   </div>
 
   {/* Для больших экранов (>= 1025px) */}
-  {window.innerWidth > 1025 && isPopupVisible && (
+  {window.innerWidth > 1024 && isPopupVisible && (
     <div className="popupwin">
-      <div className="popupwin-content">
-        <span className="close-btn" onClick={handleClosePopup}>
-          &times;
-        </span>
-        <p>
-          При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
-        </p>
-      </div>
+    <div className="popupwin-content">
+      <span className="close-btn" onClick={handleClosePopup}>
+        &times;
+      </span>
+      <p>
+        При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
+      </p>
     </div>
+  </div>
   )}
 
     <div className="container_first">

@@ -119,18 +119,7 @@ input[type="password"]{
     border-radius: 4px;
     font-size: 1em;
 }
-/*.password-control {
-	position: absolute;
-	top: 11px;
-	right: 6px;
-	display: inline-block;
-	width: 20px;
-	height: 20px;
-	background: eye.png 0 0 no-repeat;
-}
-.password-control.view {
-	background: hide.png 0 0 no-repeat;
-}*/
+
 
 button {
     width: 90%;
@@ -152,7 +141,7 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Ссылка на ЛИИ ЮФУ */
+
 .liu {
     display: block;
     margin-top: 20px;

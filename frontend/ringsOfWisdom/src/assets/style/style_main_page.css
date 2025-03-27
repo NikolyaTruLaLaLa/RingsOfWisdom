@@ -1,7 +1,7 @@
 :root {
-    --background-color: #fdf4d1; /* цвет фона страницы */
-    --header-bg-color: #fffbe9; /* цвет фона шапки */
-    --header-text-color: #333333; /* цвет текста в шапке */
+    --background-color: #fdf4d1; 
+    --header-bg-color: #fffbe9; 
+    --header-text-color: #333333; 
 }
 
 body {
@@ -12,91 +12,144 @@ body {
     background-attachment: fixed;
     margin: 0;
     height: 100vh;
-    padding: 10%; /* опускаем ниже */
+    padding: 10%; 
     font-family: Rubik, sans-serif;
 }
 
-/* контейнер для мейн контента */
+
 .container_main {
-    max-width: 80%; /* огран ширины контента */
+    max-width: 80%;
     width: 100%;
-    margin: 0 auto; /* отцентровка */
+    margin: 0 auto; 
     margin-top: 1%;
     margin-bottom: 2%;
     padding: 10px;
-    background-color: rgba(255, 255, 255, 0.8); /* фончик */
-    border-radius: 10px; /* уголки */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* тень */
+    background-color: rgba(255, 255, 255, 0.8); 
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
     display: flex;
     flex-direction: column;
-    align-items: center; /* центрируем по горизонтали */
-    justify-content: center; /* центрируем по вертикали */
-    text-align: center; /* центрируем текст */
-    overflow: auto; /* добавляем прокрутку, если контент не помещается */
-    min-height: auto; /* минимальная высота по содержимому */
+    align-items: center; 
+    justify-content: center; 
+    text-align: center; 
+    overflow: auto; 
+    min-height: auto; 
 }
 
-/* стили для текста */
-.description_main {
-    font-size: 1.2rem;
+
+.text-container_main {
+    width: 100%;
+  }
+  
+  .description_main {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    color: #2d3436;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .highlight-text {
+    color: #5a47b3;
+    font-weight: 500;
+  }
+  
+  .goal-container_main {
+    margin-top: 30px;
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 25px;
+    border-left: 4px solid #5a47b3;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.03);
+  }
+  
+  .goal-header {
+    margin-bottom: 15px;
+  }
+  
+  .goal-header h2 {
+    color: #5a47b3;
+    font-size: 1.4rem;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 8px;
+  }
+  
+  .goal-header h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: #5a47b3;
+    border-radius: 3px;
+  }
+  
+  .goal-text_main {
+    font-size: 1.05rem;
     line-height: 1.6;
-    margin-bottom: 20px;
-}
+    color: #2d3436;
+    margin: 0;
+  }
 
-.goal-container_main {
-    margin-top: 20px;
-}
 
-.goal-text_main {
-    font-size: 1.1rem;
-    line-height: 1.5;
-}
-
-/* лого */
 .logoms {
-    max-width: 70%; /* лого адаптируется под мейн контейнер */
+    max-width: 60%; 
     margin-bottom: 10px;
 }
 
 /* медиа-запросы для мобилок (wd < 768px) */
 @media (max-width: 767px) {
     body {
-        padding: 5%; /* уменьшаем отступы */
+        padding: 5%; 
     }
 
     .container_main {
-        padding: 15px; /* уменьшаем отступы внутри контейнера */
+        padding: 15px; 
         margin-top: 40%;
+        width: 95%;
+        padding: 20px;
         
     }
 
     .description_main {
-        font-size: 1rem; /* уменьшаем размер шрифта */
-    }
-
-    .goal-text_main {
-        font-size: 0.9rem;
-    }
+        font-size: 1rem;
+      }
+    
+      .goal-container_main {
+        padding: 20px;
+      }
+    
+      .goal-header h2 {
+        font-size: 1.2rem;
+      }
+    
+      .goal-text_main {
+        font-size: 0.95rem;
+      }
 
     .logoms {
-        max-width: 90%; /* уменьшаем размер лого */ /* Убираем отступ сверху для логотипа */
-        margin-bottom: 5px; /* Уменьшаем отступ снизу */
+        max-width: 90%; 
+        margin-bottom: 5px; 
     }
 }
 
 /* медиа-запросы для ноутбуков (wd от 768px до 1024px) */
 @media (min-width: 768px) and (max-width: 1024px) {
     body {
-        padding: 8%; /* увеличиваем отступы */
+        padding: 8%;
     }
 
     .container_main {
-        max-width: 90%; /* увеличиваем ширину контейнера */
+        max-width: 90%; 
         margin-top: 30%;
+        
     }
 
     .description_main {
-        font-size: 1.1rem; /* средний размер шрифта */
+        font-size: 1.1rem; 
     }
 
     .goal-text_main {
@@ -104,7 +157,7 @@ body {
     }
 
     .logoms {
-        max-width: 75%; /* уменьшаем размер лого */
+        max-width: 75%; 
     }
 }
 
@@ -112,11 +165,11 @@ body {
 @media (min-width: 1025px) {
     .container_main {
         margin-top: 3%;
-        padding: 40px; /* увеличиваем отступы */
+        padding: 40px; 
     }
 
     .description_main {
-        font-size: 1.3rem; /* увеличиваем размер шрифта */
+        font-size: 1.3rem; 
     }
 
     .goal-text_main {

@@ -67,7 +67,7 @@
 }
 
 .site-header .nav-links a:hover {
-    color: #ff9900; /* Цвет при наведении */
+    color: #ff9900; 
     transform:scale(1.02);
 }
 
@@ -102,7 +102,7 @@
     }
     
     .site-header .nav-links a:hover {
-        color: #ff9900; /* Цвет при наведении */
+        color: #ff9900; 
         transform:scale(1.02);
     }
 }

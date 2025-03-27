@@ -1,4 +1,4 @@
-/* Footer */
+
 
 .footer{
     position:static; /* Подвал  приклен, надо пофиксить!  так как в последущих страничках будет возможна прокрутка */
@@ -48,7 +48,7 @@ li{
 @media (max-width: 768px) {
     .footer{
         margin-bottom: 2%;
-        margin-top: 70%;
+        margin-top: 50%;
     }
 }
 

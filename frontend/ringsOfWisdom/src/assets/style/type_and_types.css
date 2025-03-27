@@ -2,14 +2,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 60px; /* Большое расстояние между рядами */
+    gap: 60px;
 }
 
 .page-title {
     font-size: 19px;
     font-weight: bold;
     text-align: center;
-    color: #000000; /* Цвет текста */
+    color: #000000;
 }
 @media (min-width: 768px) and (max-width: 1025px) {
     .page-title {
@@ -20,10 +20,10 @@
 .skill-row {
     display: flex;
     justify-content: center;
-    gap: 180px; /* Большое расстояние между кружками */
+    gap: 180px;
     width: 100%;
-    max-width: 800px; /* Ограничиваем ширину для больших экранов */
-    flex-wrap: wrap; /* Перенос на новую строку, если не помещается */
+    max-width: 800px; 
+    flex-wrap: wrap;
 }
 
 .circle-typ-container {
@@ -35,7 +35,7 @@
 }
 
 .circle-typ {
-    width: 100px; /* Увеличено для больших экранов */
+    width: 100px; 
     height: 100px;
     border-radius: 50%;
     background: #5a47b3;
@@ -43,13 +43,17 @@
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Чтобы изображение не выходило за границы кружка */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease;
+}
+.circle-typ:hover {
+  transform: scale(1.02);
 }
 
 .circle-typ img {
-    width: 70%; /* Уменьшен размер изображения */
+    width: 70%; 
     height: 70%;
-    object-fit: cover; /* Чтобы изображение заполняло кружок */
+    object-fit: cover; 
 }
 
 .circle-typ-container p {
@@ -60,11 +64,11 @@
 
 @media (max-width: 768px) {
     .skill-tree {
-        gap: 40px; /* Уменьшено расстояние для планшетов */
+        gap: 40px; 
     }
 
     .skill-row {
-        gap: 40px; /* Уменьшено расстояние для планшетов */
+        gap: 40px; 
     }
 
     .circle-typ {
@@ -79,16 +83,16 @@
 
 @media (max-width: 480px) {
     .skill-tree {
-        gap: 20px; /* Уменьшено расстояние для мобильных */
+        gap: 20px; 
         padding: 60px;
     }
 
     .skill-row {
-        gap: 35px; /* Уменьшено расстояние для мобильных */
+        gap: 35px;
     }
 
     .circle-typ {
-        width: 70px; /* Уменьшен размер кружков для мобильных */
+        width: 70px; 
         height: 70px;
     }
 
@@ -97,7 +101,7 @@
     }
 }
 
-/* Стили для всплывающего окошка */
+
 .popupwintyptyp {
     position:fixed;
     margin:auto;
@@ -107,8 +111,8 @@
   }
   
   .popupwintyp-content {
-    background-color: #5a47b3; /* Фиолетовый фон */
-    color: #fff; /* Белый текст */
+    background-color: #5a47b3; 
+    color: #fff; 
     border-radius: 10px;
     padding: 15px;
     width: 250px;

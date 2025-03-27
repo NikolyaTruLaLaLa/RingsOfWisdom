@@ -115,7 +115,7 @@ function Registration() {
                         required
                     />
 
-                    {/* Кнопка отправки формы */}
+                    
                     <button type="submit">Создать аккаунт</button>
                 </form>
 

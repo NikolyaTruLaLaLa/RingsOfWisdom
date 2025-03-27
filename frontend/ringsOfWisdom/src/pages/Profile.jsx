@@ -156,7 +156,7 @@ const Profile = () => {
             {/* Имя пользователя + Статус */}
             <div className="profile-section user-info">
               <div className="user-name-section">
-                <h2>Имя пользователя</h2>
+                <h2>Данные Игрока</h2>
                 {isEditing ? (
                   <div className="edit-name">
                     <input
@@ -171,7 +171,9 @@ const Profile = () => {
                     <span>
                       {userName} <br/>  Статус: {status} <br/> Место в глобальном рейтинге: {userRank ? `#${userRank}` : "не определено"}
                     </span>
-                    <button onClick={() => setIsEditing(true)}>✏️</button>
+                    <button className="change-name" onClick={() => setIsEditing(true)}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M14.06 9.02L14.98 9.94L5.92 19H5V18.08L14.06 9.02ZM17.66 3C17.41 3 17.15 3.1 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C18.17 3.09 17.92 3 17.66 3ZM14.06 6.19L3 17.25V21H6.75L17.81 9.94L14.06 6.19Z" fill="#5A47B3"/>
+                </svg></button>
                   </div>
                 )}
               </div>
@@ -185,7 +187,12 @@ const Profile = () => {
             {/* Привязанная почта */}
             <div className="profile-section">
               <h2>Привязанная почта</h2>
+              <div className="profile_email">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#5A47B3"/>
+              </svg>
               <p>{email}</p>
+              </div>
             </div>
 
             {/* Прогресс по навыкам */}
@@ -197,7 +204,7 @@ const Profile = () => {
                     <div key={index} className="skill-circle">
                       <div
                           className="circle"
-                          style={{background: `conic-gradient(#5a47b3 ${skill.progress}%, rgb(250, 223, 202) ${skill.progress}% 100%)`,}}
+                          style={{background: `conic-gradient(#5a47b3 ${skill.progress}%, rgb(239, 225, 213) ${skill.progress}% 100%)`,}}
                       >
                         <span>{skill.progress}%</span>
                       </div>
@@ -225,7 +232,7 @@ const Profile = () => {
                 <tbody>
                   {rating.map((user, index) => (
                     <tr key={index}>
-                      <td>#{user.Rank}</td>
+                      <td className="number-men">#{user.Rank}</td>
                       <td>{user.UserName}</td>
                       <td>{user.Score}</td>
                       <td>{user.Status}</td>
@@ -237,7 +244,11 @@ const Profile = () => {
 
             
             <div className="profile-section">
-              <button className="logout" onClick={handleLogout}>Выйти из аккаунта</button>
+              <button className="logout" onClick={handleLogout}>Выйти из аккаунта  
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="white"/>
+                </svg>
+              </button>
             </div>
           </div>
         </div>

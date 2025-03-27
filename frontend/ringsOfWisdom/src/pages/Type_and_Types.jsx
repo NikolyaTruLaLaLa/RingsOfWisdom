@@ -36,8 +36,10 @@ const Type_and_Types = () => {
         useEffect(() => {
         }, []);
         
-      const handleClosePopup = () => {
-        setPopupVisible(false);
+      const [isPopupVisible, setPopupVisible] = useState(true);
+      
+        const handleClosePopup = () => {
+          setPopupVisible(false);
     
       };
 
@@ -170,47 +172,49 @@ const Type_and_Types = () => {
         : `Осталось квизов: ${availableQuizzes}/${totalQuizzes}`}</span>
         </p>
     </div>
+    {isPopupVisible && (
     <div className="popupwintyp">
-      <div className="popupwintyp-content">
-        <span className="close-btn" onClick={handleClosePopup}>
-          &times;
-        </span>
-        <p>
-          При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
-        </p>
-      </div>
+    <div className="popupwintyp-content">
+      <span className="close-btn" onClick={handleClosePopup}>
+        &times;
+      </span>
+      <p>
+        При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
+      </p>
     </div>
+  </div>
+  )}
 
-        {/* Первый ряд (1 кружок) */}
+       
         <div className="skill-row">
         {renderNavLink(quizData[0])}
         </div>
 
-        {/* Второй ряд (2 кружка) */}
+        
         <div className="skill-row">
         {renderNavLink(quizData[1])}
         {renderNavLink(quizData[2])}
         </div>
 
-        {/* Третий ряд (2 кружка) */}
+        
         <div className="skill-row">
         {renderNavLink(quizData[3])}
         {renderNavLink(quizData[4])}
         </div>
 
-        {/* Четвертый ряд (2 кружка) */}
+        
         <div className="skill-row">
         {renderNavLink_zamena_zamen(quizData[5])}
         {renderNavLink_svyazannye(quizData[6])}
         </div>
 
-        {/* Пятый ряд (2 кружка) */}
+        
         <div className="skill-row">
         {renderNavLink_kot(quizData[7])}
         {renderNavLink_frazochki(quizData[8])}
         </div>
 
-        {/* Шестой ряд (1 кружок) */}
+        
         <div className="skill-row">
         {renderNavLink(quizData[9])}
         </div>

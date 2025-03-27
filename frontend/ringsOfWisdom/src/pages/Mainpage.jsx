@@ -7,16 +7,19 @@ const Mainpage = () => {
     return (
         <>
         <div className="container_main">
-            <img src={logoms} alt="Логотип Rings of Wisdom" className="logoms" />
-            
+            <img src={logoms} alt="Логотип Rings of Wisdom" className="logoms"  />
+  
             <div className="text-container_main">
                 <p className="description_main">
-                    Вебсервис на ASP.NET core версии 4.8 для обучения основам игры в ЧГК. По механикам за основу взят GO MAGIC.
-                </p>
-                
+                     Вебсервис на ASP.NET core версии 4.8 для обучения основам игры в ЧГК.<br />
+                    <span className="highlight-text">По механикам за основу взят GO MAGIC.</span>
+                 </p>
+    
                 <div className="goal-container_main">
-                    <h2>Цель</h2>
-                    <p className="goal-text_main">
+                    <div className="goal-header">
+                        <h2>Цель проекта</h2>
+                    </div>
+                     <p className="goal-text_main">
                         Предоставить образовательную программу по игре ЧГК в удобной форме древа навыков.
                     </p>
                 </div>

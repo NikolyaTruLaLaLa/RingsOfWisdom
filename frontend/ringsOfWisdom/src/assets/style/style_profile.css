@@ -53,7 +53,7 @@
 .user-info {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Выравниваем по верхнему краю */
+    align-items: flex-start; 
     margin-bottom: 30px;
 }
 
@@ -65,7 +65,7 @@
     display: flex;
     align-items: center;
     gap: 10px;
-    margin-top: 0; /* Убираем отступ сверху */
+    margin-top: 0; 
 }
 
 .coins-section img {
@@ -85,7 +85,7 @@
     cursor: pointer;
     font-size: 16px;
     color: #666;
-    margin-left: 10px; /* Отступ между монетками и кнопкой */
+    margin-left: 10px; 
 }
 
 .edit-pencil:hover {
@@ -144,6 +144,14 @@
     color: #333;
 }
 
+.profile_email {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1rem;
+    color: #666;
+  }
+
 .skills-progress {
     display: flex;
     justify-content: center;
@@ -185,6 +193,14 @@
     text-align: left;
 }
 
+.rating-table .number-men{
+     color:#5a47b3;
+     padding: 6px;
+     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+     font-weight: bold;
+     
+}
+
 @media (max-width: 767px){
 .rating-table th,
 .rating-table td {
@@ -196,6 +212,7 @@
     background-color: #f2f2f2;
     font-weight: bold;
     color: #555;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .rating-table tr:hover {
@@ -212,8 +229,12 @@
 }
 
 .profile-section .logout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 10px;
+    padding: 15px;
+    gap:5px;
     background-color: #5a47b3;
     color: #fff;
     border: none;

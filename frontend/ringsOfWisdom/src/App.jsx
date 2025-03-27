@@ -3,9 +3,7 @@ import AuthProvider from './hooks/AuthContext';
 
 import "./assets/style/style_main_page.css";
 import './App.css';
-
 import Head from './components/header/Head';
-/*import Footer from './components/footer/Footer';*/
 import Mainpage from './pages/Mainpage';
 import Shop from './pages/Shop';
 import Courses from './pages/Courses';

@@ -24,16 +24,16 @@ const Skillstree = () => {
                 <p>Типы<br/>Типочки</p>
             </NavLink>
             
-            <NavLink  to="/skillwp" className="item">
+            <NavLink  className="item">
                 <img src={unlock} alt="База"/>
-                <p>База</p>
+                <p>Это Бинго!</p>
             </NavLink>
             
         </div>
         <div className="container_last">
-            <NavLink  to="/skillwp" className="item">
+            <NavLink  className="item">
                 <img src={unlock} alt="Bossmusic"/>
-                <p>Bossmusic</p>
+                <p>Возьмëшь <br/>не возьмëшь?</p>
             </NavLink>
         </div>
     </div> 
