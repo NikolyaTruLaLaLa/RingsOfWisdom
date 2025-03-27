@@ -19,27 +19,22 @@ const Skillstree = () => {
             </NavLink>
         </div>
         <div className="container_second">
-            <div className="item">
-                <a href = "#people">
-                    <img src={people} alt="Типы Типочки"/>
-                </a>
+            <NavLink  to="/types" className="item">
+                <img src={people} alt="Типы Типочки"/>
                 <p>Типы<br/>Типочки</p>
-            </div>
-        
-            <div className="item">
-                <a href = "#baze">
-                    <img src={unlock} alt="База"/>
-                </a>
-                <p>База</p>
-            </div>
+            </NavLink>
+            
+            <NavLink  className="item">
+                <img src={unlock} alt="База"/>
+                <p>Это Бинго!</p>
+            </NavLink>
+            
         </div>
         <div className="container_last">
-            <div className="item">
-                <a href = "#bossmusic">
-                    <img src={unlock} alt="Bossmusic"/>
-                </a>
-                <p>Bossmusic</p>
-            </div>
+            <NavLink  className="item">
+                <img src={unlock} alt="Bossmusic"/>
+                <p>Возьмëшь <br/>не возьмëшь?</p>
+            </NavLink>
         </div>
     </div> 
     );

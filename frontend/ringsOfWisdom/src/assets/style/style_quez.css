@@ -1,32 +1,34 @@
-/* Общие стили для квиза */
+
+
 .quiz-popup {
-    position:fixed;
+    position:absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #ffffff; /* Белый фон */
+    background-color: #ffffff; 
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     padding: 15px;
     width: 90%;
     max-width: 400px;
-    height: 500px; /* Растягиваем по вертикали */
+    height: 500px; 
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Элементы равномерно распределяются */
-    font-family: Arial, sans-serif;
+    justify-content: space-between; 
+    font-family: Rubik, sans-serif;
     color: #333;
     margin-top:2%;
     overflow: auto;
+    white-space: pre-line;
 }
 
 
 .quiz-header {
     background-color: #5a47b3; 
-    border-radius: 10px 10px 0 0; /* Закругленные края сверху */
+    border-radius: 10px 10px 0 0;
     text-align: center;
     padding: 15px;
-    color: #fff; /* Белый текст */
+    color: #fff;
 }
 
 .quiz-header h2 {
@@ -35,13 +37,19 @@
     text-transform: uppercase;
 }
 
-/* Тело квиза */
 .quiz-body {
     padding: 20px;
     text-align: center;
-    flex: 1; /* Распределение свободного пространства */
+    flex: 1; 
     word-wrap: break-word;
     
+}
+.quiz-name{
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
 }
 
 .quiz-question-text {
@@ -76,7 +84,7 @@
     font-size: 14px;
     cursor: pointer;
     transition: transform 0.2s ease;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .submit-button:hover {
@@ -84,10 +92,17 @@
     transform:scale(1.02);
 }
 
+.quiz-feedback{
+    white-space: pre-line;
+}
+
+
 
 .quiz-footer {
     text-align: center;
     padding: 10px;
+    bottom: -1;
+    
 }
 
 .back-to-menu {
@@ -102,9 +117,12 @@
     width: 100%;
     margin-bottom: 8%;
     margin-top: 8%;
+    
+    
 }
 
 .back-to-menu:hover {
     color: #5a47b3;
     transform:scale(1.02);
 }
+

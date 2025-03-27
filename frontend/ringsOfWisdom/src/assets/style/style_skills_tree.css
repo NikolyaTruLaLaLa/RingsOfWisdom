@@ -1,13 +1,12 @@
-/* Контент страницы */
+
 .container_all{
-    
     margin-top: 20%;
     align-content:space-between;
   justify-content: space-between;
   
 }
 /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
     .container_all{
     
         margin-top: 0.1%;
@@ -16,7 +15,6 @@
       
     }
 }
-/* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
 @media (max-width: 767px) {
     .container_all{
     
@@ -29,27 +27,34 @@
 .container_all .head{
     display: flex;
     justify-content: center;
-    align-content: center;
+    text-align: center;
     margin-bottom: 2%;
     font-size: 18px;
     font-weight: bold;
     transition: transform 0.2s ease;
 }
 .container_all .head:hover{
-    color: #333333;
+    color: #0b0b0b;
     transform:scale(1.02);
 }
+
+.container_all .head .quez-counter{
+  color: #000000;
+}
+
 .container_all .container_first{
     display: flex;
     align-content:center;
-  justify-content: center;
+    justify-content: center;
     text-align: center;
     font-size: 14px;
+    padding: 15px;
     margin:auto auto;
     text-decoration:none;
     color: #000000;
-    
-
+}
+.container_all .container_first:hover {
+  transform: scale(1.02);
 }
 .container_all .container_first .item{
     
@@ -60,25 +65,41 @@
     padding: 10px;
     text-decoration:none;
     color: #000000;
-    
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.container_all .container_first .item:hover {
+  transform: scale(1.02);
 }
 .container_all .container_first img{
     margin-top: 3px;
-    width: 80px;
-    height: 80px;
+    overflow: hidden;
+    width: 75px;
+    height: 75px;
     text-decoration:none;
     color: #000000;
     
 }
+.container_all .container_first p{
+  margin-top: 10%;
+  
+  text-decoration:none;
+  color: #000000;
+}
+
+
 .container_all .container_second{
     display: flex;
     align-content:center;
-  justify-content: center;
+    justify-content: center;
+    text-align: center;
     gap:28%;
     margin-bottom: 5%;
     margin-top: 5%;
+    padding: 15px;
     font-size: 14px;
     text-decoration:none;
+    color: #000000;
 
 }
 .container_all .container_second .item{
@@ -88,12 +109,23 @@
     background: #5a47b3;
     padding: 10px;
     text-decoration:none;
+    color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.container_all .container_second .item:hover {
+  transform: scale(1.02);
 }
 .container_all .container_second img{
     width: 80px;
-    height: 80px;
+    height: 78px;
     text-decoration:none;
     margin-top: 3px;
+}
+.container_all .container_second p{
+  margin-top: 5%;
+  text-decoration:none;
+  color: #000000;
 }
 
 .container_all .container_last{
@@ -103,7 +135,9 @@
     text-align: center;
     font-size: 14px;
     margin:auto auto;
+    padding: 15px;
     text-decoration:none;
+    color: #000000;
 
 }
 .container_all .container_last .item{
@@ -112,12 +146,134 @@
     border-radius: 99.99%;
     background: #5a47b3;
     padding: 10px;
+    text-align: center;
     text-decoration:none;
+    color: #000000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+.container_all .container_last .item:hover {
+  transform: scale(1.02);
 }
 .container_all .container_last img{
-    width: 80px;
-    height: 80px;
+    width: 75px;
+    height: 78px;
     text-decoration:none;
     margin-top: 3px;
-    
 }
+.container_all .container_last p{
+  margin-top: 5%;
+  text-decoration:none;
+  color: #000000;
+}
+
+
+.popupwinn {
+  position:fixed;
+  margin:auto;
+  margin-left: 80%;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.popupwin-content {
+  background-color: #5a47b3; 
+  color: #fff; 
+  border-radius: 10px;
+  padding: 10px;
+  width: 250px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;
+}
+
+.popupwin-content p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #fff;
+}
+
+.close-btn:hover {
+  color: #ccc;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 767px) {
+    .popupwin {
+        margin-bottom: 5%;
+        margin-top:10%;
+        margin-left: 50%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 768px) and (max-width: 1025px) {
+    .popupwin {
+        margin-bottom: 5%;
+        margin-top:20%;
+        margin-left: 70%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }
+
+  /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
+  @media (min-width: 1026px) {
+    .popupwin {
+      margin-bottom: 1%;
+      margin-top: 1%;
+      margin-left: 70%;
+    }
+  
+    .popupwin-content {
+      width: 200px;
+      padding: 10px;
+    }
+  
+    .popupwin-content p {
+      font-size: 12px;
+    }
+  
+    .close-btn {
+      font-size: 18px;
+    }
+  }
