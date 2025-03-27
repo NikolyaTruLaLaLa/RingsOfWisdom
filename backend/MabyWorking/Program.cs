@@ -45,12 +45,14 @@ namespace mabyWorking
                 options.Cookie.Name = "AuthCookie";
             });
 
-            
+
+            string frontendUrl = builder.Configuration["AppSettings:FrontendUrl"] ?? "http://localhost:5173";
+
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp", policy =>
                 {
-                    policy.WithOrigins("http://localhost:5173")
+                    policy.WithOrigins(frontendUrl)
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials()

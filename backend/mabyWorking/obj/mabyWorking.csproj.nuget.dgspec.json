@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj": {}
+    "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {}
   },
   "projects": {
-    "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj": {
+    "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj",
+        "projectUniqueName": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
         "projectName": "mabyWorking",
-        "projectPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\mabyWorking.csproj",
+        "projectPath": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\mabyWorking.csproj",
         "packagesPath": "C:\\Users\\water\\.nuget\\packages\\",
-        "outputPath": "E:\\Учёба\\ПД 24\\git\\RingsOfWisdom\\backend\\mabyWorking\\obj\\",
+        "outputPath": "E:\\Study\\ПД24\\git\\RingsOfWisdom\\backend\\MabyWorking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -49,6 +49,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "MailKit": {
+              "target": "Package",
+              "version": "[4.10.0, )"
+            },
             "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": {
               "target": "Package",
               "version": "[8.0.2, )"
@@ -61,9 +65,19 @@
               "target": "Package",
               "version": "[8.0.11, )"
             },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[9.0.2, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
@@ -73,11 +87,19 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.11, )"
+              "version": "[9.0.2, )"
             },
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[8.0.7, )"
+            },
+            "NETCore.MailKit": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[9.0.4, )"
             }
           },
           "imports": [
