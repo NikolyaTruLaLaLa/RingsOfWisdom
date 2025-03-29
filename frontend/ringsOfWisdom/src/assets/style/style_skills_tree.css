@@ -18,7 +18,7 @@
 @media (max-width: 767px) {
     .container_all{
     
-        margin-top: 50%;
+        margin-top:40%;
         align-content:space-between;
       justify-content: space-between;
       
@@ -216,9 +216,9 @@
 }
 @media (max-width: 767px) {
     .popupwin {
-        margin-bottom: 5%;
-        margin-top:10%;
-        margin-left: 50%;
+      margin-bottom: 5%;
+      margin-top: 10%;
+      margin-left: 40%;
     }
   
     .popupwin-content {
@@ -259,7 +259,7 @@
   /* Экстрабольшие девайсы (большие десктопы, >= 1200px) */
   @media (min-width: 1026px) {
     .popupwin {
-      margin-bottom: 1%;
+      margin-bottom: 5%;
       margin-top: 1%;
       margin-left: 70%;
     }

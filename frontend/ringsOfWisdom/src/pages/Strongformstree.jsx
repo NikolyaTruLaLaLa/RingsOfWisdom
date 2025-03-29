@@ -55,8 +55,8 @@ const Strongformstree = () => {
     </p>
   </div>
 
-  {/* Для больших экранов (>= 1025px) */}
-  {window.innerWidth > 1024 && isPopupVisible && (
+  
+  {isPopupVisible && (
     <div className="popupwin">
     <div className="popupwin-content">
       <span className="close-btn" onClick={handleClosePopup}>
@@ -79,20 +79,6 @@ const Strongformstree = () => {
         <div className="container_last">
           {renderNavLink(quizData[3])}
         </div>
-
-  {/* Для экранов меньше 1025px */}
-  {window.innerWidth <= 1025 && isPopupVisible && (
-    <div className="popupwin">
-      <div className="popupwin-content">
-        <span className="close-btn" onClick={handleClosePopup}>
-          &times;
-        </span>
-        <p>
-          При переходе на квиз, считывается попытка квиза в день. Пройденным - квиз считается после взятия любых 2-ух вопросов.
-        </p>
-      </div>
-    </div>
-  )}
 </div>
 </ProtectedRoute>
   );
