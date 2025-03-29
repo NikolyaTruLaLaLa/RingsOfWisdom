@@ -20,12 +20,27 @@ namespace mabyWorking
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+
+            var jsonConnectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
+            var envConnectionString = Environment.GetEnvironmentVariable("DB_HOST") != null
+                ? $"Host={Environment.GetEnvironmentVariable("DB_HOST")};" +
+                  $"Port={Environment.GetEnvironmentVariable("DB_PORT")};" +
+                  $"Database={Environment.GetEnvironmentVariable("DB_NAME")};" +
+                  $"Username={Environment.GetEnvironmentVariable("DB_USER")};" +
+                  $"Password={Environment.GetEnvironmentVariable("DB_PASSWORD")};"
+                : null;
+
+            var finalConnectionString = !string.IsNullOrWhiteSpace(jsonConnectionString) ? jsonConnectionString : envConnectionString;
+
+            if (string.IsNullOrWhiteSpace(finalConnectionString))
+            {
+                throw new InvalidOperationException("Connection string not found in appsettings.json or environment variables.");
+            }
+
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
-                options.UseNpgsql(connectionString).EnableSensitiveDataLogging());
+                options.UseNpgsql(finalConnectionString).EnableSensitiveDataLogging());
 
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
