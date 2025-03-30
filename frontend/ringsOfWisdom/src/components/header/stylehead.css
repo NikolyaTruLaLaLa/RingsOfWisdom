@@ -72,6 +72,10 @@
 }
 
 @media (max-width: 768px) {
+    .site-header{
+        z-index: 1001; 
+    }
+
     .site-header .nav-links{
          display: flex;
          flex-direction: column;
@@ -88,7 +92,7 @@
          border-radius: 5px;
          transform: scale(0.9);
          transition: transform 1s ease;
-         z-index: 1001; 
+         z-index: 9999; 
     }
 
 
