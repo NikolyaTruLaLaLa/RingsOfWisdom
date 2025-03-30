@@ -196,6 +196,7 @@ transform:scale(1.02);
     }
     .modal-content .curses-head {
         font-size: 1.5em; 
+        margin-top: 15%;
     }
 
     .modal-content .curses-text {
