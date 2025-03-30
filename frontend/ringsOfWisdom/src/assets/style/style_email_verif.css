@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: Rubik, sans-serif;
 }
 
 .container {
@@ -47,7 +47,7 @@
     }
 }
 
-/* Уведомление */
+
 .notification {
     font-size: 1.5em;
     color: #333;
@@ -60,6 +60,22 @@
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin-bottom: 3%;
+}
+
+@media (max-width: 900px) {
+    .notification {
+        
+        color: #333;
+        font-style: italic;
+        background-color: #fff;
+        padding: 30px;
+        width:120%;
+        max-height: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 3%;
+    }
+
 }
 
 .notification p {
@@ -87,7 +103,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-/* Ссылка на ЛИИ ЮФУ */
 .footer-link {
     display: block;
     margin-top: 20px;

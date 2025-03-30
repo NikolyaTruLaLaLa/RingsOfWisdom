@@ -8,6 +8,14 @@
 
 body{
   background-image: url('./assets/images/fons.jpg');
+  font-family: "Rubik", sans-serif;
+}
+
+.rubik-font {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 /*
 .logo {

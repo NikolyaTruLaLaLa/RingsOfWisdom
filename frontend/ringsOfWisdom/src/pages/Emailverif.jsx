@@ -10,12 +10,6 @@ const Emailverif = () => {
         <img src={logom} alt="Логотип Rings of Wisdom" className="logom"/>
         <main className="notification">
             <p>Письмо с кодом подтверждения было выслано на ваш электронный адрес.<br/> Пожалуйста, проверьте почту.</p>
-
-            <NavLink to="/">
-                <button type="submit">Войти</button>
-            </NavLink>
-            
-    
             <a href="https://vk.com/lig_sfedu" target="_blank" rel="noopener noreferrer" className="footer-link">ЛИИ ЮФУ</a>
         </main>
     </div> 
