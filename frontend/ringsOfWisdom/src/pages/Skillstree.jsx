@@ -21,7 +21,7 @@ const Skillstree = () => {
         <div className="container_second">
             <NavLink  to="/types" className="item">
                 <img src={people} alt="Типы Типочки"/>
-                <p>Типы<br/>Типочки</p>
+                <p>Типы<br/> и Типочки</p>
             </NavLink>
             
             <NavLink  className="item">

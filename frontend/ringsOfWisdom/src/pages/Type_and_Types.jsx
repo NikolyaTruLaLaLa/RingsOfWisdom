@@ -164,7 +164,7 @@ const Type_and_Types = () => {
         <ProtectedRoute>
         <div className="skill-tree">
     <div className="page-title">
-        <p>Типы типочки
+        <p>Типы и Типочки
             <br/>
         <span className="quiz-counter">
         {availableQuizzes <= 0 

@@ -88,6 +88,7 @@
          border-radius: 5px;
          transform: scale(0.9);
          transition: transform 1s ease;
+         z-index: 1001; 
     }
 
 
@@ -111,7 +112,6 @@
 .HamburgerMenu{
     position: absolute;
     right: 5%;
-    
     cursor: pointer;
 }
 
