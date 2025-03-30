@@ -12,7 +12,7 @@ const Mainpage = () => {
             <div className="text-container_main">
             <p className="description_main">
                 Вебсервис на ASP.NET core версии 4.8 для обучения основам игры в ЧГК.<br />
-                    <span className="highlight-text">По механикам за основу взят <a href="https://gomagic.org" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none' }}>GO MAGIC</a>.</span>
+                    <span className="highlight-text">По механикам за основу взят <a href="https://gomagic.org" target="_blank" rel="noopener noreferrer" style={{textDecoration: 'none', color: '#5a47b3',}}>GO MAGIC</a>.</span>
             </p>
     
                 <div className="goal-container_main">
