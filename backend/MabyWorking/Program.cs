@@ -61,13 +61,18 @@ namespace mabyWorking
             });
 
 
-            string frontendUrl = builder.Configuration["AppSettings:FrontendUrl"] ?? "http://localhost:5173";
+            //string frontendUrl = builder.Configuration["AppSettings:FrontendUrl"] ?? "http://localhost:5173";
+            string[] frontendUrls = new[]
+            {
+                "https://ringsofwisdom.ru",
+                "https://www.ringsofwisdom.ru"
+            };
 
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy("AllowReactApp", policy =>
                 {
-                    policy.WithOrigins(frontendUrl)
+                    policy.WithOrigins(frontendUrls)
                           .AllowAnyHeader()
                           .AllowAnyMethod()
                           .AllowCredentials()
