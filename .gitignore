@@ -30,6 +30,7 @@ dist/
 dist-ssr/
 *.local
 publish/
+.vs/
 
 # Файлы настроек редакторов и IDE
 .vscode/
