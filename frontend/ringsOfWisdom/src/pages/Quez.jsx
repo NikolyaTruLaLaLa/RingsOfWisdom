@@ -41,7 +41,6 @@ const Quez = () => {
     }
   };
 
-
   const fetchQuestions = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/${quizName}`, {
@@ -60,80 +59,85 @@ const Quez = () => {
     }
   };
 
-
-  
   useEffect(() => {
+    const handleBeforeUnload = (event) => {
+      event.preventDefault();
+      event.returnValue = "Вы уверены? Прогресс будет потерян!";
+    };
 
+    window.addEventListener("beforeunload", handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener("beforeunload", handleBeforeUnload);
+    };
+  }, []);
+
+  useEffect(() => {
     if (isAuthenticated === false) {
-        navigate("/auth");
-        return;
+      navigate("/auth");
+      return;
     }
     if (!quizName) {
       navigate("/skills");
       return;
-    } 
-    if(!isChecked.current){
+    }
+    if (!isChecked.current) {
       checkCanStartQuiz();
       isChecked.current = true;
-    } 
-    
-}, [quizName, navigate, isAuthenticated]); 
+    }
+  }, [quizName, navigate, isAuthenticated]);
 
-useEffect(() => {
-  if (canStartQuiz && !isFetched.current) {
-    fetchQuestions();
-    isFetched.current = true;
-  }
-}, [canStartQuiz]);
+  useEffect(() => {
+    if (canStartQuiz && !isFetched.current) {
+      fetchQuestions();
+      isFetched.current = true;
+    }
+  }, [canStartQuiz]);
 
-if (canStartQuiz === null) return <p>Проверка возможности начала квиза...</p>;
+  if (canStartQuiz === null) return <p>Проверка возможности начала квиза...</p>;
 
   if (!questions.length) return <p>Загрузка вопросов или квиз не найден...</p>;
 
   const normalizeString = (str) => {
     if (!str || typeof str !== "string") {
-      
       return "";
     }
 
     const normalized = str
       .toLowerCase()
       .replace(/[^a-zа-яё\s-]/gi, "")
-      .replace(/\s+/g, " ") 
+      .replace(/\s+/g, " ")
       .trim();
-
-    
 
     return normalized;
   };
-
 
   const checkUserAnswer = (userAnswer, correctAnswers) => {
     const normalizeString = (str) => {
       return str
         .toLowerCase()
-        .replace(/[^a-zа-яё\s-]/gi, "") 
-        .trim(); 
+        .replace(/[^a-zа-яё\s-]/gi, "")
+        .trim();
     };
-  
+
     const removeWordEnding = (word) => {
       if (/[а-яё]/i.test(word)) {
         return word.replace(/(а|я|ы|и|о|е|ё|у|ю|й|ь|ъ)$/, "");
       }
       return word.replace(/(ing|ed|s|es|er|ly|ion|ment)$/, "");
     };
-  
+
     const normalizeAndStem = (str) => {
       return normalizeString(str)
         .split(/\s+/)
-        .map(removeWordEnding); 
+        .map(removeWordEnding);
     };
-  
+
     const userWords = normalizeAndStem(userAnswer);
-  
+
     for (let correctAnswer of correctAnswers) {
       const correctWords = normalizeAndStem(correctAnswer);
-  
+
       if (
         userWords.length === correctWords.length &&
         userWords.every((word, index) => word === correctWords[index])
@@ -141,11 +145,9 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
         return true;
       }
     }
-  
+
     return false;
   };
-  
-  
 
   const handleAnswerSubmit = () => {
     if (attemptsLeft === 0) return;
@@ -160,10 +162,10 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
       return;
     }
 
-    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers); 
+    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers);
     if (isCorrect) {
       setFeedback(`Правильный ответ! ${currentQuestion.explanation}`);
-      setCorrectAnswersCount(prev => prev + 1);
+      setCorrectAnswersCount((prev) => prev + 1);
       setAttemptsLeft(0);
     } else {
       setAttemptsLeft((prevAttempts) => {
@@ -180,12 +182,12 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
       setUserAnswer("");
       setFeedback("");
       setAttemptsLeft(3);
     } else {
-      setCorrectAnswersCount(prevCorrectAnswers => {
+      setCorrectAnswersCount((prevCorrectAnswers) => {
         const newCount = prevCorrectAnswers;
         if (!isComplited.current) {
           completeQuiz(newCount);
@@ -197,6 +199,8 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
   };
 
   const completeQuiz = async (finalCorrectAnswersCount) => {
+    window.removeEventListener("beforeunload", () => {});
+
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/complete-quiz`, {
         method: "POST",
@@ -210,7 +214,35 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
 
       if (!response.ok) throw new Error("Ошибка завершения квиза");
 
-      navigate("/skills");
+      const result = await response.json();
+      const { experiencePerQuestion, coinsPerQuestion, quizTitle } = result;
+
+      const totalExperience = experiencePerQuestion * finalCorrectAnswersCount;
+      const totalCoins = coinsPerQuestion * finalCorrectAnswersCount;
+      const quizPassed = finalCorrectAnswersCount >= 2;
+
+      setFeedback(() => (
+        <div className="quiz-popup">
+          <div className="quiz-header">
+            <h1>{quizTitle}</h1>
+          </div>
+          <div className="quiz-body">
+            <h2>{quizPassed ? "Квиз пройден!" : "Квиз не пройден"}</h2>
+            <p>Получено опыта: {totalExperience}</p>
+            <p>Получено монеток: {totalCoins}</p>
+          </div>
+          <div className="quiz-footer">
+            <NavLink to="/skills" className="back-to-menu">
+              <button>
+                Вернуться на дерево
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="white"/>
+                </svg>
+              </button>
+            </NavLink>
+          </div>
+        </div>
+      ));
     } catch (error) {
       console.error("Ошибка при завершении квиза:", error);
       setFeedback("Ошибка при завершении квиза.");
@@ -253,7 +285,11 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
         </div>
         <div className="quiz-footer">
           <NavLink to="/skills" className="back-to-menu">
-            <button>Вернуться на дерево</button>
+            <button>Вернуться на дерево
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="white"/>
+            </svg>
+            </button>
           </NavLink>
         </div>
       </div>
