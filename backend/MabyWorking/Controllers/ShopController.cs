@@ -13,6 +13,7 @@ namespace mabyWorking.Controllers
 {
     [ApiController]
     [Route("api/shop")]
+    [Authorize]
     public class ShopController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
@@ -26,28 +27,66 @@ namespace mabyWorking.Controllers
             _logger = logger;
         }
 
-        [HttpPost("buy-quiz-limit")]
-        public async Task<IActionResult> BuyQuizLimit([FromBody] PurchaseDto purchaseDto)
+        [HttpGet("prices")]
+        public async Task<IActionResult> GetQuizPrices()
         {
-            _logger.LogInformation("Attempting to purchase quiz limit increase.");
-
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized("Пользователь не найден");
 
-            var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
-            if (userStats == null) return NotFound("Статистика пользователя не найдена");
+            var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (stats == null) return NotFound("Статистика пользователя не найдена");
 
-            if (userStats.Balance < purchaseDto.Price)
+            int basePrice = 150 + 10 * (stats.QuizLimit - 3);
+
+            var prices = new
+            {
+                One = basePrice,
+                Five = (int)(basePrice * 5 * 0.9),
+                Ten = (int)(basePrice * 7.5)
+            };
+
+            return Ok(prices);
+        }
+
+        [HttpPost("buy-quiz-limit")]
+        public async Task<IActionResult> BuyQuizLimit([FromBody] PurchaseDto request)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return Unauthorized("Пользователь не найден");
+
+            var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (stats == null) return NotFound("Статистика пользователя не найдена");
+
+            int basePrice = 150 + 10 * (stats.QuizLimit - 3);
+
+            int quantity = request.Quantity;
+            int totalPrice;
+
+            switch (quantity)
+            {
+                case 1:
+                    totalPrice = basePrice;
+                    break;
+                case 5:
+                    totalPrice = (int)(basePrice * 5 * 0.9);
+                    break;
+                case 10:
+                    totalPrice = (int)(basePrice * 7.5);
+                    break;
+                default:
+                    return BadRequest("Можно приобрести только 1, 5 или 10 квизов");
+            }
+
+            if (stats.Balance < totalPrice)
                 return BadRequest("Недостаточно монет для покупки");
 
-            userStats.Balance -= purchaseDto.Price;
-            userStats.QuizLimit += 1;
+            stats.Balance -= totalPrice;
+            stats.QuizLimit += quantity;
 
             await _context.SaveChangesAsync();
 
-            return Ok(new {Message = "Лимит квизов увеличен!"});
+            return Ok(new { Message = $"Покупка прошла успешно! Добавлено квизов: {quantity}" });
         }
     }
 
-    
 }
