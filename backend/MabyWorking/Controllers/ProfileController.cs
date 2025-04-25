@@ -159,4 +159,43 @@ public class ProfileController : ControllerBase
 
         return Ok(new { quizPassed, quizLimit });
     }
+
+    [HttpGet("statuses")]
+    public async Task<IActionResult> GetStatusesAndNextStatus()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId == null) return Unauthorized("Пользователь не найден");
+
+        var stats = await _context.Stats
+            .FirstOrDefaultAsync(s => s.UserId == userId);
+
+        if (stats == null) return NotFound("Статистика пользователя не найдена");
+
+        var allStatuses = await _context.Statuses
+            .OrderBy(s => s.MinXp)
+            .Select(s => new
+            {
+                s.Name,
+                MinXp = s.MinXp
+            })
+            .ToListAsync();
+
+        var nextStatus = allStatuses
+            .FirstOrDefault(s => s.MinXp > stats.Xp);
+
+        var xpToNext = nextStatus != null ? nextStatus.MinXp - stats.Xp : 0;
+
+        return Ok(new
+        {
+            AllStatuses = allStatuses,
+            NextStatus = nextStatus != null
+                ? new
+                {
+                    nextStatus.Name,
+                    XPNeeded = xpToNext
+                }
+                : null
+        });
+    }
+
 }
