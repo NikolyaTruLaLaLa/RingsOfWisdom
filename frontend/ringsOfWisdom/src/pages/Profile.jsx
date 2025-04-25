@@ -19,11 +19,16 @@ const Profile = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const { setIsAuthenticated, checkAuthStatus } = useAuth();
+  const [allStatuses, setAllStatuses] = useState([]);
+  const [nextStatusName, setNextStatusName] = useState(null);
+  const [xpToNext, setXpToNext] = useState(0);
+
 
   useEffect(() => {
     fetchProfile();
     fetchTopPlayers();
     fetchUserRank();
+    fetchStatuses();
   }, []);
 
   const fetchProfile = async () => {
@@ -143,6 +148,31 @@ const Profile = () => {
         console.error("Ошибка сети при выходе:", error);
     }
 };
+
+const fetchStatuses = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/profile/statuses`, {
+      method: "GET",
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+      credentials: "include",
+    });
+
+    const data = await response.json();
+
+    setAllStatuses(data.AllStatuses || []);
+
+    if (data.NextStatus) {
+      setNextStatusName(data.NextStatus.Name);
+      setXpToNext(data.NextStatus.XPNeeded);
+    } else {
+      setNextStatusName(null);
+      setXpToNext(0);
+    }
+  } catch (error) {
+    console.error("Ошибка загрузки статусов:", error);
+  }
+};
+
 
   return (
     <>
