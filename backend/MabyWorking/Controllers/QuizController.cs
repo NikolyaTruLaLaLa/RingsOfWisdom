@@ -133,6 +133,36 @@ namespace mabyWorking.Controllers
             return Ok(new { CanStart = true, Message = "Квиз можно начать" });
         }
 
+        [Authorize]
+        [HttpGet("skill/{skillName}")]
+        public async Task<IActionResult> GetQuizzesBySkill(string skillName)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (userId == null) return Unauthorized("Пользователь не найден");
+
+            var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (userStats == null) return NotFound("Статистика пользователя не найдена");
+
+            var skill = await _context.Skills.FirstOrDefaultAsync(s => s.Name == skillName);
+            if (skill == null) return NotFound("Скилл не найден");
+
+            var quizzes = await _context.Quizzes
+                .Where(q => q.SkillId == skill.Id)
+                .Select(q => new
+                {
+                    q.Name,
+                    IsCompleted = _context.QuizStats.Any(qs =>
+                        qs.StatsId == userStats.Id &&
+                        qs.QuizId == q.Id &&
+                        qs.IsPassed)
+                })
+                .ToListAsync();
+
+            if (!quizzes.Any()) return NotFound("Квизы для данного скилла не найдены");
+
+            return Ok(quizzes);
+        }
+
 
     }
 
