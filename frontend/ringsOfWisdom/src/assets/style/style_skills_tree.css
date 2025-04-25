@@ -278,3 +278,34 @@
       font-size: 18px;
     }
   }
+
+  .quiz-circle {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+    transition: 0.3s;
+  }
+  
+  .green-circle {
+    border: 4px solid #4caf50; /* Зеленый цвет */
+  }
+  
+  .gray-circle {
+    border: 4px solid #ccc; /* Серый цвет */
+  }
+  
+  .item img {
+    width: 70%;
+    height: auto;
+    border-radius: 50%;
+  }
+  
+  .item.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+  
