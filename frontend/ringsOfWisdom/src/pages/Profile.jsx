@@ -22,7 +22,8 @@ const Profile = () => {
   const [allStatuses, setAllStatuses] = useState([]);
   const [nextStatusName, setNextStatusName] = useState(null);
   const [xpToNext, setXpToNext] = useState(0);
-
+  const [showStatusInfo, setShowStatusInfo] = useState(false);
+  const [currentXp, setCurrentXp] = useState(0);
 
   useEffect(() => {
     fetchProfile();
@@ -43,6 +44,7 @@ const Profile = () => {
       setEmail(data.email);
       setCoins(data.balance);
       setStatus(data.status);
+      setCurrentXp(data.xp);
       if (data.progress && typeof data.progress === "object") {
         const formattedSkills = Object.entries(data.progress).map(([key, value]) => {
           return {
@@ -89,11 +91,7 @@ const Profile = () => {
     } catch (error) {
       console.error("Ошибка загрузки топ-5 игроков:", error);
     }
-};
-
-
-  
-  
+  };
 
   const fetchUserRank = async () => {
     try {
@@ -147,32 +145,84 @@ const Profile = () => {
     } catch (error) {
         console.error("Ошибка сети при выходе:", error);
     }
-};
+  };
 
-const fetchStatuses = async () => {
-  try {
-    const response = await fetch(`${API_BASE_URL}/profile/statuses`, {
-      method: "GET",
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-      credentials: "include",
+  const fetchStatuses = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/profile/statuses`, {
+        method: "GET",
+        headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        credentials: "include",
+      });
+
+      const data = await response.json();
+
+      setAllStatuses(data.allStatuses || []);
+
+      if (data.nextStatus) {
+        setNextStatusName(data.nextStatus.name);
+        setXpToNext(data.nextStatus.xpNeeded);
+      } else {
+        setNextStatusName(null);
+        setXpToNext(0);
+      }
+      console.log(data);
+    } catch (error) {
+      console.error("Ошибка загрузки статусов:", error);
+    }
+  };
+
+  const toggleStatusInfo = () => {
+    setShowStatusInfo(!showStatusInfo);
+  };
+
+  const renderStatusInfo = () => {
+    if (!showStatusInfo) return null;
+
+    const columnSize = Math.ceil(allStatuses.length / 3);
+    const columns = [[], [], []];
+    
+    allStatuses.forEach((statusObj, index) => {
+      const columnIndex = Math.floor(index / columnSize);
+      if (columnIndex < 3) {
+        columns[columnIndex].push(statusObj);
+      }
     });
 
-    const data = await response.json();
-
-    setAllStatuses(data.AllStatuses || []);
-
-    if (data.NextStatus) {
-      setNextStatusName(data.NextStatus.Name);
-      setXpToNext(data.NextStatus.XPNeeded);
-    } else {
-      setNextStatusName(null);
-      setXpToNext(0);
-    }
-  } catch (error) {
-    console.error("Ошибка загрузки статусов:", error);
-  }
-};
-
+    return (
+      <div className="status-info-modal">
+        <div className="status-info-content">
+          <h3>Все статусы</h3>
+          <div className="status-columns">
+            {columns.map((column, colIndex) => (
+              <div key={colIndex} className="status-column">
+                {column.map((statusObj, index) => (
+                  <div 
+                    key={index} 
+                    className={`status-item ${statusObj.Name === status ? "current-status" : ""}`}
+                  >
+                    <div className="status-name">
+                      {statusObj.Name} 
+                      {statusObj.Name === status && <span className="you-are-here"> (Вы здесь)</span>}
+                    </div>
+                    <div className="status-xp">{statusObj.XPNeeded} XP</div>
+                  </div>
+                ))}
+              </div>
+            ))}
+          </div>
+          {nextStatusName && (
+            <div className="next-status-info">
+              Ближайший статус: <strong>{nextStatusName}</strong> (осталось {xpToNext - currentXp} XP)
+            </div>
+          )}
+          <button className="close-status-info" onClick={toggleStatusInfo}>
+            Закрыть
+          </button>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -198,11 +248,21 @@ const fetchStatuses = async () => {
                 ) : (
                   <div className="display-name">
                     <span>
-                      {userName} <br/>  Статус: {status} <br/> Место в глобальном рейтинге: {userRank ? `#${userRank}` : "не определено"}
+                      {userName} <br/>  
+                      Статус: {status} 
+                      <button className="status-info-button" onClick={toggleStatusInfo}>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M11 7H13V9H11V7ZM11 11H13V17H11V11ZM12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12C4 7.59 7.59 4 12 4C16.41 4 20 7.59 20 12C20 16.41 16.41 20 12 20Z" fill="#5A47B3"/>
+                        </svg>
+                      </button>
+                      <br/> 
+                      Место в глобальном рейтинге: {userRank ? `#${userRank}` : "не определено"}
                     </span>
-                    <button className="change-name" onClick={() => setIsEditing(true)}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M14.06 9.02L14.98 9.94L5.92 19H5V18.08L14.06 9.02ZM17.66 3C17.41 3 17.15 3.1 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C18.17 3.09 17.92 3 17.66 3ZM14.06 6.19L3 17.25V21H6.75L17.81 9.94L14.06 6.19Z" fill="#5A47B3"/>
-                </svg></button>
+                    <button className="change-name" onClick={() => setIsEditing(true)}>
+                      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14.06 9.02L14.98 9.94L5.92 19H5V18.08L14.06 9.02ZM17.66 3C17.41 3 17.15 3.1 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C18.17 3.09 17.92 3 17.66 3ZM14.06 6.19L3 17.25V21H6.75L17.81 9.94L14.06 6.19Z" fill="#5A47B3"/>
+                      </svg>
+                    </button>
                   </div>
                 )}
               </div>
@@ -213,13 +273,15 @@ const fetchStatuses = async () => {
               {message && <p>{message}</p>}
             </div>
 
+            {renderStatusInfo()}
+
             <div className="profile-section">
               <h2>Привязанная почта</h2>
               <div className="profile_email">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#5A47B3"/>
-              </svg>
-              <p>{email}</p>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="#5A47B3"/>
+                </svg>
+                <p>{email}</p>
               </div>
             </div>
 
@@ -268,7 +330,6 @@ const fetchStatuses = async () => {
               </table>
             </div>
 
-            
             <div className="profile-section">
               <button className="logout" onClick={handleLogout}>Выйти из аккаунта  
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
