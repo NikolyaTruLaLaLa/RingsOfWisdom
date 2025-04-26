@@ -157,4 +157,36 @@
     .item-description {
         font-size: 0.8em; 
     }
+
+    .message-box {
+        margin-top: 20px;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-weight: bold;
+        text-align: center;
+        position: relative;
+        opacity: 1;
+        transition: opacity 0.3s ease-in-out;
+    }
+    
+    .message-box.success {
+        background-color: #d4edda;
+        color: #155724;
+    }
+    
+    .message-box.error {
+        background-color: #f8d7da;
+        color: #721c24;
+    }
+    
+    .close-btn {
+        position: absolute;
+        top: 5px;
+        right: 12px;
+        cursor: pointer;
+        font-size: 18px;
+        font-weight: bold;
+        color: inherit;
+    }
+    
 }
