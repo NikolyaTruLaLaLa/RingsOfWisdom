@@ -17,6 +17,7 @@ import Quez from './pages/Quez';
 import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
 import Pages_Bingo from './pages/Pages_Bingo';
+import Take_or_No from './pages/Take_or_No';
 
 
 function App() {
