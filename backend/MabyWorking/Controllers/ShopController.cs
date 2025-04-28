@@ -52,10 +52,10 @@ namespace mabyWorking.Controllers
         public async Task<IActionResult> BuyQuizLimit([FromBody] PurchaseDto request)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            if (userId == null) return Unauthorized("Пользователь не найден");
+            if (userId == null) return Unauthorized(new { Message = "Пользователь не найден" });
 
             var stats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
-            if (stats == null) return NotFound("Статистика пользователя не найдена");
+            if (stats == null) return NotFound(new { Message = "Статистика пользователя не найдена" });
 
             int basePrice = 150 + 10 * (stats.QuizLimit - 3);
 
@@ -74,11 +74,11 @@ namespace mabyWorking.Controllers
                     totalPrice = (int)(basePrice * 7.5);
                     break;
                 default:
-                    return BadRequest("Можно приобрести только 1, 5 или 10 квизов");
+                    return BadRequest(new { Message = "Можно приобрести только 1, 5 или 10 квизов" });
             }
 
             if (stats.Balance < totalPrice)
-                return BadRequest("Недостаточно монет для покупки");
+                return BadRequest(new { Message = "Недостаточно монет для покупки" });
 
             stats.Balance -= totalPrice;
             stats.QuizLimit += quantity;

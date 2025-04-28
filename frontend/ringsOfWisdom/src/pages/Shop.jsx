@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 import QuizDayStats from "./../hooks/QuizDayStats";
 import coinImage from './../assets/images/monetka.png'; 
 import ProtectedRoute from "../hooks/ProtectedRoute";
+import MessageModal from '../components/message-modal/MessageModal'; 
+
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -11,6 +13,8 @@ const Shop = () => {
     const [prices, setPrices] = useState({ One: 0, Five: 0, Ten: 0 });
     const [message, setMessage] = useState({ type: '', text: '' });
     const { availableQuizzes, totalQuizzes, refreshStats } = QuizDayStats();
+    const [showPromoInput, setShowPromoInput] = useState(false);
+    const [promoCode, setPromoCode] = useState('');
 
     const fetchUserBalance = async () => {
         try {
@@ -45,14 +49,6 @@ const Shop = () => {
         fetchPrices();
     }, []);
 
-    useEffect(() => {
-    if (message.text) {
-        const timeout = setTimeout(() => {
-            setMessage({ type: '', text: '' });
-        }, 5000);
-        return () => clearTimeout(timeout);
-    }
-    }, [message]);
     const closeMessage = () => {
     setMessage({ type: '', text: '' });
     };
@@ -78,11 +74,48 @@ const Shop = () => {
 
             await fetchUserBalance();
             await refreshStats();
+            await fetchPrices();
 
             setMessage({ type: 'success', text: result.message || "Покупка успешна!" });
         } catch (error) {
             console.error("Ошибка покупки:", error);
-            setMessage({ type: 'error', text: "Не удалось совершить покупку" });
+            setMessage({ type: 'error', text: `Не удалось совершить покупку:\n${result}` });
+        }
+    };
+
+    const handlePromoSubmit = async () => {
+        if (!promoCode.trim()) {
+            setMessage({ type: 'error', text: "Промокод не может быть пустым" });
+            return;
+        }
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/promo/activate`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                },
+                credentials: "include",
+                body: JSON.stringify({ promoCodeName: promoCode.trim() }),
+            });
+
+            const result = await response.json();
+
+            if (!response.ok) {
+                setMessage({ type: 'error', text: result.message || "Ошибка применения промокода" });
+                return;
+            }
+
+            await fetchUserBalance();
+            await refreshStats();
+
+            setMessage({ type: 'success', text: result.message || "Промокод успешно применён!" });
+            setShowPromoInput(false);
+            setPromoCode('');
+        } catch (error) {
+            console.error("Ошибка применения промокода:", error);
+            setMessage({ type: 'error', text: "Не удалось применить промокод" });
         }
     };
 
@@ -96,35 +129,53 @@ const Shop = () => {
                         <span>{balance}</span>
                         <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                     </div>
+                    
                 </div>
+
+
 
                 <div className="purchase-options">
                     <div className="purchase-item">
                         <div className="icon-circle">📈</div>
                         <p className="item-description">1 дополнительный квиз</p>
-                        <button className="purchase-button" onClick={() => handlePurchase(1)}>{prices.One} 🪙</button>
+                        <button className="purchase-button" onClick={() => handlePurchase(1)}>{prices.one} <img src={coinImage} alt="Coin" className="coin-icon" /></button>
                     </div>
 
 
                     <div className="purchase-item">
                         <div className="icon-circle">🔥</div>
                         <p className="item-description">Пакет из 5 квизов (-10%)</p>
-                        <button className="purchase-button" onClick={() => handlePurchase(5)}>{prices.Five} 🪙</button>
+                        <button className="purchase-button" onClick={() => handlePurchase(5)}>{prices.five} <img src={coinImage} alt="Coin" className="coin-icon" /></button>
                     </div>
 
                     <div className="purchase-item">
                         <div className="icon-circle">💎</div>
-                        <p className="item-description">Пакет из 10 квизов (ещё выгоднее)</p>
-                        <button className="purchase-button" onClick={() => handlePurchase(10)}>{prices.Ten} 🪙</button>
+                        <p className="item-description">Пакет из 10 квизов (-25%)</p>
+                        <button className="purchase-button" onClick={() => handlePurchase(10)}>{prices.ten} <img src={coinImage} alt="Coin" className="coin-icon" /></button>
                     </div>
                 </div>
 
-                {message.text && (
-                <div className={`message-box ${message.type}`}>
-                    <span className="close-btn" onClick={closeMessage}>×</span>
-                    {message.text}
-                </div>
-)}
+                <MessageModal message={message} onClose={closeMessage} />
+
+                {!showPromoInput && (
+                        <button className="promo-button" onClick={() => setShowPromoInput(true)}>Активировать промокод</button>
+                    )}
+
+                    {showPromoInput && (
+                        <div className="promo-input-container">
+                            <input
+                                type="text"
+                                className="promo-input"
+                                placeholder="Введите промокод"
+                                value={promoCode}
+                                onChange={(e) => setPromoCode(e.target.value)}
+                            />
+                            <div className="promo-buttons">
+                                <button onClick={handlePromoSubmit} className="promo-submit">Применить</button>
+                                <button onClick={() => { setShowPromoInput(false); setPromoCode(''); }} className="promo-cancel">Отмена</button>
+                            </div>
+                        </div>
+                    )}
             </div>
         </ProtectedRoute>
     );

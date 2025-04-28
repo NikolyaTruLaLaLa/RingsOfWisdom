@@ -190,3 +190,53 @@
     }
     
 }
+.promo-button {
+    margin-top: 15px;
+    background-color: #8a2be2;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.promo-input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.promo-input {
+    padding: 8px;
+    margin-bottom: 8px;
+    width: 80%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.promo-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.promo-submit, .promo-cancel {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.promo-submit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.promo-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
