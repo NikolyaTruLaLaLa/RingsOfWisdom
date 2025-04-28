@@ -1,6 +1,8 @@
 import group from"./../assets/images/group.png";
 import people from"./../assets/images/people.png";
 import unlock from"./../assets/images/unlock.png";
+import bingo from"./../assets/images/bingo.png";
+import takeOrNo from"./../assets/images/takeOrNo.png";
 import './../assets/style/style_skills_tree.css';
 
 import { NavLink } from 'react-router-dom';
@@ -25,14 +27,14 @@ const Skillstree = () => {
             </NavLink>
             
             <NavLink to="/bingo" className="item">
-                <img src={unlock} alt="Бинго"/>
+                <img src={bingo} alt="Бинго"/>
                 <p>Это Бинго!</p>
             </NavLink>
             
         </div>
         <div className="container_last">
             <NavLink to="/takeOrNoTake" className="item">
-                <img src={unlock} alt="Возьмешь или не возьмешь?"/>
+                <img src={takeOrNo} alt="Возьмешь или не возьмешь?"/>
                 <p>Возьмëшь <br/>не возьмëшь?</p>
             </NavLink>
         </div>
