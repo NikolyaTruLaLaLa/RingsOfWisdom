@@ -51,21 +51,35 @@
 }
 
 .user-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; 
-    margin-bottom: 30px;
+  display: flex;
+  flex-direction: column; /* Изменено на column для мобильных */
+  margin-bottom: 30px;
+}
+
+@media (min-width: 768px) {
+  .user-info {
+      flex-direction: row; /* На десктопах оставляем row */
+      justify-content: space-between;
+      align-items: flex-start;
+  }
 }
 
 .user-name-section {
     flex: 1;
+    
 }
 
 .coins-section {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 0; 
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px; /* Добавим отступ сверху для мобильных */
+}
+
+@media (min-width: 768px) {
+  .coins-section {
+      margin-top: 0; /* На десктопах убираем отступ */
+  }
 }
 
 .coins-section img {
@@ -93,9 +107,17 @@
 }
 
 .edit-name {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+@media (min-width: 480px) {
+  .edit-name {
+      flex-direction: row;
+      align-items: center;
+  }
 }
 
 .edit-name input {
@@ -105,6 +127,8 @@
     border-radius: 5px;
     width: 200px;
 }
+
+
 
 .edit-name button {
     padding: 8px 12px;
@@ -116,15 +140,44 @@
     font-size: 14px;
 }
 
-.edit-name button:hover {
-    background-color: #5a47b3;
+
+
+.edit-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+
+.edit-name .cancel-button {
+  background-color: #f1f1f1;
+  color: #333;
+  border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
 .display-name {
     display: flex;
-    align-items: center;
     gap: 10px;
     width: 100%;
+    flex-direction: column;
+}
+
+.display-name-user-name{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.display-name-status{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.display-name-rank{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .user-name-text {
@@ -186,6 +239,7 @@
     margin: 20px 0;
     justify-self: center;
 }
+
 
 .rating-table th,
 .rating-table td {
@@ -252,7 +306,7 @@
     transform: scale(1.05);
 }
 
-/* Добавьте эти стили в ваш файл style_profile.css */
+
 
 .status-info-button {
     background: none;
@@ -286,6 +340,8 @@
     justify-content: center;
     z-index: 1000;
   }
+
+ 
   
   .status-info-content {
     background-color: white;
@@ -297,6 +353,11 @@
     overflow-y: auto;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   }
+  @media (max-width: 765px){
+    .status-info-content{
+      margin-top: 10%;
+    }
+}
   
   .status-columns {
     display: flex;
