@@ -16,6 +16,7 @@ import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
 import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
+import Pages_Bingo from './pages/Pages_Bingo';
 
 
 function App() {
