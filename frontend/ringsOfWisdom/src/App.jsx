@@ -40,6 +40,7 @@ function App() {
           <Route path="/quiz/:quizName" element={<Quez />} />
           <Route path="/quiz" element={<Quez />} />
           <Route path="/bingo" element={<Pages_Bingo />} />
+          <Route path="/takeOrNoTake" element={<Take_or_No />} />
         </Routes>
       </Router>
     </AuthProvider>
