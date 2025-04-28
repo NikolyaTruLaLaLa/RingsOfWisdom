@@ -24,15 +24,15 @@ const Skillstree = () => {
                 <p>Типы<br/> и Типочки</p>
             </NavLink>
             
-            <NavLink  className="item">
-                <img src={unlock} alt="База"/>
+            <NavLink to="/bingo" className="item">
+                <img src={unlock} alt="Бинго"/>
                 <p>Это Бинго!</p>
             </NavLink>
             
         </div>
         <div className="container_last">
-            <NavLink  className="item">
-                <img src={unlock} alt="Bossmusic"/>
+            <NavLink to="/takeOrNoTake" className="item">
+                <img src={unlock} alt="Возьмешь или не возьмешь?"/>
                 <p>Возьмëшь <br/>не возьмëшь?</p>
             </NavLink>
         </div>
