@@ -266,6 +266,9 @@ const Profile = () => {
                     </svg>
                   </button>
                 </div>
+                <div className="display-name-xp">
+                  Персональный опыт: {currentXp}
+                </div>
                 <div className="display-name-rank">
                   Место в глобальном рейтинге: {userRank ? `#${userRank}` : "не определено"}
                 </div>
