@@ -9,26 +9,25 @@ const Courses = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
-        const fetchCourseNames = async () => {
-            try {
-                const response = await fetch(`${API_BASE_URL}/Course/getCourseNames`, {
-                    method: "GET",
-                    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-                    credentials: "include",
-                });
-                const data = await response.json();
-                setCourses(data);
-            } catch (error) {
-                console.error("Ошибка загрузки имен курсов:", error);
-            }
-        };
-
         fetchCourseNames();
     }, []);
 
+    const fetchCourseNames = async () => {
+        try {
+            const response = await fetch(`${API_BASE_URL}/Course/names`, {
+                method: "GET",
+                headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+                credentials: "include",
+            });
+            const data = await response.json();
+            setCourses(data);
+        } catch (error) {
+            console.error("Ошибка загрузки имен курсов:", error);
+        }
+    };
     const handleCourseClick = async (course) => {
         try {
-            const response = await fetch(`${API_BASE_URL}/Course/getCourseDetails/${course.id}`, {
+            const response = await fetch(`${API_BASE_URL}/Course/${course.id}`, {
                 method: "GET",
                 headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
                 credentials: "include",
@@ -62,7 +61,7 @@ const Courses = () => {
     return (
         <>
             <div className="courses-head">
-                <p>Могучие Формы</p>
+                <p>Курсы</p>
             </div>
             <div className="courses-container">
                 {courses.map((course) => (

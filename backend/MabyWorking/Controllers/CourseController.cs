@@ -22,24 +22,24 @@ namespace mabyWorking.Controllers
         [HttpGet("names")]
         public async Task<IActionResult> GetCourseNames()
         {
-            var courseNames = await _context.Courses
-                .Select(c => c.Name)
+            var courseList = await _context.Courses
+                .Select(c => new { c.Id, c.Name })
                 .ToListAsync();
 
-            if (!courseNames.Any())
+            if (!courseList.Any())
                 return NotFound("Курсы не найдены");
 
-            return Ok(courseNames);
+            return Ok(courseList);
         }
 
-        [HttpGet("{courseName}")]
-        public async Task<IActionResult> GetCourseByName(string courseName)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetCourseById(int id)
         {
             var course = await _context.Courses
-                .FirstOrDefaultAsync(c => c.Name.ToLower() == courseName.ToLower());
+                .FirstOrDefaultAsync(c => c.Id == id);
 
             if (course == null)
-                return NotFound("Курс с таким именем не найден");
+                return NotFound("Курс с таким ID не найден");
 
             var courseDto = new CourseDTO
             {
