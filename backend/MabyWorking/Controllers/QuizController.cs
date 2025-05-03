@@ -97,12 +97,16 @@ namespace mabyWorking.Controllers
 
             if (lastQuestion == null) return NotFound("Вопросы в квизе не найдены");
 
-            int totalXP = lastQuestion.RewardXp * completionDto.CorrectAnswersCount;
-            int totalRings = lastQuestion.RewardRings * completionDto.CorrectAnswersCount;
-
+            bool isFstTime = !quizStats.IsPassed;
+            double bonus = isFstTime ? 1.5 : 1;
+            
+            int totalXP = (int)(lastQuestion.RewardXp * completionDto.CorrectAnswersCount * bonus);
+            int totalRings = (int)(lastQuestion.RewardRings * completionDto.CorrectAnswersCount * bonus);
+            
             userStats.Xp += totalXP;
             userStats.Balance += totalRings;
-            if (completionDto.CorrectAnswersCount >= 2 && !quizStats.IsPassed)
+            bool isPassed = completionDto.CorrectAnswersCount >= 2;
+            if ( isPassed && !quizStats.IsPassed)
             {
                 skillStats.QuizPassed++;
                 quizStats.IsPassed = true;
@@ -115,10 +119,11 @@ namespace mabyWorking.Controllers
 
             if (newStatus != null && userStats.StatusId != newStatus.Id)
                 userStats.StatusId = newStatus.Id;
+            var quizInfo = new { totalXP, totalRings, quiz.Name, isFstTime, isPassed };
 
             await _context.SaveChangesAsync();
 
-            return Ok("Награда начислена");
+            return Ok(quizInfo);
         }
         [Authorize]
         [HttpGet("can-start")]
