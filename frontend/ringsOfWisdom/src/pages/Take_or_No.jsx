@@ -4,29 +4,29 @@ import QuizDayStats from "./../hooks/QuizDayStats";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 
 import './../assets/style/type_and_types.css';
-import baza from './../assets/images/baza.png';
-import razdatka from './../assets/images/razdatka.png';
-import zamena from './../assets/images/zamena.png';
-import blatie_nomera from './../assets/images/blatie_nomera.png';
-import razdatOCHKA from './../assets/images/razdatOCHKA.png';
-import zamena_zamen from './../assets/images/zamena_zamen.png';
-import svyazannye from './../assets/images/svyazannye.png';
-import kot from './../assets/images/kot.png'; 
-import frazochki from './../assets/images/frazochki.png';
-import blitz from './../assets/images/blitz.png';
+import svoyak50 from './../assets/images/svoyak50.png';
+import translate from './../assets/images/translate.png';
+import choose from './../assets/images/choose.png';
+import decompoziciya from './../assets/images/decompoziciya.png';
+import singulyarnost from './../assets/images/singulyarnost.png';
+import tooMuch from './../assets/images/tooMuch.png';
+import addWater from './../assets/images/addWater.png';
+import predposilki from './../assets/images/predposilki.png'; 
+import redukciya from './../assets/images/redukciya.png';
+import svoyak10 from './../assets/images/svoyak10.png';
 
 
 const quizData = [
-  { name: "БАЗА", image: baza, path: "/quiz/БАЗА" },
-  { name: "Раздатка", image: razdatka, path: "/quiz/Раздатка" },
-  { name: "Замена", image: zamena, path: "/quiz/Замена" },
-  { name: "Блатные номера", image: blatie_nomera, path: "/quiz/Блатные номера" },
-  { name: "РаздатоЧКА", image: razdatOCHKA, path: "/quiz/РаздатоЧКА" },
-  { name: "Замена замен замены замен", image: zamena_zamen, path: "/quiz/Замена замен замены замен" },
-  { name: "Связанные одной цепью", image: svyazannye, path: "/quiz/Связанные одной цепью" },
-  { name: "Кот в Чёрном Ящике", image: kot, path: "/quiz/Кот в Чёрном Ящике" },
-  { name: "Странные фразочки", image: frazochki, path: "/quiz/Странные фразочки" },
-  { name: "БЛИЦ БЛИЦ БЛИЦ", image: blitz, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
+  { name: "Свояк за 50", image: svoyak50, path: "/quiz/БАЗА" },
+  { name: "Перевод", image: translate, path: "/quiz/Раздатка" },
+  { name: "Выбирай правильно", image: choose, path: "/quiz/Замена" },
+  { name: "Декомпозиция", image: decompoziciya, path: "/quiz/Блатные номера" },
+  { name: "Сингулярность", image: singulyarnost, path: "/quiz/РаздатоЧКА" },
+  { name: "Перебор", image: tooMuch, path: "/quiz/Замена замен замены замен" },
+  { name: "Добавь воды", image: addWater, path: "/quiz/Связанные одной цепью" },
+  { name: "Предпосылки", image: predposilki, path: "/quiz/Кот в Чёрном Ящике" },
+  { name: "Редукция до Очевидного", image: redukciya, path: "/quiz/Странные фразочки" },
+  { name: "Свояк за 10", image: svoyak10, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
 ];
 
 
@@ -44,7 +44,7 @@ const Type_and_Types = () => {
       };
 
 
-      const renderNavLink_kot = (quiz) => {
+      const renderNavLink_svoyak10 = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -52,7 +52,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Кот в Чёрном<br/>Ящике</p>
+            <p>Свояк за 10</p>
             </div>
           );
         } else {
@@ -61,13 +61,13 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Кот в Чёрном<br/>Ящике</p>
+                <p>Свояк за 10</p>
             </NavLink>
           );
         }
       };
 
-      const renderNavLink_frazochki = (quiz) => {
+      const renderNavLink_reduction = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -75,7 +75,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Странные<br/>фразочки</p>
+            <p>Редукция до<br/>Очевидного</p>
             </div>
           );
         } else {
@@ -84,14 +84,14 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Странные<br/>фразочки</p>
+                <p>Редукция до<br/>Очевидного</p>
             </NavLink>
           );
         }
       };
 
 
-      const renderNavLink_zamena_zamen = (quiz) => {
+      const renderNavLink_predposilki = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -99,7 +99,7 @@ const Type_and_Types = () => {
                   <img src={quiz.image} alt={quiz.name} />
                  
                 </div>
-                <p>Замена замен<br/>замены замен</p>
+                <p>Предпосылки</p>
             </div>
           );
         } else {
@@ -108,13 +108,13 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Замена замен<br/>замены замен</p>
+                <p>Предпосылки</p>
             </NavLink>
           );
         }
       }; 
 
-      const renderNavLink_svyazannye = (quiz) => {
+      const renderNavLink_addWater = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -122,7 +122,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Замена замен<br/>замены замен</p>
+            <p>Добавь<br/>Воды</p>
             </div>
           );
         } else {
@@ -131,13 +131,150 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Связанные<br/>одной цепью</p>
+                <p>Добавь<br/>Воды</p>
             </NavLink>
           );
         }
       }; 
 
+      const renderNavLink_tooMuch = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Перебор</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Перебор</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_singulyarnost = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Сингулярность</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Сингулярность</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_decompozition = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Декомпозиция</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Декомпозиция</p>
+            </NavLink>
+          );
+        }
+      }; 
     
+      const renderNavLink_choose = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Выбирай<br/>Правильно</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Выбирай<br/>Правильно</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_translate = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Перевод</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Перевод</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_svoyak50 = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Свояк за 50</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Свояк за 50</p>
+            </NavLink>
+          );
+        }
+      }; 
+
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
           return (
@@ -204,14 +341,14 @@ const Type_and_Types = () => {
 
         
         <div className="skill-row">
-        {renderNavLink_zamena_zamen(quizData[5])}
-        {renderNavLink_svyazannye(quizData[6])}
+        {renderNavLink(quizData[5])}
+        {renderNavLink(quizData[6])}
         </div>
 
         
         <div className="skill-row">
-        {renderNavLink_kot(quizData[7])}
-        {renderNavLink_frazochki(quizData[8])}
+        {renderNavLink(quizData[7])}
+        {renderNavLink(quizData[8])}
         </div>
 
         
