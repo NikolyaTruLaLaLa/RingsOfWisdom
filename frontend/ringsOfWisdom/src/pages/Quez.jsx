@@ -21,6 +21,8 @@ const Quez = () => {
   const isComplited = useRef(false);
   const isChecked = useRef(false);
   const { isAuthenticated } = useAuth();
+  const [quizResult, setQuizResult] = useState(null);
+
 
   const checkCanStartQuiz = async () => {
     try {
@@ -200,7 +202,7 @@ const Quez = () => {
 
   const completeQuiz = async (finalCorrectAnswersCount) => {
     window.removeEventListener("beforeunload", () => {});
-
+  
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/complete-quiz`, {
         method: "POST",
@@ -211,90 +213,104 @@ const Quez = () => {
         credentials: "include",
         body: JSON.stringify({ quizName, correctAnswersCount: finalCorrectAnswersCount }),
       });
-
+  
       if (!response.ok) throw new Error("Ошибка завершения квиза");
-
+  
       const result = await response.json();
-      const { experiencePerQuestion, coinsPerQuestion, quizTitle } = result;
-
-      const totalExperience = experiencePerQuestion * finalCorrectAnswersCount;
-      const totalCoins = coinsPerQuestion * finalCorrectAnswersCount;
-      const quizPassed = finalCorrectAnswersCount >= 2;
-
-      setFeedback(() => (
-        <div className="quiz-popup">
-          <div className="quiz-header">
-            <h1>{quizTitle}</h1>
-          </div>
-          <div className="quiz-body">
-            <h2>{quizPassed ? "Квиз пройден!" : "Квиз не пройден"}</h2>
-            <p>Получено опыта: {totalExperience}</p>
-            <p>Получено монеток: {totalCoins}</p>
-          </div>
-          <div className="quiz-footer">
-            <NavLink to="/skills" className="back-to-menu">
-              <button>
-                Вернуться на дерево
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="white"/>
-                </svg>
-              </button>
-            </NavLink>
-          </div>
-        </div>
-      ));
+      setQuizResult(result);
     } catch (error) {
       console.error("Ошибка при завершении квиза:", error);
       setFeedback("Ошибка при завершении квиза.");
     }
   };
+  
 
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <ProtectedRoute>
       <div className="quiz-popup">
-        <div className="quiz-header">
-          <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
-        </div>
-        <div className="quiz-body">
-          <div className="quiz-name">{quizName}</div>
-          <p className="quiz-question-text">{currentQuestion.description}</p>
-          <input
-            type="text"
-            className="answer-input"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-            placeholder="Введите ваш ответ"
-            disabled={attemptsLeft === 0}
-          />
-          <button
-            onClick={
-              feedback.includes("Правильный") || attemptsLeft === 0
-                ? handleNextQuestion
-                : handleAnswerSubmit
-            }
-          >
-            {feedback.includes("Правильный") || attemptsLeft === 0
-              ? currentQuestionIndex < questions.length - 1
-                ? "Следующий вопрос"
-                : "Завершить квиз"
-              : "Сдать ответ"}
-          </button>
-          <p className="quiz-feedback">{feedback}</p>
-        </div>
-        <div className="quiz-footer">
-          <NavLink to="/skills" className="back-to-menu">
-            <button>Вернуться на дерево
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z" fill="white"/>
-            </svg>
-            </button>
-          </NavLink>
-        </div>
+        {!quizResult ? (
+          <>
+            <div className="quiz-header">
+              <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
+            </div>
+            <div className="quiz-body">
+              <div className="quiz-name">{quizName}</div>
+              <p className="quiz-question-text">{currentQuestion.description}</p>
+              <input
+                type="text"
+                className="answer-input"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                placeholder="Введите ваш ответ"
+                disabled={attemptsLeft === 0}
+              />
+              <button
+                onClick={
+                  feedback.includes("Правильный") || attemptsLeft === 0
+                    ? handleNextQuestion
+                    : handleAnswerSubmit
+                }
+              >
+                {feedback.includes("Правильный") || attemptsLeft === 0
+                  ? currentQuestionIndex < questions.length - 1
+                    ? "Следующий вопрос"
+                    : "Завершить квиз"
+                  : "Сдать ответ"}
+              </button>
+              <p className="quiz-feedback">{feedback}</p>
+            </div>
+            <div className="quiz-footer">
+              <NavLink to="/skills" className="back-to-menu">
+                <button>
+                  Вернуться на дерево
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z"
+                      fill="white" />
+                  </svg>
+                </button>
+              </NavLink>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="quiz-header">
+              <h1>{quizResult.name}</h1>
+            </div>
+            <div className="quiz-body">
+              <h2 className={quizResult.isPassed ? "result-success" : "result-fail"}>
+                {quizResult.isPassed ? "🎉 Квиз пройден!" : "❌ Квиз не пройден"}
+              </h2>
+              {quizResult.isFstTime && (
+                <div className="first-time-bonus">
+                  🔥 Это ваш первый проход — награда увеличена в <strong>x1.5</strong>!
+                </div>
+              )}
+              <p>🌟 Получено опыта: <strong>{quizResult.totalXP}</strong></p>
+              <p>💰 Получено монеток: <strong>{quizResult.totalRings}</strong></p>
+            </div>
+            <div className="quiz-footer">
+              <NavLink to="/skills" className="back-to-menu">
+                <button>
+                  Вернуться на дерево
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z"
+                      fill="white" />
+                  </svg>
+                </button>
+              </NavLink>
+            </div>
+          </>
+        )}
       </div>
     </ProtectedRoute>
   );
+  
 };
 
 export default Quez;
