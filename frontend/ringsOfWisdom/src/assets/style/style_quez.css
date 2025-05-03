@@ -132,3 +132,23 @@
     transform:scale(1.02);
 }
 
+.result-success {
+    color: #2ecc71;
+    font-size: 1.6rem;
+  }
+  
+  .result-fail {
+    color: #e74c3c;
+    font-size: 1.6rem;
+  }
+  
+  .first-time-bonus {
+    margin: 10px 0;
+    background: linear-gradient(to right, #f39c12, #e67e22);
+    padding: 10px 15px;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    display: inline-block;
+  }
+  
