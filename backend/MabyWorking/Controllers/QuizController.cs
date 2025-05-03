@@ -143,7 +143,9 @@ namespace mabyWorking.Controllers
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
             if (userStats == null) return NotFound("Статистика пользователя не найдена");
 
-            var skill = await _context.Skills.FirstOrDefaultAsync(s => s.Name == skillName);
+            var skill = await _context.Skills.FirstOrDefaultAsync(
+                s => s.Name.ToLower() == skillName.ToLower());
+
             if (skill == null) return NotFound("Скилл не найден");
 
             var quizzes = await _context.Quizzes

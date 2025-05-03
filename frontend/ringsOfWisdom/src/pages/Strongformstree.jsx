@@ -10,7 +10,7 @@ import useQuizzesBySkill from "./../hooks/useQuizzesBySkill";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 
 const Strongformstree = () => {
-  const skillName = "Могучие Формы"; // Название скилла, связанное с квизами
+  const skillName = "Могучие Формы";
   const quizzes = useQuizzesBySkill(skillName);
   const { availableQuizzes, totalQuizzes } = QuizDayStats();
 
@@ -21,10 +21,9 @@ const Strongformstree = () => {
   };
 
   const renderNavLink = (quiz) => {
-    const completedQuiz = quizzes.find((q) => q.Name === quiz.name);
+    const completedQuiz = quizzes.find((q) => q.name === quiz.name);
 
     if (!completedQuiz) {
-      // Квиз ещё загружается или не найден
       return (
         <div className="item loading">
           <div className="quiz-circle gray-circle">
@@ -35,7 +34,7 @@ const Strongformstree = () => {
       );
     }
 
-    const circleClass = completedQuiz.IsCompleted ? "green-circle" : "gray-circle";
+    const circleClass = completedQuiz.isCompleted ? "green-circle" : "gray-circle";
 
     if (availableQuizzes === 0) {
       return (
