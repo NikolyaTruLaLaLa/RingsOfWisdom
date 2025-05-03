@@ -4,29 +4,28 @@ import QuizDayStats from "./../hooks/QuizDayStats";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 
 import './../assets/style/type_and_types.css';
-import baza from './../assets/images/baza.png';
-import razdatka from './../assets/images/razdatka.png';
-import zamena from './../assets/images/zamena.png';
-import blatie_nomera from './../assets/images/blatie_nomera.png';
-import razdatOCHKA from './../assets/images/razdatOCHKA.png';
-import zamena_zamen from './../assets/images/zamena_zamen.png';
-import svyazannye from './../assets/images/svyazannye.png';
-import kot from './../assets/images/kot.png'; 
-import frazochki from './../assets/images/frazochki.png';
-import blitz from './../assets/images/blitz.png';
+import pushkin from './../assets/images/pushkin.png';
+// import gari from './../assets/images/gari.png'; ?
+import Greece from './../assets/images/Greece.png';
+import imageForBingo from './../assets/images/imageForBingo.png';
+import biblia from './../assets/images/biblia.png';
+import literature from './../assets/images/literature.png';
+import town from './../assets/images/town.png';
+import science from './../assets/images/science.png'; 
+import rus from './../assets/images/rus.png';
+import Factы from './../assets/images/Factы.png';
 
 
 const quizData = [
-  { name: "БАЗА", image: baza, path: "/quiz/БАЗА" },
-  { name: "Раздатка", image: razdatka, path: "/quiz/Раздатка" },
-  { name: "Замена", image: zamena, path: "/quiz/Замена" },
-  { name: "Блатные номера", image: blatie_nomera, path: "/quiz/Блатные номера" },
-  { name: "РаздатоЧКА", image: razdatOCHKA, path: "/quiz/РаздатоЧКА" },
-  { name: "Замена замен замены замен", image: zamena_zamen, path: "/quiz/Замена замен замены замен" },
-  { name: "Связанные одной цепью", image: svyazannye, path: "/quiz/Связанные одной цепью" },
-  { name: "Кот в Чёрном Ящике", image: kot, path: "/quiz/Кот в Чёрном Ящике" },
-  { name: "Странные фразочки", image: frazochki, path: "/quiz/Странные фразочки" },
-  { name: "БЛИЦ БЛИЦ БЛИЦ", image: blitz, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
+  { name: "Пушкин", image: pushkin, path: "/quiz/БАЗА" },
+  { name: "Греция", image: Greece, path: "/quiz/Замена" },
+  { name: "Картинки", image: imageForBingo, path: "/quiz/Блатные номера" },
+  { name: "Библия", image: biblia, path: "/quiz/РаздатоЧКА" },
+  { name: "Литература", image: literature, path: "/quiz/Замена замен замены замен" },
+  { name: "Городки", image: town, path: "/quiz/Связанные одной цепью" },
+  { name: "Навуки", image: science, path: "/quiz/Кот в Чёрном Ящике" },
+  { name: "Про Русов", image: rus, path: "/quiz/Странные фразочки" },
+  { name: "Factы", image: Factы, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
 ];
 
 
@@ -44,7 +43,7 @@ const Type_and_Types = () => {
       };
 
 
-      const renderNavLink_kot = (quiz) => {
+      const renderNavLink_Pushkin = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -52,7 +51,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Кот в Чёрном<br/>Ящике</p>
+            <p>Пушкин</p>
             </div>
           );
         } else {
@@ -61,13 +60,13 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Кот в Чёрном<br/>Ящике</p>
+                <p>Пушкин</p>
             </NavLink>
           );
         }
       };
 
-      const renderNavLink_frazochki = (quiz) => {
+      const renderNavLink_Gari = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -75,7 +74,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Странные<br/>фразочки</p>
+            <p>Гари</p>
             </div>
           );
         } else {
@@ -84,14 +83,14 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Странные<br/>фразочки</p>
+                <p>Гари</p>
             </NavLink>
           );
         }
       };
 
 
-      const renderNavLink_zamena_zamen = (quiz) => {
+      const renderNavLink_Greece = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -99,7 +98,7 @@ const Type_and_Types = () => {
                   <img src={quiz.image} alt={quiz.name} />
                  
                 </div>
-                <p>Замена замен<br/>замены замен</p>
+                <p>Греция</p>
             </div>
           );
         } else {
@@ -108,13 +107,13 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Замена замен<br/>замены замен</p>
+                <p>Греция</p>
             </NavLink>
           );
         }
       }; 
 
-      const renderNavLink_svyazannye = (quiz) => {
+      const renderNavLink_Image = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -122,7 +121,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Замена замен<br/>замены замен</p>
+            <p>Картинки</p>
             </div>
           );
         } else {
@@ -131,12 +130,149 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Связанные<br/>одной цепью</p>
+                <p>Картинки</p>
             </NavLink>
           );
         }
       }; 
 
+      const renderNavLink_Biblia = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Библия</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Библия</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_Literature = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Литература</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Литература</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_Town = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Городки</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Городки</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_Science = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Навуки</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Навуки</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_AboutRus = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Про Русов</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Про Русов</p>
+            </NavLink>
+          );
+        }
+      }; 
+
+      const renderNavLink_Facts = (quiz) => {
+        if (availableQuizzes === 0) {
+          return (
+            <div className="circle-typ-container" >
+            <div className="circle-typ">
+              <img src={quiz.image} alt={quiz.name} />
+              
+            </div>
+            <p>Factы</p>
+            </div>
+          );
+        } else {
+          return (
+            <NavLink to={quiz.path} className="circle-typ-container">
+                <div className="circle-typ">
+                    <img src={quiz.image} alt={quiz.name} />
+                </div>
+                <p>Factы</p>
+            </NavLink>
+          );
+        }
+      }; 
     
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
@@ -164,7 +300,7 @@ const Type_and_Types = () => {
         <ProtectedRoute>
         <div className="skill-tree">
     <div className="page-title">
-        <p>Типы и Типочки
+        <p>Это бинго!
             <br/>
         <span className="quiz-counter">
         {availableQuizzes <= 0 
@@ -204,20 +340,16 @@ const Type_and_Types = () => {
 
         
         <div className="skill-row">
-        {renderNavLink_zamena_zamen(quizData[5])}
-        {renderNavLink_svyazannye(quizData[6])}
+        {renderNavLink(quizData[5])}
+        {renderNavLink(quizData[6])}
         </div>
 
         
         <div className="skill-row">
-        {renderNavLink_kot(quizData[7])}
-        {renderNavLink_frazochki(quizData[8])}
+        {renderNavLink(quizData[7])}
+        {renderNavLink(quizData[8])}
         </div>
 
-        
-        <div className="skill-row">
-        {renderNavLink(quizData[9])}
-        </div>
     </div>
     </ProtectedRoute>
     );
