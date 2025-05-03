@@ -25,8 +25,8 @@ const Strongformstree = () => {
 
     if (!completedQuiz) {
       return (
-        <div className="cir-cont loading">
-          <div className="quiz-circle gray-circle">
+        <div className="cir-cont loading gray-circle">
+          <div className="quiz-circle ">
             <img src={quiz.image} alt={quiz.name} />
           </div>
           <p>Загрузка...</p>
@@ -38,8 +38,8 @@ const Strongformstree = () => {
 
     if (availableQuizzes === 0) {
       return (
-        <div className="cir-cont disabled">
-          <div className={`quiz-circle ${circleClass}`}>
+        <div className={`cir-cont disabled ${circleClass}`}>
+          <div className="quiz-circle">
             <img src={quiz.image} alt={quiz.name} />
           </div>
           <p>{quiz.name}</p>
@@ -47,8 +47,8 @@ const Strongformstree = () => {
       );
     } else {
       return (
-        <NavLink to={quiz.path} className="cir-cont">
-          <div className={`quiz-circle ${circleClass}`}>
+        <NavLink to={quiz.path} className={`cir-cont ${circleClass}`}>
+          <div className="quiz-circle">
             <img src={quiz.image} alt={quiz.name} />
           </div>
           <p>{quiz.name}</p>

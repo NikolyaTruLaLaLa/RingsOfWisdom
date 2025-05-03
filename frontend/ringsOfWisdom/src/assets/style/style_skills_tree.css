@@ -79,7 +79,7 @@
   height: 100px;
   border-radius: 99.99%;
   background: #5a47b3;
-  padding: 10px;
+  padding: 6px;
   text-decoration:none;
   color: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -141,7 +141,7 @@ transform: scale(1.02);
   height: 100px;
   border-radius: 99.99%;
   background: #5a47b3;
-  padding: 10px;
+  padding: 6px;
   text-decoration:none;
   color: #000000;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -197,7 +197,7 @@ transform: scale(1.02);
   height: 100px;
   border-radius: 99.99%;
   background: #5a47b3;
-  padding: 10px;
+  padding: 6px;
   text-align: center;
   text-decoration:none;
   color: #000000;
@@ -343,11 +343,11 @@ transform: scale(1.02);
   }
   
   .green-circle {
-    border: 4px solid #4caf50; /* Зеленый цвет */
+    border: 5px solid #4caf50; /* Зеленый цвет */
   }
   
   .gray-circle {
-    border: 4px solid #ccc; /* Серый цвет */
+    border: 5px solid #ccc; /* Серый цвет */
   }
   
   .cir-cont img {
