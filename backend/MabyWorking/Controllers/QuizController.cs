@@ -97,7 +97,8 @@ namespace mabyWorking.Controllers
 
             if (lastQuestion == null) return NotFound("Вопросы в квизе не найдены");
 
-            bool isFstTime = !quizStats.IsPassed;
+            bool isFstTime = !quizStats.IsPassed && completionDto.CorrectAnswersCount >= 2;
+            bool isPassed = completionDto.CorrectAnswersCount >= 2;
             double bonus = isFstTime ? 1.5 : 1;
             
             int totalXP = (int)(lastQuestion.RewardXp * completionDto.CorrectAnswersCount * bonus);
@@ -105,8 +106,7 @@ namespace mabyWorking.Controllers
             
             userStats.Xp += totalXP;
             userStats.Balance += totalRings;
-            bool isPassed = completionDto.CorrectAnswersCount >= 2;
-            if ( isPassed && !quizStats.IsPassed)
+            if (isFstTime)
             {
                 skillStats.QuizPassed++;
                 quizStats.IsPassed = true;
@@ -125,18 +125,23 @@ namespace mabyWorking.Controllers
 
             return Ok(quizInfo);
         }
+
         [Authorize]
         [HttpGet("can-start")]
         public async Task<IActionResult> CanStartQuiz()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            if (userStats == null)
+                return Ok(new { CanStart = false, Message = "Пользователь не найден" });
 
-            if (userStats == null) return Ok(new { CanStart = false, Message = "Пользователь не найден" });
-            if (userStats.QuizLimit <= userStats.QuizPassed) return Ok(new { CanStart = false, Message = "Недостаточно попыток для начала квиза" });
+            if (userStats.QuizLimit <= userStats.QuizPassed)
+                return Ok(new { CanStart = false, Message = "Недостаточно попыток для начала квиза" });
+
 
             return Ok(new { CanStart = true, Message = "Квиз можно начать" });
         }
+
 
         [Authorize]
         [HttpGet("skill/{skillName}")]
@@ -145,30 +150,45 @@ namespace mabyWorking.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (userId == null) return Unauthorized("Пользователь не найден");
 
-            var userStats = await _context.Stats.FirstOrDefaultAsync(s => s.UserId == userId);
+            var userStats = await _context.Stats
+                .Include(s => s.Status)
+                .FirstOrDefaultAsync(s => s.UserId == userId);
             if (userStats == null) return NotFound("Статистика пользователя не найдена");
 
             var skill = await _context.Skills.FirstOrDefaultAsync(
                 s => s.Name.ToLower() == skillName.ToLower());
-
             if (skill == null) return NotFound("Скилл не найден");
 
             var quizzes = await _context.Quizzes
                 .Where(q => q.SkillId == skill.Id)
-                .Select(q => new
+                .ToListAsync();
+
+            var quizAccess = await _context.QuizAccessRequirements
+                .Include(r => r.RequiredStatus)
+                .ToListAsync();
+
+            var result = quizzes.Select(q =>
+            {
+                var requirement = quizAccess.FirstOrDefault(r => r.QuizId == q.Id);
+                var canAccess = requirement == null || requirement.RequiredStatusId <= userStats.StatusId;
+                var requiredStatusName = requirement?.RequiredStatus?.Name ?? null;
+
+
+                return new
                 {
                     q.Name,
                     IsCompleted = _context.QuizStats.Any(qs =>
                         qs.StatsId == userStats.Id &&
                         qs.QuizId == q.Id &&
-                        qs.IsPassed)
-                })
-                .ToListAsync();
+                        qs.IsPassed),
+                    CanAccess = canAccess,
+                    RequiredStatus = requiredStatusName
+                };
+            }).ToList();
 
-            if (!quizzes.Any()) return NotFound("Квизы для данного скилла не найдены");
-
-            return Ok(quizzes);
+            return Ok(result);
         }
+
 
 
     }
