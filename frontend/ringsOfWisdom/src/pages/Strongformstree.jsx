@@ -25,7 +25,7 @@ const Strongformstree = () => {
 
     if (!completedQuiz) {
       return (
-        <div className="item loading">
+        <div className="cir-cont loading">
           <div className="quiz-circle gray-circle">
             <img src={quiz.image} alt={quiz.name} />
           </div>
@@ -38,7 +38,7 @@ const Strongformstree = () => {
 
     if (availableQuizzes === 0) {
       return (
-        <div className="item disabled">
+        <div className="cir-cont disabled">
           <div className={`quiz-circle ${circleClass}`}>
             <img src={quiz.image} alt={quiz.name} />
           </div>
@@ -47,7 +47,7 @@ const Strongformstree = () => {
       );
     } else {
       return (
-        <NavLink to={quiz.path} className="item">
+        <NavLink to={quiz.path} className="cir-cont">
           <div className={`quiz-circle ${circleClass}`}>
             <img src={quiz.image} alt={quiz.name} />
           </div>
@@ -73,7 +73,7 @@ const Strongformstree = () => {
         </div>
 
         {isPopupVisible && (
-          <div className="popupwinn">
+          <div className="popupwin">
             <div className="popupwin-content">
               <span className="close-btn" onClick={handleClosePopup}>
                 &times;
