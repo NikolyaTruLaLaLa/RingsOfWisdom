@@ -5,7 +5,7 @@ import ProtectedRoute from "../hooks/ProtectedRoute";
 
 import './../assets/style/type_and_types.css';
 import pushkin from './../assets/images/pushkin.png';
-// import gari from './../assets/images/gari.png'; ?
+import gari from './../assets/images/gari.png'; 
 import Greece from './../assets/images/Greece.png';
 import imageForBingo from './../assets/images/imageForBingo.png';
 import biblia from './../assets/images/biblia.png';
@@ -17,19 +17,20 @@ import Factы from './../assets/images/Factы.png';
 
 
 const quizData = [
-  { name: "Пушкин", image: pushkin, path: "/quiz/БАЗА" },
-  { name: "Греция", image: Greece, path: "/quiz/Замена" },
-  { name: "Картинки", image: imageForBingo, path: "/quiz/Блатные номера" },
-  { name: "Библия", image: biblia, path: "/quiz/РаздатоЧКА" },
-  { name: "Литература", image: literature, path: "/quiz/Замена замен замены замен" },
-  { name: "Городки", image: town, path: "/quiz/Связанные одной цепью" },
-  { name: "Навуки", image: science, path: "/quiz/Кот в Чёрном Ящике" },
-  { name: "Про Русов", image: rus, path: "/quiz/Странные фразочки" },
-  { name: "Factы", image: Factы, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
+  { name: "Пушкин", image: pushkin, path: "/quiz/Пушкин" },
+  { name: "Гарри", image: gari, path: "/quiz/Гарри" },
+  { name: "Греция", image: Greece, path: "/quiz/Греция" },
+  { name: "Картинки", image: imageForBingo, path: "/quiz/Картинки" },
+  { name: "Библия", image: biblia, path: "/quiz/Библия" },
+  { name: "Литература", image: literature, path: "/quiz/Литература" },
+  { name: "Городки", image: town, path: "/quiz/Городки" },
+  { name: "Навуки", image: science, path: "/quiz/Навуки" },
+  { name: "Про Русов", image: rus, path: "/quiz/Про Русов" },
+  { name: "Factы", image: Factы, path: "/quiz/Factы" }
 ];
 
 
-const Type_and_Types = () => {
+const Pages_Bingo = () => {
     
     const {availableQuizzes, totalQuizzes} = QuizDayStats();
         useEffect(() => {
@@ -43,236 +44,7 @@ const Type_and_Types = () => {
       };
 
 
-      const renderNavLink_Pushkin = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Пушкин</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container" >
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Пушкин</p>
-            </NavLink>
-          );
-        }
-      };
-
-      const renderNavLink_Gari = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Гари</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Гари</p>
-            </NavLink>
-          );
-        }
-      };
-
-
-      const renderNavLink_Greece = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-                <div className="circle-typ" >
-                  <img src={quiz.image} alt={quiz.name} />
-                 
-                </div>
-                <p>Греция</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Греция</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Image = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Картинки</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Картинки</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Biblia = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Библия</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Библия</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Literature = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Литература</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Литература</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Town = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Городки</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Городки</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Science = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Навуки</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Навуки</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_AboutRus = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Про Русов</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Про Русов</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_Facts = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Factы</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Factы</p>
-            </NavLink>
-          );
-        }
-      }; 
+     
     
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
@@ -350,9 +122,13 @@ const Type_and_Types = () => {
         {renderNavLink(quizData[8])}
         </div>
 
+        <div className="skill-row">
+        {renderNavLink(quizData[9])}
+        </div>
+
     </div>
     </ProtectedRoute>
     );
 };
  
-export default Type_and_Types;
+export default Pages_Bingo;

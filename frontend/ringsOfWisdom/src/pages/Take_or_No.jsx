@@ -17,20 +17,20 @@ import svoyak10 from './../assets/images/svoyak10.png';
 
 
 const quizData = [
-  { name: "Свояк за 50", image: svoyak50, path: "/quiz/БАЗА" },
-  { name: "Перевод", image: translate, path: "/quiz/Раздатка" },
-  { name: "Выбирай правильно", image: choose, path: "/quiz/Замена" },
-  { name: "Декомпозиция", image: decompoziciya, path: "/quiz/Блатные номера" },
-  { name: "Сингулярность", image: singulyarnost, path: "/quiz/РаздатоЧКА" },
-  { name: "Перебор", image: tooMuch, path: "/quiz/Замена замен замены замен" },
-  { name: "Добавь воды", image: addWater, path: "/quiz/Связанные одной цепью" },
-  { name: "Предпосылки", image: predposilki, path: "/quiz/Кот в Чёрном Ящике" },
-  { name: "Редукция до Очевидного", image: redukciya, path: "/quiz/Странные фразочки" },
-  { name: "Свояк за 10", image: svoyak10, path: "/quiz/БЛИЦ БЛИЦ БЛИЦ" }
+  { name: "Свояк за 10", image: svoyak10, path: "/quiz/Свояк за 10" },
+  { name: "Перевод", image: translate, path: "/quiz/Перевод" },
+  { name: "Выбирай правильно", image: choose, path: "/quiz/Выбирай правильно" },
+  { name: "Декомпозиция", image: decompoziciya, path: "/quiz/Декомпозиция" },
+  { name: "Сингулярность", image: singulyarnost, path: "/quiz/Сингулярность" },
+  { name: "Перебор", image: tooMuch, path: "/quiz/Перебор" },
+  { name: "Добавь воды", image: addWater, path: "/quiz/Добавь воды" },
+  { name: "Предпосылки", image: predposilki, path: "/quiz/Предпосылки" },
+  { name: "Редукция до Очевидного", image: redukciya, path: "/quiz/Редукция до Очевидного" },
+  { name: "Свояк за 50", image: svoyak50, path: "/quiz/Свояк за 50" }
 ];
 
 
-const Type_and_Types = () => {
+const Take_or_No = () => {
     
     const {availableQuizzes, totalQuizzes} = QuizDayStats();
         useEffect(() => {
@@ -44,28 +44,7 @@ const Type_and_Types = () => {
       };
 
 
-      const renderNavLink_svoyak10 = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Свояк за 10</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container" >
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Свояк за 10</p>
-            </NavLink>
-          );
-        }
-      };
+      
 
       const renderNavLink_reduction = (quiz) => {
         if (availableQuizzes === 0) {
@@ -90,31 +69,7 @@ const Type_and_Types = () => {
         }
       };
 
-
-      const renderNavLink_predposilki = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-                <div className="circle-typ" >
-                  <img src={quiz.image} alt={quiz.name} />
-                 
-                </div>
-                <p>Предпосылки</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Предпосылки</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_addWater = (quiz) => {
+      const renderNavLink_sing = (quiz) => {
         if (availableQuizzes === 0) {
           return (
             <div className="circle-typ-container" >
@@ -122,7 +77,7 @@ const Type_and_Types = () => {
               <img src={quiz.image} alt={quiz.name} />
               
             </div>
-            <p>Добавь<br/>Воды</p>
+            <p>Сингуляр<br/>ность</p>
             </div>
           );
         } else {
@@ -131,81 +86,12 @@ const Type_and_Types = () => {
                 <div className="circle-typ">
                     <img src={quiz.image} alt={quiz.name} />
                 </div>
-                <p>Добавь<br/>Воды</p>
+                <p>Сингуляр<br/>ность</p>
             </NavLink>
           );
         }
       }; 
 
-      const renderNavLink_tooMuch = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Перебор</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Перебор</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_singulyarnost = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Сингулярность</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Сингулярность</p>
-            </NavLink>
-          );
-        }
-      }; 
-
-      const renderNavLink_decompozition = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Декомпозиция</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Декомпозиция</p>
-            </NavLink>
-          );
-        }
-      }; 
-    
       const renderNavLink_choose = (quiz) => {
         if (availableQuizzes === 0) {
           return (
@@ -229,51 +115,9 @@ const Type_and_Types = () => {
         }
       }; 
 
-      const renderNavLink_translate = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Перевод</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Перевод</p>
-            </NavLink>
-          );
-        }
-      }; 
+      
 
-      const renderNavLink_svoyak50 = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-              
-            </div>
-            <p>Свояк за 50</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
-                    <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Свояк за 50</p>
-            </NavLink>
-          );
-        }
-      }; 
+      
 
       const renderNavLink = (quiz) => {
         if (availableQuizzes === 0) {
@@ -301,7 +145,7 @@ const Type_and_Types = () => {
         <ProtectedRoute>
         <div className="skill-tree">
     <div className="page-title">
-        <p>Типы и Типочки
+        <p>Возьмёшь не возьмёшь?
             <br/>
         <span className="quiz-counter">
         {availableQuizzes <= 0 
@@ -330,13 +174,13 @@ const Type_and_Types = () => {
         
         <div className="skill-row">
         {renderNavLink(quizData[1])}
-        {renderNavLink(quizData[2])}
+        {renderNavLink_choose(quizData[2])}
         </div>
 
         
         <div className="skill-row">
         {renderNavLink(quizData[3])}
-        {renderNavLink(quizData[4])}
+        {renderNavLink_sing(quizData[4])}
         </div>
 
         
@@ -348,7 +192,7 @@ const Type_and_Types = () => {
         
         <div className="skill-row">
         {renderNavLink(quizData[7])}
-        {renderNavLink(quizData[8])}
+        {renderNavLink_reduction(quizData[8])}
         </div>
 
         
@@ -360,4 +204,4 @@ const Type_and_Types = () => {
     );
 };
  
-export default Type_and_Types;
+export default Take_or_No;
