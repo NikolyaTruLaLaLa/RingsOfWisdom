@@ -65,7 +65,8 @@ namespace mabyWorking
             string[] frontendUrls = new[]
             {
                 "https://ringsofwisdom.ru",
-                "https://www.ringsofwisdom.ru"
+                "https://www.ringsofwisdom.ru",
+                "http://localhost:5173"
             };
 
             builder.Services.AddCors(options =>

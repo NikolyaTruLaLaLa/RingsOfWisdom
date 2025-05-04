@@ -21,6 +21,12 @@
     overflow: auto;
     white-space: pre-line;
 }
+@media (min-width: 1025px) {
+    .quiz-popup{
+        max-width: 60%;
+        height: 60%;
+    }
+}
 
 
 .quiz-header {
