@@ -166,7 +166,6 @@ const Profile = () => {
         setNextStatusName(null);
         setXpToNext(0);
       }
-      console.log(data);
     } catch (error) {
       console.error("Ошибка загрузки статусов:", error);
     }
