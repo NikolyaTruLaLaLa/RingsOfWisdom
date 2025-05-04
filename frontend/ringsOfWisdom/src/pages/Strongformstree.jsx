@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+
 import dish from "./../assets/images/dish.png";
 import icon_gendr_forms from "./../assets/images/icon_gendr_forms.png";
 import many_faces from "./../assets/images/many_faces.png";
 import reverse_x from "./../assets/images/reverse_x.png";
+
 import "./../assets/style/style_skills_tree.css";
 import QuizDayStats from "./../hooks/QuizDayStats";
 import useQuizzesBySkill from "./../hooks/useQuizzesBySkill";
