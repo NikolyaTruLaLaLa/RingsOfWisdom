@@ -18,7 +18,7 @@ const Quez = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [canStartQuiz, setCanStartQuiz] = useState(null);
   const isFetched = useRef(false);
-  const isComplited = useRef(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const isChecked = useRef(false);
   const { isAuthenticated } = useAuth();
   const [quizResult, setQuizResult] = useState(null);
@@ -61,18 +61,53 @@ const Quez = () => {
     }
   };
 
+  
+  
   useEffect(() => {
-    const handleBeforeUnload = (event) => {
-      event.preventDefault();
-      event.returnValue = "Вы уверены? Прогресс будет потерян!";
-    };
+    if (!isCompleted) {
+      const handleBeforeUnload = (e) => {
+        e.preventDefault();
+        e.returnValue = "Вы уверены? Прогресс будет потерян!";
+        return "Вы уверены? Прогресс будет потерян!";
+      };
 
-    window.addEventListener("beforeunload", handleBeforeUnload);
+      const handleClick = (e) => {
+        let target = e.target;
+        while (target && target !== document) {
+          if (target.tagName === 'A' && target.href) {
+            const isExternal = new URL(target.href).pathname !== window.location.pathname;
+            if (isExternal && !target.classList.contains('allow-navigation')) {
+              e.preventDefault();
+              const confirmLeave = window.confirm("Вы уверены? Прогресс будет потерян!");
+              if (confirmLeave) {
+                window.location.href = target.href;
+              }
+              return;
+            }
+          }
+          target = target.parentElement;
+        }
+      };
 
-    return () => {
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
+      function unblock() { navigate((location, action) => {
+        if (action !== 'POP' && !isCompleted) {
+          const confirmLeave = window.confirm("Вы уверены? Прогресс будет потерян!");
+          return !confirmLeave; // false отменяет навигацию
+        }
+        return true;
+      });}
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+      document.addEventListener('click', handleClick, true); // Используем capture phase
+
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+        document.removeEventListener('click', handleClick, true);
+        unblock();
+      };
+    }
+  }, [isCompleted, navigate]);
+  
 
   useEffect(() => {
     if (isAuthenticated === false) {
@@ -191,18 +226,17 @@ const Quez = () => {
     } else {
       setCorrectAnswersCount((prevCorrectAnswers) => {
         const newCount = prevCorrectAnswers;
-        if (!isComplited.current) {
+        if (!isCompleted) {
           completeQuiz(newCount);
-          isComplited.current = true;
+          setIsCompleted(true);
         }
+        
         return newCount;
       });
     }
   };
 
   const completeQuiz = async (finalCorrectAnswersCount) => {
-    window.removeEventListener("beforeunload", () => {});
-  
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/complete-quiz`, {
         method: "POST",
@@ -214,9 +248,13 @@ const Quez = () => {
         body: JSON.stringify({ quizName, correctAnswersCount: finalCorrectAnswersCount }),
       });
   
-      if (!response.ok) throw new Error("Ошибка завершения квиза");
+      if (!response.ok) {
+        console.error("Failed to complete quiz:", response.status);
+        throw new Error("Ошибка завершения квиза");
+      }
   
       const result = await response.json();
+      setIsCompleted(true); 
       setQuizResult(result);
     } catch (error) {
       console.error("Ошибка при завершении квиза:", error);
@@ -262,7 +300,7 @@ const Quez = () => {
               <p className="quiz-feedback">{feedback}</p>
             </div>
             <div className="quiz-footer">
-              <NavLink to="/skills" className="back-to-menu">
+              <NavLink to="/skills" className={`back-to-menu ${isCompleted ? 'allow-navigation' : ''}`}>
                 <button>
                   Вернуться на дерево
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -293,7 +331,7 @@ const Quez = () => {
               <p>💰 Получено монеток: <strong>{quizResult.totalRings}</strong></p>
             </div>
             <div className="quiz-footer">
-              <NavLink to="/skills" className="back-to-menu">
+              <NavLink to="/skills" className={`back-to-menu ${isCompleted ? 'allow-navigation' : ''}`}>
                 <button>
                   Вернуться на дерево
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
