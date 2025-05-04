@@ -343,11 +343,11 @@ transform: scale(1.02);
   }
   
   .green-circle {
-    border: 5px solid #4caf50; /* Зеленый цвет */
+    border: 5px solid #4caf50;
   }
   
   .gray-circle {
-    border: 5px solid #ccc; /* Серый цвет */
+    border: 5px solid #ccc;
   }
   
   .cir-cont img {
@@ -361,3 +361,20 @@ transform: scale(1.02);
     pointer-events: none;
   }
   
+.cir-cont.quiz-locked {
+  background: #cccccc;
+  cursor: not-allowed;
+}
+
+.cir-cont.quiz-disabled {
+  background: #cccccc;
+  pointer-events: none;
+  opacity: 0.5;
+  cursor: default;
+}
+
+.container_all .container_first .cir-cont.quiz-locked,
+.container_all .container_second .cir-cont.quiz-locked,
+.container_all .container_last .cir-cont.quiz-locked{
+  background-color: #696969 !important;
+}

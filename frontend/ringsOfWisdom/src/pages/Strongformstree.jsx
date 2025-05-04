@@ -8,6 +8,7 @@ import "./../assets/style/style_skills_tree.css";
 import QuizDayStats from "./../hooks/QuizDayStats";
 import useQuizzesBySkill from "./../hooks/useQuizzesBySkill";
 import ProtectedRoute from "../hooks/ProtectedRoute";
+import MessageModal from '../components/message-modal/MessageModal'; 
 
 const Strongformstree = () => {
   const skillName = "Могучие Формы";
@@ -15,14 +16,22 @@ const Strongformstree = () => {
   const { availableQuizzes, totalQuizzes } = QuizDayStats();
 
   const [isPopupVisible, setPopupVisible] = useState(true);
+  const [modalMessage, setModalMessage] = useState(null);
 
   const handleClosePopup = () => {
     setPopupVisible(false);
   };
 
+  const handleBlockedQuizClick = (quiz) => {
+    setModalMessage({
+      type: "error",
+      text: `Этот квиз доступен только при статусе: ${quiz.requiredStatus || "неизвестен"}.`,
+    });
+  };
+
   const renderNavLink = (quiz) => {
     const completedQuiz = quizzes.find((q) => q.name === quiz.name);
-
+  
     if (!completedQuiz) {
       return (
         <div className="cir-cont loading gray-circle">
@@ -33,29 +42,49 @@ const Strongformstree = () => {
         </div>
       );
     }
-
-    const circleClass = completedQuiz.isCompleted ? "green-circle" : "gray-circle";
-
+  
+    const isAccessible = completedQuiz.canAccess;
+    const isCompleted = completedQuiz.isCompleted;
+    const circleClass = isCompleted ? "green-circle" : "gray-circle";
+  
+    
+  
     if (availableQuizzes === 0) {
       return (
-        <div className={`cir-cont disabled ${circleClass}`}>
+        <div key={quiz.name} className={`cir-cont ${circleClass} quiz-disabled`}>
           <div className="quiz-circle">
             <img src={quiz.image} alt={quiz.name} />
           </div>
           <p>{quiz.name}</p>
         </div>
       );
-    } else {
+    }
+    if (!isAccessible) {
       return (
-        <NavLink to={quiz.path} className={`cir-cont ${circleClass}`}>
+        <div
+          key={quiz.name}
+          className={`cir-cont gray-circle quiz-locked`}
+          onClick={() => handleBlockedQuizClick(completedQuiz)}
+          style={{ cursor: "not-allowed" }}
+        >
           <div className="quiz-circle">
             <img src={quiz.image} alt={quiz.name} />
           </div>
           <p>{quiz.name}</p>
-        </NavLink>
+        </div>
       );
     }
+  
+    return (
+      <NavLink to={quiz.path} className={`cir-cont ${circleClass}`}>
+        <div className="quiz-circle">
+          <img src={quiz.image} alt={quiz.name} />
+        </div>
+        <p>{quiz.name}</p>
+      </NavLink>
+    );
   };
+  
 
   return (
     <ProtectedRoute>
@@ -111,6 +140,9 @@ const Strongformstree = () => {
             path: "/quiz/Первые и Вторые блюда",
           })}
         </div>
+        {modalMessage && (
+          <MessageModal message={modalMessage} onClose={() => setModalMessage(null)} />
+        )}
       </div>
     </ProtectedRoute>
   );
