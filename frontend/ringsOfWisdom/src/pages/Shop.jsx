@@ -126,7 +126,7 @@ const Shop = () => {
                     <h1>ROW Store</h1>
                     <div className="balance-info">
                         <img src={coinImage} alt="Coin" className="coin-icon" />
-                        <span>{balance}</span>
+                        <div className='balance'>{balance}</div>
                         <span className="quiz-counter">{availableQuizzes}/{totalQuizzes} Количество квизов в день</span>
                     </div>
                     

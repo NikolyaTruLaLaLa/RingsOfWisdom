@@ -112,6 +112,9 @@
 }
 
 .back-to-menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     padding: 10px 15px;
     color: #5a47b3;
     color: #fff;
@@ -123,8 +126,14 @@
     width: 100%;
     margin-bottom: 8%;
     margin-top: 8%;
-    
-    
+    text-decoration: none;
+}
+.back-to-menu button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+  
 }
 
 .back-to-menu:hover {

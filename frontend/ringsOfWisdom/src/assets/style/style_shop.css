@@ -33,6 +33,11 @@
     margin-top: 10px;
     flex-wrap: wrap; 
 }
+.balance{
+    color: #8a2be2;
+    font-size: 1em; 
+    font-weight: bold; 
+}
 
 .coin-icon {
     width: 1em; 
@@ -104,10 +109,18 @@
     width: 100%;
     font-size: 1em; 
     font-weight: bold; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .purchase-button:hover {
     background-color: #7b1fa2; 
+}
+
+.purchase-button .coin-icon {
+    margin-right: 0; 
 }
 
 
