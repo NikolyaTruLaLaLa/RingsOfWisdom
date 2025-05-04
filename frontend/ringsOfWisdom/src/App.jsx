@@ -16,6 +16,8 @@ import Authorization from './pages/Authorization';
 import Quez from './pages/Quez';
 import Type_and_Types from './pages/Type_and_Types';
 import Profile from './pages/Profile';
+import Pages_Bingo from './pages/Pages_Bingo';
+import Take_or_No from './pages/Take_or_No';
 
 
 function App() {
@@ -37,6 +39,8 @@ function App() {
           <Route path="/stngform" element={<Strongformstree />} />
           <Route path="/quiz/:quizName" element={<Quez />} />
           <Route path="/quiz" element={<Quez />} />
+          <Route path="/bingo" element={<Pages_Bingo />} />
+          <Route path="/takeOrNoTake" element={<Take_or_No />} />
         </Routes>
       </Router>
     </AuthProvider>

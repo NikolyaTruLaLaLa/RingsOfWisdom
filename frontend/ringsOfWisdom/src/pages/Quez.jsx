@@ -18,9 +18,11 @@ const Quez = () => {
   const [correctAnswersCount, setCorrectAnswersCount] = useState(0);
   const [canStartQuiz, setCanStartQuiz] = useState(null);
   const isFetched = useRef(false);
-  const isComplited = useRef(false);
+  const [isCompleted, setIsCompleted] = useState(false);
   const isChecked = useRef(false);
   const { isAuthenticated } = useAuth();
+  const [quizResult, setQuizResult] = useState(null);
+
 
   const checkCanStartQuiz = async () => {
     try {
@@ -41,7 +43,6 @@ const Quez = () => {
     }
   };
 
-
   const fetchQuestions = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/quizzes/${quizName}`, {
@@ -60,80 +61,120 @@ const Quez = () => {
     }
   };
 
-
+  
   
   useEffect(() => {
+    if (!isCompleted) {
+      const handleBeforeUnload = (e) => {
+        e.preventDefault();
+        e.returnValue = "Вы уверены? Прогресс будет потерян!";
+        return "Вы уверены? Прогресс будет потерян!";
+      };
 
+      const handleClick = (e) => {
+        let target = e.target;
+        while (target && target !== document) {
+          if (target.tagName === 'A' && target.href) {
+            const isExternal = new URL(target.href).pathname !== window.location.pathname;
+            if (isExternal && !target.classList.contains('allow-navigation')) {
+              e.preventDefault();
+              const confirmLeave = window.confirm("Вы уверены? Прогресс будет потерян!");
+              if (confirmLeave) {
+                window.location.href = target.href;
+              }
+              return;
+            }
+          }
+          target = target.parentElement;
+        }
+      };
+
+      function unblock() { navigate((location, action) => {
+        if (action !== 'POP' && !isCompleted) {
+          const confirmLeave = window.confirm("Вы уверены? Прогресс будет потерян!");
+          return !confirmLeave; // false отменяет навигацию
+        }
+        return true;
+      });}
+
+      window.addEventListener('beforeunload', handleBeforeUnload);
+      document.addEventListener('click', handleClick, true); // Используем capture phase
+
+      return () => {
+        window.removeEventListener('beforeunload', handleBeforeUnload);
+        document.removeEventListener('click', handleClick, true);
+        unblock();
+      };
+    }
+  }, [isCompleted, navigate]);
+  
+
+  useEffect(() => {
     if (isAuthenticated === false) {
-        navigate("/auth");
-        return;
+      navigate("/auth");
+      return;
     }
     if (!quizName) {
       navigate("/skills");
       return;
-    } 
-    if(!isChecked.current){
+    }
+    if (!isChecked.current) {
       checkCanStartQuiz();
       isChecked.current = true;
-    } 
-    
-}, [quizName, navigate, isAuthenticated]); 
+    }
+  }, [quizName, navigate, isAuthenticated]);
 
-useEffect(() => {
-  if (canStartQuiz && !isFetched.current) {
-    fetchQuestions();
-    isFetched.current = true;
-  }
-}, [canStartQuiz]);
+  useEffect(() => {
+    if (canStartQuiz && !isFetched.current) {
+      fetchQuestions();
+      isFetched.current = true;
+    }
+  }, [canStartQuiz]);
 
-if (canStartQuiz === null) return <p>Проверка возможности начала квиза...</p>;
+  if (canStartQuiz === null) return <p>Проверка возможности начала квиза...</p>;
 
   if (!questions.length) return <p>Загрузка вопросов или квиз не найден...</p>;
 
   const normalizeString = (str) => {
     if (!str || typeof str !== "string") {
-      
       return "";
     }
 
     const normalized = str
       .toLowerCase()
       .replace(/[^a-zа-яё\s-]/gi, "")
-      .replace(/\s+/g, " ") 
+      .replace(/\s+/g, " ")
       .trim();
-
-    
 
     return normalized;
   };
-
 
   const checkUserAnswer = (userAnswer, correctAnswers) => {
     const normalizeString = (str) => {
       return str
         .toLowerCase()
-        .replace(/[^a-zа-яё\s-]/gi, "") 
-        .trim(); 
+        .replace(/[^a-zа-яё\s-]/gi, "")
+        .trim();
     };
-  
+
     const removeWordEnding = (word) => {
       if (/[а-яё]/i.test(word)) {
         return word.replace(/(а|я|ы|и|о|е|ё|у|ю|й|ь|ъ)$/, "");
       }
       return word.replace(/(ing|ed|s|es|er|ly|ion|ment)$/, "");
     };
-  
+
     const normalizeAndStem = (str) => {
       return normalizeString(str)
         .split(/\s+/)
-        .map(removeWordEnding); 
+        .map(removeWordEnding);
     };
-  
+
     const userWords = normalizeAndStem(userAnswer);
-  
+
     for (let correctAnswer of correctAnswers) {
       const correctWords = normalizeAndStem(correctAnswer);
-  
+
       if (
         userWords.length === correctWords.length &&
         userWords.every((word, index) => word === correctWords[index])
@@ -141,11 +182,9 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
         return true;
       }
     }
-  
+
     return false;
   };
-  
-  
 
   const handleAnswerSubmit = () => {
     if (attemptsLeft === 0) return;
@@ -160,10 +199,10 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
       return;
     }
 
-    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers); 
+    const isCorrect = checkUserAnswer(userAnswer, currentQuestion.answers);
     if (isCorrect) {
       setFeedback(`Правильный ответ! ${currentQuestion.explanation}`);
-      setCorrectAnswersCount(prev => prev + 1);
+      setCorrectAnswersCount((prev) => prev + 1);
       setAttemptsLeft(0);
     } else {
       setAttemptsLeft((prevAttempts) => {
@@ -180,17 +219,18 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
 
   const handleNextQuestion = () => {
     if (currentQuestionIndex < questions.length - 1) {
-      setCurrentQuestionIndex(prev => prev + 1);
+      setCurrentQuestionIndex((prev) => prev + 1);
       setUserAnswer("");
       setFeedback("");
       setAttemptsLeft(3);
     } else {
-      setCorrectAnswersCount(prevCorrectAnswers => {
+      setCorrectAnswersCount((prevCorrectAnswers) => {
         const newCount = prevCorrectAnswers;
-        if (!isComplited.current) {
+        if (!isCompleted) {
           completeQuiz(newCount);
-          isComplited.current = true;
+          setIsCompleted(true);
         }
+        
         return newCount;
       });
     }
@@ -207,58 +247,108 @@ if (canStartQuiz === null) return <p>Проверка возможности н�
         credentials: "include",
         body: JSON.stringify({ quizName, correctAnswersCount: finalCorrectAnswersCount }),
       });
-
-      if (!response.ok) throw new Error("Ошибка завершения квиза");
-
-      navigate("/skills");
+  
+      if (!response.ok) {
+        console.error("Failed to complete quiz:", response.status);
+        throw new Error("Ошибка завершения квиза");
+      }
+  
+      const result = await response.json();
+      setIsCompleted(true); 
+      setQuizResult(result);
     } catch (error) {
       console.error("Ошибка при завершении квиза:", error);
       setFeedback("Ошибка при завершении квиза.");
     }
   };
+  
 
   const currentQuestion = questions[currentQuestionIndex];
 
   return (
     <ProtectedRoute>
       <div className="quiz-popup">
-        <div className="quiz-header">
-          <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
-        </div>
-        <div className="quiz-body">
-          <div className="quiz-name">{quizName}</div>
-          <p className="quiz-question-text">{currentQuestion.description}</p>
-          <input
-            type="text"
-            className="answer-input"
-            value={userAnswer}
-            onChange={(e) => setUserAnswer(e.target.value)}
-            placeholder="Введите ваш ответ"
-            disabled={attemptsLeft === 0}
-          />
-          <button
-            onClick={
-              feedback.includes("Правильный") || attemptsLeft === 0
-                ? handleNextQuestion
-                : handleAnswerSubmit
-            }
-          >
-            {feedback.includes("Правильный") || attemptsLeft === 0
-              ? currentQuestionIndex < questions.length - 1
-                ? "Следующий вопрос"
-                : "Завершить квиз"
-              : "Сдать ответ"}
-          </button>
-          <p className="quiz-feedback">{feedback}</p>
-        </div>
-        <div className="quiz-footer">
-          <NavLink to="/skills" className="back-to-menu">
-            <button>Вернуться на дерево</button>
-          </NavLink>
-        </div>
+        {!quizResult ? (
+          <>
+            <div className="quiz-header">
+              <p>Вопрос {currentQuestionIndex + 1} из {questions.length}</p>
+            </div>
+            <div className="quiz-body">
+              <div className="quiz-name">{quizName}</div>
+              <p className="quiz-question-text">{currentQuestion.description}</p>
+              <input
+                type="text"
+                className="answer-input"
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                placeholder="Введите ваш ответ"
+                disabled={attemptsLeft === 0}
+              />
+              <button
+                onClick={
+                  feedback.includes("Правильный") || attemptsLeft === 0
+                    ? handleNextQuestion
+                    : handleAnswerSubmit
+                }
+              >
+                {feedback.includes("Правильный") || attemptsLeft === 0
+                  ? currentQuestionIndex < questions.length - 1
+                    ? "Следующий вопрос"
+                    : "Завершить квиз"
+                  : "Сдать ответ"}
+              </button>
+              <p className="quiz-feedback">{feedback}</p>
+            </div>
+            <div className="quiz-footer">
+              <NavLink to="/skills" className={`back-to-menu ${isCompleted ? 'allow-navigation' : ''}`}>
+                <button>
+                  Вернуться на дерево
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z"
+                      fill="white" />
+                  </svg>
+                </button>
+              </NavLink>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="quiz-header">
+              <h1>{quizResult.name}</h1>
+            </div>
+            <div className="quiz-body">
+              <h2 className={quizResult.isPassed ? "result-success" : "result-fail"}>
+                {quizResult.isPassed ? "🎉 Квиз пройден!" : "❌ Квиз не пройден"}
+              </h2>
+              {quizResult.isFstTime && (
+                <div className="first-time-bonus">
+                  🔥 Это ваш первый проход — награда увеличена в <strong>x1.5</strong>!
+                </div>
+              )}
+              <p>🌟 Получено опыта: <strong>{quizResult.totalXP}</strong></p>
+              <p>💰 Получено монеток: <strong>{quizResult.totalRings}</strong></p>
+            </div>
+            <div className="quiz-footer">
+              <NavLink to="/skills" className={`back-to-menu ${isCompleted ? 'allow-navigation' : ''}`}>
+                <button>
+                  Вернуться на дерево
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                       xmlns="http://www.w3.org/2000/svg">
+                    <path
+                      d="M17 7L15.59 8.41L18.17 11H8V13H18.17L15.59 15.58L17 17L22 12L17 7ZM4 5H12V3H4C2.9 3 2 3.9 2 5V19C2 20.1 2.9 21 4 21H12V19H4V5Z"
+                      fill="white" />
+                  </svg>
+                </button>
+              </NavLink>
+            </div>
+          </>
+        )}
       </div>
     </ProtectedRoute>
   );
+  
 };
 
 export default Quez;

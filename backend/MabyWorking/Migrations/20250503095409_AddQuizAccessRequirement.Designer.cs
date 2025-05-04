@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using mabyWorking.Data;
@@ -11,9 +12,11 @@ using mabyWorking.Data;
 namespace mabyWorking.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250503095409_AddQuizAccessRequirement")]
+    partial class AddQuizAccessRequirement
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -304,33 +307,6 @@ namespace mabyWorking.Migrations
                     b.ToTable("courses");
                 });
 
-            modelBuilder.Entity("mabyWorking.Models.PromoCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActivationLimit")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("CoinReward")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("ExperienceReward")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("promocodes");
-                });
-
             modelBuilder.Entity("mabyWorking.Models.Question", b =>
                 {
                     b.Property<long>("Id")
@@ -548,30 +524,6 @@ namespace mabyWorking.Migrations
                     b.ToTable("statuses");
                 });
 
-            modelBuilder.Entity("mabyWorking.Models.UserPromoCode", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("PromoCodeId")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PromoCodeId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("userpromocodes");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -726,25 +678,6 @@ namespace mabyWorking.Migrations
                         .IsRequired();
 
                     b.Navigation("Status");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("mabyWorking.Models.UserPromoCode", b =>
-                {
-                    b.HasOne("mabyWorking.Models.PromoCode", "PromoCode")
-                        .WithMany()
-                        .HasForeignKey("PromoCodeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("mabyWorking.Data.Identity.ApplicationIdentityUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("PromoCode");
 
                     b.Navigation("User");
                 });

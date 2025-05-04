@@ -73,25 +73,25 @@ public class ProfileController : ControllerBase
     public async Task<IActionResult> ChangeUsername([FromBody] ChangeUsernameDto request)
     {
         if (string.IsNullOrWhiteSpace(request.NewUserName))
-            return BadRequest("Никнейм не может быть пустым");
+            return BadRequest(new { Message = "Никнейм не может быть пустым" });
 
         var existingUser = await _userManager.FindByNameAsync(request.NewUserName);
         if (existingUser != null)
-            return BadRequest("Никнейм уже используется");
+            return BadRequest(new { Message = "Никнейм уже используется" });
 
         var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         var user = await _userManager.FindByIdAsync(userId);
         if (user == null)
-            return NotFound("Пользователь не найден");
+            return NotFound(new { Message = "Пользователь не найден" });
 
         user.UserName = request.NewUserName;
         user.NormalizedUserName = request.NewUserName.ToUpper();
 
         var result = await _userManager.UpdateAsync(user);
         if (!result.Succeeded)
-            return BadRequest("Ошибка при изменении никнейма");
+            return BadRequest(new { Message = "Ошибка при изменении никнейма" });
 
-        return Ok("Никнейм успешно изменён");
+        return Ok(new { Message = "Никнейм успешно изменён" });
     }
 
 
@@ -159,4 +159,43 @@ public class ProfileController : ControllerBase
 
         return Ok(new { quizPassed, quizLimit });
     }
+
+    [HttpGet("statuses")]
+    public async Task<IActionResult> GetStatusesAndNextStatus()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userId == null) return Unauthorized("Пользователь не найден");
+
+        var stats = await _context.Stats
+            .FirstOrDefaultAsync(s => s.UserId == userId);
+
+        if (stats == null) return NotFound("Статистика пользователя не найдена");
+
+        var allStatuses = await _context.Statuses
+            .OrderBy(s => s.MinXp)
+            .Select(s => new
+            {
+                s.Name,
+                MinXp = s.MinXp
+            })
+            .ToListAsync();
+
+        var nextStatus = allStatuses
+            .FirstOrDefault(s => s.MinXp > stats.Xp);
+
+        var xpToNext = nextStatus != null ? nextStatus.MinXp - stats.Xp : 0;
+
+        return Ok(new
+        {
+            AllStatuses = allStatuses,
+            NextStatus = nextStatus != null
+                ? new
+                {
+                    nextStatus.Name,
+                    XPNeeded = xpToNext
+                }
+                : null
+        });
+    }
+
 }
