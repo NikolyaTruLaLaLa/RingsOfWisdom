@@ -38,6 +38,7 @@ transform:scale(1.02);
 }
 
 .course-name {
+    overflow-wrap: break-word;
     font-size: 1.2em;
     margin-top: 10px;
 }
