@@ -212,3 +212,37 @@
           font-size: 18px;
         }
     }
+
+    .green-circle {
+      border: 5px solid #4caf50;
+    }
+    
+    .gray-circle {
+      border: 5px solid #ccc;
+    }
+    
+    .circle-typ img {
+      width: 70%;
+      height: auto;
+    }
+    
+    .circle-typ.disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+    
+  .circle-typ.quiz-locked {
+    background: #cccccc;
+    cursor: not-allowed;
+  }
+  
+  .circle-typ.quiz-disabled {
+    background: #cccccc;
+    pointer-events: none;
+    opacity: 0.5;
+    cursor: default;
+  }
+  
+  .circle-typ.quiz-locked{
+    background-color: #696969 !important;
+  }
