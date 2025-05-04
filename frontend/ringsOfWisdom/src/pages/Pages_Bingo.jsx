@@ -173,7 +173,9 @@ const Pages_Bingo = () => {
                            name: "Factы", image: Factы, path: "/quiz/Factы",
                          })}
         </div>
-
+        {modalMessage && (
+          <MessageModal message={modalMessage} onClose={() => setModalMessage(null)} />
+        )}
     </div>
     </ProtectedRoute>
     );

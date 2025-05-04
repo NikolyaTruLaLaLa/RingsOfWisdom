@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react"
 import { NavLink } from 'react-router-dom';
 import QuizDayStats from "./../hooks/QuizDayStats";
 import ProtectedRoute from "../hooks/ProtectedRoute";
+import MessageModal from '../components/message-modal/MessageModal'; 
+import useQuizzesBySkill from "./../hooks/useQuizzesBySkill";
 
 import './../assets/style/type_and_types.css';
 import svoyak50 from './../assets/images/svoyak50.png';
@@ -16,130 +18,259 @@ import redukciya from './../assets/images/redukciya.png';
 import svoyak10 from './../assets/images/svoyak10.png';
 
 
-const quizData = [
-  { name: "Свояк за 10", image: svoyak10, path: "/quiz/Свояк за 10" },
-  { name: "Перевод", image: translate, path: "/quiz/Перевод" },
-  { name: "Выбирай правильно", image: choose, path: "/quiz/Выбирай правильно" },
-  { name: "Декомпозиция", image: decompoziciya, path: "/quiz/Декомпозиция" },
-  { name: "Сингулярность", image: singulyarnost, path: "/quiz/Сингулярность" },
-  { name: "Перебор", image: tooMuch, path: "/quiz/Перебор" },
-  { name: "Добавь воды", image: addWater, path: "/quiz/Добавь воды" },
-  { name: "Предпосылки", image: predposilki, path: "/quiz/Предпосылки" },
-  { name: "Редукция до Очевидного", image: redukciya, path: "/quiz/Редукция до Очевидного" },
-  { name: "Свояк за 50", image: svoyak50, path: "/quiz/Свояк за 50" }
-];
+
 
 
 const Take_or_No = () => {
     
-    const {availableQuizzes, totalQuizzes} = QuizDayStats();
-        useEffect(() => {
-        }, []);
-        
-      const [isPopupVisible, setPopupVisible] = useState(true);
-      
-        const handleClosePopup = () => {
-          setPopupVisible(false);
-    
-      };
+  const skillName = "Возьмëшь не возьмëшь?";
+  const quizzes = useQuizzesBySkill(skillName);
+  const { availableQuizzes, totalQuizzes } = QuizDayStats();
+
+  const [isPopupVisible, setPopupVisible] = useState(true);
+  const [modalMessage, setModalMessage] = useState(null);
+
+  const handleClosePopup = () => {
+    setPopupVisible(false);
+  };
+
+  const handleBlockedQuizClick = (quiz) => {
+    setModalMessage({
+      type: "error",
+      text: `Этот квиз доступен только при статусе: ${quiz.requiredStatus || "неизвестен"}.`,
+    });
+  };
 
 
       
 
       const renderNavLink_reduction = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
+        const completedQuiz = quizzes.find((q) => q.name === quiz.name);
+            
+              if (!completedQuiz) {
+                return (
+                  <div className="circle-typ-container">
+                    <div className="circle-typ loading gray-circle">
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Загрузка...</p>
+                  </div>
+                );
+              }
+            
+              const isAccessible = completedQuiz.canAccess;
+              const isCompleted = completedQuiz.isCompleted;
+              const circleClass = isCompleted ? "green-circle" : "gray-circle";
+            
               
-            </div>
-            <p>Редукция до<br/>Очевидного</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
+            
+              if (availableQuizzes === 0) {
+                return (
+                  <div key={quiz.name} className="circle-typ-container">
+                    <div className={`circle-typ ${circleClass} quiz-disabled`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Редукция до<br/>Очевидного</p>
+                  </div>
+                );
+              }
+              if (!isAccessible) {
+                return (
+                  <div
+                    key={quiz.name}
+                    className="circle-typ-container"
+                    onClick={() => handleBlockedQuizClick(completedQuiz)}
+                    style={{ cursor: "not-allowed" }}
+                  >
+                    <div className={`circle-typ gray-circle quiz-locked`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Редукция до<br/>Очевидного</p>
+                  </div>
+                );
+              }
+            
+              return (
+                <NavLink to={quiz.path} className="circle-typ-container">
+                  <div className={`circle-typ ${circleClass}`}>
                     <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Редукция до<br/>Очевидного</p>
-            </NavLink>
-          );
-        }
-      };
+                  </div>
+                  <p>Редукция до<br/>Очевидного</p>
+                </NavLink>
+              );
+            };
 
       const renderNavLink_sing = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
+        const completedQuiz = quizzes.find((q) => q.name === quiz.name);
+            
+              if (!completedQuiz) {
+                return (
+                  <div className="circle-typ-container">
+                    <div className="circle-typ loading gray-circle">
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Загрузка...</p>
+                  </div>
+                );
+              }
+            
+              const isAccessible = completedQuiz.canAccess;
+              const isCompleted = completedQuiz.isCompleted;
+              const circleClass = isCompleted ? "green-circle" : "gray-circle";
+            
               
-            </div>
-            <p>Сингуляр<br/>ность</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
+            
+              if (availableQuizzes === 0) {
+                return (
+                  <div key={quiz.name} className="circle-typ-container">
+                    <div className={`circle-typ ${circleClass} quiz-disabled`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Сингуляр<br/>ность</p>
+                  </div>
+                );
+              }
+              if (!isAccessible) {
+                return (
+                  <div
+                    key={quiz.name}
+                    className="circle-typ-container"
+                    onClick={() => handleBlockedQuizClick(completedQuiz)}
+                    style={{ cursor: "not-allowed" }}
+                  >
+                    <div className={`circle-typ gray-circle quiz-locked`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Сингуляр<br/>ность</p>
+                  </div>
+                );
+              }
+            
+              return (
+                <NavLink to={quiz.path} className="circle-typ-container">
+                  <div className={`circle-typ ${circleClass}`}>
                     <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Сингуляр<br/>ность</p>
-            </NavLink>
-          );
-        }
-      }; 
+                  </div>
+                  <p>Сингуляр<br/>ность</p>
+                </NavLink>
+              );
+            };
 
       const renderNavLink_choose = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container" >
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
+        const completedQuiz = quizzes.find((q) => q.name === quiz.name);
+            
+              if (!completedQuiz) {
+                return (
+                  <div className="circle-typ-container">
+                    <div className="circle-typ loading gray-circle">
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Загрузка...</p>
+                  </div>
+                );
+              }
+            
+              const isAccessible = completedQuiz.canAccess;
+              const isCompleted = completedQuiz.isCompleted;
+              const circleClass = isCompleted ? "green-circle" : "gray-circle";
+            
               
-            </div>
-            <p>Выбирай<br/>Правильно</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
+            
+              if (availableQuizzes === 0) {
+                return (
+                  <div key={quiz.name} className="circle-typ-container">
+                    <div className={`circle-typ ${circleClass} quiz-disabled`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Выбирай<br/>Правильно</p>
+                  </div>
+                );
+              }
+              if (!isAccessible) {
+                return (
+                  <div
+                    key={quiz.name}
+                    className="circle-typ-container"
+                    onClick={() => handleBlockedQuizClick(completedQuiz)}
+                    style={{ cursor: "not-allowed" }}
+                  >
+                    <div className={`circle-typ gray-circle quiz-locked`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Выбирай<br/>Правильно</p>
+                  </div>
+                );
+              }
+            
+              return (
+                <NavLink to={quiz.path} className="circle-typ-container">
+                  <div className={`circle-typ ${circleClass}`}>
                     <img src={quiz.image} alt={quiz.name} />
-                </div>
-                <p>Выбирай<br/>Правильно</p>
-            </NavLink>
-          );
-        }
-      }; 
+                  </div>
+                  <p>Выбирай<br/>Правильно</p>
+                </NavLink>
+              );
+            };
 
       
 
       
 
       const renderNavLink = (quiz) => {
-        if (availableQuizzes === 0) {
-          return (
-            <div className="circle-typ-container">
-            <div className="circle-typ">
-              <img src={quiz.image} alt={quiz.name} />
-            </div>
-            <p>{quiz.name}</p>
-            </div>
-          );
-        } else {
-          return (
-            <NavLink to={quiz.path} className="circle-typ-container">
-                <div className="circle-typ">
+              const completedQuiz = quizzes.find((q) => q.name === quiz.name);
+            
+              if (!completedQuiz) {
+                return (
+                  <div className="circle-typ-container">
+                    <div className="circle-typ loading gray-circle">
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>Загрузка...</p>
+                  </div>
+                );
+              }
+            
+              const isAccessible = completedQuiz.canAccess;
+              const isCompleted = completedQuiz.isCompleted;
+              const circleClass = isCompleted ? "green-circle" : "gray-circle";
+            
+              
+            
+              if (availableQuizzes === 0) {
+                return (
+                  <div key={quiz.name} className="circle-typ-container">
+                    <div className={`circle-typ ${circleClass} quiz-disabled`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>{quiz.name}</p>
+                  </div>
+                );
+              }
+              if (!isAccessible) {
+                return (
+                  <div
+                    key={quiz.name}
+                    className="circle-typ-container"
+                    onClick={() => handleBlockedQuizClick(completedQuiz)}
+                    style={{ cursor: "not-allowed" }}
+                  >
+                    <div className={`circle-typ gray-circle quiz-locked`}>
+                      <img src={quiz.image} alt={quiz.name} />
+                    </div>
+                    <p>{quiz.name}</p>
+                  </div>
+                );
+              }
+            
+              return (
+                <NavLink to={quiz.path} className="circle-typ-container">
+                  <div className={`circle-typ ${circleClass}`}>
                     <img src={quiz.image} alt={quiz.name} />
-                </div>
-              <p>{quiz.name}</p>
-            </NavLink>
-          );
-        }
-      }; 
+                  </div>
+                  <p>{quiz.name}</p>
+                </NavLink>
+              );
+            };
 
     return (
         <ProtectedRoute>
@@ -168,38 +299,61 @@ const Take_or_No = () => {
 
        
         <div className="skill-row">
-        {renderNavLink(quizData[0])}
+        {renderNavLink({
+                           name: "Свояк за 10", image: svoyak10, path: "/quiz/Свояк за 10",
+                         })}
         </div>
 
         
         <div className="skill-row">
-        {renderNavLink(quizData[1])}
-        {renderNavLink_choose(quizData[2])}
+        {renderNavLink_reduction({
+                           name: "Редукция до Очевидного", image: redukciya, path: "/quiz/Редукция до Очевидного" ,
+                         })}
+        {renderNavLink({
+                            name: "Предпосылки", image: predposilki, path: "/quiz/Предпосылки",
+                         })}
+
+        </div>
+
+        <div className="skill-row">
+        {renderNavLink({
+                           name: "Добавь Воды", image: addWater, path: "/quiz/Добавь Воды",
+                         })}
+        {renderNavLink({
+                           name: "Перебор", image: tooMuch, path: "/quiz/Перебор",
+                         })}
+        </div>
+
+        <div className="skill-row">
+        {renderNavLink_sing({
+                            name: "Сингулярность", image: singulyarnost, path: "/quiz/Сингулярность",
+                         })}
+        {renderNavLink({
+                           name: "Декомпозиция", image: decompoziciya, path: "/quiz/Декомпозиция",
+                         })}
         </div>
 
         
         <div className="skill-row">
-        {renderNavLink(quizData[3])}
-        {renderNavLink_sing(quizData[4])}
+        {renderNavLink_choose({
+                           name: "Выбирай Правильно", image: choose, path: "/quiz/Выбирай Правильно",
+                         })}
+        {renderNavLink({
+                           name: "Перевод", image: translate, path: "/quiz/Перевод",
+                         })}
+        
         </div>
 
         
         <div className="skill-row">
-        {renderNavLink(quizData[5])}
-        {renderNavLink(quizData[6])}
-        </div>
-
-        
-        <div className="skill-row">
-        {renderNavLink(quizData[7])}
-        {renderNavLink_reduction(quizData[8])}
-        </div>
-
-        
-        <div className="skill-row">
-        {renderNavLink(quizData[9])}
+        {renderNavLink({
+                           name: "Свояк за 50", image: svoyak50, path: "/quiz/Свояк за 50" ,
+                         })}
         </div>
     </div>
+    {modalMessage && (
+          <MessageModal message={modalMessage} onClose={() => setModalMessage(null)} />
+        )}
     </ProtectedRoute>
     );
 };
