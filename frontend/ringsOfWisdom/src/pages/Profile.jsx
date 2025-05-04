@@ -4,6 +4,7 @@ import money from "./../assets/images/monetka.png";
 import "./../assets/style/style_profile.css";
 import ProtectedRoute from "../hooks/ProtectedRoute";
 import { useAuth } from './../hooks/AuthContext';
+import MessageModal from '../components/message-modal/MessageModal'; 
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
@@ -17,13 +18,14 @@ const Profile = () => {
   const [rating, setRating] = useState([]);
   const [userRank, setUserRank] = useState(null);
   const navigate = useNavigate();
-  const [message, setMessage] = useState("");
+  const [modalMessage, setModalMessage] = useState(null);
   const { setIsAuthenticated, checkAuthStatus } = useAuth();
   const [allStatuses, setAllStatuses] = useState([]);
   const [nextStatusName, setNextStatusName] = useState(null);
   const [xpToNext, setXpToNext] = useState(0);
   const [showStatusInfo, setShowStatusInfo] = useState(false);
   const [currentXp, setCurrentXp] = useState(0);
+  const [editedUserName, setEditedUserName] = useState("");
 
   useEffect(() => {
     fetchProfile();
@@ -115,17 +117,23 @@ const Profile = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify({ NewUserName: userName }),
+        body: JSON.stringify({ NewUserName: editedUserName }),
       });
+      const result = await response.json();
 
       if (response.ok) {
+        setUserName(editedUserName);
         setIsEditing(false);
         fetchProfile(); 
+        setModalMessage({type: "success",
+          text: result.message || "Смена имени успешна"});
       } else {
-        setMessage("Ошибка при смене имени.");
+        setModalMessage({type: "error",
+      text: result.message || "Ошибка при смене имени."});
       }
     } catch (error) {
-      setMessage("Ошибка при смене имени.");
+      setModalMessage({type: "error",
+      text:"Ошибка при смене имени."});
     }
   };
 
@@ -239,8 +247,8 @@ const Profile = () => {
                 <div className="edit-name">
                   <input
                   type="text"
-                   value={userName}
-                  onChange={(e) => setUserName(e.target.value)}
+                   value={editedUserName}
+                  onChange={(e) => setEditedUserName(e.target.value)}
                 />
                 <div className="edit-buttons">
                    <button onClick={handleSaveName}>Сохранить</button>
@@ -251,7 +259,7 @@ const Profile = () => {
                 <div className="display-name">
                   <div className="display-name-user-name">
                     {userName} 
-                    <button className="change-name" onClick={() => setIsEditing(true)}>
+                    <button className="change-name" onClick={() =>{setEditedUserName(userName); setIsEditing(true)}}>
                     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M14.06 9.02L14.98 9.94L5.92 19H5V18.08L14.06 9.02ZM17.66 3C17.41 3 17.15 3.1 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C18.17 3.09 17.92 3 17.66 3ZM14.06 6.19L3 17.25V21H6.75L17.81 9.94L14.06 6.19Z" fill="#5A47B3"/>
                     </svg>
@@ -278,7 +286,6 @@ const Profile = () => {
                   <img src={money} alt="Монетки" className="money" />
                   <span>{coins}</span>
                 </div>
-                {message && <p>{message}</p>}
             </div>
 
             {renderStatusInfo()}
@@ -346,6 +353,9 @@ const Profile = () => {
               </button>
             </div>
           </div>
+          {modalMessage && (
+          <MessageModal message={modalMessage} onClose={() => setModalMessage(null)} />
+        )}
         </div>
       </ProtectedRoute>
     </>
